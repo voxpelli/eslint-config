@@ -1,0 +1,8 @@
+# Basic ones
+/node_modules
+
+# We're a library, so please, no lock files
+/package-lock.json
+/yarn.lock
+
+# Library specific ones

@@ -1,0 +1,24 @@
+{
+  "extends": [
+    "standard",
+    "plugin:jsdoc/recommended"
+  ],
+  "root": true,
+  "settings": {
+    "jsdoc": {
+      "mode": "typescript"
+    }
+  },
+  "rules": {
+    "semi": [2, "always"],
+    "no-extra-semi": 2,
+    "no-var": 2,
+
+    "jsdoc/check-types": 0,
+    "jsdoc/no-undefined-types": 0,
+    "jsdoc/require-jsdoc": 0,
+    "jsdoc/require-param-description": 0,
+    "jsdoc/require-returns-description": 0,
+    "jsdoc/valid-types": 0
+  }
+}
