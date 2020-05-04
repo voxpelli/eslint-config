@@ -6,6 +6,6 @@ My personal ESLint config which extends [standard](https://standardjs.com/) / [s
 
 Includes the semistandard rules directly rather than relying on [eslint-config-semistandard](https://github.com/standard/eslint-config-semistandard), as that package isn't always trailing the main [eslint-config-standard](https://github.com/standard/eslint-config-standard) package.
 
-This package follows [semantic versioning](https://semver.org/). As tightening of any checks is to be considered a breaking change, tightening will only happen in new major releases. Any minor or patch release will only include relaxing of rules or fixing of minor obvious oversights.
+This package follows [semantic versioning](https://semver.org/). Tightening of any checks is a breaking change, therefore that will only happen in major releases. Minor and patch releases will only include relaxation of rules or fixing of minor obvious oversights.
 
 Want to use my linting rules? Go ahead! Would love feedback and a comment about you doing so, then I'll be extra careful with eg. following the semantic versioning rules.
