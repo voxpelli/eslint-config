@@ -19,7 +19,7 @@ As ESLint configs and dependencies can and will change their rules with major re
 To easily install all correct peer dependencies, you can use [`install-peerdeps`](https://www.npmjs.com/package/install-peerdeps):
 
 ```bash
-install-peerdeps @voxpelli/eslint-config
+install-peerdeps --dev @voxpelli/eslint-config
 ```
 
 Then add a `.eslintrc` with the following:
