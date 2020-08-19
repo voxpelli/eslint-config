@@ -1,6 +1,19 @@
 {
+  "plugins": [
+    "es",
+    "import",
+    "jsdoc",
+    "mocha",
+    "promise",
+    "security",
+    "unicorn"
+  ],
   "extends": [
     "standard",
+    "plugin:security/recommended",
+    "plugin:mocha/recommended",
+    "plugin:unicorn/recommended",
+    "plugin:promise/recommended",
     "plugin:jsdoc/recommended"
   ],
   "root": true,
@@ -18,12 +31,34 @@
     "no-var": 2,
     "object-shorthand": [2, "properties"],
 
+    "es/no-exponential-operators": 1,
+
     "jsdoc/check-types": 0,
     "jsdoc/no-undefined-types": 0,
     "jsdoc/require-jsdoc": 0,
     "jsdoc/require-param-description": 0,
     "jsdoc/require-property-description": 0,
     "jsdoc/require-returns-description": 0,
-    "jsdoc/valid-types": 0
+    "jsdoc/valid-types": 0,
+
+    "mocha/no-mocha-arrows": 0,
+
+    "node/no-deprecated-api": 1,
+
+    "promise/always-return": 0,
+    "promise/no-callback-in-promise": 0,
+    "promise/no-nesting": 0,
+
+    "security/detect-object-injection": 0,
+    "security/detect-unsafe-regex": 0,
+
+    "unicorn/catch-error-name": ["error", {"name": "err"}],
+    "unicorn/consistent-function-scoping": 0,
+    "unicorn/explicit-length-check": 0,
+    "unicorn/filename-case": 0,
+    "unicorn/prefer-add-event-listener": 1,
+    "unicorn/prefer-exponentiation-operator": 0,
+    "unicorn/prefer-spread": 1,
+    "unicorn/prevent-abbreviations": 0
   }
 }
