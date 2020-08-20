@@ -26,11 +26,22 @@
     "semi": [2, "always"],
     "no-extra-semi": 2,
 
+    "comma-dangle": [1, {
+      "arrays": "ignore",
+      "objects": "ignore",
+      "imports": "ignore",
+      "exports": "ignore",
+      "functions": "never"
+    }],
     "func-style": [1, "expression", { "allowArrowFunctions": true }],
-    "no-multi-spaces": ["error", {"ignoreEOLComments": true}],
+    "no-console": 1,
+    "no-multi-spaces": [2, {"ignoreEOLComments": true}],
+    "no-unused-vars": [2, {"args": "after-used", "ignoreRestSiblings": true}],
     "no-var": 2,
+    "no-warning-comments": [1, { "terms": ["fixme"] }],
     "object-shorthand": [2, "properties"],
-
+    "quote-props": [2, "as-needed", { "keywords": true, "numbers": true, "unnecessary": false }],
+    "quotes": [2, "single", { "avoidEscape": true, "allowTemplateLiterals": true }],
     "es/no-exponential-operators": 1,
 
     "jsdoc/check-types": 0,
