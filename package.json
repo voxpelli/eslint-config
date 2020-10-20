@@ -22,6 +22,7 @@
   },
   "main": "index.js",
   "devDependencies": {
+    "@voxpelli/eslint-config-jsdoc-ts": "^0.1.0",
     "eslint": "^6.8.0",
     "eslint-config-standard": "^14.1.0",
     "eslint-plugin-es": "^3.0.0",
@@ -37,6 +38,7 @@
     "installed-check": "^3.0.0"
   },
   "peerDependencies": {
+    "@voxpelli/eslint-config-jsdoc-ts": "^0.1.0",
     "eslint": "^6.8.0",
     "eslint-config-standard": "^14.1.0",
     "eslint-plugin-es": "^3.0.0",

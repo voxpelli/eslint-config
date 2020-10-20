@@ -2,7 +2,6 @@
   "plugins": [
     "es",
     "import",
-    "jsdoc",
     "mocha",
     "promise",
     "security",
@@ -14,7 +13,7 @@
     "plugin:mocha/recommended",
     "plugin:unicorn/recommended",
     "plugin:promise/recommended",
-    "plugin:jsdoc/recommended"
+    "@voxpelli/eslint-config-jsdoc-ts"
   ],
   "root": true,
   "settings": {
@@ -42,15 +41,8 @@
     "object-shorthand": [2, "properties"],
     "quote-props": [2, "as-needed", { "keywords": true, "numbers": true, "unnecessary": false }],
     "quotes": [2, "single", { "avoidEscape": true, "allowTemplateLiterals": true }],
-    "es/no-exponential-operators": 1,
 
-    "jsdoc/check-types": 0,
-    "jsdoc/no-undefined-types": 0,
-    "jsdoc/require-jsdoc": 0,
-    "jsdoc/require-param-description": 0,
-    "jsdoc/require-property-description": 0,
-    "jsdoc/require-returns-description": 0,
-    "jsdoc/valid-types": 0,
+    "es/no-exponential-operators": 1,
 
     "mocha/no-mocha-arrows": 0,
 
