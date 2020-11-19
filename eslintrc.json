@@ -29,7 +29,6 @@
     }],
     "no-multi-spaces": ["error", {"ignoreEOLComments": true}],
     "no-unused-vars": ["error", {"vars": "all", "args": "after-used", "ignoreRestSiblings": true}],
-    "quotes": ["error", "single", { "avoidEscape": true, "allowTemplateLiterals": true }],
     "node/no-deprecated-api": "warn",
 
     "func-style": ["warn", "expression", { "allowArrowFunctions": true }],
@@ -42,17 +41,11 @@
 
     "mocha/no-mocha-arrows": "off",
 
-    "promise/always-return": "off",
-    "promise/no-callback-in-promise": "off",
-    "promise/no-nesting": "off",
-
     "security/detect-object-injection": "off",
     "security/detect-unsafe-regex": "off",
 
     "unicorn/catch-error-name": ["error", {"name": "err"}],
-    "unicorn/consistent-function-scoping": "off",
     "unicorn/explicit-length-check": "off",
-    "unicorn/filename-case": "off",
     "unicorn/prefer-add-event-listener": "warn",
     "unicorn/prefer-spread": "warn",
     "unicorn/prevent-abbreviations": "off"

@@ -40,8 +40,6 @@ Then add a `.eslintrc` with the following:
 * :wrench: [`no-multi-spaces`](https://eslint.org/docs/rules/no-multi-spaces) – *changed* – sets `ignoreEOLComments` to `true` (Incompatible with standard :warning:)
 * :wrench: [`no-unused-vars`](https://eslint.org/docs/rules/no-unused-vars) – *changed* – sets `"args": "after-used"`
 * :wrench::warning: [`node/no-deprecated-api`](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) – *changed* – changed to `warn` instead of `error`
-<!-- TODO: Remove allowTemplateLiterals -->
-* :wrench: [`quotes`](https://eslint.org/docs/rules/quotes) – *changed* – sets `allowTemplateLiterals` (Incompatible with standard :warning:)
 * :wrench: [`semi`](https://eslint.org/docs/rules/semi) and [`no-extra-semi`](https://eslint.org/docs/rules/no-extra-semi) – *changed* – adopts the semicolons setup from [semistandard](https://github.com/standard/semistandard)  (Incompatible with plain standard :warning:, compatible with semistandard)
 
 ### :heavy_plus_sign: Added ESLint core rules
@@ -65,22 +63,11 @@ Then add a `.eslintrc` with the following:
 
 * :mute: [`mocha/no-mocha-arrows`](https://github.com/lo1tuma/eslint-plugin-mocha/blob/master/docs/rules/no-mocha-arrows.md) – *deactivated* – while [Mocha discourages arrow functions](https://mochajs.org/#arrow-functions) I find it more readable to use them + I find it safe when type checking ones test files as then the type checking will notify one when one tries to do a `this.setTimeout()` or similar in an arrow function where there is no such local context
 
-<!-- TODO: Remove completely -->
-* :mute: [`promise/always-return`](https://github.com/xjamundx/eslint-plugin-promise/blob/development/docs/rules/always-return.md) – *deactivated*
-<!-- TODO: Remove completely -->
-* :mute: [`promise/no-callback-in-promise`](https://github.com/xjamundx/eslint-plugin-promise/blob/development/docs/rules/no-callback-in-promise.md) – *deactivated*
-<!-- TODO: Remove completely -->
-* :mute: [`promise/no-nesting`](https://github.com/xjamundx/eslint-plugin-promise/blob/development/docs/rules/no-nesting.md) – *deactivated*
-
 * :mute: [`security/detect-object-injection`](https://github.com/nodesecurity/eslint-plugin-security#detect-object-injection) – *deactivated* – causes too many false errors
 * :mute: [`security/detect-unsafe-regex`](https://github.com/nodesecurity/eslint-plugin-security#detect-unsafe-regex) – *deactivated* – at least early on wasn't very stable
 
 * :wrench: [`unicorn/catch-error-name`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/catch-error-name.md) – *changed* – I prefer `err` over `error` as I find `error`to be a far too similar name to the built in `Error` class
-<!-- TODO: Reactivate? -->
-* :mute: [`unicorn/consistent-function-scoping`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/consistent-function-scoping.md) – *deactivated*
 * :mute: [`unicorn/explicit-length-check`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/explicit-length-check.md) – *deactivated* – I don't see an issue with `if (string.length)` instead of `if (string.length !== 0)`
-<!-- TODO: Reactivate? -->
-* :mute: [`unicorn/filename-case`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/filename-case.md) – *deactivated*
 * :warning: [`unicorn/prefer-add-event-listener`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-add-event-listener.md) – *changed* – set to `warn` instead of `error`
 <!-- TODO: Reactivate? -->
 * :warning: [`unicorn/prefer-spread`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-spread.md) – *changed* – set to `warn` instead of `error`
