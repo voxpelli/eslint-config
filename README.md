@@ -60,7 +60,7 @@ Then add a `.eslintrc` with the following:
 
 #### :wrench: Overrides of added ESLint rule packages
 
-* :mute: [`no-process-exit`](https://eslint.org/docs/rules/no-process-exit) – added by `plugin:node/recommended`, but deactivated in favor of [`unicorn/no-process-exit`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-process-exit.md)
+* :mute: [`no-process-exit`](https://eslint.org/docs/rules/no-process-exit) – *deactivated* – added by `plugin:node/recommended`, but deactivated in favor of [`unicorn/no-process-exit`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-process-exit.md)
 
 * :mute: [`mocha/no-mocha-arrows`](https://github.com/lo1tuma/eslint-plugin-mocha/blob/master/docs/rules/no-mocha-arrows.md) – *deactivated* – while [Mocha discourages arrow functions](https://mochajs.org/#arrow-functions) I find it more readable to use them + I find it safe when type checking ones test files as then the type checking will notify one when one tries to do a `this.setTimeout()` or similar in an arrow function where there is no such local context
 
