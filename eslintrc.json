@@ -35,7 +35,7 @@
     "func-style": ["warn", "expression", { "allowArrowFunctions": true }],
     "no-console": "warn",
     "no-warning-comments": ["warn", { "terms": ["fixme"] }],
-    "object-shorthand": ["error", "always", { "avoidExplicitReturnArrows": true, "avoidQuotes": true }],
+    "object-shorthand": ["error", "properties", { "avoidQuotes": true }],
     "quote-props": ["error", "as-needed", { "keywords": true, "numbers": true, "unnecessary": false }],
 
     "es/no-exponential-operators": "warn",

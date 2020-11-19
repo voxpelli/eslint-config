@@ -49,7 +49,7 @@ Then add a `.eslintrc` with the following:
 * :warning: [`func-style`](https://eslint.org/docs/rules/func-style) – disallows function declarations
 * :warning: [`no-console`](https://eslint.org/docs/rules/no-console) – warns on existence of `console.log` and similar, as they are mostly used for debugging and should not be committed
 * :warning: [`no-warning-comments`](https://eslint.org/docs/rules/no-warning-comments) – warns of the existence of `FIXME` comments, as they should always be fixed before pushing
-* :stop_sign: [`object-shorthand`](https://eslint.org/docs/rules/object-shorthand) – requires the use of object shorthands for both methods and properties
+* :stop_sign: [`object-shorthand`](https://eslint.org/docs/rules/object-shorthand) – requires the use of object shorthands for properties
 * :stop_sign: [`quote-props`](https://eslint.org/docs/rules/quote-props)– requires properties to be quoted when needed, otherwise disallows it
 
 ### :package: Added ESLint rule package
