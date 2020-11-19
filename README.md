@@ -33,14 +33,13 @@ Then add a `.eslintrc` with the following:
 
 ## How does this differ from pure [standard](https://standardjs.com/)?
 
-<!-- TODO: Mention something about ecmaVersion and such -->
 ### :wrench: Changed [standard](https://standardjs.com/) rules
 
 * :wrench::warning: [`comma-dangle`](https://eslint.org/docs/rules/comma-dangle) – *changed* – ignore it in everything but functions + is it set to `warn` rather than `error` (Incompatible with standard :warning:)
 * :wrench: [`no-multi-spaces`](https://eslint.org/docs/rules/no-multi-spaces) – *changed* – sets `ignoreEOLComments` to `true` (Incompatible with standard :warning:)
 * :wrench: [`no-unused-vars`](https://eslint.org/docs/rules/no-unused-vars) – *changed* – sets `"args": "after-used"`
-* :wrench::warning: [`node/no-deprecated-api`](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) – *changed* – changed to `warn` instead of `error`
 * :wrench: [`semi`](https://eslint.org/docs/rules/semi) and [`no-extra-semi`](https://eslint.org/docs/rules/no-extra-semi) – *changed* – adopts the semicolons setup from [semistandard](https://github.com/standard/semistandard)  (Incompatible with plain standard :warning:, compatible with semistandard)
+* :wrench::warning: [`node/no-deprecated-api`](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) – *changed* – changed to `warn` instead of `error`
 
 ### :heavy_plus_sign: Added ESLint core rules
 
@@ -52,14 +51,16 @@ Then add a `.eslintrc` with the following:
 
 ### :package: Added ESLint rule package
 
+* [`plugin:node/recommended`](https://github.com/mysticatea/eslint-plugin-node#-rules)
 * [`plugin:security/recommended`](https://github.com/nodesecurity/eslint-plugin-security/blob/master/index.js)
 * [`plugin:mocha/recommended`](https://github.com/lo1tuma/eslint-plugin-mocha/blob/master/index.js)
 * [`plugin:unicorn/recommended`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/index.js)
 * [`plugin:promise/recommended`](https://github.com/xjamundx/eslint-plugin-promise/blob/development/index.js)
 * [`@voxpelli/eslint-config-jsdoc-ts`](https://github.com/voxpelli/eslint-config-jsdoc-ts/blob/main/eslintrc.json) – which is a TypeScript packaging of [`plugin:jsdoc/recommended`](https://github.com/gajus/eslint-plugin-jsdoc#configuration)
-<!-- TODO: Add plugin:node/recommended -->
 
 #### :wrench: Overrides of added ESLint rule packages
+
+* :mute: [`no-process-exit`](https://eslint.org/docs/rules/no-process-exit) – added by `plugin:node/recommended`, but deactivated in favor of [`unicorn/no-process-exit`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-process-exit.md)
 
 * :mute: [`mocha/no-mocha-arrows`](https://github.com/lo1tuma/eslint-plugin-mocha/blob/master/docs/rules/no-mocha-arrows.md) – *deactivated* – while [Mocha discourages arrow functions](https://mochajs.org/#arrow-functions) I find it more readable to use them + I find it safe when type checking ones test files as then the type checking will notify one when one tries to do a `this.setTimeout()` or similar in an arrow function where there is no such local context
 
@@ -69,7 +70,6 @@ Then add a `.eslintrc` with the following:
 * :wrench: [`unicorn/catch-error-name`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/catch-error-name.md) – *changed* – I prefer `err` over `error` as I find `error`to be a far too similar name to the built in `Error` class
 * :mute: [`unicorn/explicit-length-check`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/explicit-length-check.md) – *deactivated* – I don't see an issue with `if (string.length)` instead of `if (string.length !== 0)`
 * :warning: [`unicorn/prefer-add-event-listener`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-add-event-listener.md) – *changed* – set to `warn` instead of `error`
-<!-- TODO: Reactivate? -->
 * :warning: [`unicorn/prefer-spread`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-spread.md) – *changed* – set to `warn` instead of `error`
 * :mute: [`unicorn/prevent-abbreviations`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prevent-abbreviations.md) – *deactivated* – same as `unicorn/catch-error-name`, I prefer an abbreviated `err` over a non-abbreviated `error`because the latter is too similar to `Error` for my taste
 

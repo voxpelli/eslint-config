@@ -9,6 +9,7 @@
   ],
   "extends": [
     "standard",
+    "plugin:node/recommended",
     "plugin:security/recommended",
     "plugin:mocha/recommended",
     "plugin:unicorn/recommended",
@@ -30,6 +31,8 @@
     "no-multi-spaces": ["error", {"ignoreEOLComments": true}],
     "no-unused-vars": ["error", {"vars": "all", "args": "after-used", "ignoreRestSiblings": true}],
     "node/no-deprecated-api": "warn",
+
+    "no-process-exit": "off",
 
     "func-style": ["warn", "expression", { "allowArrowFunctions": true }],
     "no-console": "warn",
