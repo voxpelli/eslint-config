@@ -75,11 +75,14 @@ Then add a `.eslintrc` with the following:
 
 ### :heavy_plus_sign: Additional standalone ESLint rules
 
-<!-- TODO: Add promise/prefer-await-to-then -->
 <!-- TODO: Maybe add promise/prefer-await-to-callbacks -->
 <!-- TODO: Maybe add node/no-mixed-requires -->
-<!-- TODO: Maybe add node/no-sync -->
-<!-- TODO: Maybe add node/no-process-env -->
-<!-- TODO: Maybe add node/prefer-global/console -->
-<!-- TODO: Maybe add node/prefer-promises/fs -->
+
 * :warning: [`es/no-exponential-operators`](https://mysticatea.github.io/eslint-plugin-es/rules/no-exponential-operators.html) – disallows the use of the `**` operator, as that's in most cases a mistake and one really meant to write `*`
+
+* :warning: [`node/prefer-global/console`](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/prefer-global/console.md)
+* :warning: [`node/prefer-promises/fs`](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/prefer-promises/fs.md)
+* :warning: [`node/no-process-env`](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-process-env.md)
+* :stop_sign: [`node/no-sync`](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-sync.md)
+
+* :stop_sign: [`promise/prefer-await-to-then`](hhttps://github.com/xjamundx/eslint-plugin-promise/blob/development/docs/rules/prefer-await-to-then.md)

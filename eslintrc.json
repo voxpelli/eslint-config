@@ -44,6 +44,13 @@
 
     "mocha/no-mocha-arrows": "off",
 
+    "node/prefer-global/console": "warn",
+    "node/prefer-promises/fs": "warn",
+    "node/no-process-env": "warn",
+    "node/no-sync": "error",
+
+    "promise/prefer-await-to-then": "error",
+
     "security/detect-object-injection": "off",
     "security/detect-unsafe-regex": "off",
 
