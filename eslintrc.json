@@ -32,20 +32,20 @@
       "exports": "ignore",
       "functions": "never"
     }],
-    "func-style": ["warn", "expression", { "allowArrowFunctions": true }],
-    "no-console": "warn",
     "no-multi-spaces": ["error", {"ignoreEOLComments": true}],
     "no-unused-vars": ["error", {"vars": "all", "args": "after-used", "ignoreRestSiblings": true}],
-    "no-warning-comments": ["warn", { "terms": ["fixme"] }],
-    "object-shorthand": ["error", "properties"],
-    "quote-props": ["error", "as-needed", { "keywords": true, "numbers": true, "unnecessary": false }],
     "quotes": ["error", "single", { "avoidEscape": true, "allowTemplateLiterals": true }],
+    "node/no-deprecated-api": "warn",
+
+    "func-style": ["warn", "expression", { "allowArrowFunctions": true }],
+    "no-console": "warn",
+    "no-warning-comments": ["warn", { "terms": ["fixme"] }],
+    "object-shorthand": ["error", "always", { "avoidExplicitReturnArrows": true, "avoidQuotes": true }],
+    "quote-props": ["error", "as-needed", { "keywords": true, "numbers": true, "unnecessary": false }],
 
     "es/no-exponential-operators": "warn",
 
     "mocha/no-mocha-arrows": "off",
-
-    "node/no-deprecated-api": "warn",
 
     "promise/always-return": "off",
     "promise/no-callback-in-promise": "off",
@@ -59,7 +59,6 @@
     "unicorn/explicit-length-check": "off",
     "unicorn/filename-case": "off",
     "unicorn/prefer-add-event-listener": "warn",
-    "unicorn/prefer-exponentiation-operator": "off",
     "unicorn/prefer-spread": "warn",
     "unicorn/prevent-abbreviations": "off"
   }
