@@ -35,19 +35,18 @@ Then add a `.eslintrc` with the following:
 
 ### :wrench: Changed [standard](https://standardjs.com/) rules
 
-* :wrench::warning: [`comma-dangle`](https://eslint.org/docs/rules/comma-dangle) – *changed* – ignore it in everything but functions + is it set to `warn` rather than `error` (Incompatible with standard :warning:)
-* :wrench: [`no-multi-spaces`](https://eslint.org/docs/rules/no-multi-spaces) – *changed* – sets `ignoreEOLComments` to `true` (Incompatible with standard :warning:)
-* :wrench: [`no-unused-vars`](https://eslint.org/docs/rules/no-unused-vars) – *changed* – sets `"args": "after-used"`
+* :wrench::warning: [`comma-dangle`](https://eslint.org/docs/rules/comma-dangle) – *changed* – ignore it in everything but functions + is it set to `warn` rather than `error`. Reason: I'm moving towards preferring dangling commas and thus want my shared config to not prohibit them while a project-by-project override can actually require them (Incompatible with standard :warning:)
+* :wrench: [`no-multi-spaces`](https://eslint.org/docs/rules/no-multi-spaces) – *changed* – sets `ignoreEOLComments` to `true`, can be useful for more readable comments across multiple lines and I see no real downsides to it (Incompatible with standard :warning:)
 * :wrench: [`semi`](https://eslint.org/docs/rules/semi) and [`no-extra-semi`](https://eslint.org/docs/rules/no-extra-semi) – *changed* – adopts the semicolons setup from [semistandard](https://github.com/standard/semistandard)  (Incompatible with plain standard :warning:, compatible with semistandard)
-* :wrench::warning: [`node/no-deprecated-api`](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) – *changed* – changed to `warn` instead of `error`
+* :wrench::warning: [`node/no-deprecated-api`](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) – *changed* – changed to `warn` instead of `error` as often it's not an urgent thing to fix
 
 ### :heavy_plus_sign: Added ESLint core rules
 
-* :warning: [`func-style`](https://eslint.org/docs/rules/func-style) – disallows function declarations
+* :warning: [`func-style`](https://eslint.org/docs/rules/func-style) – disallows function declarations, good to be consistent with how functions are declared
 * :warning: [`no-console`](https://eslint.org/docs/rules/no-console) – warns on existence of `console.log` and similar, as they are mostly used for debugging and should not be committed
 * :warning: [`no-warning-comments`](https://eslint.org/docs/rules/no-warning-comments) – warns of the existence of `FIXME` comments, as they should always be fixed before pushing
-* :stop_sign: [`object-shorthand`](https://eslint.org/docs/rules/object-shorthand) – requires the use of object shorthands for properties
-* :stop_sign: [`quote-props`](https://eslint.org/docs/rules/quote-props)– requires properties to be quoted when needed, otherwise disallows it
+* :stop_sign: [`object-shorthand`](https://eslint.org/docs/rules/object-shorthand) – requires the use of object shorthands for properties, more tidy
+* :stop_sign: [`quote-props`](https://eslint.org/docs/rules/quote-props)– requires properties to be quoted when needed but otherwise disallows it
 
 ### :package: Added ESLint rule package
 
