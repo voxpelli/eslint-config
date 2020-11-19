@@ -22,46 +22,45 @@
     }
   },
   "rules": {
-    "semi": [2, "always"],
-    "no-extra-semi": 2,
+    "semi": ["error", "always"],
+    "no-extra-semi": "error",
 
-    "comma-dangle": [1, {
+    "comma-dangle": ["warn", {
       "arrays": "ignore",
       "objects": "ignore",
       "imports": "ignore",
       "exports": "ignore",
       "functions": "never"
     }],
-    "func-style": [1, "expression", { "allowArrowFunctions": true }],
-    "no-console": 1,
-    "no-multi-spaces": [2, {"ignoreEOLComments": true}],
-    "no-unused-vars": [2, {"args": "after-used", "ignoreRestSiblings": true}],
-    "no-var": 2,
-    "no-warning-comments": [1, { "terms": ["fixme"] }],
-    "object-shorthand": [2, "properties"],
-    "quote-props": [2, "as-needed", { "keywords": true, "numbers": true, "unnecessary": false }],
-    "quotes": [2, "single", { "avoidEscape": true, "allowTemplateLiterals": true }],
+    "func-style": ["warn", "expression", { "allowArrowFunctions": true }],
+    "no-console": "warn",
+    "no-multi-spaces": ["error", {"ignoreEOLComments": true}],
+    "no-unused-vars": ["error", {"vars": "all", "args": "after-used", "ignoreRestSiblings": true}],
+    "no-warning-comments": ["warn", { "terms": ["fixme"] }],
+    "object-shorthand": ["error", "properties"],
+    "quote-props": ["error", "as-needed", { "keywords": true, "numbers": true, "unnecessary": false }],
+    "quotes": ["error", "single", { "avoidEscape": true, "allowTemplateLiterals": true }],
 
-    "es/no-exponential-operators": 1,
+    "es/no-exponential-operators": "warn",
 
-    "mocha/no-mocha-arrows": 0,
+    "mocha/no-mocha-arrows": "off",
 
-    "node/no-deprecated-api": 1,
+    "node/no-deprecated-api": "warn",
 
-    "promise/always-return": 0,
-    "promise/no-callback-in-promise": 0,
-    "promise/no-nesting": 0,
+    "promise/always-return": "off",
+    "promise/no-callback-in-promise": "off",
+    "promise/no-nesting": "off",
 
-    "security/detect-object-injection": 0,
-    "security/detect-unsafe-regex": 0,
+    "security/detect-object-injection": "off",
+    "security/detect-unsafe-regex": "off",
 
     "unicorn/catch-error-name": ["error", {"name": "err"}],
-    "unicorn/consistent-function-scoping": 0,
-    "unicorn/explicit-length-check": 0,
-    "unicorn/filename-case": 0,
-    "unicorn/prefer-add-event-listener": 1,
-    "unicorn/prefer-exponentiation-operator": 0,
-    "unicorn/prefer-spread": 1,
-    "unicorn/prevent-abbreviations": 0
+    "unicorn/consistent-function-scoping": "off",
+    "unicorn/explicit-length-check": "off",
+    "unicorn/filename-case": "off",
+    "unicorn/prefer-add-event-listener": "warn",
+    "unicorn/prefer-exponentiation-operator": "off",
+    "unicorn/prefer-spread": "warn",
+    "unicorn/prevent-abbreviations": "off"
   }
 }
