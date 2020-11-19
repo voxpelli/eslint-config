@@ -16,11 +16,6 @@
     "@voxpelli/eslint-config-jsdoc-ts"
   ],
   "root": true,
-  "settings": {
-    "jsdoc": {
-      "mode": "typescript"
-    }
-  },
   "rules": {
     "semi": ["error", "always"],
     "no-extra-semi": "error",
