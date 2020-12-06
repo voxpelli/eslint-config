@@ -1,5 +1,7 @@
 {
   "extends": [
-    "@voxpelli"
+    "@voxpelli:vpBase",
+    "@voxpelli:groupTests",
+    "@voxpelli:bumpPeerDependencies"
   ]
 }
