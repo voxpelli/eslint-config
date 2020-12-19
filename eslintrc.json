@@ -41,6 +41,7 @@
 
     "func-style": ["warn", "expression", { "allowArrowFunctions": true }],
     "no-console": "warn",
+    "no-unsafe-optional-chaining": ["error", { "disallowArithmeticOperators": true }],
     "no-warning-comments": ["warn", { "terms": ["fixme"] }],
     "object-shorthand": ["error", "properties", { "avoidQuotes": true }],
     "quote-props": ["error", "as-needed", { "keywords": true, "numbers": true, "unnecessary": false }],
