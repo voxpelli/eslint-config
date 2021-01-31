@@ -34,7 +34,7 @@
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-unicorn": "^24.0.0",
     "husky": "^4.3.6",
-    "installed-check": "^4.0.0-0"
+    "installed-check": "^4.0.0"
   },
   "peerDependencies": {
     "@voxpelli/eslint-config-jsdoc-ts": "^0.3.1",
