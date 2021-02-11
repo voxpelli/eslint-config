@@ -10,10 +10,12 @@
     "url": "git://github.com/voxpelli/eslint-config.git"
   },
   "engines": {
-    "node": ">=12.0.0"
+    "node": ">=12.11.0"
   },
   "scripts": {
-    "test": "installed-check -i eslint && eslint ."
+    "repos-all": "VP_ESLINT_TESTER_ALL=true eslint-remote-tester",
+    "repos": "eslint-remote-tester",
+    "test": "installed-check -i eslint && eslint . && eslint-remote-tester"
   },
   "husky": {
     "hooks": {
@@ -33,6 +35,7 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-unicorn": "^24.0.0",
+    "eslint-remote-tester": "^1.1.0",
     "husky": "^4.3.6",
     "installed-check": "^4.0.0"
   },
