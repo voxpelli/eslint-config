@@ -7,6 +7,9 @@ const compliant = [
   'voxpelli/list-installed',
   'voxpelli/node-bunyan-adaptor',
   'voxpelli/node-connect-pg-simple',
+];
+
+const almostCompliant = [
   'voxpelli/node-fulfills',
   'voxpelli/node-installed-check-core',
   'voxpelli/node-installed-check',
@@ -20,12 +23,15 @@ const nonCompliant = [
   'voxpelli/node-micropub-express',
   'voxpelli/node-pg-pubsub',
   'voxpelli/node-promised-retry',
+  ...almostCompliant
 ];
 
 module.exports = {
   repositories: [
     // eslint-disable-next-line node/no-process-env
     ...(process.env.VP_ESLINT_TESTER_ALL ? nonCompliant : []),
+    // eslint-disable-next-line node/no-process-env
+    ...(process.env.VP_ESLINT_TESTER_ALMOST ? almostCompliant : []),
     ...compliant,
   ],
   extensions: ['js'],
