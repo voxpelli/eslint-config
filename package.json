@@ -16,6 +16,7 @@
     "repos-all": "VP_ESLINT_TESTER_ALL=true eslint-remote-tester",
     "repos-almost": "VP_ESLINT_TESTER_ALMOST=true eslint-remote-tester",
     "repos-current": "eslint-remote-tester",
+    "sync-gh-actions": "ghat",
     "test": "installed-check -i eslint && eslint . && eslint-remote-tester"
   },
   "husky": {
@@ -37,6 +38,7 @@
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-unicorn": "^28.0.0",
     "eslint-remote-tester": "^1.1.0",
+    "ghat": "^0.14.0",
     "husky": "^4.3.8",
     "installed-check": "^4.0.0"
   },

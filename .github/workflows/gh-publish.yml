@@ -1,3 +1,8 @@
+env: {}
+
+# FILE GENERATED WITH: npx ghat voxpelli/ghatemplates/gh-publish
+# SOURCE: https://github.com/voxpelli/ghatemplates
+
 name: Node.js Package
 
 on:
