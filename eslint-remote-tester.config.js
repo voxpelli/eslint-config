@@ -7,22 +7,23 @@ const compliant = [
   'voxpelli/list-installed',
   'voxpelli/node-bunyan-adaptor',
   'voxpelli/node-connect-pg-simple',
+  'voxpelli/node-installed-check-core',
+  'voxpelli/node-installed-check',
+  'voxpelli/node-pg-pubsub',
+  'voxpelli/node-promised-retry',
+
 ];
 
 const almostCompliant = [
-  'voxpelli/node-fulfills',
-  'voxpelli/node-installed-check-core',
-  'voxpelli/node-installed-check',
 ];
 
 const nonCompliant = [
   'dependency-check-team/dependency-check',
   'voxpelli/node-fetch-politely',
+  'voxpelli/node-fulfills',
   'voxpelli/node-github-publish',
   'voxpelli/node-jekyll-utils',
   'voxpelli/node-micropub-express',
-  'voxpelli/node-pg-pubsub',
-  'voxpelli/node-promised-retry',
   ...almostCompliant
 ];
 
