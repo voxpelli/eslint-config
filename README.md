@@ -8,7 +8,9 @@ Includes the semistandard rules directly rather than relying on [eslint-config-s
 
 This package follows [semantic versioning](https://semver.org/). Tightening of any checks is a breaking change, therefore that will only happen in major releases. Minor and patch releases will only include relaxation of rules or fixing of minor obvious oversights.
 
-Want to use my linting rules? Go ahead! Would love feedback and a comment about you doing so, then I'll be extra careful with eg. following the semantic versioning rules.
+## Can I use this in my own project?
+
+Absolutely, go ahead! I maintain this project as if multiple people are using it. Be sure to give me feedback and if you like it, give me a ping and say so, would make my day 😄
 
 ## Installation
 
