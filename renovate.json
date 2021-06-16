@@ -2,6 +2,12 @@
   "extends": [
     "@voxpelli:vpBase"
   ],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "extends": [
+      "@voxpelli:vpSchedule"
+    ]
+  },
   "packageRules": [
     {
       "matchDepTypes": [
