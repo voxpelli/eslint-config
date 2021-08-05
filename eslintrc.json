@@ -63,6 +63,7 @@
     "unicorn/catch-error-name": ["error", {"name": "err"}],
     "unicorn/explicit-length-check": "off",
     "unicorn/prefer-add-event-listener": "warn",
+    "unicorn/prefer-module": "off",
     "unicorn/prefer-spread": "warn",
     "unicorn/prevent-abbreviations": "off"
   }
