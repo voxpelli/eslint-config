@@ -62,6 +62,7 @@
 
     "unicorn/catch-error-name": ["error", {"name": "err"}],
     "unicorn/explicit-length-check": "off",
+    "unicorn/numeric-separators-style": ["error", {"number": { "minimumDigits": 6 }}],
     "unicorn/prefer-add-event-listener": "warn",
     "unicorn/prefer-module": "off",
     "unicorn/prefer-spread": "warn",
