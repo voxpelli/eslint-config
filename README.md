@@ -98,3 +98,13 @@ Then add a `.eslintrc` with the following:
 * :stop_sign: [`node/no-sync`](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-sync.md)
 
 * :stop_sign: [`promise/prefer-await-to-then`](https://github.com/xjamundx/eslint-plugin-promise/blob/development/docs/rules/prefer-await-to-then.md)
+
+## Alternatives
+
+* [standard](https://standardjs.com/)
+* [semistandard](https://github.com/standard/semistandard)
+## See also
+
+* [voxpelli/ghatemplates](https://github.com/voxpelli/ghatemplates) – the templates I use with [`ghat`](https://github.com/fregante/ghat) to update GitHub Actions in my projects
+* [voxpelli/renovate-config-voxpelli](https://github.com/voxpelli/renovate-config-voxpelli) – the shareable [Renovate setup](https://docs.renovatebot.com/config-presets/) I use in my projects
+* [voxpelli/tsconfig](https://github.com/voxpelli/tsconfig) – the shareable `tsconfig.json` setup I use in my projects
