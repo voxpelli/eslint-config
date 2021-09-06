@@ -35,12 +35,18 @@ Then add a `.eslintrc` with the following:
 
 ## How does this differ from pure [standard](https://standardjs.com/)?
 
+* :stop_sign: = changed to `error` level
+* :warning: = changed to `warn` level
+* :mute: = deactivated
+* :wrench: = changed config
+* :grimacing: = will not pass vanilla [standard](https://standardjs.com/) linting
+
 ### :wrench: Changed [standard](https://standardjs.com/) rules
 
-* :wrench::warning: [`comma-dangle`](https://eslint.org/docs/rules/comma-dangle) – *changed* – ignore it in everything but functions + is it set to `warn` rather than `error`. Reason: I'm moving towards preferring dangling commas and thus want my shared config to not prohibit them while a project-by-project override can actually require them (Incompatible with standard :warning:)
-* :wrench: [`no-multi-spaces`](https://eslint.org/docs/rules/no-multi-spaces) – *changed* – sets `ignoreEOLComments` to `true`, can be useful for more readable comments across multiple lines and I see no real downsides to it (Incompatible with standard :warning:)
+* :wrench::warning::grimacing: [`comma-dangle`](https://eslint.org/docs/rules/comma-dangle) – *changed* – ignore it in everything but functions + is it set to `warn` rather than `error`. Reason: I'm moving towards preferring dangling commas and thus want my shared config to not prohibit them while a project-by-project override can actually require them (Incompatible with standard)
+* :wrench::grimacing: [`no-multi-spaces`](https://eslint.org/docs/rules/no-multi-spaces) – *changed* – sets `ignoreEOLComments` to `true`, can be useful for more readable comments across multiple lines and I see no real downsides to it (Incompatible with standard)
 * :wrench: [`no-unused-vars`](https://eslint.org/docs/rules/no-unused-vars) – *changed* – sets `"args": "all", "argsIgnorePattern": "^_",` because I personally don't feel limited by [Express error handlers](https://github.com/standard/standard/issues/419#issuecomment-718186130) + wants to stay in sync with TypeScript `noUnusedParameters`
-* :wrench: [`semi`](https://eslint.org/docs/rules/semi) and [`no-extra-semi`](https://eslint.org/docs/rules/no-extra-semi) – *changed* – adopts the semicolons setup from [semistandard](https://github.com/standard/semistandard)  (Incompatible with plain standard :warning:, compatible with semistandard)
+* :wrench::grimacing: [`semi`](https://eslint.org/docs/rules/semi) and [`no-extra-semi`](https://eslint.org/docs/rules/no-extra-semi) – *changed* – adopts the semicolons setup from [semistandard](https://github.com/standard/semistandard)  (Incompatible with plain standard, compatible with semistandard)
 * :wrench::warning: [`node/no-deprecated-api`](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) – *changed* – changed to `warn` instead of `error` as often it's not an urgent thing to fix
 
 ### :heavy_plus_sign: Added ESLint core rules
