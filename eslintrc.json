@@ -55,6 +55,7 @@
     "node/prefer-promises/fs": "warn",
     "node/no-process-env": "warn",
     "node/no-sync": "error",
+    "node/no-unsupported-features/es-syntax": ["error", { "ignores": ["dynamicImport"] }],
 
     "promise/prefer-await-to-then": "error",
 
