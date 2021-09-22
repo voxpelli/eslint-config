@@ -104,8 +104,10 @@ Then add a `.eslintrc` with the following:
 
 ## Alternatives
 
-* [standard](https://standardjs.com/)
+* [eslint-config-rainbow](https://github.com/rainbow-me/eslint-config-rainbow) by [@bcomnes](https://github.com/bcomnes)
 * [semistandard](https://github.com/standard/semistandard)
+* [standard](https://standardjs.com/)
+
 ## See also
 
 * [voxpelli/ghatemplates](https://github.com/voxpelli/ghatemplates) – the templates I use with [`ghat`](https://github.com/fregante/ghat) to update GitHub Actions in my projects
