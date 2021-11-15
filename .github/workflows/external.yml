@@ -8,6 +8,7 @@ on:
       - main
 jobs:
   read_external_projects:
+    name: Read list of external projects
     runs-on: ubuntu-latest
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
