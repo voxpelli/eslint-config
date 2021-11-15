@@ -49,15 +49,16 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json', '**/package.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-      - name: npm install main
-        run: npm install --no-package-lock
+      - name: install main
+        run: npm ci
         working-directory: ./main
-      - name: npm install project
+      - name: install project
         run: npm install
         working-directory: ./project
       - name: modify project eslint
         run: sed 's/"@voxpelli"/"..\/main"/' .eslintrc > tmp.eslintrc && rm .eslintrc && mv tmp.eslintrc .eslintrc
         working-directory: ./project
-      - run: npx eslint .
+      - name: run eslint
+        run: ../main/node_modules/.bin/eslint --resolve-plugins-relative-to ../main --ext js .
         working-directory: ./project
 
