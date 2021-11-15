@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - id: set-matrix
-        run: echo "::set-output name=matrix::$(cat external.json | jq '.compliant')"
+        run: echo "::set-output name=matrix::$(cat external.json | jq -c '.compliant')"
   test:
     needs: read_external_projects
     name: Test ${{ matrix.project }} at ${{ matrix.node_version }}
