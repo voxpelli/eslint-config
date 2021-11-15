@@ -55,8 +55,8 @@ jobs:
         run: npm install --no-package-lock
         working-directory: ./project
       - name: modify project eslint
-        run: sed 's/"@voxpelli"/"..\/main"/' .eslintrc > target.eslintrc
+        run: sed 's/"@voxpelli"/"..\/main"/' .eslintrc > tmp.eslintrc && rm .eslintrc && mv tmp.eslintrc .eslintrc
         working-directory: ./project
-      - run: npx eslint -c target.eslintrc .
+      - run: npx eslint .
         working-directory: ./project
 
