@@ -13,11 +13,8 @@
     "node": ">=12.0.0"
   },
   "scripts": {
-    "repos-all": "VP_ESLINT_TESTER_ALL=true eslint-remote-tester",
-    "repos-almost": "VP_ESLINT_TESTER_ALMOST=true eslint-remote-tester",
-    "repos-current": "eslint-remote-tester",
     "sync-gh-actions": "ghat",
-    "test": "installed-check -i eslint-remote-tester && eslint . && eslint-remote-tester"
+    "test": "installed-check && eslint ."
   },
   "husky": {
     "hooks": {
@@ -37,7 +34,6 @@
     "eslint-plugin-promise": "^4.3.1",
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-unicorn": "^35.0.0",
-    "eslint-remote-tester": "1.1.0",
     "ghat": "^0.14.0",
     "husky": "^4.3.8",
     "installed-check": "^4.0.0"
