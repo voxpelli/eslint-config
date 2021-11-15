@@ -1,0 +1,61 @@
+name: Test External
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  read_external_projects:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - id: set-matrix
+        run: echo "::set-output name=matrix::$(cat external.json | jq '.compliant')"
+  test:
+    needs: read_external_projects
+    name: Test ${{ matrix.project }} at ${{ matrix.node_version }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node_version: [16]
+        project: ${{ fromJson(needs.read_external_projects.outputs.matrix) }}
+    steps:
+      - name: Checkout main project
+        uses: actions/checkout@v2
+        with:
+          path: main
+      - name: Checkout ${{ matrix.project }}
+        uses: actions/checkout@v2
+        with:
+          repository: ${{ matrix.project }}
+          path: project
+      - name: Use Node.js ${{ matrix.node_version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node_version }}
+      - name: Get npm cache directory
+        id: npm-cache-dir
+        run: |
+          echo "::set-output name=dir::$(npm config get cache)"
+      - uses: actions/cache@v2
+        with:
+          path: ${{ steps.npm-cache-dir.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json', '**/package.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: npm install main
+        run: npm install --no-package-lock
+        working-directory: ./main
+      - name: npm install project
+        run: npm install --no-package-lock
+        working-directory: ./project
+      - name: modify project eslint
+        run: sed -i 's/"@voxpelli"/"../main"/g' .eslintrc
+        working-directory: ./project
+      - run: npx eslint .
+        working-directory: ./project
+

@@ -1,0 +1,23 @@
+{
+  "compliant": [
+    "voxpelli/async-htm-to-string",
+    "voxpelli/linemod-core",
+    "voxpelli/linemod",
+    "voxpelli/list-installed",
+    "voxpelli/node-bunyan-adaptor",
+    "voxpelli/node-connect-pg-simple",
+    "voxpelli/node-installed-check-core",
+    "voxpelli/node-installed-check",
+    "voxpelli/node-pg-pubsub",
+    "voxpelli/node-promised-retry"
+  ],
+
+  "nonCompliant": [
+    "dependency-check-team/dependency-check",
+    "voxpelli/node-fetch-politely",
+    "voxpelli/node-fulfills",
+    "voxpelli/node-github-publish",
+    "voxpelli/node-jekyll-utils",
+    "voxpelli/node-micropub-express"
+  ]
+}
