@@ -10,7 +10,7 @@
     "url": "git://github.com/voxpelli/eslint-config.git"
   },
   "engines": {
-    "node": ">=12.0.0"
+    "node": "^12.22.0 || ^14.17.0 || >=16.0.0"
   },
   "scripts": {
     "sync-gh-actions": "ghat",
@@ -24,31 +24,31 @@
   "main": "index.js",
   "devDependencies": {
     "@voxpelli/eslint-config-jsdoc-ts": "^0.3.1",
-    "eslint": "^7.20.0",
-    "eslint-config-standard": "^16.0.3",
+    "eslint": "^8.6.0",
+    "eslint-config-standard": "^17.0.0-0",
     "eslint-plugin-es": "^4.1.0",
-    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-jsdoc": "^30.7.9",
     "eslint-plugin-mocha": "^9.0.0",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.3.1",
+    "eslint-plugin-n": "^14.0.0",
+    "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-security": "^1.4.0",
-    "eslint-plugin-unicorn": "^35.0.0",
+    "eslint-plugin-unicorn": "^40.0.0",
     "ghat": "^0.14.0",
     "husky": "^4.3.8",
     "installed-check": "^5.0.0"
   },
   "peerDependencies": {
     "@voxpelli/eslint-config-jsdoc-ts": "^0.3.1",
-    "eslint": "^7.20.0",
-    "eslint-config-standard": "^16.0.3",
+    "eslint": "^8.6.0",
+    "eslint-config-standard": "^17.0.0-0",
     "eslint-plugin-es": "^4.1.0",
-    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-jsdoc": "^30.7.9",
     "eslint-plugin-mocha": "^9.0.0",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.3.1",
+    "eslint-plugin-n": "^14.0.0",
+    "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-security": "^1.4.0",
-    "eslint-plugin-unicorn": "^35.0.0"
+    "eslint-plugin-unicorn": "^40.0.0"
   }
 }
