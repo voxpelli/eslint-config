@@ -9,7 +9,8 @@
     "voxpelli/node-installed-check-core",
     "voxpelli/node-installed-check",
     "voxpelli/node-pg-pubsub",
-    "voxpelli/node-promised-retry"
+    "voxpelli/node-promised-retry",
+    "voxpelli/pony-cause"
   ],
 
   "nonCompliant": [
