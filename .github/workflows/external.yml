@@ -1,3 +1,8 @@
+env: {}
+
+# FILE GENERATED WITH: npx ghat voxpelli/ghatemplates/eslint-external
+# SOURCE: https://github.com/voxpelli/ghatemplates
+
 name: Test External
 on:
   push:
@@ -6,6 +11,16 @@ on:
   pull_request:
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      moduleSet:
+        description: 'Module set'
+        required: true
+        default: 'nonCompliant'
+        type: choice
+        options:
+        - compliant
+        - nonCompliant
 jobs:
   read_external_projects:
     name: Read list of external projects
@@ -15,7 +30,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - id: set-matrix
-        run: echo "::set-output name=matrix::$(cat external.json | jq -c '.compliant')"
+        run: echo "::set-output name=matrix::$(cat external.json | jq -c '.${{ github.event.inputs.moduleSet || 'compliant' }}')"
   test_external:
     needs: read_external_projects
     name: Test ${{ matrix.project }}
@@ -23,7 +38,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node_version: [16]
+        node_version: [lts/*]
         project: ${{ fromJson(needs.read_external_projects.outputs.matrix) }}
     steps:
       - name: Checkout main project
@@ -50,15 +65,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - name: install main
-        run: npm ci
+        run: '[ -f package-lock.json ] && npm ci --ignore-scripts || npm install --ignore-scripts'
         working-directory: ./main
       - name: install project
-        run: npm install
+        run: '[ -f package-lock.json ] && npm ci --ignore-scripts || npm install --ignore-scripts'
         working-directory: ./project
       - name: modify project eslint
-        run: sed 's/"@voxpelli"/"..\/main"/' .eslintrc > tmp.eslintrc && rm .eslintrc && mv tmp.eslintrc .eslintrc
+        run: sed 's/"@voxpelli"/"..\/main\/test.eslintrc"/' .eslintrc > tmp.eslintrc && rm .eslintrc && mv tmp.eslintrc .eslintrc
         working-directory: ./project
       - name: run eslint
         run: ../main/node_modules/.bin/eslint --resolve-plugins-relative-to ../main --ext js .
         working-directory: ./project
-
