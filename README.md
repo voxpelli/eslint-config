@@ -48,7 +48,7 @@ Then add a `.eslintrc` with the following:
 * :wrench::grimacing: [`no-multi-spaces`](https://eslint.org/docs/rules/no-multi-spaces) – *changed* – sets `ignoreEOLComments` to `true`, can be useful for more readable comments across multiple lines and I see no real downsides to it (Incompatible with standard)
 * :wrench: [`no-unused-vars`](https://eslint.org/docs/rules/no-unused-vars) – *changed* – sets `"args": "all", "argsIgnorePattern": "^_",` because I personally don't feel limited by [Express error handlers](https://github.com/standard/standard/issues/419#issuecomment-718186130) + wants to stay in sync with TypeScript `noUnusedParameters`
 * :wrench::grimacing: [`semi`](https://eslint.org/docs/rules/semi) and [`no-extra-semi`](https://eslint.org/docs/rules/no-extra-semi) – *changed* – adopts the semicolons setup from [semistandard](https://github.com/standard/semistandard)  (Incompatible with plain standard, compatible with semistandard)
-* :wrench::warning: [`node/no-deprecated-api`](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) – *changed* – changed to `warn` instead of `error` as often it's not an urgent thing to fix
+* :wrench::warning: [`n/no-deprecated-api`](https://github.com/weiran-zsd/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) – *changed* – changed to `warn` instead of `error` as often it's not an urgent thing to fix
 
 ### :heavy_plus_sign: Added ESLint core rules
 
@@ -62,7 +62,7 @@ Then add a `.eslintrc` with the following:
 
 ### :package: Added ESLint rule package
 
-* [`plugin:node/recommended`](https://github.com/mysticatea/eslint-plugin-node#-rules)
+* [`plugin:n/recommended`](https://github.com/weiran-zsd/eslint-plugin-node#-rules)
 * [`plugin:security/recommended`](https://github.com/nodesecurity/eslint-plugin-security/blob/master/index.js)
 * [`plugin:mocha/recommended`](https://github.com/lo1tuma/eslint-plugin-mocha/blob/master/index.js)
 * [`plugin:unicorn/recommended`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/index.js)
@@ -71,11 +71,11 @@ Then add a `.eslintrc` with the following:
 
 #### :wrench: Overrides of added ESLint rule packages
 
-* :mute: [`no-process-exit`](https://eslint.org/docs/rules/no-process-exit) – *deactivated* – added by `plugin:node/recommended`, but deactivated in favor of [`unicorn/no-process-exit`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-process-exit.md)
+* :mute: [`no-process-exit`](https://eslint.org/docs/rules/no-process-exit) – *deactivated* – added by `plugin:n/recommended`, but deactivated in favor of [`unicorn/no-process-exit`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-process-exit.md)
 
 * :mute: [`mocha/no-mocha-arrows`](https://github.com/lo1tuma/eslint-plugin-mocha/blob/master/docs/rules/no-mocha-arrows.md) – *deactivated* – while [Mocha discourages arrow functions](https://mochajs.org/#arrow-functions) I find it more readable to use them + I find it safe when type checking ones test files as then the type checking will notify one when one tries to do a `this.setTimeout()` or similar in an arrow function where there is no such local context
 
-* :wrench: [`node/no-unsupported-features/es-syntax`](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-unsupported-features/es-syntax.md) – *changed* – set to always allow dynamic `import()`, pending [correct detection](https://github.com/mysticatea/eslint-plugin-node/issues/250) of support
+* :wrench: [`n/no-unsupported-features/es-syntax`](https://github.com/weiran-zsd/eslint-plugin-node/blob/master/docs/rules/no-unsupported-features/es-syntax.md) – *changed* – set to always allow dynamic `import()`, pending [correct detection](https://github.com/weiran-zsd/eslint-plugin-node/issues/250) of support
 
 * :mute: [`security/detect-object-injection`](https://github.com/nodesecurity/eslint-plugin-security#detect-object-injection) – *deactivated* – causes too many false errors
 * :mute: [`security/detect-unsafe-regex`](https://github.com/nodesecurity/eslint-plugin-security#detect-unsafe-regex) – *deactivated* – at least early on wasn't very stable
@@ -95,10 +95,10 @@ Then add a `.eslintrc` with the following:
 
 * :warning: [`es/no-exponential-operators`](https://mysticatea.github.io/eslint-plugin-es/rules/no-exponential-operators.html) – disallows the use of the `**` operator, as that's in most cases a mistake and one really meant to write `*`
 
-* :warning: [`node/prefer-global/console`](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/prefer-global/console.md)
-* :warning: [`node/prefer-promises/fs`](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/prefer-promises/fs.md)
-* :warning: [`node/no-process-env`](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-process-env.md)
-* :stop_sign: [`node/no-sync`](https://github.com/mysticatea/eslint-plugin-node/blob/master/docs/rules/no-sync.md)
+* :warning: [`n/prefer-global/console`](https://github.com/weiran-zsd/eslint-plugin-node/blob/master/docs/rules/prefer-global/console.md)
+* :warning: [`n/prefer-promises/fs`](https://github.com/weiran-zsd/eslint-plugin-node/blob/master/docs/rules/prefer-promises/fs.md)
+* :warning: [`n/no-process-env`](https://github.com/weiran-zsd/eslint-plugin-node/blob/master/docs/rules/no-process-env.md)
+* :stop_sign: [`n/no-sync`](https://github.com/weiran-zsd/eslint-plugin-node/blob/master/docs/rules/no-sync.md)
 
 * :stop_sign: [`promise/prefer-await-to-then`](https://github.com/xjamundx/eslint-plugin-promise/blob/development/docs/rules/prefer-await-to-then.md)
 
