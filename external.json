@@ -1,5 +1,6 @@
 {
   "compliant": [
+    "dependency-check-team/dependency-check",
     "voxpelli/async-htm-to-string",
     "voxpelli/linemod-core",
     "voxpelli/linemod",
@@ -14,7 +15,6 @@
   ],
 
   "nonCompliant": [
-    "dependency-check-team/dependency-check",
     "voxpelli/node-fetch-politely",
     "voxpelli/node-fulfills",
     "voxpelli/node-github-publish",
