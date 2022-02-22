@@ -63,7 +63,7 @@
 
     "unicorn/catch-error-name": ["error", {"name": "err"}],
     "unicorn/explicit-length-check": "off",
-    "unicorn/no-await-expression-member": "off",
+    "unicorn/no-await-expression-member": "warn",
     "unicorn/numeric-separators-style": "off",
     "unicorn/prefer-add-event-listener": "warn",
     "unicorn/prefer-module": "off",
