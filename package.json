@@ -14,12 +14,8 @@
   },
   "scripts": {
     "sync-gh-actions": "ghat",
-    "test": "installed-check -i installed-check && eslint ."
-  },
-  "husky": {
-    "hooks": {
-      "pre-push": "npm test"
-    }
+    "test": "installed-check -i installed-check && eslint .",
+    "prepare": "husky install"
   },
   "main": "index.js",
   "devDependencies": {
@@ -35,7 +31,7 @@
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-unicorn": "^41.0.0",
     "ghat": "^0.14.0",
-    "husky": "^4.3.8",
+    "husky": "^7.0.0",
     "installed-check": "^5.0.0"
   },
   "peerDependencies": {
