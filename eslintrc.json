@@ -37,8 +37,7 @@
       "ignoreRestSiblings": true
     }],
     "n/no-deprecated-api": "warn",
-
-    "no-process-exit": "off",
+    "n/no-process-exit": "off",
 
     "func-style": ["warn", "expression", { "allowArrowFunctions": true }],
     "no-console": "warn",
