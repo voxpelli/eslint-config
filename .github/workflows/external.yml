@@ -23,7 +23,7 @@ on:
         - nonCompliant
 jobs:
   read_external_projects:
-    name: Read list of external projects
+    name: Read list of ${{ github.event.inputs.moduleSet || 'compliant' }} external projects
     runs-on: ubuntu-latest
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
