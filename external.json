@@ -1,5 +1,6 @@
 {
   "compliant": [
+    "dependency-check-team/dependency-check",
     "voxpelli/async-htm-to-string",
     "voxpelli/linemod-core",
     "voxpelli/linemod",
@@ -9,11 +10,11 @@
     "voxpelli/node-installed-check-core",
     "voxpelli/node-installed-check",
     "voxpelli/node-pg-pubsub",
-    "voxpelli/node-promised-retry"
+    "voxpelli/node-promised-retry",
+    "voxpelli/pony-cause"
   ],
 
   "nonCompliant": [
-    "dependency-check-team/dependency-check",
     "voxpelli/node-fetch-politely",
     "voxpelli/node-fulfills",
     "voxpelli/node-github-publish",

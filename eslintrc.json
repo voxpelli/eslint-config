@@ -9,7 +9,7 @@
   ],
   "extends": [
     "standard",
-    "plugin:node/recommended",
+    "plugin:n/recommended",
     "plugin:security/recommended",
     "plugin:mocha/recommended",
     "plugin:unicorn/recommended",
@@ -36,7 +36,7 @@
       "argsIgnorePattern": "^_",
       "ignoreRestSiblings": true
     }],
-    "node/no-deprecated-api": "warn",
+    "n/no-deprecated-api": "warn",
 
     "no-process-exit": "off",
 
@@ -51,11 +51,11 @@
 
     "mocha/no-mocha-arrows": "off",
 
-    "node/prefer-global/console": "warn",
-    "node/prefer-promises/fs": "warn",
-    "node/no-process-env": "warn",
-    "node/no-sync": "error",
-    "node/no-unsupported-features/es-syntax": ["error", { "ignores": ["dynamicImport"] }],
+    "n/prefer-global/console": "warn",
+    "n/prefer-promises/fs": "warn",
+    "n/no-process-env": "warn",
+    "n/no-sync": "error",
+    "n/no-unsupported-features/es-syntax": ["error", { "ignores": ["dynamicImport"] }],
 
     "promise/prefer-await-to-then": "error",
 
