@@ -14,7 +14,7 @@
   },
   "scripts": {
     "sync-gh-actions": "ghat",
-    "test": "installed-check -i installed-check && eslint .",
+    "test": "installed-check -i eslint-plugin-jsdoc && eslint .",
     "prepare": "husky install"
   },
   "main": "index.js",
