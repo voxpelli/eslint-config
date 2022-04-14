@@ -71,6 +71,13 @@ Then add a `.eslintrc` with the following:
 
 #### :wrench: Overrides of added ESLint rule packages
 
+* :mute: [`jsdoc/check-types`](https://github.com/gajus/eslint-plugin-jsdoc#user-content-eslint-plugin-jsdoc-rules-check-types) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
+* :mute: [`jsdoc/no-undefined-types`](https://github.com/gajus/eslint-plugin-jsdoc#user-content-eslint-plugin-jsdoc-rules-no-undefined-types) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
+* :mute: [`jsdoc/require-jsdoc`](https://github.com/gajus/eslint-plugin-jsdoc#user-content-eslint-plugin-jsdoc-rules-require-jsdoc) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
+* :mute: [`jsdoc/require-param-description`](https://github.com/gajus/eslint-plugin-jsdoc#user-content-eslint-plugin-jsdoc-rules-require-param-description) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
+* :mute: [`jsdoc/require-property-description`](https://github.com/gajus/eslint-plugin-jsdoc#user-content-eslint-plugin-jsdoc-rules-require-property-description) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
+* :mute: [`jsdoc/require-returns-description`](https://github.com/gajus/eslint-plugin-jsdoc#user-content-eslint-plugin-jsdoc-rules-require-returns-description) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
+* :mute: [`jsdoc/valid-types`](https://github.com/gajus/eslint-plugin-jsdoc#user-content-eslint-plugin-jsdoc-rules-valid-types) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
 * :mute: [`mocha/no-mocha-arrows`](https://github.com/lo1tuma/eslint-plugin-mocha/blob/master/docs/rules/no-mocha-arrows.md) – *deactivated* – while [Mocha discourages arrow functions](https://mochajs.org/#arrow-functions) I find it more readable to use them + I find it safe when type checking ones test files as then the type checking will notify one when one tries to do a `this.setTimeout()` or similar in an arrow function where there is no such local context
 
 * :mute: [`n/no-process-exit`](https://eslint.org/docs/rules/no-process-exit) – *deactivated* – added by `plugin:n/recommended`, but deactivated in favor of [`unicorn/no-process-exit`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-process-exit.md)
