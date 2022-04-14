@@ -109,6 +109,8 @@ Then add a `.eslintrc` with the following:
 
 * :stop_sign: [`promise/prefer-await-to-then`](https://github.com/xjamundx/eslint-plugin-promise/blob/development/docs/rules/prefer-await-to-then.md)
 
+* :stop_sign: [`sort-destructure-keys/sort-destructure-keys`](https://github.com/mthadley/eslint-plugin-sort-destructure-keys)
+
 ## Alternatives
 
 * [eslint-config-rainbow](https://github.com/rainbow-me/eslint-config-rainbow) by [@bcomnes](https://github.com/bcomnes)
