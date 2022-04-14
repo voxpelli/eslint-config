@@ -67,7 +67,7 @@ Then add a `.eslintrc` with the following:
 * [`plugin:mocha/recommended`](https://github.com/lo1tuma/eslint-plugin-mocha/blob/master/index.js)
 * [`plugin:unicorn/recommended`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/index.js)
 * [`plugin:promise/recommended`](https://github.com/xjamundx/eslint-plugin-promise/blob/development/index.js)
-* [`@voxpelli/eslint-config-jsdoc-ts`](https://github.com/voxpelli/eslint-config-jsdoc-ts/blob/main/eslintrc.json) – which is a TypeScript packaging of [`plugin:jsdoc/recommended`](https://github.com/gajus/eslint-plugin-jsdoc#configuration)
+* [`plugin:jsdoc/recommended`](https://github.com/gajus/eslint-plugin-jsdoc#configuration)
 
 #### :wrench: Overrides of added ESLint rule packages
 
