@@ -69,7 +69,6 @@
     "n/prefer-promises/fs": "warn",
     "n/no-process-env": "warn",
     "n/no-sync": "error",
-    "n/no-unsupported-features/es-syntax": ["error", { "ignores": ["dynamicImport"] }],
 
     "promise/prefer-await-to-then": "error",
 
