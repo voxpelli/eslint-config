@@ -1,6 +1,6 @@
 {
   "name": "@voxpelli/eslint-config",
-  "version": "14.0.0-2",
+  "version": "14.0.0-3",
   "license": "MIT",
   "description": "My personal ESLint config. Based on semistandard",
   "author": "Pelle Wessman <pelle@kodfabrik.se> (https://kodfabrik.se/)",
