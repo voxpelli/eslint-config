@@ -7,6 +7,7 @@
     "voxpelli/list-installed",
     "voxpelli/node-bunyan-adaptor",
     "voxpelli/node-connect-pg-simple",
+    "voxpelli/node-github-publish",
     "voxpelli/node-installed-check-core",
     "voxpelli/node-installed-check",
     "voxpelli/node-pg-pubsub",
@@ -17,7 +18,6 @@
   "nonCompliant": [
     "voxpelli/node-fetch-politely",
     "voxpelli/node-fulfills",
-    "voxpelli/node-github-publish",
     "voxpelli/node-jekyll-utils",
     "voxpelli/node-micropub-express"
   ]
