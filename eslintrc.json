@@ -61,6 +61,7 @@
     "jsdoc/require-param-description": 0,
     "jsdoc/require-property-description": 0,
     "jsdoc/require-returns-description": 0,
+    "jsdoc/require-yields": 0,
     "jsdoc/valid-types": 0,
 
     "mocha/no-mocha-arrows": "off",
