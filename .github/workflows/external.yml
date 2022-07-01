@@ -25,6 +25,13 @@ on:
         - compliant
         - nonCompliant
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
 jobs:
   read_external_projects:
     name: Read list of ${{ github.event.inputs.moduleSet || 'compliant' }} external projects
