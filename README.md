@@ -54,6 +54,7 @@ Then add a `.eslintrc` with the following:
 
 * :warning: [`func-style`](https://eslint.org/docs/rules/func-style) – disallows function declarations, good to be consistent with how functions are declared
 * :warning: [`no-console`](https://eslint.org/docs/rules/no-console) – warns on existence of `console.log` and similar, as they are mostly used for debugging and should not be committed
+* :stop_sign: [`no-constant-binary-expression`](https://eslint.org/docs/rules/no-constant-binary-expression) – errors when binary expressions are detected to constantly evaluate a specific way
 * :stop_sign: [`no-nonoctal-decimal-escape`](https://eslint.org/docs/rules/no-nonoctal-decimal-escape) – there's no reason not to ban it
 * :stop_sign: [`no-unsafe-optional-chaining`](https://eslint.org/docs/rules/no-unsafe-optional-chaining) – enforces one to be careful with `.?` and not use it in ways that can inadvertently cause errors or `NaN` results
 * :warning: [`no-warning-comments`](https://eslint.org/docs/rules/no-warning-comments) – warns of the existence of `FIXME` comments, as they should always be fixed before pushing
