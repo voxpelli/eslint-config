@@ -10,7 +10,7 @@
     "url": "git://github.com/voxpelli/eslint-config.git"
   },
   "engines": {
-    "node": "^14.17.0 || >=16.0.0"
+    "node": "^14.18.0 || >=16.0.0"
   },
   "scripts": {
     "sync-gh-actions": "ghat",
