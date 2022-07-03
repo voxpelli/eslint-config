@@ -78,6 +78,7 @@ Then add a `.eslintrc` with the following:
 * :mute: [`jsdoc/require-param-description`](https://github.com/gajus/eslint-plugin-jsdoc#user-content-eslint-plugin-jsdoc-rules-require-param-description) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
 * :mute: [`jsdoc/require-property-description`](https://github.com/gajus/eslint-plugin-jsdoc#user-content-eslint-plugin-jsdoc-rules-require-property-description) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
 * :mute: [`jsdoc/require-returns-description`](https://github.com/gajus/eslint-plugin-jsdoc#user-content-eslint-plugin-jsdoc-rules-require-returns-description) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
+* :mute: [`jsdoc/require-yields`](https://github.com/gajus/eslint-plugin-jsdoc#user-content-eslint-plugin-jsdoc-rules-require-yields) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
 * :mute: [`jsdoc/valid-types`](https://github.com/gajus/eslint-plugin-jsdoc#user-content-eslint-plugin-jsdoc-rules-valid-types) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
 * :mute: [`mocha/no-mocha-arrows`](https://github.com/lo1tuma/eslint-plugin-mocha/blob/master/docs/rules/no-mocha-arrows.md) – *deactivated* – while [Mocha discourages arrow functions](https://mochajs.org/#arrow-functions) I find it more readable to use them + I find it safe when type checking ones test files as then the type checking will notify one when one tries to do a `this.setTimeout()` or similar in an arrow function where there is no such local context
 
@@ -91,7 +92,8 @@ Then add a `.eslintrc` with the following:
 * :warning: [`unicorn/unicorn/no-await-expression-member`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/unicorn/no-await-expression-member.md) – *changed* – eg. useful in chai tests
 * :mute: [`unicorn/numeric-separators-style`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/numeric-separators-style.md) – *deactivated* – currently not enough good support for this in engines
 * :warning: [`unicorn/prefer-add-event-listener`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-add-event-listener.md) – *changed* – set to `warn` instead of `error`
-* :mute: [`unicorn/prefer-module`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-module.md) – *deactivated*  – each project needs to activate this one themselves for now
+* :warning: [`unicorn/prefer-event-target`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules//prefer-event-target.md) – *changed* – set to `warn` instead of `error`
+* :warning: [`unicorn/prefer-module`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-module.md) – *changed*  – set to `warn` instead of `error`
 * :warning: [`unicorn/prefer-spread`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-spread.md) – *changed* – set to `warn` instead of `error`
 * :mute: [`unicorn/prevent-abbreviations`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prevent-abbreviations.md) – *deactivated* – same as `unicorn/catch-error-name`, I prefer an abbreviated `err` over a non-abbreviated `error`because the latter is too similar to `Error` for my taste
 

@@ -82,7 +82,8 @@
     "unicorn/no-await-expression-member": "warn",
     "unicorn/numeric-separators-style": "off",
     "unicorn/prefer-add-event-listener": "warn",
-    "unicorn/prefer-module": "off",
+    "unicorn/prefer-event-target": "warn",
+    "unicorn/prefer-module": "warn",
     "unicorn/prefer-spread": "warn",
     "unicorn/prevent-abbreviations": "off",
 
