@@ -5,5 +5,5 @@ on:
     types: [created]
 
 jobs:
-  test:
+  publish:
     uses: voxpelli/ghatemplates/.github/workflows/gh-publish.yml@main
