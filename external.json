@@ -12,7 +12,8 @@
     "voxpelli/node-installed-check",
     "voxpelli/node-pg-pubsub",
     "voxpelli/node-promised-retry",
-    "voxpelli/pony-cause"
+    "voxpelli/pony-cause",
+    "voxpelli/version-guard"
   ],
 
   "nonCompliant": [
