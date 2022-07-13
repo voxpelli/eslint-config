@@ -120,9 +120,9 @@ module.exports = {
         ],
         groups: {
           'sorted-private-properties': [{ type: 'property', sort: 'alphabetical', 'static': false, 'private': true }],
-          'sorted-properties': [{ type: 'property', sort: 'alphabetical', 'static': false }],
+          'sorted-properties': [{ type: 'property', sort: 'alphabetical', 'static': false, 'private': false }],
           'sorted-private-methods': [{ type: 'property', sort: 'alphabetical', 'static': false, 'private': true }],
-          'sorted-methods': [{ type: 'method', sort: 'alphabetical', 'static': false }],
+          'sorted-methods': [{ type: 'method', sort: 'alphabetical', 'static': false, 'private': false }],
         },
       },
     ],
