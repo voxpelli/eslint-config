@@ -65,14 +65,14 @@ module.exports = {
 
     // Overrides of other extended ESLint rule packages
 
-    'jsdoc/check-types': 0,
-    'jsdoc/no-undefined-types': 0,
-    'jsdoc/require-jsdoc': 0,
-    'jsdoc/require-param-description': 0,
-    'jsdoc/require-property-description': 0,
-    'jsdoc/require-returns-description': 0,
-    'jsdoc/require-yields': 0,
-    'jsdoc/valid-types': 0,
+    'jsdoc/check-types': 'off',
+    'jsdoc/no-undefined-types': 'off',
+    'jsdoc/require-jsdoc': 'off',
+    'jsdoc/require-param-description': 'off',
+    'jsdoc/require-property-description': 'off',
+    'jsdoc/require-returns-description': 'off',
+    'jsdoc/require-yields': 'off',
+    'jsdoc/valid-types': 'off',
 
     'mocha/no-mocha-arrows': 'off',
 
