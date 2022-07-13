@@ -115,6 +115,7 @@ Then add a `.eslintrc` with the following:
 
 ## Alternatives
 
+* [@shopify/eslint-plugin](https://www.npmjs.com/package/@shopify/eslint-plugin)
 * [eslint-config-rainbow](https://github.com/rainbow-me/eslint-config-rainbow) by [@bcomnes](https://github.com/bcomnes)
 * [semistandard](https://github.com/standard/semistandard)
 * [standard](https://standardjs.com/)

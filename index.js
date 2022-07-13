@@ -4,12 +4,14 @@
 
 module.exports = {
   plugins: [
+    '@shopify',
     'es',
     'import',
     'jsdoc',
     'mocha',
     'promise',
     'security',
+    'sort-class-members',
     'sort-destructure-keys',
     'unicorn'
   ],
@@ -102,6 +104,53 @@ module.exports = {
 
     'promise/prefer-await-to-then': 'error',
 
-    'sort-destructure-keys/sort-destructure-keys': 'error'
+    // Borrowed from @shopify/eslint-plugin esnext rules
+    'sort-class-members/sort-class-members': [
+      'error',
+      {
+        order: [
+          '[static-members]',
+          '[properties]',
+          '[conventional-private-properties]',
+          'constructor',
+          '[methods]',
+          '[conventional-private-methods]',
+          '[everything-else]',
+        ],
+        groups: {
+          'static-members': [{ 'static': true }],
+        },
+        accessorPairPositioning: 'getThenSet',
+      },
+    ],
+
+    'sort-destructure-keys/sort-destructure-keys': 'error',
+
+    // Shopify ones
+
+    // Require (or disallow) assignments of binary, boolean-producing expressions to be wrapped in parentheses.
+    '@shopify/binary-assignment-parens': ['error', 'always'],
+    // Require (or disallow) semicolons for class properties.
+    '@shopify/class-property-semi': 'error',
+    // Prefer that imports from within a directory extend to the file from where they are importing without relying on an index file.
+    '@shopify/no-ancestor-directory-import': 'warn',
+    // Prevent namespace import declarations
+    '@shopify/no-namespace-imports': 'warn',
+    // Prevent the usage of unnecessary computed properties.
+    '@shopify/no-useless-computed-properties': 'error',
+    // Prevent the declaration of classes consisting only of static members.
+    '@shopify/no-fully-static-classes': 'error',
+    // Prefer class properties to assignment of literals in constructors.
+    '@shopify/prefer-class-properties': 'warn',
+    // Prefer early returns over full-body conditional wrapping in function declarations.
+    '@shopify/prefer-early-return': ['error', { maximumStatements: 1 }],
+    // Prefer that screaming snake case variables always be defined using `const`, and always appear at module scope.
+    '@shopify/prefer-module-scope-constants': 'error',
+    // Restrict the use of specified sinon features.
+    '@shopify/sinon-no-restricted-features': 'warn',
+    // Require the use of meaningful sinon assertions through sinon.assert or sinon-chai.
+    '@shopify/sinon-prefer-meaningful-assertions': 'warn',
+    // Prevent module imports between components.
+    '@shopify/strict-component-boundaries': 'warn',
   }
 };
