@@ -128,27 +128,23 @@ module.exports = {
 
     // Require (or disallow) assignments of binary, boolean-producing expressions to be wrapped in parentheses.
     '@shopify/binary-assignment-parens': ['error', 'always'],
-    // Require (or disallow) semicolons for class properties.
-    '@shopify/class-property-semi': 'error',
-    // Prefer that imports from within a directory extend to the file from where they are importing without relying on an index file.
-    '@shopify/no-ancestor-directory-import': 'warn',
     // Prevent namespace import declarations
-    '@shopify/no-namespace-imports': 'warn',
+    '@shopify/no-namespace-imports': 'error',
     // Prevent the usage of unnecessary computed properties.
     '@shopify/no-useless-computed-properties': 'error',
     // Prevent the declaration of classes consisting only of static members.
     '@shopify/no-fully-static-classes': 'error',
     // Prefer class properties to assignment of literals in constructors.
-    '@shopify/prefer-class-properties': 'warn',
+    '@shopify/prefer-class-properties': 'error',
     // Prefer early returns over full-body conditional wrapping in function declarations.
     '@shopify/prefer-early-return': ['error', { maximumStatements: 1 }],
     // Prefer that screaming snake case variables always be defined using `const`, and always appear at module scope.
     '@shopify/prefer-module-scope-constants': 'error',
     // Restrict the use of specified sinon features.
-    '@shopify/sinon-no-restricted-features': 'warn',
+    '@shopify/sinon-no-restricted-features': 'error',
     // Require the use of meaningful sinon assertions through sinon.assert or sinon-chai.
-    '@shopify/sinon-prefer-meaningful-assertions': 'warn',
+    '@shopify/sinon-prefer-meaningful-assertions': 'error',
     // Prevent module imports between components.
-    '@shopify/strict-component-boundaries': 'warn',
+    '@shopify/strict-component-boundaries': 'error',
   }
 };
