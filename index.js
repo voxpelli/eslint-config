@@ -109,17 +109,15 @@ module.exports = {
       'error',
       {
         order: [
-          '[static-members]',
-          '[properties]',
+          '[static-properties]',
+          '[static-methods]',
           '[conventional-private-properties]',
+          '[properties]',
           'constructor',
-          '[methods]',
           '[conventional-private-methods]',
+          '[methods]',
           '[everything-else]',
         ],
-        groups: {
-          'static-members': [{ 'static': true }],
-        },
         accessorPairPositioning: 'getThenSet',
       },
     ],
