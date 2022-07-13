@@ -111,14 +111,15 @@ module.exports = {
         order: [
           '[static-properties]',
           '[static-methods]',
-          '[conventional-private-properties]',
-          '[properties]',
+          '[sorted-properties]',
           'constructor',
-          '[conventional-private-methods]',
-          '[methods]',
+          '[sorted-methods]',
           '[everything-else]',
         ],
-        accessorPairPositioning: 'getThenSet',
+        groups: {
+          'sorted-properties': [{ type: 'property', sort: 'alphabetical', 'static': false }],
+          'sorted-methods': [{ type: 'method', sort: 'alphabetical', 'static': false }],
+        },
       },
     ],
 
