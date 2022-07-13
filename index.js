@@ -111,13 +111,17 @@ module.exports = {
         order: [
           '[static-properties]',
           '[static-methods]',
+          '[sorted-private-properties]',
           '[sorted-properties]',
           'constructor',
+          '[sorted-private-methods]',
           '[sorted-methods]',
           '[everything-else]',
         ],
         groups: {
+          'sorted-private-properties': [{ type: 'property', sort: 'alphabetical', 'static': false, 'private': true }],
           'sorted-properties': [{ type: 'property', sort: 'alphabetical', 'static': false }],
+          'sorted-private-methods': [{ type: 'property', sort: 'alphabetical', 'static': false, 'private': true }],
           'sorted-methods': [{ type: 'method', sort: 'alphabetical', 'static': false }],
         },
       },
