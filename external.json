@@ -21,6 +21,7 @@
   "nonCompliant": [
     "voxpelli/node-fetch-politely",
     "voxpelli/node-jekyll-utils",
-    "voxpelli/node-micropub-express"
+    "voxpelli/node-micropub-express",
+    "voxpelli/ts-ignore-import"
   ]
 }
