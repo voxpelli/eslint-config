@@ -14,6 +14,7 @@
     "voxpelli/node-pg-pubsub",
     "voxpelli/node-promised-retry",
     "voxpelli/pony-cause",
+    "voxpelli/semver-set",
     "voxpelli/version-guard"
   ],
 
