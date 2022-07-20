@@ -19,6 +19,7 @@
   },
   "main": "index.js",
   "devDependencies": {
+    "@shopify/eslint-plugin": "^42.0.1",
     "eslint": "^8.19.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-es": "^4.1.0",
@@ -28,6 +29,7 @@
     "eslint-plugin-n": "^15.2.4",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-security": "^1.5.0",
+    "eslint-plugin-sort-class-members": "^1.14.1",
     "eslint-plugin-sort-destructure-keys": "^1.4.0",
     "eslint-plugin-unicorn": "^43.0.1",
     "ghat": "^0.14.0",
@@ -35,6 +37,7 @@
     "installed-check": "^6.0.3"
   },
   "peerDependencies": {
+    "@shopify/eslint-plugin": "^42.0.1",
     "eslint": "^8.19.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-es": "^4.1.0",
@@ -44,6 +47,7 @@
     "eslint-plugin-n": "^15.2.4",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-security": "^1.5.0",
+    "eslint-plugin-sort-class-members": "^1.14.1",
     "eslint-plugin-sort-destructure-keys": "^1.4.0",
     "eslint-plugin-unicorn": "^43.0.1"
   }

@@ -4,12 +4,14 @@
 
 module.exports = {
   plugins: [
+    '@shopify',
     'es',
     'import',
     'jsdoc',
     'mocha',
     'promise',
     'security',
+    'sort-class-members',
     'sort-destructure-keys',
     'unicorn'
   ],
@@ -102,6 +104,51 @@ module.exports = {
 
     'promise/prefer-await-to-then': 'error',
 
-    'sort-destructure-keys/sort-destructure-keys': 'error'
+    // Borrowed from @shopify/eslint-plugin esnext rules
+    'sort-class-members/sort-class-members': [
+      'error',
+      {
+        order: [
+          '[static-properties]',
+          '[static-methods]',
+          '[private-properties]',
+          '[conventional-private-properties]',
+          '[properties]',
+          'constructor',
+          '[private-methods]',
+          '[conventional-private-methods]',
+          '[methods]',
+        ],
+        groups: {
+          'private-properties': [{ type: 'property', 'static': false, 'private': true }],
+          'private-methods': [{ type: 'property', 'static': false, 'private': true }],
+        },
+      },
+    ],
+
+    'sort-destructure-keys/sort-destructure-keys': 'error',
+
+    // Shopify ones
+
+    // Require (or disallow) assignments of binary, boolean-producing expressions to be wrapped in parentheses.
+    '@shopify/binary-assignment-parens': ['error', 'always'],
+    // Prevent namespace import declarations
+    '@shopify/no-namespace-imports': 'error',
+    // Prevent the usage of unnecessary computed properties.
+    '@shopify/no-useless-computed-properties': 'error',
+    // Prevent the declaration of classes consisting only of static members.
+    '@shopify/no-fully-static-classes': 'error',
+    // Prefer class properties to assignment of literals in constructors.
+    '@shopify/prefer-class-properties': 'error',
+    // Prefer early returns over full-body conditional wrapping in function declarations.
+    '@shopify/prefer-early-return': ['error', { maximumStatements: 1 }],
+    // Prefer that screaming snake case variables always be defined using `const`, and always appear at module scope.
+    '@shopify/prefer-module-scope-constants': 'error',
+    // Restrict the use of specified sinon features.
+    '@shopify/sinon-no-restricted-features': 'error',
+    // Require the use of meaningful sinon assertions through sinon.assert or sinon-chai.
+    '@shopify/sinon-prefer-meaningful-assertions': 'error',
+    // Prevent module imports between components.
+    '@shopify/strict-component-boundaries': 'error',
   }
 };
