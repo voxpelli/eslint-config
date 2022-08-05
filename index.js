@@ -1,5 +1,3 @@
-/* eslint-disable unicorn/prefer-module */
-
 'use strict';
 
 module.exports = {
@@ -81,13 +79,13 @@ module.exports = {
     'security/detect-object-injection': 'off',
     'security/detect-unsafe-regex': 'off',
 
-    'unicorn/catch-error-name': ['error', { 'name': 'err' }],
+    'unicorn/catch-error-name': ['error', { name: 'err', ignore: ['^cause$'] }],
     'unicorn/explicit-length-check': 'off',
     'unicorn/no-await-expression-member': 'warn',
     'unicorn/numeric-separators-style': 'off',
     'unicorn/prefer-add-event-listener': 'warn',
     'unicorn/prefer-event-target': 'warn',
-    'unicorn/prefer-module': 'warn',
+    'unicorn/prefer-module': 'off',
     'unicorn/prefer-spread': 'warn',
     'unicorn/prevent-abbreviations': 'off',
 
