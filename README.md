@@ -2,7 +2,7 @@
 
 [![npm version](https://img.shields.io/npm/v/@voxpelli/eslint-config.svg?style=flat)](https://www.npmjs.com/package/@voxpelli/eslint-config)
 [![npm downloads](https://img.shields.io/npm/dm/@voxpelli/eslint-config.svg?style=flat)](https://www.npmjs.com/package/@voxpelli/eslint-config)
-[![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg)](https://github.com/voxpelli/eslint-config)
+[![`js-semistandard-style`](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg)](https://github.com/voxpelli/eslint-config)
 [![Follow @voxpelli](https://img.shields.io/twitter/follow/voxpelli?style=social)](https://twitter.com/voxpelli)
 
 My personal ESLint config which extends [standard](https://standardjs.com/) / [semistandard](https://github.com/standard/semistandard) with a couple of extra checks that I find helpful in my projects.
@@ -15,11 +15,11 @@ This package follows [semantic versioning](https://semver.org/). Tightening of a
 
 Absolutely, go ahead! I maintain this project as if multiple people are using it. Be sure to give me feedback and if you like it, give me a ping and say so, would make my day 😄
 
-## Installation
+## Usage
 
-Be sure to install versions of peer dependencies that are valid according to the peer dependency specification of this module.
+### Install
 
-As ESLint configs and dependencies can and will change their rules with major releases you will likely get an incorrect ruleset otherwise.
+Be sure to install the correct versions of peer dependencies that this module requires, else you will likely get an incorrect rule setup.
 
 To easily install all correct peer dependencies, you can use [`install-peerdeps`](https://www.npmjs.com/package/install-peerdeps):
 
@@ -27,7 +27,9 @@ To easily install all correct peer dependencies, you can use [`install-peerdeps`
 install-peerdeps --dev @voxpelli/eslint-config
 ```
 
-Then add a `.eslintrc` with the following:
+### Configure
+
+Add an `.eslintrc`, or other [ESLint configuration](https://eslint.org/docs/latest/user-guide/configuring/configuration-files), that extends this config:
 
 ```
 {
@@ -35,6 +37,12 @@ Then add a `.eslintrc` with the following:
   "root": true
 }
 ```
+
+### Configure, ESM
+
+Instead of simply extending `@voxpelli` you can extend `@voxpelli/eslint-config/esm` and get a version of the rules that enforces ESM best practices as well.
+
+###
 
 ## How does this differ from pure [standard](https://standardjs.com/)?
 
@@ -96,7 +104,7 @@ Then add a `.eslintrc` with the following:
 * :mute: [`unicorn/numeric-separators-style`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/numeric-separators-style.md) – *deactivated* – currently not enough good support for this in engines
 * :warning: [`unicorn/prefer-add-event-listener`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-add-event-listener.md) – *changed* – set to `warn` instead of `error`
 * :warning: [`unicorn/prefer-event-target`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules//prefer-event-target.md) – *changed* – set to `warn` instead of `error`
-* :warning: [`unicorn/prefer-module`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-module.md) – *changed*  – set to `warn` instead of `error`
+* :mute: [`unicorn/prefer-module`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-module.md) – *deactivated*  – only useful when you know you're targetting ESM
 * :warning: [`unicorn/prefer-spread`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-spread.md) – *changed* – set to `warn` instead of `error`
 * :mute: [`unicorn/prevent-abbreviations`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prevent-abbreviations.md) – *deactivated* – same as `unicorn/catch-error-name`, I prefer an abbreviated `err` over a non-abbreviated `error`because the latter is too similar to `Error` for my taste
 
@@ -116,14 +124,24 @@ Then add a `.eslintrc` with the following:
 
 * :stop_sign: [`sort-destructure-keys/sort-destructure-keys`](https://github.com/mthadley/eslint-plugin-sort-destructure-keys)
 
+## Extended ESM config
+
+By extending `@voxpelli/eslint-config/esm` instead of `@voxpelli` you will get these differences:
+
+#### :wrench: Overrides of rules
+
+* :warning: [`func-style`](https://eslint.org/docs/rules/func-style) – enforces function declarations whenever an arrow function isn't used. Better to do `export function foo () {` than `export const foo = function () {`
+* :stop_sign: [`unicorn/prefer-module`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-module.md) – *changed* – restored to its `plugin:unicorn/recommended` value of `error`
+
+
 ## Alternatives
 
-* [eslint-config-rainbow](https://github.com/rainbow-me/eslint-config-rainbow) by [@bcomnes](https://github.com/bcomnes)
-* [semistandard](https://github.com/standard/semistandard)
-* [standard](https://standardjs.com/)
+* [`eslint-config-rainbow`](https://github.com/rainbow-me/eslint-config-rainbow) by [@bcomnes](https://github.com/bcomnes)
+* [`semistandard`](https://github.com/standard/semistandard)
+* [`standard`](https://standardjs.com/)
 
 ## See also
 
-* [voxpelli/ghatemplates](https://github.com/voxpelli/ghatemplates) – the templates I use with [`ghat`](https://github.com/fregante/ghat) to update GitHub Actions in my projects
-* [voxpelli/renovate-config-voxpelli](https://github.com/voxpelli/renovate-config-voxpelli) – the shareable [Renovate setup](https://docs.renovatebot.com/config-presets/) I use in my projects
-* [voxpelli/tsconfig](https://github.com/voxpelli/tsconfig) – the shareable `tsconfig.json` setup I use in my projects
+* [`voxpelli/ghatemplates`](https://github.com/voxpelli/ghatemplates) – the templates I use with [`ghat`](https://github.com/fregante/ghat) to update GitHub Actions in my projects
+* [`voxpelli/renovate-config-voxpelli`](https://github.com/voxpelli/renovate-config-voxpelli) – the shareable [Renovate setup](https://docs.renovatebot.com/config-presets/) I use in my projects
+* [`voxpelli/tsconfig`](https://github.com/voxpelli/tsconfig) – the shareable `tsconfig.json` setup I use in my projects
