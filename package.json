@@ -12,6 +12,10 @@
   "engines": {
     "node": "^14.18.0 || >=16.0.0"
   },
+  "files": [
+    "esm.js",
+    "index.js"
+  ],
   "scripts": {
     "sync-gh-actions": "ghat",
     "test": "installed-check -i eslint-plugin-jsdoc && eslint .",
