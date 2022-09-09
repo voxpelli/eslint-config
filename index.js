@@ -35,10 +35,10 @@ module.exports = {
     // Changed "standard" rules
 
     'comma-dangle': ['warn', {
-      'arrays': 'ignore',
-      'objects': 'ignore',
-      'imports': 'ignore',
-      'exports': 'ignore',
+      'arrays': 'always-multiline',
+      'objects': 'always-multiline',
+      'imports': 'always-multiline',
+      'exports': 'always-multiline',
       'functions': 'never'
     }],
     'dot-notation': 'off',

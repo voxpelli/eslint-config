@@ -54,7 +54,7 @@ Instead of simply extending `@voxpelli` you can extend `@voxpelli/eslint-config/
 
 ### :wrench: Changed [standard](https://standardjs.com/) rules
 
-* :wrench::warning::grimacing: [`comma-dangle`](https://eslint.org/docs/rules/comma-dangle) – *changed* – ignore it in everything but functions + is it set to `warn` rather than `error`. Reason: I'm moving towards preferring dangling commas and thus want my shared config to not prohibit them while a project-by-project override can actually require them (Incompatible with standard)
+* :wrench::warning::grimacing: [`comma-dangle`](https://eslint.org/docs/rules/comma-dangle) – *changed* – prefer dangling commas in everything but functions + is it set to `warn` rather than `error` as I gradually move to this setup
 * :mute: [`dot-notation`](https://eslint.org/docs/rules/dot-notation) – *deactivated* – clashes with the [`noPropertyAccessFromIndexSignature`](https://www.typescriptlang.org/tsconfig#noPropertyAccessFromIndexSignature) check in TypeScript, [which I use](https://github.com/voxpelli/tsconfig/blob/e0d0360f280d407ad25806381624c672f66e2653/base.json#L23)
 * :wrench::grimacing: [`no-multi-spaces`](https://eslint.org/docs/rules/no-multi-spaces) – *changed* – sets `ignoreEOLComments` to `true`, can be useful for more readable comments across multiple lines and I see no real downsides to it (Incompatible with standard)
 * :wrench: [`no-unused-vars`](https://eslint.org/docs/rules/no-unused-vars) – *changed* – sets `"args": "all", "argsIgnorePattern": "^_",` because I personally don't feel limited by [Express error handlers](https://github.com/standard/standard/issues/419#issuecomment-718186130) + wants to stay in sync with TypeScript `noUnusedParameters`
