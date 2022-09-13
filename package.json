@@ -14,7 +14,8 @@
   },
   "files": [
     "esm.js",
-    "index.js"
+    "index.js",
+    "mocha.js"
   ],
   "scripts": {
     "sync-gh-actions": "ghat",
