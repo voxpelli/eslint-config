@@ -12,7 +12,7 @@ const config = {
     'unicorn',
   ],
   'extends': [
-    './base-configs/standard',
+    './ts-standard',
     'plugin:n/recommended',
     'plugin:security/recommended',
     'plugin:unicorn/recommended',
@@ -25,24 +25,35 @@ const config = {
       mode: 'typescript',
     },
   },
+  overrides: [
+    {
+      files: ['*.ts', '*.tsx'],
+      rules: {
+        'no-undef': 'off',
+      },
+    },
+  ],
   rules: {
-    // Make it "semistandard"
+    // Make it 'semistandard'
 
-    'semi': ['error', 'always'],
-    'no-extra-semi': 'error',
+    '@typescript-eslint/semi': ['error', 'always'],
+    '@typescript-eslint/no-extra-semi': 'error',
 
-    // Changed "standard" rules
+    // Changed 'standard' rules
 
-    'comma-dangle': ['warn', {
+    '@typescript-eslint/comma-dangle': ['warn', {
       'arrays': 'always-multiline',
-      'objects': 'always-multiline',
-      'imports': 'always-multiline',
+      'enums': 'always-multiline',
       'exports': 'always-multiline',
       'functions': 'never',
+      'generics': 'always-multiline',
+      'imports': 'always-multiline',
+      'objects': 'always-multiline',
+      'tuples': 'always-multiline'
     }],
-    'dot-notation': 'off',
+    '@typescript-eslint/dot-notation': 'off',
     'no-multi-spaces': ['error', { 'ignoreEOLComments': true }],
-    'no-unused-vars': ['error', {
+    '@typescript-eslint/no-unused-vars': ['error', {
       'vars': 'all',
       'args': 'all',
       'argsIgnorePattern': '^_',
