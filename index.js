@@ -9,7 +9,7 @@ module.exports = {
     'promise',
     'security',
     'sort-destructure-keys',
-    'unicorn'
+    'unicorn',
   ],
   'extends': [
     'standard',
@@ -18,13 +18,13 @@ module.exports = {
     'plugin:mocha/recommended',
     'plugin:unicorn/recommended',
     'plugin:promise/recommended',
-    'plugin:jsdoc/recommended'
+    'plugin:jsdoc/recommended',
   ],
   root: true,
   settings: {
     jsdoc: {
-      mode: 'typescript'
-    }
+      mode: 'typescript',
+    },
   },
   rules: {
     // Make it "semistandard"
@@ -39,7 +39,7 @@ module.exports = {
       'objects': 'always-multiline',
       'imports': 'always-multiline',
       'exports': 'always-multiline',
-      'functions': 'never'
+      'functions': 'never',
     }],
     'dot-notation': 'off',
     'no-multi-spaces': ['error', { 'ignoreEOLComments': true }],
@@ -47,7 +47,7 @@ module.exports = {
       'vars': 'all',
       'args': 'all',
       'argsIgnorePattern': '^_',
-      'ignoreRestSiblings': true
+      'ignoreRestSiblings': true,
     }],
     'n/no-deprecated-api': 'warn',
 
@@ -108,6 +108,6 @@ module.exports = {
 
     'promise/prefer-await-to-then': 'error',
 
-    'sort-destructure-keys/sort-destructure-keys': 'error'
-  }
+    'sort-destructure-keys/sort-destructure-keys': 'error',
+  },
 };
