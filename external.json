@@ -2,7 +2,6 @@
   "compliant": [
     "dependency-check-team/dependency-check",
     "voxpelli/async-htm-to-string",
-    "voxpelli/eslint-formatter-summary",
     "voxpelli/linemod-core",
     "voxpelli/linemod",
     "voxpelli/list-installed",
@@ -20,6 +19,7 @@
   ],
 
   "nonCompliant": [
+    "voxpelli/eslint-formatter-summary",
     "voxpelli/node-fetch-politely",
     "voxpelli/node-jekyll-utils",
     "voxpelli/node-micropub-express",
