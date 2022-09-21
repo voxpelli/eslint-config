@@ -98,6 +98,17 @@ module.exports = {
     'n/no-process-env': 'warn',
     'n/no-sync': 'error',
 
+    'import/order': [
+      'error',
+      {
+        'groups': ['builtin', 'external', ['internal', 'parent', 'sibling', 'index'], 'type'],
+        'newlines-between': 'always',
+        'alphabetize': {
+          'order': 'asc'
+        }
+      }
+    ],
+
     'promise/prefer-await-to-then': 'error',
 
     'sort-destructure-keys/sort-destructure-keys': 'error'
