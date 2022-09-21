@@ -101,11 +101,7 @@ module.exports = {
     'import/order': [
       'error',
       {
-        'groups': ['builtin', 'external', ['internal', 'parent', 'sibling', 'index'], 'type'],
-        'newlines-between': 'ignore',
-        'alphabetize': {
-          'order': 'asc'
-        }
+        'groups': ['builtin', 'external', ['internal', 'parent', 'sibling', 'index'], 'type']
       }
     ],
 
