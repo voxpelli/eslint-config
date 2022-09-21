@@ -102,7 +102,7 @@ module.exports = {
       'error',
       {
         'groups': ['builtin', 'external', ['internal', 'parent', 'sibling', 'index'], 'type'],
-        'newlines-between': 'always',
+        'newlines-between': 'ignore',
         'alphabetize': {
           'order': 'asc'
         }
