@@ -13,3 +13,4 @@ jobs:
         with:
           release-type: node
           package-name: release-please-action
+          bootstrap-sha: 153462c87dea16a9effe0294274f450a5a45b7b2
