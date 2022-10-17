@@ -12,9 +12,16 @@
   "packageRules": [
     {
       "matchDepTypes": [
+        "dependencies"
+      ],
+      "semanticCommitType": "fix"
+    },
+    {
+      "matchDepTypes": [
         "peerDependencies"
       ],
-      "rangeStrategy": "bump"
+      "rangeStrategy": "bump",
+      "semanticCommitType": "feat"
     }
   ]
 }
