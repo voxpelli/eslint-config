@@ -1,14 +1,11 @@
-name: Run commitlint on PR
+name: Lint PR commit messages
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
     branches:
       - main
-jobs:
 
+jobs:
   run-commitlint-on-pr:
     runs-on: ubuntu-latest
     steps:
