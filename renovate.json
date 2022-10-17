@@ -1,6 +1,7 @@
 {
   "extends": [
-    "@voxpelli:vpBase"
+    "@voxpelli:vpBase",
+    ":semanticCommits"
   ],
   "lockFileMaintenance": {
     "enabled": true,
