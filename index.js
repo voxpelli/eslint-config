@@ -88,6 +88,7 @@ module.exports = {
     'unicorn/prefer-module': 'off',
     'unicorn/prefer-spread': 'warn',
     'unicorn/prevent-abbreviations': 'off',
+    'unicorn/switch-case-braces': ['error', 'avoid'],
 
     // Additional standalone ESLint rules
 
