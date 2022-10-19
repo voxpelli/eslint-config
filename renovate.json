@@ -21,6 +21,7 @@
         "peerDependencies"
       ],
       "rangeStrategy": "bump",
+      "semanticCommitScope": "",
       "semanticCommitType": "fix!"
     }
   ]
