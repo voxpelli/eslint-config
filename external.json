@@ -20,9 +20,15 @@
 
   "nonCompliant": [
     "voxpelli/eslint-formatter-summary",
+    "voxpelli/metadataparser-mf2",
     "voxpelli/node-fetch-politely",
+    "voxpelli/node-format-microformat",
     "voxpelli/node-jekyll-utils",
     "voxpelli/node-micropub-express",
-    "voxpelli/ts-ignore-import"
+    "voxpelli/node-tema",
+    "voxpelli/node-webmention-testpinger",
+    "voxpelli/ts-ignore-import",
+    "voxpelli/webpage-micropub-to-github",
+    "voxpelli/webpage-webmentions"
   ]
 }
