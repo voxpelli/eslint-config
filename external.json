@@ -2,6 +2,7 @@
   "compliant": [
     "dependency-check-team/dependency-check",
     "voxpelli/async-htm-to-string",
+    "voxpelli/compare-eslint-configs",
     "voxpelli/linemod-core",
     "voxpelli/linemod",
     "voxpelli/list-installed",
