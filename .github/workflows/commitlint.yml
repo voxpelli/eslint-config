@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+
 jobs:
   run-commitlint-on-pr:
     runs-on: ubuntu-latest
