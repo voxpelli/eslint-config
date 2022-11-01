@@ -24,7 +24,7 @@
   },
   "main": "index.js",
   "devDependencies": {
-    "@commitlint/cli": "^17.1.2",
+    "@commitlint/cli": "^17.2.0",
     "@commitlint/config-conventional": "^17.1.0",
     "eslint": "^8.19.0",
     "eslint-config-standard": "^17.0.0",
