@@ -23,6 +23,15 @@
       "rangeStrategy": "bump",
       "semanticCommitScope": "",
       "semanticCommitType": "fix!"
+    },
+    {
+      "matchDepTypes": [
+        "devDependencies"
+      ],
+      "matchPackagePrefixes": [
+        "@commitlint"
+      ],
+      "groupName": "commitlint"
     }
   ]
 }
