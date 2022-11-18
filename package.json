@@ -33,7 +33,7 @@
     "eslint-plugin-jsdoc": "^39.6.2",
     "eslint-plugin-mocha": "^10.1.0",
     "eslint-plugin-n": "^15.3.0",
-    "eslint-plugin-promise": "^6.1.0",
+    "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-security": "^1.5.0",
     "eslint-plugin-sort-destructure-keys": "^1.4.0",
     "eslint-plugin-unicorn": "^44.0.2",
@@ -49,7 +49,7 @@
     "eslint-plugin-jsdoc": "^39.6.2",
     "eslint-plugin-mocha": "^10.1.0",
     "eslint-plugin-n": "^15.3.0",
-    "eslint-plugin-promise": "^6.1.0",
+    "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-security": "^1.5.0",
     "eslint-plugin-sort-destructure-keys": "^1.4.0",
     "eslint-plugin-unicorn": "^44.0.2"
