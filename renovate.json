@@ -29,7 +29,6 @@
         "peerDependencies"
       ],
       "matchUpdateTypes": ["major"],
-      "rangeStrategy": "bump",
       "semanticCommitScope": "",
       "semanticCommitType": "feat!"
     },
