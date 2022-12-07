@@ -21,6 +21,7 @@
         "peerDependencies"
       ],
       "rangeStrategy": "bump",
+      "semanticCommitScope": "",
       "semanticCommitType": "chore!"
     },
     {
@@ -29,6 +30,7 @@
       ],
       "matchUpdateTypes": ["major"],
       "rangeStrategy": "bump",
+      "semanticCommitScope": "",
       "semanticCommitType": "feat!"
     },
     {
