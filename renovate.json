@@ -14,15 +14,22 @@
       "matchDepTypes": [
         "dependencies"
       ],
-      "semanticCommitType": "fix"
+      "semanticCommitType": "chore"
     },
     {
       "matchDepTypes": [
         "peerDependencies"
       ],
       "rangeStrategy": "bump",
-      "semanticCommitScope": "",
-      "semanticCommitType": "fix!"
+      "semanticCommitType": "chore!"
+    },
+    {
+      "matchDepTypes": [
+        "peerDependencies"
+      ],
+      "matchUpdateTypes": ["major"],
+      "rangeStrategy": "bump",
+      "semanticCommitType": "feat!"
     },
     {
       "matchDepTypes": [
