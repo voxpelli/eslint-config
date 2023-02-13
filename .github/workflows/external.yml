@@ -1,8 +1,3 @@
-env: {}
-
-# FILE GENERATED WITH: npx ghat voxpelli/ghatemplates/eslint-external
-# SOURCE: https://github.com/voxpelli/ghatemplates
-
 name: Test External
 
 on:
@@ -41,7 +36,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - id: set-matrix
-        run: echo "::set-output name=matrix::$(cat external.json | jq -c '.${{ github.event.inputs.moduleSet || 'compliant' }}')"
+        run: echo "matrix=$(cat workflow-external.json | jq -c '.${{ github.event.inputs.moduleSet || 'compliant' }}')" >> $GITHUB_OUTPUT
   test_external:
     needs: read_external_projects
     name: Test ${{ matrix.project }}
@@ -65,16 +60,22 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node_version }}
-      - name: Get npm cache directory
+
+      - name: Determine npm cache directory windows
+        id: npm-cache-dir-windows
+        if: runner.os == 'Windows'
+        run: echo "dir=$(npm config get cache)" >> $env:GITHUB_OUTPUT
+      - name: Determine npm cache directory non-windows
         id: npm-cache-dir
-        run: |
-          echo "::set-output name=dir::$(npm config get cache)"
+        if: runner.os != 'Windows'
+        run: echo "dir=$(npm config get cache)" >> $GITHUB_OUTPUT
       - uses: actions/cache@v3
         with:
-          path: ${{ steps.npm-cache-dir.outputs.dir }}
+          path: ${{ steps.npm-cache-dir-windows.outputs.dir || steps.npm-cache-dir.outputs.dir }}
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json', '**/package.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
+
       - name: install main
         run: '[ -f package-lock.json ] && npm ci --ignore-scripts --force || npm install --ignore-scripts --force'
         working-directory: ./main
