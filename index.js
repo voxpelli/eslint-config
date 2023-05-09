@@ -87,6 +87,7 @@ module.exports = {
     'unicorn/prefer-add-event-listener': 'warn',
     'unicorn/prefer-event-target': 'warn',
     'unicorn/prefer-module': 'off',
+    'unicorn/prefer-string-replace-all': 'warn',
     'unicorn/prefer-spread': 'warn',
     'unicorn/prevent-abbreviations': 'off',
     'unicorn/switch-case-braces': ['error', 'avoid'],
