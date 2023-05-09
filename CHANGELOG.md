@@ -1,5 +1,12 @@
 # Changelog
 
+## [16.0.3](https://github.com/voxpelli/eslint-config/compare/v16.0.2...v16.0.3) (2023-05-09)
+
+
+### Bug Fixes
+
+* redo release one more time, previous 16.x were failing ([b5951bf](https://github.com/voxpelli/eslint-config/commit/b5951bf27901a8b528998ffa4a4f3fae1e47dc25))
+
 ## [16.0.2](https://github.com/voxpelli/eslint-config/compare/v16.0.1...v16.0.2) (2023-05-09)
 
 
