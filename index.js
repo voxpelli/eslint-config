@@ -82,7 +82,7 @@ module.exports = {
     'unicorn/catch-error-name': ['error', { name: 'err', ignore: ['^cause$'] }],
     'unicorn/explicit-length-check': 'off',
     'unicorn/no-await-expression-member': 'warn',
-    'unicorn/no-negated-condition': 'warn',
+    'unicorn/no-negated-condition': 'off',
     'unicorn/numeric-separators-style': 'off',
     'unicorn/prefer-add-event-listener': 'warn',
     'unicorn/prefer-event-target': 'warn',
