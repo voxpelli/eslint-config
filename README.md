@@ -59,7 +59,7 @@ Instead of simply extending `@voxpelli` you can extend `@voxpelli/eslint-config/
 * :wrench::grimacing: [`no-multi-spaces`](https://eslint.org/docs/rules/no-multi-spaces) – *changed* – sets `ignoreEOLComments` to `true`, can be useful for more readable comments across multiple lines and I see no real downsides to it (Incompatible with standard)
 * :wrench: [`no-unused-vars`](https://eslint.org/docs/rules/no-unused-vars) – *changed* – sets `"args": "all", "argsIgnorePattern": "^_",` because I personally don't feel limited by [Express error handlers](https://github.com/standard/standard/issues/419#issuecomment-718186130) + wants to stay in sync with TypeScript `noUnusedParameters`
 * :wrench::grimacing: [`semi`](https://eslint.org/docs/rules/semi) and [`no-extra-semi`](https://eslint.org/docs/rules/no-extra-semi) – *changed* – adopts the semicolons setup from [semistandard](https://github.com/standard/semistandard)  (Incompatible with plain standard, compatible with semistandard)
-* :wrench::warning: [`n/no-deprecated-api`](https://github.com/weiran-zsd/eslint-plugin-node/blob/master/docs/rules/no-deprecated-api.md) – *changed* – changed to `warn` instead of `error` as often it's not an urgent thing to fix
+* :wrench::warning: [`n/no-deprecated-api`](https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/no-deprecated-api.md) – *changed* – changed to `warn` instead of `error` as often it's not an urgent thing to fix
 
 ### :heavy_plus_sign: Added ESLint core rules
 
@@ -74,31 +74,31 @@ Instead of simply extending `@voxpelli` you can extend `@voxpelli/eslint-config/
 
 ### :package: Added ESLint rule package
 
-* [`plugin:n/recommended`](https://github.com/weiran-zsd/eslint-plugin-node#-rules)
-* [`plugin:security/recommended`](https://github.com/nodesecurity/eslint-plugin-security/blob/master/index.js)
-* [`plugin:mocha/recommended`](https://github.com/lo1tuma/eslint-plugin-mocha/blob/master/index.js)
-* [`plugin:unicorn/recommended`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/index.js)
-* [`plugin:promise/recommended`](https://github.com/xjamundx/eslint-plugin-promise/blob/development/index.js)
-* [`plugin:jsdoc/recommended`](https://github.com/gajus/eslint-plugin-jsdoc#configuration)
+* [`plugin:n/recommended`](https://github.com/eslint-community/eslint-plugin-n#-rules)
+* [`plugin:security/recommended`](https://github.com/eslint-community/eslint-plugin-security#rules)
+* [`plugin:mocha/recommended`](https://github.com/lo1tuma/eslint-plugin-mocha#rules)
+* [`plugin:unicorn/recommended`](https://github.com/sindresorhus/eslint-plugin-unicorn#rules)
+* [`plugin:promise/recommended`](https://github.com/eslint-community/eslint-plugin-promise#rules)
+* [`plugin:jsdoc/recommended`](https://github.com/eslint-community/eslint-plugin-promise#rules)
 
 #### :wrench: Overrides of added ESLint rule packages
 
-* :mute: [`jsdoc/check-types`](https://github.com/gajus/eslint-plugin-jsdoc#user-content-eslint-plugin-jsdoc-rules-check-types) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
-* :mute: [`jsdoc/no-undefined-types`](https://github.com/gajus/eslint-plugin-jsdoc#user-content-eslint-plugin-jsdoc-rules-no-undefined-types) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
-* :mute: [`jsdoc/require-jsdoc`](https://github.com/gajus/eslint-plugin-jsdoc#user-content-eslint-plugin-jsdoc-rules-require-jsdoc) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
-* :mute: [`jsdoc/require-param-description`](https://github.com/gajus/eslint-plugin-jsdoc#user-content-eslint-plugin-jsdoc-rules-require-param-description) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
-* :mute: [`jsdoc/require-property-description`](https://github.com/gajus/eslint-plugin-jsdoc#user-content-eslint-plugin-jsdoc-rules-require-property-description) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
-* :mute: [`jsdoc/require-returns-description`](https://github.com/gajus/eslint-plugin-jsdoc#user-content-eslint-plugin-jsdoc-rules-require-returns-description) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
-* :mute: [`jsdoc/require-yields`](https://github.com/gajus/eslint-plugin-jsdoc#user-content-eslint-plugin-jsdoc-rules-require-yields) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
+* :mute: [`jsdoc/check-types`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/check-types.md) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
+* :mute: [`jsdoc/no-undefined-types`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/no-undefined-types.md) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
+* :mute: [`jsdoc/require-jsdoc`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-jsdoc.md) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
+* :mute: [`jsdoc/require-param-description`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-param-description.md) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
+* :mute: [`jsdoc/require-property-description`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-property-description.md) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
+* :mute: [`jsdoc/require-returns-description`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-returns-description.md) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
+* :mute: [`jsdoc/require-yields`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-yields.md) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
 * :wrench: [`jsdoc/tag-lines`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/tag-lines.md) – *changed* – to enforce an empty line between description and tags, but disallow them elsewhere.
-* :mute: [`jsdoc/valid-types`](https://github.com/gajus/eslint-plugin-jsdoc#user-content-eslint-plugin-jsdoc-rules-valid-types) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
+* :mute: [`jsdoc/valid-types`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/valid-types.md) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
 
 * :mute: [`mocha/no-mocha-arrows`](https://github.com/lo1tuma/eslint-plugin-mocha/blob/master/docs/rules/no-mocha-arrows.md) – *deactivated* – while [Mocha discourages arrow functions](https://mochajs.org/#arrow-functions) I find it more readable to use them + I find it safe when type checking ones test files as then the type checking will notify one when one tries to do a `this.setTimeout()` or similar in an arrow function where there is no such local context
 
-* :mute: [`n/no-process-exit`](https://eslint.org/docs/rules/no-process-exit) – *deactivated* – added by `plugin:n/recommended`, but deactivated in favor of [`unicorn/no-process-exit`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-process-exit.md)
+* :mute: [`n/no-process-exit`](https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/no-process-exit.md) – *deactivated* – added by `plugin:n/recommended`, but deactivated in favor of [`unicorn/no-process-exit`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-process-exit.md)
 
-* :mute: [`security/detect-object-injection`](https://github.com/nodesecurity/eslint-plugin-security#detect-object-injection) – *deactivated* – causes too many false errors
-* :mute: [`security/detect-unsafe-regex`](https://github.com/nodesecurity/eslint-plugin-security#detect-unsafe-regex) – *deactivated* – at least early on wasn't very stable
+* :mute: [`security/detect-object-injection`](https://github.com/eslint-community/eslint-plugin-security/blob/main/docs/rules/detect-object-injection.md) – *deactivated* – causes too many false errors
+* :mute: [`security/detect-unsafe-regex`](https://github.com/eslint-community/eslint-plugin-security/blob/main/docs/rules/detect-unsafe-regex.md) – *deactivated* – at least early on wasn't very stable
 
 * :wrench: [`unicorn/catch-error-name`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/catch-error-name.md) – *changed* – I prefer `err` over `error` as I find `error`to be a far too similar name to the built in `Error` class
 * :mute: [`unicorn/explicit-length-check`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/explicit-length-check.md) – *deactivated* – I don't see an issue with `if (string.length)` instead of `if (string.length !== 0)`
@@ -120,12 +120,12 @@ Instead of simply extending `@voxpelli` you can extend `@voxpelli/eslint-config/
 
 * :warning: [`es/no-exponential-operators`](https://mysticatea.github.io/eslint-plugin-es/rules/no-exponential-operators.html) – disallows the use of the `**` operator, as that's in most cases a mistake and one really meant to write `*`
 
-* :warning: [`n/prefer-global/console`](https://github.com/weiran-zsd/eslint-plugin-node/blob/master/docs/rules/prefer-global/console.md)
-* :warning: [`n/prefer-promises/fs`](https://github.com/weiran-zsd/eslint-plugin-node/blob/master/docs/rules/prefer-promises/fs.md)
-* :warning: [`n/no-process-env`](https://github.com/weiran-zsd/eslint-plugin-node/blob/master/docs/rules/no-process-env.md)
-* :stop_sign: [`n/no-sync`](https://github.com/weiran-zsd/eslint-plugin-node/blob/master/docs/rules/no-sync.md)
+* :warning: [`n/prefer-global/console`](https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/prefer-global/console.md)
+* :warning: [`n/prefer-promises/fs`](https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/prefer-promises/fs.md)
+* :warning: [`n/no-process-env`](https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/no-process-env.md)
+* :stop_sign: [`n/no-sync`](https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/no-sync.md)
 
-* :stop_sign: [`promise/prefer-await-to-then`](https://github.com/xjamundx/eslint-plugin-promise/blob/development/docs/rules/prefer-await-to-then.md)
+* :stop_sign: [`promise/prefer-await-to-then`](https://github.com/eslint-community/eslint-plugin-promise/blob/main/docs/rules/prefer-await-to-then.md)
 
 * :stop_sign: [`sort-destructure-keys/sort-destructure-keys`](https://github.com/mthadley/eslint-plugin-sort-destructure-keys)
 
