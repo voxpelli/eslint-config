@@ -26,7 +26,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.6.3",
     "@commitlint/config-conventional": "^17.6.3",
-    "eslint": "^8.19.0",
+    "eslint": "^8.40.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-es": "^4.1.0",
     "eslint-plugin-import": "^2.26.0",
@@ -36,7 +36,7 @@
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-security": "^1.5.0",
     "eslint-plugin-sort-destructure-keys": "^1.4.0",
-    "eslint-plugin-unicorn": "^44.0.2",
+    "eslint-plugin-unicorn": "^47.0.0",
     "ghat": "^0.14.0",
     "husky": "^8.0.3",
     "installed-check": "^6.0.5"
@@ -52,6 +52,6 @@
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-security": "^1.5.0",
     "eslint-plugin-sort-destructure-keys": "^1.4.0",
-    "eslint-plugin-unicorn": "^44.0.2"
+    "eslint-plugin-unicorn": "^47.0.0"
   }
 }
