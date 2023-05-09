@@ -1,5 +1,12 @@
 # Changelog
 
+## [16.0.1](https://github.com/voxpelli/eslint-config/compare/v16.0.0...v16.0.1) (2023-05-09)
+
+
+### Bug Fixes
+
+* add `id-token: write` to publish step ([1edcde9](https://github.com/voxpelli/eslint-config/commit/1edcde901b16e159adbdf6e8404264f5f487574a))
+
 ## [16.0.0](https://github.com/voxpelli/eslint-config/compare/v15.2.0...v16.0.0) (2023-05-09)
 
 
