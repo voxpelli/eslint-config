@@ -4,7 +4,12 @@ on:
   push:
     branches:
       - main
-
+  workflow_dispatch:
+    inputs:
+      releaseAs:
+        description: 'Release as version'
+        required: true
+        type: string
 
 permissions:
   contents: write
@@ -19,6 +24,7 @@ jobs:
         id: release
         with:
           release-type: node
+          release-as: ${{ github.event.inputs.releaseAs }}
           package-name: "@voxpelli/eslint-config"
           bootstrap-sha: 153462c87dea16a9effe0294274f450a5a45b7b2
       - uses: actions/checkout@v3
