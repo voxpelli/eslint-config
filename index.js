@@ -70,6 +70,7 @@ module.exports = {
     'jsdoc/require-property-description': 'off',
     'jsdoc/require-returns-description': 'off',
     'jsdoc/require-yields': 'off',
+    'jsdoc/tag-lines': ['warn', 'never', { 'startLines': 1 }],
     'jsdoc/valid-types': 'off',
 
     'mocha/no-mocha-arrows': 'off',
