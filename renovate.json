@@ -1,12 +1,12 @@
 {
   "extends": [
-    "github>voxpelli/renovate-config:vpBase",
+    "github>voxpelli/renovate-config:base",
     ":semanticCommits"
   ],
   "lockFileMaintenance": {
     "enabled": true,
     "extends": [
-      "github>voxpelli/renovate-config:vpSchedule"
+      "github>voxpelli/renovate-config:schedule"
     ]
   },
   "packageRules": [
