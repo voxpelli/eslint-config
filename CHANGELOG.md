@@ -1,5 +1,29 @@
 # Changelog
 
+## [16.0.4](https://github.com/voxpelli/eslint-config/compare/v16.0.3...v16.0.4) (2023-05-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* update dependency eslint-plugin-sort-destructure-keys to ^1.5.0 ([#169](https://github.com/voxpelli/eslint-config/issues/169))
+* update dependency eslint-plugin-security to ^1.7.1 ([#164](https://github.com/voxpelli/eslint-config/issues/164))
+* update dependency eslint-plugin-jsdoc to ^44.0.2 ([#185](https://github.com/voxpelli/eslint-config/issues/185))
+* update dependency eslint-plugin-import to ^2.27.5 ([#163](https://github.com/voxpelli/eslint-config/issues/163))
+* update dependency eslint-plugin-n to ^15.7.0 ([#150](https://github.com/voxpelli/eslint-config/issues/150))
+
+### Bug Fixes
+
+* tweak `jsdoc/tag-lines` to enforce my style ([00767e9](https://github.com/voxpelli/eslint-config/commit/00767e973f9fc4f25191623a6c2eede55511c4a7))
+
+
+### Miscellaneous Chores
+
+* update dependency eslint-plugin-import to ^2.27.5 ([#163](https://github.com/voxpelli/eslint-config/issues/163)) ([28177f0](https://github.com/voxpelli/eslint-config/commit/28177f0edb61e429e4fa6531295656a0f5abc9cd))
+* update dependency eslint-plugin-jsdoc to ^44.0.2 ([#185](https://github.com/voxpelli/eslint-config/issues/185)) ([d21f187](https://github.com/voxpelli/eslint-config/commit/d21f1870501a9ae25e8bed21f88ac3482cee6b39))
+* update dependency eslint-plugin-n to ^15.7.0 ([#150](https://github.com/voxpelli/eslint-config/issues/150)) ([398b38f](https://github.com/voxpelli/eslint-config/commit/398b38fbb315cb94c03b05a1d62164372871d0f3))
+* update dependency eslint-plugin-security to ^1.7.1 ([#164](https://github.com/voxpelli/eslint-config/issues/164)) ([a2ebb87](https://github.com/voxpelli/eslint-config/commit/a2ebb873cf29f6d4e27c564324afda942c7d0e8c))
+* update dependency eslint-plugin-sort-destructure-keys to ^1.5.0 ([#169](https://github.com/voxpelli/eslint-config/issues/169)) ([036b41c](https://github.com/voxpelli/eslint-config/commit/036b41cede885fe877c894b5965363ced1910955))
+
 ## [16.0.3](https://github.com/voxpelli/eslint-config/compare/v16.0.2...v16.0.3) (2023-05-09)
 
 
