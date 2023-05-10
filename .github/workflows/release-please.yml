@@ -20,6 +20,7 @@ permissions:
 jobs:
   release-please:
     uses: voxpelli/ghatemplates/.github/workflows/release-please.yml@main
+    secrets: inherit
     with:
       releaseAs: ${{ inputs.releaseAs }}
       packageName: "@voxpelli/eslint-config"
