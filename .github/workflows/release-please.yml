@@ -12,13 +12,16 @@ on:
         type: string
 
 permissions:
-  contents: write
-  id-token: write
-  pull-requests: write
+  contents: read
 
 jobs:
-  release-please:
+  release_please:
     runs-on: ubuntu-latest
+    outputs:
+      releaseCreated: ${{ steps.release.outputs.release_created }}
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
       - uses: google-github-actions/release-please-action@v3
         id: release
@@ -27,18 +30,41 @@ jobs:
           release-as: ${{ github.event.inputs.releaseAs }}
           package-name: "@voxpelli/eslint-config"
           bootstrap-sha: 153462c87dea16a9effe0294274f450a5a45b7b2
+
+  npm_publish:
+    runs-on: ubuntu-latest
+    needs: release_please
+    if: needs.release_please.outputs.releaseCreated
+    permissions:
+      id-token: write
+    steps:
       - uses: actions/checkout@v3
-        if: ${{ steps.release.outputs.release_created }}
       - uses: actions/setup-node@v3
-        if: ${{ steps.release.outputs.release_created }}
         with:
           node-version: '18.x'
           registry-url: 'https://registry.npmjs.org'
       - run: npm install -g npm
-        if: ${{ steps.release.outputs.release_created }}
-      - run: npm ci
-        if: ${{ steps.release.outputs.release_created }}
+      - run: npm install
       - run: npm publish --provenance --access public
-        if: ${{ steps.release.outputs.release_created }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  publish-gpr:
+    runs-on: ubuntu-latest
+    needs: release_please
+    if: needs.release_please.outputs.releaseCreated
+    permissions:
+      packages: write
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: lts/*
+      - run: npm install
+      - uses: actions/setup-node@v3
+        with:
+          node-version: lts/*
+          registry-url: 'https://npm.pkg.github.com'
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
