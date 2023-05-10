@@ -1,5 +1,14 @@
 # Changelog
 
+## [16.0.6](https://github.com/voxpelli/eslint-config/compare/v16.0.5...v16.0.6) (2023-05-10)
+
+
+### Bug Fixes
+
+* permissions for reused release-please flow ([e16853c](https://github.com/voxpelli/eslint-config/commit/e16853cd3650aad454075b1e0de7156870ee97e2))
+* permissions for reused release-please flow ([b151be9](https://github.com/voxpelli/eslint-config/commit/b151be9c14a90da874f270f78185810babb701b1))
+* use reusable release-please flow ([eeb98f6](https://github.com/voxpelli/eslint-config/commit/eeb98f66d5d8f57894b5cc0dd182faa0067adb55))
+
 ## [16.0.5](https://github.com/voxpelli/eslint-config/compare/v16.0.4...v16.0.5) (2023-05-10)
 
 
