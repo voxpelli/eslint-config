@@ -1,5 +1,12 @@
 # Changelog
 
+## [16.0.7](https://github.com/voxpelli/eslint-config/compare/v16.0.6...v16.0.7) (2023-05-10)
+
+
+### Bug Fixes
+
+* give release-please access to secrets ([429a559](https://github.com/voxpelli/eslint-config/commit/429a559c6e78d6e05a412756cf3e849f2c8ba9ec))
+
 ## [16.0.6](https://github.com/voxpelli/eslint-config/compare/v16.0.5...v16.0.6) (2023-05-10)
 
 
