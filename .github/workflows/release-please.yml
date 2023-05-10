@@ -24,3 +24,4 @@ jobs:
       releaseAs: ${{ inputs.releaseAs }}
       packageName: "@voxpelli/eslint-config"
       bootstrapSha: 153462c87dea16a9effe0294274f450a5a45b7b2
+      gprPublish: true
