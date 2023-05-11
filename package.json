@@ -39,7 +39,7 @@
     "eslint-plugin-unicorn": "^47.0.0",
     "ghat": "^0.14.0",
     "husky": "^8.0.3",
-    "installed-check": "^6.0.5"
+    "installed-check": "^7.0.0"
   },
   "peerDependencies": {
     "eslint": "^8.40.0",
