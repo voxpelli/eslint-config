@@ -19,7 +19,6 @@
     "standard.js"
   ],
   "scripts": {
-    "sync-gh-actions": "ghat",
     "test": "installed-check -i eslint-plugin-jsdoc && eslint .",
     "prepare": "husky install"
   },
@@ -35,7 +34,6 @@
     "eslint-plugin-security": "^1.7.1",
     "eslint-plugin-sort-destructure-keys": "^1.5.0",
     "eslint-plugin-unicorn": "^47.0.0",
-    "ghat": "^0.14.0",
     "husky": "^8.0.3",
     "installed-check": "^7.0.0"
   },
