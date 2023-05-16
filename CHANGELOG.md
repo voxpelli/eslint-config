@@ -1,5 +1,26 @@
 # Changelog
 
+## [17.0.0](https://github.com/voxpelli/eslint-config/compare/v16.0.7...v17.0.0) (2023-05-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* add `import/no-deprecated` ([#197](https://github.com/voxpelli/eslint-config/issues/197))
+* move to `eslint-plugin-es-x` ([#195](https://github.com/voxpelli/eslint-config/issues/195))
+* update dependency eslint-plugin-jsdoc to ^44.2.4 ([#189](https://github.com/voxpelli/eslint-config/issues/189))
+* update dependency eslint-plugin-n to v16 ([#193](https://github.com/voxpelli/eslint-config/issues/193))
+
+### Features
+
+* add `import/no-deprecated` ([#197](https://github.com/voxpelli/eslint-config/issues/197)) ([749a869](https://github.com/voxpelli/eslint-config/commit/749a869039863f50dd50a496cc29e9fc5aa44915))
+* move to `eslint-plugin-es-x` ([#195](https://github.com/voxpelli/eslint-config/issues/195)) ([7aff77a](https://github.com/voxpelli/eslint-config/commit/7aff77a23aca3ca36ee80c7adbbf9c6d5658551d)), closes [#111](https://github.com/voxpelli/eslint-config/issues/111)
+* update dependency eslint-plugin-n to v16 ([#193](https://github.com/voxpelli/eslint-config/issues/193)) ([daa0515](https://github.com/voxpelli/eslint-config/commit/daa05154b207b5667e8932583bb27825b61d82d1))
+
+
+### Miscellaneous Chores
+
+* update dependency eslint-plugin-jsdoc to ^44.2.4 ([#189](https://github.com/voxpelli/eslint-config/issues/189)) ([f0ac16c](https://github.com/voxpelli/eslint-config/commit/f0ac16ce17481dc17eb68d55f87fb14ca45a0e90))
+
 ## [16.0.7](https://github.com/voxpelli/eslint-config/compare/v16.0.6...v16.0.7) (2023-05-10)
 
 
