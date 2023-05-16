@@ -1,8 +1,14 @@
 name: Compliance
 
 on:
-  pull_request_target:
-    types: [opened, edited, reopened]
+  pull_request:
+    branches:
+      - main
+    types:
+      - edited
+      - opened
+      - reopened
+      - synchronize
 
 permissions:
   pull-requests: write
