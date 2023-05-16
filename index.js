@@ -2,6 +2,7 @@
 
 module.exports = {
   plugins: [
+    'editorconfig',
     'es-x',
     'import',
     'jsdoc',
@@ -19,6 +20,7 @@ module.exports = {
     'plugin:unicorn/recommended',
     'plugin:promise/recommended',
     'plugin:jsdoc/recommended',
+    'plugin:editorconfig/all',
   ],
   root: true,
   settings: {
