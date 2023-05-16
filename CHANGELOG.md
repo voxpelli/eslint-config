@@ -1,5 +1,12 @@
 # Changelog
 
+## [17.0.1](https://github.com/voxpelli/eslint-config/compare/v17.0.0...v17.0.1) (2023-05-16)
+
+
+### Bug Fixes
+
+* selfhost eslint-config-standard ([ba10275](https://github.com/voxpelli/eslint-config/commit/ba10275c9fc13775ef96d1838ac0a169b6b85e46))
+
 ## [17.0.0](https://github.com/voxpelli/eslint-config/compare/v16.0.7...v17.0.0) (2023-05-16)
 
 
