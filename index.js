@@ -2,7 +2,7 @@
 
 module.exports = {
   plugins: [
-    'es',
+    'es-x',
     'import',
     'jsdoc',
     'mocha',
@@ -95,7 +95,7 @@ module.exports = {
 
     // Additional standalone ESLint rules
 
-    'es/no-exponential-operators': 'warn',
+    'es-x/no-exponential-operators': 'warn',
 
     'n/prefer-global/console': 'warn',
     'n/prefer-promises/fs': 'warn',
