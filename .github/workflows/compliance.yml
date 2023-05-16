@@ -20,6 +20,7 @@ jobs:
       - uses: mtfoley/pr-compliance-action@a9c0416f42aa97fd11fe3c2bbd55e01c56e72639
         with:
           body-auto-close: false
+          body-regex: '.*'
           ignore-authors: |
             renovate
             renovate[bot]
