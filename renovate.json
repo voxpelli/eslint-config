@@ -31,15 +31,6 @@
       "matchUpdateTypes": ["major"],
       "semanticCommitScope": "",
       "semanticCommitType": "feat!"
-    },
-    {
-      "matchDepTypes": [
-        "devDependencies"
-      ],
-      "matchPackagePrefixes": [
-        "@commitlint"
-      ],
-      "groupName": "commitlint"
     }
   ]
 }

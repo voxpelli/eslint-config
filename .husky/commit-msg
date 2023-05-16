@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-npx --no -- commitlint --edit 
+node validate-commit-message.mjs < .git/COMMIT_EDITMSG
