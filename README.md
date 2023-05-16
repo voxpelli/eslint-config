@@ -115,9 +115,6 @@ Instead of simply extending `@voxpelli` you can extend `@voxpelli/eslint-config/
 
 ### :heavy_plus_sign: Additional standalone ESLint rules
 
-<!-- TODO: Maybe add promise/prefer-await-to-callbacks -->
-<!-- TODO: Maybe add node/no-mixed-requires -->
-
 * :warning: [`es-x/no-exponential-operators`](https://eslint-community.github.io/eslint-plugin-es-x/rules/no-exponential-operators.html) – disallows the use of the `**` operator, as that's in most cases a mistake and one really meant to write `*`
 
 * :warning: [`n/prefer-global/console`](https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/prefer-global/console.md)
