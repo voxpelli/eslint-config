@@ -13,10 +13,10 @@
     "node": ">=16.0.0"
   },
   "files": [
+    "base-configs/**/*.js",
     "esm.js",
     "index.js",
-    "mocha.js",
-    "standard.js"
+    "mocha.js"
   ],
   "scripts": {
     "test": "installed-check -i eslint-plugin-jsdoc && eslint .",

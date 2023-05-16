@@ -12,7 +12,7 @@ module.exports = {
     'unicorn',
   ],
   'extends': [
-    './standard',
+    './base-configs/standard',
     'plugin:n/recommended',
     'plugin:security/recommended',
     'plugin:mocha/recommended',
