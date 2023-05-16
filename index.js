@@ -102,6 +102,7 @@ module.exports = {
     'n/no-process-env': 'warn',
     'n/no-sync': 'error',
 
+    'import/no-deprecated': 2,
     'import/order': [
       'error',
       {
