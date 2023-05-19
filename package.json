@@ -25,7 +25,7 @@
   "main": "index.js",
   "devDependencies": {
     "eslint": "^8.40.0",
-    "eslint-plugin-es-x": "^6.1.0",
+    "eslint-plugin-es-x": "^6.2.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jsdoc": "^44.2.4",
     "eslint-plugin-mocha": "^10.1.0",
@@ -39,7 +39,7 @@
   },
   "peerDependencies": {
     "eslint": "^8.40.0",
-    "eslint-plugin-es-x": "^6.1.0",
+    "eslint-plugin-es-x": "^6.2.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jsdoc": "^44.2.4",
     "eslint-plugin-mocha": "^10.1.0",
