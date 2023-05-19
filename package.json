@@ -19,7 +19,7 @@
     "mocha.js"
   ],
   "scripts": {
-    "test": "installed-check -i eslint-plugin-jsdoc && eslint .",
+    "test": "installed-check -i eslint-plugin-jsdoc -i knip && eslint . && knip",
     "prepare": "husky install"
   },
   "main": "index.js",
@@ -35,7 +35,8 @@
     "eslint-plugin-sort-destructure-keys": "^1.5.0",
     "eslint-plugin-unicorn": "^47.0.0",
     "husky": "^8.0.3",
-    "installed-check": "^7.1.0"
+    "installed-check": "^7.1.0",
+    "knip": "^2.11.0"
   },
   "peerDependencies": {
     "eslint": "^8.40.0",
