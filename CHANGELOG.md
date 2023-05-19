@@ -1,5 +1,12 @@
 # Changelog
 
+## [17.0.3](https://github.com/voxpelli/eslint-config/compare/v17.0.2...v17.0.3) (2023-05-19)
+
+
+### Bug Fixes
+
+* extend supported `eslint-plugin-es-x` version ([9e096b7](https://github.com/voxpelli/eslint-config/commit/9e096b7dcb54753de6d1c04bea4c9b116732082b))
+
 ## [17.0.2](https://github.com/voxpelli/eslint-config/compare/v17.0.1...v17.0.2) (2023-05-16)
 
 
