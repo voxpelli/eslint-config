@@ -1,0 +1,6 @@
+{
+  "$schema": "https://unpkg.com/knip@2/schema.json",
+  "eslint": {
+    "config": [".eslintrc", "index.js", "esm.js", "mocha.js"]
+  }
+}
