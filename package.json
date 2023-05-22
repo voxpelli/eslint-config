@@ -24,7 +24,7 @@
   },
   "main": "index.js",
   "devDependencies": {
-    "eslint": "^8.40.0",
+    "eslint": "^8.41.0",
     "eslint-plugin-es-x": "^7.0.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jsdoc": "^44.2.4",
@@ -39,7 +39,7 @@
     "knip": "^2.11.0"
   },
   "peerDependencies": {
-    "eslint": "^8.40.0",
+    "eslint": "^8.41.0",
     "eslint-plugin-es-x": "^6.1.0 || ^7.0.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jsdoc": "^44.2.4",
