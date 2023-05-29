@@ -36,7 +36,7 @@
     "eslint-plugin-unicorn": "^47.0.0",
     "husky": "^8.0.3",
     "installed-check": "^7.1.0",
-    "knip": "^2.11.0",
+    "knip": "^2.13.0",
     "validate-conventional-commit": "^1.0.2"
   },
   "peerDependencies": {
