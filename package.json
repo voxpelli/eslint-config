@@ -54,10 +54,10 @@
     "validate-conventional-commit": "^1.0.2"
   },
   "peerDependencies": {
-    "eslint": "^8.40.0",
+    "eslint": "^8.42.0",
     "eslint-plugin-es-x": "^7.1.0",
     "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-jsdoc": "^46.1.0",
+    "eslint-plugin-jsdoc": "^46.2.0",
     "eslint-plugin-mocha": "^10.1.0",
     "eslint-plugin-n": "^16.0.0",
     "eslint-plugin-promise": "^6.1.1",
