@@ -1,5 +1,28 @@
 # Changelog
 
+## [18.0.0](https://github.com/voxpelli/eslint-config/compare/v17.0.3...v18.0.0) (2023-06-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* fix update minor peer dependency versions
+* update minor dependencies
+* update `eslint-plugin-es-x`
+* update dependency eslint-plugin-jsdoc to v46 ([#217](https://github.com/voxpelli/eslint-config/issues/217))
+* fully separate mocha config + add types
+
+### Features
+
+* fully separate mocha config + add types ([bfc1b87](https://github.com/voxpelli/eslint-config/commit/bfc1b87e6b17017dd7afd92ce1d385cb7c79d870))
+* update dependency eslint-plugin-jsdoc to v46 ([#217](https://github.com/voxpelli/eslint-config/issues/217)) ([afafbc8](https://github.com/voxpelli/eslint-config/commit/afafbc8d9f72997429862e5b204fecf7be471e4a))
+
+
+### Miscellaneous Chores
+
+* fix update minor peer dependency versions ([a15dde7](https://github.com/voxpelli/eslint-config/commit/a15dde7ab127eb0884f426b5d7be2de14e309997))
+* update `eslint-plugin-es-x` ([2da23c7](https://github.com/voxpelli/eslint-config/commit/2da23c76ab578bd122b99bf13e7b8c0c64e0d0b5))
+* update minor dependencies ([b9502db](https://github.com/voxpelli/eslint-config/commit/b9502db0e9b49cb834fa64e15bf504f683982cef))
+
 ## [17.0.3](https://github.com/voxpelli/eslint-config/compare/v17.0.2...v17.0.3) (2023-05-19)
 
 
