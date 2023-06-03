@@ -1,6 +1,7 @@
 'use strict';
 
-module.exports = {
+/** @satisfies {import('eslint').ESLint.ConfigData} */
+const config = {
   'extends': [
     './',
   ],
@@ -11,3 +12,5 @@ module.exports = {
     'unicorn/prefer-module': 'error',
   },
 };
+
+module.exports = config;

@@ -2,7 +2,8 @@
 
 // Copied to avoid having to downgrade eslin-plugin-n because of https://github.com/standard/eslint-config-standard/pull/271
 
-module.exports = {
+/** @satisfies {import('eslint').ESLint.ConfigData} */
+const config = {
   'parserOptions': {
     'ecmaVersion': 2022,
     'ecmaFeatures': {
@@ -246,3 +247,5 @@ module.exports = {
     'promise/param-names': 'error',
   },
 };
+
+module.exports = config;

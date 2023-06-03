@@ -1,0 +1,11 @@
+{
+  "extends": "@voxpelli/tsconfig/node16.json",
+  "files": [
+    "esm.js",
+    "index.js",
+    "mocha.js"
+  ],
+  "include": [
+    "base-configs/**/*.js",
+  ]
+}

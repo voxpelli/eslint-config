@@ -19,11 +19,23 @@
     "mocha.js"
   ],
   "scripts": {
-    "test": "installed-check -i eslint-plugin-jsdoc -i knip && eslint . && knip",
-    "prepare": "husky install"
+    "build:0": "run-s clean",
+    "build:1-declaration": "tsc -p declaration.tsconfig.json",
+    "build": "run-s build:*",
+    "check:installed-check": "installed-check -i eslint-plugin-jsdoc -i knip",
+    "check:knip": "knip",
+    "check:lint": "eslint --report-unused-disable-directives .",
+    "check:tsc": "tsc",
+    "check": "run-s clean && run-p check:*",
+    "clean:declarations": "rm -rf $(find . -maxdepth 2 -type f -name '*.d.ts*')",
+    "clean": "run-p clean:*",
+    "prepare": "husky install",
+    "prepublishOnly": "run-s build",
+    "test": "run-s check"
   },
   "main": "index.js",
   "devDependencies": {
+    "@voxpelli/tsconfig": "^8.0.0",
     "eslint": "^8.40.0",
     "eslint-plugin-es-x": "^7.0.0",
     "eslint-plugin-import": "^2.27.5",
@@ -37,6 +49,8 @@
     "husky": "^8.0.3",
     "installed-check": "^7.1.0",
     "knip": "^2.11.0",
+    "npm-run-all2": "^6.0.5",
+    "typescript": "~5.1.3",
     "validate-conventional-commit": "^1.0.2"
   },
   "peerDependencies": {
@@ -50,5 +64,8 @@
     "eslint-plugin-security": "^1.7.1",
     "eslint-plugin-sort-destructure-keys": "^1.5.0",
     "eslint-plugin-unicorn": "^47.0.0"
+  },
+  "dependencies": {
+    "@types/eslint": "^8.40.0"
   }
 }

@@ -2,6 +2,10 @@
 /node_modules
 /yarn.lock
 
+# Generated types
+*.d.ts
+*.d.ts.map
+
 # Library specific ones
 /.cache-eslint-remote-tester
 /eslint-remote-tester-results

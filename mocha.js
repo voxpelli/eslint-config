@@ -1,10 +1,18 @@
 'use strict';
 
-module.exports = {
-  'env': {
+/** @satisfies {import('eslint').ESLint.ConfigData} */
+const config = {
+  plugins: ['mocha'],
+  env: {
     'mocha': true,
   },
-  'rules': {
-    'no-unused-expressions': 0,
+  'extends': [
+    'plugin:mocha/recommended',
+  ],
+  rules: {
+    'mocha/no-mocha-arrows': 'off',
+    'no-unused-expressions': 'off',
   },
 };
+
+module.exports = config;

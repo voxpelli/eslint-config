@@ -1,11 +1,11 @@
 'use strict';
 
-module.exports = {
+/** @satisfies {import('eslint').ESLint.ConfigData} */
+const config = {
   plugins: [
     'es-x',
     'import',
     'jsdoc',
-    'mocha',
     'promise',
     'security',
     'sort-destructure-keys',
@@ -15,7 +15,6 @@ module.exports = {
     './base-configs/standard',
     'plugin:n/recommended',
     'plugin:security/recommended',
-    'plugin:mocha/recommended',
     'plugin:unicorn/recommended',
     'plugin:promise/recommended',
     'plugin:jsdoc/recommended',
@@ -73,8 +72,6 @@ module.exports = {
     'jsdoc/tag-lines': ['warn', 'never', { 'startLines': 1 }],
     'jsdoc/valid-types': 'off',
 
-    'mocha/no-mocha-arrows': 'off',
-
     'n/no-process-exit': 'off',
 
     'security/detect-object-injection': 'off',
@@ -115,3 +112,5 @@ module.exports = {
     'sort-destructure-keys/sort-destructure-keys': 'error',
   },
 };
+
+module.exports = config;
