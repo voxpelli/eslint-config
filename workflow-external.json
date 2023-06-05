@@ -15,7 +15,8 @@
     "voxpelli/node-promised-retry",
     "voxpelli/pony-cause",
     "voxpelli/semver-set",
-    "voxpelli/version-guard"
+    "voxpelli/version-guard",
+    "yikesable/fastify-acl"
   ],
 
   "nonCompliant": [
