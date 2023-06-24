@@ -16,6 +16,7 @@
     "voxpelli/pony-cause",
     "voxpelli/semver-set",
     "voxpelli/version-guard",
+    "voxpelli/webring-opml",
     "yikesable/fastify-acl"
   ],
 
