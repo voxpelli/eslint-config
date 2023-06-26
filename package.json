@@ -47,7 +47,7 @@
     "eslint-plugin-sort-destructure-keys": "^1.5.0",
     "eslint-plugin-unicorn": "^47.0.0",
     "husky": "^8.0.3",
-    "installed-check": "^7.1.1",
+    "installed-check": "^7.1.2",
     "knip": "^2.14.2",
     "npm-run-all2": "^6.0.5",
     "typescript": "~5.1.3",
