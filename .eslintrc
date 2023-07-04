@@ -1,4 +1,4 @@
 {
-  "extends": "./",
+  "extends": "./no-tsconfig",
   "root": true
 }
