@@ -12,7 +12,7 @@ const config = {
     'unicorn',
   ],
   'extends': [
-    './ts-standard',
+    './base-configs/ts-standard',
     'plugin:n/recommended',
     'plugin:security/recommended',
     'plugin:unicorn/recommended',

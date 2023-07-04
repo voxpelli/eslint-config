@@ -16,7 +16,7 @@ for (const ruleId in rules) {
 }
 
 const config = {
-  'extends': ['./base-configs/standard'],
+  'extends': ['./standard'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     project: './tsconfig.json',
