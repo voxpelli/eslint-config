@@ -7,5 +7,9 @@
   ],
   "include": [
     "base-configs/**/*.js",
-  ]
+  ],
+  "compilerOptions": {
+    // FIXME: Remove once https://github.com/typescript-eslint/typescript-eslint/issues/6307 has been solved
+    "skipLibCheck": true
+  }
 }
