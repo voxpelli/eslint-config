@@ -10,6 +10,7 @@ const config = {
     'plugin:mocha/recommended',
   ],
   rules: {
+    '@typescript-eslint/no-unused-expressions': 'off',
     'mocha/no-mocha-arrows': 'off',
     'no-unused-expressions': 'off',
   },
