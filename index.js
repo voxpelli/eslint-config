@@ -49,7 +49,7 @@ const config = {
       'generics': 'always-multiline',
       'imports': 'always-multiline',
       'objects': 'always-multiline',
-      'tuples': 'always-multiline'
+      'tuples': 'always-multiline',
     }],
     '@typescript-eslint/dot-notation': 'off',
     'no-multi-spaces': ['error', { 'ignoreEOLComments': true }],
