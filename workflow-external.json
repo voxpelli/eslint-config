@@ -1,6 +1,7 @@
 {
   "compliant": [
     "voxpelli/async-htm-to-string",
+    "voxpelli/chai-posix-path",
     "voxpelli/compare-eslint-configs",
     "voxpelli/linemod-core",
     "voxpelli/linemod",
