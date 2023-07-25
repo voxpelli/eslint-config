@@ -1,5 +1,28 @@
 # Changelog
 
+## [19.0.0](https://github.com/voxpelli/eslint-config/compare/v18.0.0...v19.0.0) (2023-07-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* update dependency eslint-plugin-es-x to ^7.2.0 ([#234](https://github.com/voxpelli/eslint-config/issues/234))
+* update dependency eslint-plugin-n to ^16.0.1 ([#224](https://github.com/voxpelli/eslint-config/issues/224))
+* update dependency eslint to ^8.45.0 ([#220](https://github.com/voxpelli/eslint-config/issues/220))
+* update dependency eslint-plugin-jsdoc to ^46.4.4 ([#219](https://github.com/voxpelli/eslint-config/issues/219))
+* update dependency eslint-plugin-unicorn to v48 ([#231](https://github.com/voxpelli/eslint-config/issues/231))
+
+### Features
+
+* update dependency eslint-plugin-unicorn to v48 ([#231](https://github.com/voxpelli/eslint-config/issues/231)) ([fb00678](https://github.com/voxpelli/eslint-config/commit/fb00678a34d9c934cf150ccd51b32d1a4606d3c7))
+
+
+### Miscellaneous Chores
+
+* update dependency eslint to ^8.45.0 ([#220](https://github.com/voxpelli/eslint-config/issues/220)) ([9473eff](https://github.com/voxpelli/eslint-config/commit/9473effcf6d7131b2af4cc284177ec114070e3b1))
+* update dependency eslint-plugin-es-x to ^7.2.0 ([#234](https://github.com/voxpelli/eslint-config/issues/234)) ([d2d65ab](https://github.com/voxpelli/eslint-config/commit/d2d65ab88f9b7a19cca735fabaeadac48f639ebe))
+* update dependency eslint-plugin-jsdoc to ^46.4.4 ([#219](https://github.com/voxpelli/eslint-config/issues/219)) ([205427e](https://github.com/voxpelli/eslint-config/commit/205427eac421be97f5e0c6f7f0c3511ac4027944))
+* update dependency eslint-plugin-n to ^16.0.1 ([#224](https://github.com/voxpelli/eslint-config/issues/224)) ([e53cb27](https://github.com/voxpelli/eslint-config/commit/e53cb274aba053d3c472bac04b2ef5f022c4fe11))
+
 ## [18.0.0](https://github.com/voxpelli/eslint-config/compare/v17.0.3...v18.0.0) (2023-06-03)
 
 
