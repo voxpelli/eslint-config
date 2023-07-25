@@ -36,7 +36,7 @@
   "main": "index.js",
   "devDependencies": {
     "@voxpelli/tsconfig": "^8.0.0",
-    "eslint": "^8.42.0",
+    "eslint": "^8.45.0",
     "eslint-plugin-es-x": "^7.1.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jsdoc": "^46.4.4",
@@ -54,7 +54,7 @@
     "validate-conventional-commit": "^1.0.2"
   },
   "peerDependencies": {
-    "eslint": "^8.42.0",
+    "eslint": "^8.45.0",
     "eslint-plugin-es-x": "^7.1.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jsdoc": "^46.4.4",
