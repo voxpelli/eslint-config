@@ -34,7 +34,7 @@ jobs:
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - id: set-matrix
         run: echo "matrix=$(cat workflow-external.json | jq -c '.${{ github.event.inputs.moduleSet || 'compliant' }}')" >> $GITHUB_OUTPUT
   test_external:
@@ -48,11 +48,11 @@ jobs:
         project: ${{ fromJson(needs.read_external_projects.outputs.matrix) }}
     steps:
       - name: Checkout main project
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           path: main
       - name: Checkout ${{ matrix.project }}
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: ${{ matrix.project }}
           path: project
