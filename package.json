@@ -49,7 +49,7 @@
     "husky": "^8.0.3",
     "installed-check": "^8.0.1",
     "knip": "^2.17.0",
-    "npm-run-all2": "^6.0.6",
+    "npm-run-all2": "^6.1.1",
     "typescript": "~5.1.6",
     "validate-conventional-commit": "^1.0.2"
   },
