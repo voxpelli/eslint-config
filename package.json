@@ -51,7 +51,7 @@
     "knip": "^2.17.0",
     "npm-run-all2": "^6.1.1",
     "typescript": "~5.1.6",
-    "validate-conventional-commit": "^1.0.2"
+    "validate-conventional-commit": "^1.0.3"
   },
   "peerDependencies": {
     "eslint": "^8.45.0",
