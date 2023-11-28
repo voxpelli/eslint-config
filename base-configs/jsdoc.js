@@ -6,7 +6,7 @@ const config = {
     'jsdoc',
   ],
   'extends': [
-    'plugin:jsdoc/recommended',
+    'plugin:jsdoc/recommended-typescript-flavor',
   ],
   settings: {
     jsdoc: {
@@ -15,7 +15,6 @@ const config = {
   },
   rules: {
     'jsdoc/check-types': 'off',
-    'jsdoc/no-undefined-types': 'off',
     'jsdoc/require-jsdoc': 'off',
     'jsdoc/require-param-description': 'off',
     'jsdoc/require-property-description': 'off',
