@@ -37,7 +37,7 @@
   "devDependencies": {
     "@voxpelli/tsconfig": "^10.0.0",
     "eslint": "^8.45.0",
-    "eslint-plugin-es-x": "^7.4.0",
+    "eslint-plugin-es-x": "^7.5.0",
     "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-jsdoc": "^46.4.4",
     "eslint-plugin-mocha": "^10.2.0",
@@ -55,7 +55,7 @@
   },
   "peerDependencies": {
     "eslint": "^8.45.0",
-    "eslint-plugin-es-x": "^7.4.0",
+    "eslint-plugin-es-x": "^7.5.0",
     "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-jsdoc": "^46.4.4",
     "eslint-plugin-mocha": "^10.2.0",
