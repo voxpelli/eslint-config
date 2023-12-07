@@ -22,7 +22,7 @@
     "build:0": "run-s clean",
     "build:1-declaration": "tsc -p declaration.tsconfig.json",
     "build": "run-s build:*",
-    "check:installed-check": "installed-check -i eslint-plugin-jsdoc -i knip -i installed-check",
+    "check:installed-check": "installed-check -i eslint-plugin-jsdoc -i knip -i installed-check -i compare-eslint-configs",
     "check:knip": "knip",
     "check:lint": "eslint --report-unused-disable-directives .",
     "check:tsc": "tsc",
@@ -36,7 +36,7 @@
   "main": "index.js",
   "devDependencies": {
     "@voxpelli/tsconfig": "^10.0.0",
-    "compare-eslint-configs": "^1.1.1",
+    "compare-eslint-configs": "^2.0.0",
     "eslint": "^8.45.0",
     "eslint-plugin-es-x": "^7.4.0",
     "eslint-plugin-import": "^2.29.0",
