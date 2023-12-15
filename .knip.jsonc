@@ -3,5 +3,5 @@
   "eslint": {
     "config": [".eslintrc", "index.js", "esm.js", "mocha.js"]
   },
-  "ignoreDependencies": ["@types/eslint", "compare-eslint-configs"]
+  "ignoreDependencies": ["@types/eslint"]
 }
