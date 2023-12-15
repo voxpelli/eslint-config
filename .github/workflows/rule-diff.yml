@@ -52,6 +52,6 @@ jobs:
         run: 'npm ci --ignore-scripts --force'
         working-directory: ./target
 
-      - name: run eslint
-        run: compare-eslint-configs .eslintrc ../target/.eslintrc -d -m --verbose-configs >> $GITHUB_STEP_SUMMARY
+      - name: generate diff
+        run: npx --no compare-eslint-configs ../target/.eslintrc .eslintrc -d -m --verbose-configs >> $GITHUB_STEP_SUMMARY
         working-directory: ./source
