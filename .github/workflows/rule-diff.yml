@@ -45,13 +45,13 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - name: install the PR source
+      - name: Install the PR source
         run: 'npm ci --ignore-scripts --force'
         working-directory: ./source
-      - name: install the PR target
+      - name: Install the PR target
         run: 'npm ci --ignore-scripts --force'
         working-directory: ./target
 
-      - name: generate diff
+      - name: Generate diff
         run: npx --no compare-eslint-configs ../target/.eslintrc .eslintrc -d -m --verbose-configs >> $GITHUB_STEP_SUMMARY
         working-directory: ./source
