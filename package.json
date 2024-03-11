@@ -35,7 +35,7 @@
   },
   "main": "index.js",
   "devDependencies": {
-    "@voxpelli/tsconfig": "^10.0.0",
+    "@voxpelli/tsconfig": "^11.0.0",
     "compare-eslint-configs": "^2.1.0",
     "eslint": "^8.45.0",
     "eslint-plugin-es-x": "^7.5.0",
