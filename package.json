@@ -51,7 +51,7 @@
     "installed-check": "^8.0.1",
     "knip": "^3.8.1",
     "npm-run-all2": "^6.1.2",
-    "typescript": "~5.3.2",
+    "typescript": "~5.4.3",
     "validate-conventional-commit": "^1.0.3"
   },
   "peerDependencies": {
