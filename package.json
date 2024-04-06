@@ -16,18 +16,9 @@
   "exports": "./index.js",
   "types": "index.d.ts",
   "files": [
-    "esm.js",
-    "esm.d.ts",
-    "esm.d.ts.map",
-    "flat.js",
-    "flat.d.ts",
-    "flat.d.ts.map",
     "index.js",
     "index.d.ts",
     "index.d.ts.map",
-    "mocha.js",
-    "mocha.d.ts",
-    "mocha.d.ts.map",
     "base-configs/**/*.js",
     "base-configs/**/*.d.ts",
     "base-configs/**/*.d.ts.map"
@@ -40,6 +31,7 @@
     "check:installed-check": "installed-check -i eslint-plugin-jsdoc -i knip -i installed-check -i compare-eslint-configs",
     "check:knip": "knip",
     "check:lint": "eslint --report-unused-disable-directives .",
+    "check:type-coverage": "type-coverage --detail --strict --at-least 67 --ignore-files 'test/*'",
     "check:tsc": "tsc",
     "check": "run-s clean && run-p check:*",
     "clean:declarations": "rm -rf $(find . -maxdepth 2 -type f -name '*.d.ts*')",
@@ -49,9 +41,10 @@
     "test": "run-s check"
   },
   "devDependencies": {
+    "@types/node": "^18.19.30",
     "@types/eslint": "^8.40.2",
     "@typescript-eslint/utils": "^7.5.0",
-    "@voxpelli/tsconfig": "^10.0.0",
+    "@voxpelli/tsconfig": "^11.0.0",
     "compare-eslint-configs": "^2.1.0",
     "eslint": "^9.0.0",
     "husky": "^8.0.3",
@@ -59,7 +52,8 @@
     "knip": "^3.8.1",
     "npm-run-all2": "^6.1.2",
     "ts-ignore-import": "^3.0.0",
-    "typescript": "~5.3.2",
+    "type-coverage": "^2.28.1",
+    "typescript": "~5.4.4",
     "validate-conventional-commit": "^1.0.3"
   },
   "peerDependencies": {
@@ -71,8 +65,6 @@
     "eslint-plugin-es-x": "^7.6.0",
     "eslint-plugin-jsdoc": "^48.2.3",
     "eslint-plugin-n": "^17.0.0-6",
-    "eslint-plugin-promise": "^6.1.1",
-    "eslint-plugin-security": "^2.1.1",
     "eslint-plugin-sort-destructure-keys": "^1.5.0",
     "eslint-plugin-unicorn": "^52.0.0"
   }
