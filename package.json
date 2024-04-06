@@ -41,8 +41,8 @@
     "test": "run-s check"
   },
   "devDependencies": {
-    "@types/node": "^18.19.30",
     "@types/eslint": "^8.40.2",
+    "@types/node": "^18.19.30",
     "@typescript-eslint/utils": "^7.5.0",
     "@voxpelli/tsconfig": "^11.0.0",
     "compare-eslint-configs": "^2.1.0",
@@ -60,12 +60,12 @@
     "eslint": "^9.0.0"
   },
   "dependencies": {
-    "@voxpelli/neostandard": "^0.0.0",
     "eslint": "^9.0.0",
     "eslint-plugin-es-x": "^7.6.0",
     "eslint-plugin-jsdoc": "^48.2.3",
     "eslint-plugin-n": "^17.0.0-6",
     "eslint-plugin-sort-destructure-keys": "^1.5.0",
-    "eslint-plugin-unicorn": "^52.0.0"
+    "eslint-plugin-unicorn": "^52.0.0",
+    "neostandard": "^0.1.0"
   }
 }

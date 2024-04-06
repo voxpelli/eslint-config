@@ -1,4 +1,4 @@
-import { neostandardSemi, neostandardTsOnlySemi } from '@voxpelli/neostandard';
+import { neostandardSemi, neostandardTsOnlySemi } from 'neostandard';
 
 import { additionalRules } from './base-configs/additional-rules.js';
 import { jsdocRules } from './base-configs/jsdoc.js';
