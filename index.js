@@ -1,14 +1,29 @@
-'use strict';
+import { neostandardSemi, neostandardTsOnlySemi } from '@voxpelli/neostandard';
 
-/** @satisfies {import('eslint').ESLint.ConfigData} */
-const config = {
-  'extends': [
-    './base-configs/standard',
-    './base-configs/standard-customizations',
-    './base-configs/additional-rules',
-    './base-configs/jsdoc',
-  ],
-  root: true,
-};
+import { additionalRules } from './base-configs/additional-rules.js';
+import { jsdocRules } from './base-configs/jsdoc.js';
 
-module.exports = config;
+/** @satisfies {import('@typescript-eslint/utils/ts-eslint').FlatConfig.ConfigArray} */
+export const cjs = [
+  ...neostandardSemi,
+  ...additionalRules,
+  ...jsdocRules,
+];
+
+/** @satisfies {import('@typescript-eslint/utils/ts-eslint').FlatConfig.ConfigArray} */
+export const esm = [
+  ...cjs,
+  {
+    rules: {
+      // Overrides of @voxpelli rules
+      'func-style': ['warn', 'declaration', { 'allowArrowFunctions': true }],
+      'unicorn/prefer-module': 'error',
+    },
+  },
+];
+
+/** @satisfies {import('@typescript-eslint/utils/ts-eslint').FlatConfig.ConfigArray} */
+export const esmTypesInJs = [
+  ...esm,
+  ...neostandardTsOnlySemi,
+];
