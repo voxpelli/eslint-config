@@ -1,1 +1,1 @@
-export { esmTypesInJs as default } from './index.js';
+export { default } from './index.js';

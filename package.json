@@ -16,6 +16,9 @@
   "exports": "./index.js",
   "types": "index.d.ts",
   "files": [
+    "eslint.config.js",
+    "eslint.config.d.ts",
+    "eslint.config.d.ts.map",
     "index.js",
     "index.d.ts",
     "index.d.ts.map",
@@ -28,7 +31,7 @@
     "build:1-declaration": "tsc -p declaration.tsconfig.json",
     "build:2-add-ignores": "ts-ignore-import '**/*.d.ts'",
     "build": "run-s build:*",
-    "check:installed-check": "installed-check -i eslint-plugin-jsdoc -i knip -i installed-check -i compare-eslint-configs",
+    "check:installed-check": "installed-check -i @typescript-eslint/utils",
     "check:knip": "knip",
     "check:lint": "eslint --report-unused-disable-directives .",
     "check:type-coverage": "type-coverage --detail --strict --at-least 67 --ignore-files 'test/*'",
@@ -41,18 +44,18 @@
     "test": "run-s check"
   },
   "devDependencies": {
-    "@types/eslint": "^8.40.2",
-    "@types/node": "^18.19.30",
-    "@typescript-eslint/utils": "^7.5.0",
-    "@voxpelli/tsconfig": "^11.0.0",
+    "@types/eslint": "^8.56.10",
+    "@types/node": "^18.19.33",
+    "@typescript-eslint/utils": "^7.10.0",
+    "@voxpelli/tsconfig": "^12.0.1",
     "compare-eslint-configs": "^2.1.0",
-    "eslint": "^9.0.0",
+    "eslint": "^9.3.0",
     "husky": "^8.0.3",
-    "installed-check": "^8.0.1",
+    "installed-check": "^9.3.0",
     "knip": "^3.8.1",
-    "npm-run-all2": "^6.1.2",
-    "ts-ignore-import": "^3.0.0",
-    "type-coverage": "^2.28.1",
+    "npm-run-all2": "^6.2.0",
+    "ts-ignore-import": "^4.0.1",
+    "type-coverage": "^2.28.2",
     "typescript": "~5.4.4",
     "validate-conventional-commit": "^1.0.3"
   },
@@ -60,12 +63,11 @@
     "eslint": "^9.0.0"
   },
   "dependencies": {
-    "eslint": "^9.0.0",
     "eslint-plugin-es-x": "^7.6.0",
-    "eslint-plugin-jsdoc": "^48.2.3",
-    "eslint-plugin-n": "^17.0.0-6",
-    "eslint-plugin-sort-destructure-keys": "^1.5.0",
-    "eslint-plugin-unicorn": "^52.0.0",
-    "neostandard": "^0.1.0"
+    "eslint-plugin-jsdoc": "^48.2.6",
+    "eslint-plugin-n": "^17.7.0",
+    "eslint-plugin-sort-destructure-keys": "^1.6.0",
+    "eslint-plugin-unicorn": "^53.0.0",
+    "neostandard": "^0.4.0"
   }
 }

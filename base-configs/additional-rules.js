@@ -22,7 +22,7 @@ const addititionalCoreRules = {
     'no-unsafe-optional-chaining': ['error', { 'disallowArithmeticOperators': true }],
     'no-warning-comments': ['warn', { 'terms': ['fixme'] }],
     'object-shorthand': ['error', 'properties', { 'avoidQuotes': true }],
-    'quote-props': ['error', 'as-needed', { 'keywords': true, 'numbers': true, 'unnecessary': false }],
+    '@stylistic/quote-props': ['error', 'as-needed', { 'keywords': true, 'numbers': true, 'unnecessary': false }],
   },
 };
 
