@@ -31,7 +31,7 @@
     "build:1-declaration": "tsc -p declaration.tsconfig.json",
     "build:2-add-ignores": "ts-ignore-import '**/*.d.ts'",
     "build": "run-s build:*",
-    "check:installed-check": "installed-check -i @typescript-eslint/utils",
+    "check:installed-check": "installed-check -i @typescript-eslint/utils -i typescript-eslint",
     "check:knip": "knip",
     "check:lint": "eslint --report-unused-disable-directives .",
     "check:type-coverage": "type-coverage --detail --strict --at-least 67 --ignore-files 'test/*'",
@@ -65,9 +65,12 @@
   "dependencies": {
     "eslint-plugin-es-x": "^7.6.0",
     "eslint-plugin-jsdoc": "^48.2.6",
+    "eslint-plugin-mocha": "^10.4.3",
     "eslint-plugin-n": "^17.7.0",
     "eslint-plugin-sort-destructure-keys": "^1.6.0",
     "eslint-plugin-unicorn": "^53.0.0",
-    "neostandard": "^0.4.0"
+    "globals": "^15.3.0",
+    "neostandard": "^0.4.0",
+    "typescript-eslint": "^7.10.0"
   }
 }
