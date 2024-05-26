@@ -5,8 +5,8 @@ import esxPlugin from 'eslint-plugin-es-x';
 import nPlugin from 'eslint-plugin-n';
 // // @ts-ignore
 // import promisePlugin from 'eslint-plugin-promise';
-// // @ts-ignore
-// import securityPlugin from 'eslint-plugin-security';
+// @ts-ignore
+import securityPlugin from 'eslint-plugin-security';
 // @ts-ignore
 import sortDestructureKeysPlugin from 'eslint-plugin-sort-destructure-keys';
 // @ts-ignore
@@ -72,8 +72,7 @@ export const additionalRules = [
   addititionalCoreRules,
   ...adaptedNodeRules,
   ...adaptedUnicornRules,
-  // TODO: Add security plugin once https://github.com/eslint-community/eslint-plugin-security/issues/144 has been fixed
-  // securityPlugin.configs.recommended,
+  securityPlugin.configs.recommended,
   // TODO: Add promise plugin once https://github.com/eslint-community/eslint-plugin-promise/issues/449 has been fixed
   // promisePlugin.?
   {
@@ -89,9 +88,8 @@ export const additionalRules = [
     rules: {
       // Overrides of other extended ESLint rule packages
 
-      // TODO: Add back
-      // 'security/detect-object-injection': 'off',
-      // 'security/detect-unsafe-regex': 'off',
+      'security/detect-object-injection': 'off',
+      'security/detect-unsafe-regex': 'off',
 
       // Additional standalone ESLint rules
 
