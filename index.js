@@ -1,4 +1,5 @@
 import neostandard from 'neostandard';
+import { config } from 'typescript-eslint';
 
 import { additionalRules } from './base-configs/additional-rules.js';
 import { esmRules } from './base-configs/esm.js';
@@ -17,17 +18,19 @@ export function voxpelli (options) {
     ...neostandardOptions
   } = options || {};
 
-  return [
-    ...neostandard({
-      ignores: [...ignores || [], 'coverage/**/*'],
-      semi: true,
-      ...neostandardOptions,
-    }),
-    ...additionalRules,
-    ...jsdocRules,
-    ...cjs ? [] : esmRules,
-    ...noMocha ? [] : mochaRules,
-  ];
+  return config({
+    ignores: [...ignores || [], 'coverage/**/*'],
+    'extends': [
+      ...neostandard({
+        semi: true,
+        ...neostandardOptions,
+      }),
+      ...additionalRules,
+      ...jsdocRules,
+      ...cjs ? [] : esmRules,
+      ...noMocha ? [] : mochaRules,
+    ],
+  });
 }
 
 export default voxpelli();
