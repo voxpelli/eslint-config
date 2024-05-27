@@ -1,5 +1,18 @@
 # Changelog
 
+## [20.0.0-alpha2](https://github.com/voxpelli/eslint-config/compare/v20.0.0-alpha1...v20.0.0-alpha2) (2024-05-27)
+
+
+### Features
+
+* add ignore and expose all of neostandard ([914435c](https://github.com/voxpelli/eslint-config/commit/914435caeab288079a65ba3c0b4ed62de1c95bb7))
+
+
+### Bug Fixes
+
+* make ignore option work ([6a8bff7](https://github.com/voxpelli/eslint-config/commit/6a8bff7dc303d43f3f7f1e62607799fbddcfe846))
+* use pre-release of typescript-eslint ([3b69a72](https://github.com/voxpelli/eslint-config/commit/3b69a7269567bb95f54fad65745e1bfbda43adb5))
+
 ## [20.0.0-alpha1](https://github.com/voxpelli/eslint-config/compare/v19.0.0...v20.0.0-alpha1) (2024-05-27)
 
 
