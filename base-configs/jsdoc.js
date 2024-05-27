@@ -1,28 +1,18 @@
-'use strict';
+import jsdoc from 'eslint-plugin-jsdoc';
 
-/** @satisfies {import('eslint').ESLint.ConfigData} */
-const config = {
-  plugins: [
-    'jsdoc',
-  ],
-  'extends': [
-    'plugin:jsdoc/recommended-typescript-flavor',
-  ],
-  settings: {
-    jsdoc: {
-      mode: 'typescript',
+/** @satisfies {import('eslint').Linter.FlatConfig[]} */
+export const jsdocRules = [
+  jsdoc.configs['flat/recommended-typescript-flavor'],
+  {
+    rules: {
+      'jsdoc/check-types': 'off',
+      'jsdoc/require-jsdoc': 'off',
+      'jsdoc/require-param-description': 'off',
+      'jsdoc/require-property-description': 'off',
+      'jsdoc/require-returns-description': 'off',
+      'jsdoc/require-yields': 'off',
+      'jsdoc/tag-lines': ['warn', 'never', { 'startLines': 1 }],
+      'jsdoc/valid-types': 'off',
     },
   },
-  rules: {
-    'jsdoc/check-types': 'off',
-    'jsdoc/require-jsdoc': 'off',
-    'jsdoc/require-param-description': 'off',
-    'jsdoc/require-property-description': 'off',
-    'jsdoc/require-returns-description': 'off',
-    'jsdoc/require-yields': 'off',
-    'jsdoc/tag-lines': ['warn', 'never', { 'startLines': 1 }],
-    'jsdoc/valid-types': 'off',
-  },
-};
-
-module.exports = config;
+];

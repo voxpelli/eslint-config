@@ -85,12 +85,6 @@ jobs:
       - name: build project if needed
         run: npm run build-for-test --if-present
         working-directory: ./project
-      - name: modify project eslint config
-        run: sed 's/"@voxpelli"/"..\/main\/test.eslintrc"/' .eslintrc > tmp.eslintrc && rm .eslintrc && mv tmp.eslintrc .eslintrc
-        working-directory: ./project
-      - name: modify project eslint config (ESM version)
-        run: sed 's/"@voxpelli\/eslint-config\/esm"/"..\/main\/test-esm.eslintrc"/' .eslintrc > tmp.eslintrc && rm .eslintrc && mv tmp.eslintrc .eslintrc
-        working-directory: ./project
       - name: run eslint
-        run: ../main/node_modules/.bin/eslint --resolve-plugins-relative-to ../main --ext js --ext cjs --ext mjs --report-unused-disable-directives .
+        run: ../main/node_modules/.bin/eslint -c ../main/eslint.config.js
         working-directory: ./project

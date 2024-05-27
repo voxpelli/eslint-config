@@ -2,7 +2,7 @@
   "name": "@voxpelli/eslint-config",
   "version": "19.0.0",
   "license": "MIT",
-  "description": "My personal ESLint config. Based on semistandard",
+  "description": "My personal ESLint config. Based on neostandard",
   "author": "Pelle Wessman <pelle@kodfabrik.se> (https://kodfabrik.se/)",
   "homepage": "https://github.com/voxpelli/eslint-config",
   "repository": {
@@ -10,21 +10,31 @@
     "url": "git://github.com/voxpelli/eslint-config.git"
   },
   "engines": {
-    "node": ">=16.0.0"
+    "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
   },
+  "type": "module",
+  "exports": "./index.js",
+  "types": "index.d.ts",
   "files": [
-    "base-configs/**/*.js",
-    "esm.js",
+    "eslint.config.js",
+    "eslint.config.d.ts",
+    "eslint.config.d.ts.map",
     "index.js",
-    "mocha.js"
+    "index.d.ts",
+    "index.d.ts.map",
+    "base-configs/**/*.js",
+    "base-configs/**/*.d.ts",
+    "base-configs/**/*.d.ts.map"
   ],
   "scripts": {
     "build:0": "run-s clean",
     "build:1-declaration": "tsc -p declaration.tsconfig.json",
+    "build:2-add-ignores": "ts-ignore-import '**/*.d.ts'",
     "build": "run-s build:*",
-    "check:installed-check": "installed-check -i eslint-plugin-jsdoc -i knip -i installed-check -i compare-eslint-configs",
+    "check:installed-check": "installed-check -i @typescript-eslint/utils -i typescript-eslint",
     "check:knip": "knip",
     "check:lint": "eslint --report-unused-disable-directives .",
+    "check:type-coverage": "type-coverage --detail --strict --at-least 67 --ignore-files 'test/*'",
     "check:tsc": "tsc",
     "check": "run-s clean && run-p check:*",
     "clean:declarations": "rm -rf $(find . -maxdepth 2 -type f -name '*.d.ts*')",
@@ -33,40 +43,35 @@
     "prepublishOnly": "run-s build",
     "test": "run-s check"
   },
-  "main": "index.js",
   "devDependencies": {
-    "@voxpelli/tsconfig": "^10.0.0",
+    "@types/eslint": "^8.56.10",
+    "@types/node": "^18.19.33",
+    "@typescript-eslint/utils": "^7.10.0",
+    "@voxpelli/tsconfig": "^12.0.1",
     "compare-eslint-configs": "^2.1.0",
-    "eslint": "^8.45.0",
-    "eslint-plugin-es-x": "^7.5.0",
-    "eslint-plugin-import": "^2.29.0",
-    "eslint-plugin-jsdoc": "^46.4.4",
-    "eslint-plugin-mocha": "^10.2.0",
-    "eslint-plugin-n": "^16.3.1",
-    "eslint-plugin-promise": "^6.1.1",
-    "eslint-plugin-security": "^1.7.1",
-    "eslint-plugin-sort-destructure-keys": "^1.5.0",
-    "eslint-plugin-unicorn": "^49.0.0",
+    "eslint": "^9.3.0",
     "husky": "^8.0.3",
-    "installed-check": "^8.0.1",
+    "installed-check": "^9.3.0",
     "knip": "^3.8.1",
-    "npm-run-all2": "^6.1.2",
-    "typescript": "~5.3.2",
+    "npm-run-all2": "^6.2.0",
+    "ts-ignore-import": "^4.0.1",
+    "type-coverage": "^2.28.2",
+    "typescript": "~5.4.4",
     "validate-conventional-commit": "^1.0.3"
   },
   "peerDependencies": {
-    "eslint": "^8.45.0",
-    "eslint-plugin-es-x": "^7.5.0",
-    "eslint-plugin-import": "^2.29.0",
-    "eslint-plugin-jsdoc": "^46.4.4",
-    "eslint-plugin-mocha": "^10.2.0",
-    "eslint-plugin-n": "^16.3.1",
-    "eslint-plugin-promise": "^6.1.1",
-    "eslint-plugin-security": "^1.7.1",
-    "eslint-plugin-sort-destructure-keys": "^1.5.0",
-    "eslint-plugin-unicorn": "^49.0.0"
+    "eslint": "^9.0.0"
   },
   "dependencies": {
-    "@types/eslint": "^8.40.2"
+    "eslint-plugin-es-x": "^7.6.0",
+    "eslint-plugin-jsdoc": "^48.2.6",
+    "eslint-plugin-mocha": "^10.4.3",
+    "eslint-plugin-n": "^17.7.0",
+    "eslint-plugin-security": "^3.0.0",
+    "eslint-plugin-sort-destructure-keys": "^1.6.0",
+    "eslint-plugin-unicorn": "^53.0.0",
+    "globals": "^15.3.0",
+    "neostandard": "^0.4.0",
+    "typescript-eslint": "^7.10.0"
   }
 }

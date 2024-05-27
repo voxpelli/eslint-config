@@ -1,14 +1,22 @@
-'use strict';
+import neostandard from 'neostandard';
 
-/** @satisfies {import('eslint').ESLint.ConfigData} */
-const config = {
-  'extends': [
-    './base-configs/standard',
-    './base-configs/standard-customizations',
-    './base-configs/additional-rules',
-    './base-configs/jsdoc',
-  ],
-  root: true,
-};
+import { additionalRules } from './base-configs/additional-rules.js';
+import { esmRules } from './base-configs/esm.js';
+import { jsdocRules } from './base-configs/jsdoc.js';
+import { mochaRules } from './base-configs/mocha.js';
 
-module.exports = config;
+/**
+ * @param {{ cjs?: boolean, noMocha?: boolean }} [options]
+ * @returns {import('@typescript-eslint/utils/ts-eslint').FlatConfig.ConfigArray}
+ */
+export function voxpelli ({ cjs, noMocha } = {}) {
+  return [
+    ...neostandard({ semi: true }),
+    ...additionalRules,
+    ...jsdocRules,
+    ...cjs ? [] : esmRules,
+    ...noMocha ? [] : mochaRules,
+  ];
+}
+
+export default voxpelli();
