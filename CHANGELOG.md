@@ -1,5 +1,34 @@
 # Changelog
 
+## [20.0.0-alpha1](https://github.com/voxpelli/eslint-config/compare/v19.0.0...v20.0.0-alpha1) (2024-05-27)
+
+
+### ⚠ BREAKING CHANGES
+
+* initial neostandard based release ([#293](https://github.com/voxpelli/eslint-config/issues/293))
+* update dependency eslint-plugin-es-x to ^7.5.0 ([#267](https://github.com/voxpelli/eslint-config/issues/267))
+* update dependency eslint-plugin-es-x to ^7.4.0 ([#261](https://github.com/voxpelli/eslint-config/issues/261))
+* update dependency eslint-plugin-n to ^16.3.1 ([#243](https://github.com/voxpelli/eslint-config/issues/243))
+* update dependency eslint-plugin-es-x to ^7.3.0 ([#259](https://github.com/voxpelli/eslint-config/issues/259))
+* update dependency eslint-plugin-mocha to ^10.2.0 ([#250](https://github.com/voxpelli/eslint-config/issues/250))
+* update dependency eslint-plugin-import to ^2.29.0 ([#240](https://github.com/voxpelli/eslint-config/issues/240))
+* update dependency eslint-plugin-unicorn to v49 ([#256](https://github.com/voxpelli/eslint-config/issues/256))
+
+### Features
+
+* initial neostandard based release ([#293](https://github.com/voxpelli/eslint-config/issues/293)) ([fa27fa1](https://github.com/voxpelli/eslint-config/commit/fa27fa1469fa33f383841acbf4ea0881306c0a4a))
+* update dependency eslint-plugin-unicorn to v49 ([#256](https://github.com/voxpelli/eslint-config/issues/256)) ([4e3ff07](https://github.com/voxpelli/eslint-config/commit/4e3ff07acdc8017aa2852f14724336fa6fbf3eae))
+
+
+### Miscellaneous Chores
+
+* update dependency eslint-plugin-es-x to ^7.3.0 ([#259](https://github.com/voxpelli/eslint-config/issues/259)) ([73ff977](https://github.com/voxpelli/eslint-config/commit/73ff977169bca307224b55e8aea9509f82c3cc0b))
+* update dependency eslint-plugin-es-x to ^7.4.0 ([#261](https://github.com/voxpelli/eslint-config/issues/261)) ([56fb8e3](https://github.com/voxpelli/eslint-config/commit/56fb8e3da56e0652155963b95cee5d48feb332d3))
+* update dependency eslint-plugin-es-x to ^7.5.0 ([#267](https://github.com/voxpelli/eslint-config/issues/267)) ([bd3fa19](https://github.com/voxpelli/eslint-config/commit/bd3fa190ae233a465c67d4e006b9c8a64c7337d4))
+* update dependency eslint-plugin-import to ^2.29.0 ([#240](https://github.com/voxpelli/eslint-config/issues/240)) ([a0938e4](https://github.com/voxpelli/eslint-config/commit/a0938e4c9c3600919304e57a077b8f5c20d13a6f))
+* update dependency eslint-plugin-mocha to ^10.2.0 ([#250](https://github.com/voxpelli/eslint-config/issues/250)) ([84214ca](https://github.com/voxpelli/eslint-config/commit/84214caabf5f8eef96a3ef6fa4ec1bdf0b2f53b9))
+* update dependency eslint-plugin-n to ^16.3.1 ([#243](https://github.com/voxpelli/eslint-config/issues/243)) ([fcca43a](https://github.com/voxpelli/eslint-config/commit/fcca43a9d98e46e54c75de9546652c0e3050e77e))
+
 ## [19.0.0](https://github.com/voxpelli/eslint-config/compare/v18.0.0...v19.0.0) (2023-07-25)
 
 
