@@ -18,6 +18,7 @@ on:
         type: choice
         options:
         - compliant
+        - preFlatconfigCompliant
         - nonCompliant
 
 concurrency:

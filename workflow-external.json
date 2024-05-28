@@ -1,15 +1,19 @@
 {
   "compliant": [
-    "voxpelli/async-htm-to-string",
-    "voxpelli/chai-posix-path",
-    "voxpelli/compare-eslint-configs",
     "voxpelli/linemod-core",
     "voxpelli/linemod",
     "voxpelli/list-installed",
+    "voxpelli/node-github-publish",
+    "voxpelli/webring-opml"
+  ],
+
+  "preFlatconfigCompliant": [
+    "voxpelli/async-htm-to-string",
+    "voxpelli/chai-posix-path",
+    "voxpelli/compare-eslint-configs",
     "voxpelli/node-bunyan-adaptor",
     "voxpelli/node-connect-pg-simple",
     "voxpelli/node-fulfills",
-    "voxpelli/node-github-publish",
     "voxpelli/node-installed-check-core",
     "voxpelli/node-installed-check",
     "voxpelli/node-pg-pubsub",
@@ -17,7 +21,6 @@
     "voxpelli/pony-cause",
     "voxpelli/semver-set",
     "voxpelli/version-guard",
-    "voxpelli/webring-opml",
     "yikesable/fastify-acl"
   ],
 
