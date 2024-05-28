@@ -2,5 +2,6 @@
   "$schema": "https://unpkg.com/knip@2/schema.json",
   "eslint": {
     "config": ["eslint.config.js", "index.js"]
-  }
+  },
+  "ignoreBinaries": ["jq"]
 }
