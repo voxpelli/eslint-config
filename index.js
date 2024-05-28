@@ -23,6 +23,7 @@ export function voxpelli (options) {
     'extends': [
       ...neostandard({
         semi: true,
+        ts: true,
         ...neostandardOptions,
       }),
       ...additionalRules,

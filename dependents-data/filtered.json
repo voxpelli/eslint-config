@@ -34,5 +34,6 @@
   "voxpelli/typed-utils",
   "voxpelli/umzeption",
   "voxpelli/validate-conventional-commit",
-  "voxpelli/version-guard"
+  "voxpelli/version-guard",
+  "yikesable/fastify-acl"
 ]

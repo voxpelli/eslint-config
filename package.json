@@ -39,7 +39,7 @@
     "check": "run-s clean && run-p check:*",
     "clean:declarations": "rm -rf $(find . -maxdepth 2 -type f -name '*.d.ts*')",
     "clean": "run-p clean:*",
-    "dependents-filter": "cd dependents-data/ && list-dependents filter --min-downloads 0 --sort-download --repository-prefix=https://github.com/voxpelli/ -i voxpelli__eslint-config.ndjson | jq -s '[.[].repositoryUrl | sub(\"https://github.com/\";\"\";\"i\")] | unique | sort' > filtered.json",
+    "dependents-filter": "cd dependents-data/ && list-dependents filter --min-downloads 0 --sort-download --repository-prefix=https://github.com/voxpelli/ --repository-prefix=https://github.com/yikesable/ -i voxpelli__eslint-config.ndjson | jq -s '[.[].repositoryUrl | sub(\"https://github.com/\";\"\";\"i\")] | unique | sort' > filtered.json",
     "dependents-refresh": "cd dependents-data/ && list-dependents refresh -n @voxpelli/eslint-config --field engines",
     "dependents-update": "cd dependents-data/ && list-dependents list -n @voxpelli/eslint-config --field engines --min-downloads 0",
     "prepare": "husky install",
@@ -55,8 +55,8 @@
     "eslint": "^9.3.0",
     "husky": "^8.0.3",
     "installed-check": "^9.3.0",
-    "knip": "^5.17.0",
-    "list-dependents-cli": "^2.1.1",
+    "knip": "^5.17.3",
+    "list-dependents-cli": "^2.2.0",
     "npm-run-all2": "^6.2.0",
     "ts-ignore-import": "^4.0.1",
     "type-coverage": "^2.28.2",
@@ -75,7 +75,7 @@
     "eslint-plugin-sort-destructure-keys": "^2.0.0",
     "eslint-plugin-unicorn": "^53.0.0",
     "globals": "^15.3.0",
-    "neostandard": "^0.4.1",
+    "neostandard": "^0.5.0",
     "typescript-eslint": "^8.0.0-alpha.17"
   }
 }
