@@ -5,6 +5,7 @@ import { additionalRules } from './base-configs/additional-rules.js';
 import { esmRules } from './base-configs/esm.js';
 import { jsdocRules } from './base-configs/jsdoc.js';
 import { mochaRules } from './base-configs/mocha.js';
+import { modifiedNeostandardRules } from './base-configs/modified-rules.js';
 
 /**
  * @param {{ cjs?: boolean, noMocha?: boolean } & import('neostandard').NeostandardOptions} [options]
@@ -26,6 +27,7 @@ export function voxpelli (options) {
         ts: true,
         ...neostandardOptions,
       }),
+      ...modifiedNeostandardRules,
       ...additionalRules,
       ...jsdocRules,
       ...cjs ? [] : esmRules,
