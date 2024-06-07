@@ -20,7 +20,7 @@ export function voxpelli (options) {
   } = options || {};
 
   return config({
-    ignores: [...ignores || [], 'coverage/**/*'],
+    ...ignores && { ignores },
     'extends': [
       ...neostandard({
         semi: true,
