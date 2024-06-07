@@ -1,5 +1,25 @@
 # Changelog
 
+## [20.0.0-alpha3](https://github.com/voxpelli/eslint-config/compare/v20.0.0-alpha2...v20.0.0-alpha3) (2024-06-07)
+
+
+### 🌟 Features
+
+* update neostandard to `0.6.0` + other deps ([433c277](https://github.com/voxpelli/eslint-config/commit/433c27708876967452f861303b160b29ffc92239))
+
+
+### 🩹 Fixes
+
+* improved mocha config ([c5a4840](https://github.com/voxpelli/eslint-config/commit/c5a4840523c192c019ce6616cea7fb2449581deb))
+* remove redundant `globals` dependency ([62fba11](https://github.com/voxpelli/eslint-config/commit/62fba11a286d5d8cf0237803ab8f1a7756d336c5))
+* restore `no-unused-vars` to pre-neostandard ([3c6e165](https://github.com/voxpelli/eslint-config/commit/3c6e1653718d1ca5b814978228b7cb0c4940e651))
+* update to latest neostandard ([f32a047](https://github.com/voxpelli/eslint-config/commit/f32a04783322f713c64304fc8f5a5d2715fc35d3))
+
+
+### 📚 Documentation
+
+* update README ([7c1535d](https://github.com/voxpelli/eslint-config/commit/7c1535d32d8e99668000615b967264314de2ad47))
+
 ## [20.0.0-alpha2](https://github.com/voxpelli/eslint-config/compare/v20.0.0-alpha1...v20.0.0-alpha2) (2024-05-27)
 
 
