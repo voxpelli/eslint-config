@@ -1,5 +1,21 @@
 # Changelog
 
+## [20.0.0-alpha4](https://github.com/voxpelli/eslint-config/compare/v20.0.0-alpha3...v20.0.0-alpha4) (2024-06-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* update dependency eslint to ^9.4.0 ([#294](https://github.com/voxpelli/eslint-config/issues/294))
+
+### chore
+
+* update dependency eslint to ^9.4.0 ([#294](https://github.com/voxpelli/eslint-config/issues/294)) ([f8c420c](https://github.com/voxpelli/eslint-config/commit/f8c420c672b8af550697fee676549f337df387dc))
+
+
+### 🩹 Fixes
+
+* **deps:** update dependency neostandard to ^0.7.0 ([#312](https://github.com/voxpelli/eslint-config/issues/312)) ([103005f](https://github.com/voxpelli/eslint-config/commit/103005f9fd52932016b49725aa0be51a7ad334c2))
+
 ## [20.0.0-alpha3](https://github.com/voxpelli/eslint-config/compare/v20.0.0-alpha2...v20.0.0-alpha3) (2024-06-07)
 
 
