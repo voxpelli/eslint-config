@@ -1,5 +1,12 @@
 # Changelog
 
+## [20.0.0-alpha5](https://github.com/voxpelli/eslint-config/compare/v20.0.0-alpha4...v20.0.0-alpha5) (2024-06-13)
+
+
+### 🩹 Fixes
+
+* restore default ignores ([961695d](https://github.com/voxpelli/eslint-config/commit/961695d72cff47e32680eb608a8cf75cfba1358a))
+
 ## [20.0.0-alpha4](https://github.com/voxpelli/eslint-config/compare/v20.0.0-alpha3...v20.0.0-alpha4) (2024-06-12)
 
 
