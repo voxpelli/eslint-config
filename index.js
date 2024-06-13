@@ -1,4 +1,4 @@
-import neostandard from 'neostandard';
+import neostandard, { resolveIgnoresFromGitignore } from 'neostandard';
 import { config } from 'typescript-eslint';
 
 import { additionalRules } from './base-configs/additional-rules.js';
@@ -20,7 +20,12 @@ export function voxpelli (options) {
   } = options || {};
 
   return config({
-    ...ignores && { ignores },
+    ignores: [
+      'coverage/**/*',
+      ...resolveIgnoresFromGitignore(),
+      ...ignores || [],
+    ],
+
     'extends': [
       ...neostandard({
         semi: true,
