@@ -1,6 +1,7 @@
 /** @satisfies {import('eslint').Linter.FlatConfig[]} */
 export const esmRules = [
   {
+    name: '@voxpelli/esm',
     rules: {
       // Overrides of other rules
       'func-style': ['warn', 'declaration', { 'allowArrowFunctions': true }],

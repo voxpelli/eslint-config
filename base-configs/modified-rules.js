@@ -1,6 +1,7 @@
-/** @satisfies {import('@typescript-eslint/utils/ts-eslint').FlatConfig.ConfigArray} */
+/** @satisfies {import('eslint').Linter.FlatConfig[]} */
 export const modifiedNeostandardRules = [
   {
+    name: '@voxpelli/eslint-config Modified Neostandard TS Rules',
     files: ['**/*.ts'],
     rules: {
       '@typescript-eslint/no-unused-vars': ['error', {
@@ -12,6 +13,7 @@ export const modifiedNeostandardRules = [
     },
   },
   {
+    name: '@voxpelli/eslint-config Modified Neostandard Rules',
     rules: {
       'no-unused-vars': ['error', {
         'vars': 'all',

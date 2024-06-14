@@ -4,6 +4,7 @@ import jsdoc from 'eslint-plugin-jsdoc';
 export const jsdocRules = [
   jsdoc.configs['flat/recommended-typescript-flavor'],
   {
+    name: '@voxpelli/jsdoc',
     rules: {
       'jsdoc/check-types': 'off',
       'jsdoc/require-jsdoc': 'off',
