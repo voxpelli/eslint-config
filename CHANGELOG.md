@@ -1,5 +1,12 @@
 # Changelog
 
+## [20.0.0-alpha8](https://github.com/voxpelli/eslint-config/compare/v20.0.0-alpha7...v20.0.0-alpha8) (2024-06-14)
+
+
+### 🩹 Fixes
+
+* update `unicorn` and `n` ([af7b272](https://github.com/voxpelli/eslint-config/commit/af7b272ba27e3ba45ba2e7a657164e8de573f672))
+
 ## [20.0.0-alpha7](https://github.com/voxpelli/eslint-config/compare/v20.0.0-alpha6...v20.0.0-alpha7) (2024-06-14)
 
 
