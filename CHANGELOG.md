@@ -1,5 +1,14 @@
 # Changelog
 
+## [20.0.0-alpha7](https://github.com/voxpelli/eslint-config/compare/v20.0.0-alpha6...v20.0.0-alpha7) (2024-06-14)
+
+
+### 🩹 Fixes
+
+* ensure ignores are global ignores ([e0d2065](https://github.com/voxpelli/eslint-config/commit/e0d2065f1855b5f995140f4a0fe81294b59ba1eb))
+* neostandard modifications ([527dee6](https://github.com/voxpelli/eslint-config/commit/527dee6dae404d96ac0ad4ba6c5b3b295b8ae39f))
+* temp remove node recommended from cjs / mjs ([09b7052](https://github.com/voxpelli/eslint-config/commit/09b70527341bd46c768e591b95fe8c7125c9697d))
+
 ## [20.0.0-alpha6](https://github.com/voxpelli/eslint-config/compare/v20.0.0-alpha5...v20.0.0-alpha6) (2024-06-14)
 
 
