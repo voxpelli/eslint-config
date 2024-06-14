@@ -29,7 +29,11 @@ const additionalCoreRules = {
 
 /** @satisfies {import('eslint').Linter.FlatConfig[]} */
 const adaptedNodeRules = [
-  nPlugin.configs['flat/recommended'],
+  {
+    // Remove when https://github.com/eslint-community/eslint-plugin-n/pull/300 is fixed
+    ignores: ['**/*.cjs', '**/*.mjs'],
+    ...nPlugin.configs['flat/recommended'],
+  },
   {
     name: '@voxpelli/additional/node',
     rules: {
