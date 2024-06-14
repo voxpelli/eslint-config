@@ -1,20 +1,28 @@
 // @ts-ignore
 import mochaPlugin from 'eslint-plugin-mocha';
-import { config } from 'typescript-eslint';
 
-export const mochaRules = config({
-  ignores: ['**/*', '!test/**/*'],
-  'extends': [
-    mochaPlugin.configs.flat.recommended,
-    {
-      files: ['**/*.ts'],
-      rules: {
-        '@typescript-eslint/no-unused-expressions': 'off',
-      },
-    },
-  ],
-  rules: {
-    'mocha/no-mocha-arrows': 'off',
-    'no-unused-expressions': 'off',
+const ignores = ['**/*', '!test/**/*'];
+
+/** @satisfies {import('eslint').Linter.FlatConfig[]} */
+export const mochaRules = [
+  {
+    ...mochaPlugin.configs.flat.recommended,
+    ignores,
   },
-});
+  {
+    name: '@voxpelli/mocha',
+    ignores,
+    rules: {
+      'mocha/no-mocha-arrows': 'off',
+      'no-unused-expressions': 'off',
+    },
+  },
+  {
+    name: '@voxpelli/mocha/ts',
+    ignores,
+    files: ['**/*.ts'],
+    rules: {
+      '@typescript-eslint/no-unused-expressions': 'off',
+    },
+  },
+];

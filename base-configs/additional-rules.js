@@ -12,8 +12,9 @@ import sortDestructureKeysPlugin from 'eslint-plugin-sort-destructure-keys';
 // @ts-ignore
 import unicornPlugin from 'eslint-plugin-unicorn';
 
-/** @satisfies {import('@typescript-eslint/utils/ts-eslint').FlatConfig.Config} */
-const addititionalCoreRules = {
+/** @satisfies {import('eslint').Linter.FlatConfig} */
+const additionalCoreRules = {
+  name: '@voxpelli/additional/core',
   rules: {
     // Added ESLint core rules
     'func-style': ['warn', 'expression', { 'allowArrowFunctions': true }],
@@ -26,11 +27,11 @@ const addititionalCoreRules = {
   },
 };
 
-/** @satisfies {import('@typescript-eslint/utils/ts-eslint').FlatConfig.ConfigArray} */
+/** @satisfies {import('eslint').Linter.FlatConfig[]} */
 const adaptedNodeRules = [
   nPlugin.configs['flat/recommended'],
   {
-    name: 'Adapted Node Rules',
+    name: '@voxpelli/additional/node',
     rules: {
       // Overriding
       'n/no-process-exit': 'off',
@@ -44,11 +45,11 @@ const adaptedNodeRules = [
   },
 ];
 
-/** @satisfies {import('@typescript-eslint/utils/ts-eslint').FlatConfig.ConfigArray} */
+/** @satisfies {import('eslint').Linter.FlatConfig[]} */
 const adaptedUnicornRules = [
   unicornPlugin.configs['flat/recommended'],
   {
-    name: 'Additional Node Rules',
+    name: '@voxpelli/additional/unicorn',
     rules: {
       // Overriding
       'unicorn/catch-error-name': ['error', { name: 'err', ignore: ['^cause$'] }],
@@ -68,16 +69,16 @@ const adaptedUnicornRules = [
   },
 ];
 
-/** @satisfies {import('@typescript-eslint/utils/ts-eslint').FlatConfig.ConfigArray} */
+/** @satisfies {import('eslint').Linter.FlatConfig[]} */
 export const additionalRules = [
-  addititionalCoreRules,
+  additionalCoreRules,
   ...adaptedNodeRules,
   ...adaptedUnicornRules,
   securityPlugin.configs.recommended,
   // TODO: Add promise plugin once https://github.com/eslint-community/eslint-plugin-promise/issues/449 has been fixed
   // promisePlugin.?
   {
-    name: 'Additional Rules',
+    name: '@voxpelli/additional/misc',
     plugins: {
       'es-x': esxPlugin,
       // TODO: Add back
