@@ -1,5 +1,12 @@
 # Changelog
 
+## [20.0.0-alpha6](https://github.com/voxpelli/eslint-config/compare/v20.0.0-alpha5...v20.0.0-alpha6) (2024-06-14)
+
+
+### 🩹 Fixes
+
+* add names to configs to help config inspector ([#315](https://github.com/voxpelli/eslint-config/issues/315)) ([9786a4c](https://github.com/voxpelli/eslint-config/commit/9786a4cd68fdb4e5b0ed207a85288560f2455f49))
+
 ## [20.0.0-alpha5](https://github.com/voxpelli/eslint-config/compare/v20.0.0-alpha4...v20.0.0-alpha5) (2024-06-13)
 
 
