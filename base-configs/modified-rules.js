@@ -1,10 +1,9 @@
 /** @satisfies {import('eslint').Linter.FlatConfig[]} */
 export const modifiedNeostandardRules = [
   {
-    name: '@voxpelli/eslint-config Modified Neostandard TS Rules',
-    files: ['**/*.ts'],
+    name: '@voxpelli/modified/neostandard',
     rules: {
-      '@typescript-eslint/no-unused-vars': ['error', {
+      'no-unused-vars': ['error', {
         'vars': 'all',
         'args': 'all',
         'argsIgnorePattern': '^_',
@@ -13,9 +12,11 @@ export const modifiedNeostandardRules = [
     },
   },
   {
-    name: '@voxpelli/eslint-config Modified Neostandard Rules',
+    name: '@voxpelli/modified/neostandard/ts',
+    files: ['**/*.ts'],
     rules: {
-      'no-unused-vars': ['error', {
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': ['error', {
         'vars': 'all',
         'args': 'all',
         'argsIgnorePattern': '^_',
