@@ -13,20 +13,20 @@ import { modifiedNeostandardRules } from './base-configs/modified-rules.js';
 export function voxpelli (options) {
   const {
     cjs,
-    ignores,
+    ignores: rawIgnores,
     noMocha,
     ...neostandardOptions
   } = options || {};
 
+  const ignores = [
+    'coverage/**/*',
+    ...resolveIgnoresFromGitignore(),
+    ...rawIgnores || [],
+  ];
+
   return [
-    {
-      name: '@voxpelli/ignores',
-      ignores: [
-        'coverage/**/*',
-        ...resolveIgnoresFromGitignore(),
-        ...ignores || [],
-      ],
-    },
+    // If ignores is the lone key, then that amounts to being global ignores: https://eslint.org/docs/latest/use/configure/configuration-files#globally-ignoring-files-with-ignores
+    { ignores },
     ...neostandard({
       semi: true,
       ts: true,
