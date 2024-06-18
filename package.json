@@ -63,7 +63,7 @@
     "validate-conventional-commit": "^1.0.3"
   },
   "peerDependencies": {
-    "eslint": "^9.4.0"
+    "eslint": "^9.5.0"
   },
   "dependencies": {
     "eslint-plugin-es-x": "^7.7.0",
