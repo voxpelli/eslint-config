@@ -11,6 +11,7 @@
     { "type": "fix", "section": "🩹 Fixes", "hidden": false },
     { "type": "docs", "section": "📚 Documentation", "hidden": false },
 
+    { "type": "chore", "section": "🧹 Chores", "hidden": false },
     { "type": "perf", "section": "🧹 Chores", "hidden": false },
     { "type": "refactor", "section": "🧹 Chores", "hidden": false },
     { "type": "test", "section": "🧹 Chores", "hidden": false },
