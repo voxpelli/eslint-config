@@ -1,5 +1,21 @@
 # Changelog
 
+## [20.0.0-alpha9](https://github.com/voxpelli/eslint-config/compare/v20.0.0-alpha8...v20.0.0-alpha9) (2024-06-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* update dependency eslint to ^9.5.0 ([#320](https://github.com/voxpelli/eslint-config/issues/320))
+
+### 🩹 Fixes
+
+* update dependency eslint to ^9.5.0 ([#320](https://github.com/voxpelli/eslint-config/issues/320)) ([40d8067](https://github.com/voxpelli/eslint-config/commit/40d80673c578d0a88afeb03028a7673d130327bf))
+
+
+### 🧹 Chores
+
+* **deps:** update dependencies ([d3df232](https://github.com/voxpelli/eslint-config/commit/d3df2323740ce5c6e043175e8483f26a4802dbcc))
+
 ## [20.0.0-alpha8](https://github.com/voxpelli/eslint-config/compare/v20.0.0-alpha7...v20.0.0-alpha8) (2024-06-14)
 
 
