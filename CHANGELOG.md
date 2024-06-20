@@ -1,5 +1,12 @@
 # Changelog
 
+## [20.0.0-beta.1](https://github.com/voxpelli/eslint-config/compare/v20.0.0-alpha10...v20.0.0-beta.1) (2024-06-20)
+
+
+### 🧹 Chores
+
+* release 20.0.0-beta.1 ([f9a837f](https://github.com/voxpelli/eslint-config/commit/f9a837f1b38d0bde8230c4f0c6fa0ec3259de4ca))
+
 ## [20.0.0-alpha10](https://github.com/voxpelli/eslint-config/compare/v20.0.0-alpha9...v20.0.0-alpha10) (2024-06-20)
 
 
