@@ -1,5 +1,12 @@
 # Changelog
 
+## [20.0.0-alpha10](https://github.com/voxpelli/eslint-config/compare/v20.0.0-alpha9...v20.0.0-alpha10) (2024-06-20)
+
+
+### 🩹 Fixes
+
+* deactivate `n/no-missing-import` for ts-files ([5abfa8f](https://github.com/voxpelli/eslint-config/commit/5abfa8fef4e497ec3da2aa1b6cdf4693b0764ed6))
+
 ## [20.0.0-alpha9](https://github.com/voxpelli/eslint-config/compare/v20.0.0-alpha8...v20.0.0-alpha9) (2024-06-18)
 
 
