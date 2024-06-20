@@ -47,6 +47,14 @@ const adaptedNodeRules = [
       'n/no-sync': 'error',
     },
   },
+  {
+    name: '@voxpelli/additional/node/ts',
+    files: ['**/*.ts'],
+    rules: {
+      // TODO: Remove when *.js files can be properly resolved from *.d.ts
+      'n/no-missing-import': 'off',
+    },
+  },
 ];
 
 /** @satisfies {import('eslint').Linter.FlatConfig[]} */
