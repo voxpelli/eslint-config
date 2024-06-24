@@ -1,5 +1,12 @@
 # Changelog
 
+## [20.0.0-beta.2](https://github.com/voxpelli/eslint-config/compare/v20.0.0-beta.1...v20.0.0-beta.2) (2024-06-24)
+
+
+### 🩹 Fixes
+
+* **deps:** update dependency neostandard to ^0.8.0 ([#327](https://github.com/voxpelli/eslint-config/issues/327)) ([2154c19](https://github.com/voxpelli/eslint-config/commit/2154c19dbd229e909666b0e27737ebac4467215a))
+
 ## [20.0.0-beta.1](https://github.com/voxpelli/eslint-config/compare/v20.0.0-alpha10...v20.0.0-beta.1) (2024-06-20)
 
 
