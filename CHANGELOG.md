@@ -1,5 +1,12 @@
 # Changelog
 
+## [20.0.0-beta.3](https://github.com/voxpelli/eslint-config/compare/v20.0.0-beta.2...v20.0.0-beta.3) (2024-06-24)
+
+
+### 🩹 Fixes
+
+* make node rules apply to cjs / mjs ([#324](https://github.com/voxpelli/eslint-config/issues/324)) ([3e7e199](https://github.com/voxpelli/eslint-config/commit/3e7e19983ceb115cdb2d93406a6d2a130cbc3b93))
+
 ## [20.0.0-beta.2](https://github.com/voxpelli/eslint-config/compare/v20.0.0-beta.1...v20.0.0-beta.2) (2024-06-24)
 
 
