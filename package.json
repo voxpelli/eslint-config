@@ -59,7 +59,7 @@
     "npm-run-all2": "^6.2.0",
     "ts-ignore-import": "^4.0.1",
     "type-coverage": "^2.29.0",
-    "typescript": "~5.4.5",
+    "typescript": "~5.5.2",
     "validate-conventional-commit": "^1.0.3"
   },
   "peerDependencies": {
