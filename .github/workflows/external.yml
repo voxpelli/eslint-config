@@ -86,6 +86,9 @@ jobs:
       - name: build project if needed
         run: npm run build-for-test --if-present
         working-directory: ./project
+      - name: modify project eslint config
+        run: sed "s/'@voxpelli\/eslint-config'/'..\/main\/index.js'/" eslint.config.js > tmp.eslint.config.js && rm eslint.config.js && mv tmp.eslint.config.js eslint.config.js
+        working-directory: ./project
       - name: run eslint
-        run: ../main/node_modules/.bin/eslint -c ../main/eslint.config.js
+        run: ../main/node_modules/.bin/eslint
         working-directory: ./project
