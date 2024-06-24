@@ -4,6 +4,7 @@ import { additionalRules } from './base-configs/additional-rules.js';
 import { esmRules } from './base-configs/esm.js';
 import { jsdocRules } from './base-configs/jsdoc.js';
 import { mochaRules } from './base-configs/mocha.js';
+import { nodeRules } from './base-configs/node.js';
 import { modifiedNeostandardRules } from './base-configs/modified-rules.js';
 
 /**
@@ -12,7 +13,7 @@ import { modifiedNeostandardRules } from './base-configs/modified-rules.js';
  */
 export function voxpelli (options) {
   const {
-    cjs,
+    cjs = false,
     ignores: rawIgnores,
     noMocha,
     ...neostandardOptions
@@ -35,6 +36,7 @@ export function voxpelli (options) {
     ...modifiedNeostandardRules,
     ...additionalRules,
     ...jsdocRules,
+    ...nodeRules(cjs),
     ...cjs ? [] : esmRules,
     ...noMocha ? [] : mochaRules,
   ];

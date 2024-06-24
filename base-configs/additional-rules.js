@@ -1,8 +1,6 @@
 // @ts-ignore
 import esxPlugin from 'eslint-plugin-es-x';
 // import importPlugin from 'eslint-plugin-import-x';
-// @ts-ignore
-import nPlugin from 'eslint-plugin-n';
 // // @ts-ignore
 // import promisePlugin from 'eslint-plugin-promise';
 // @ts-ignore
@@ -26,36 +24,6 @@ const additionalCoreRules = {
     '@stylistic/quote-props': ['error', 'as-needed', { 'keywords': true, 'numbers': true, 'unnecessary': false }],
   },
 };
-
-/** @satisfies {import('eslint').Linter.FlatConfig[]} */
-const adaptedNodeRules = [
-  {
-    // Remove when https://github.com/eslint-community/eslint-plugin-n/pull/300 is fixed
-    ignores: ['**/*.cjs', '**/*.mjs'],
-    ...nPlugin.configs['flat/recommended'],
-  },
-  {
-    name: '@voxpelli/additional/node',
-    rules: {
-      // Overriding
-      'n/no-process-exit': 'off',
-
-      // Adding
-      'n/prefer-global/console': 'warn',
-      'n/prefer-promises/fs': 'warn',
-      'n/no-process-env': 'warn',
-      'n/no-sync': 'error',
-    },
-  },
-  {
-    name: '@voxpelli/additional/node/ts',
-    files: ['**/*.ts'],
-    rules: {
-      // TODO: Remove when *.js files can be properly resolved from *.d.ts
-      'n/no-missing-import': 'off',
-    },
-  },
-];
 
 /** @satisfies {import('eslint').Linter.FlatConfig[]} */
 const adaptedUnicornRules = [
@@ -84,7 +52,6 @@ const adaptedUnicornRules = [
 /** @satisfies {import('eslint').Linter.FlatConfig[]} */
 export const additionalRules = [
   additionalCoreRules,
-  ...adaptedNodeRules,
   ...adaptedUnicornRules,
   securityPlugin.configs.recommended,
   // TODO: Add promise plugin once https://github.com/eslint-community/eslint-plugin-promise/issues/449 has been fixed
