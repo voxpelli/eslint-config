@@ -48,7 +48,7 @@
   },
   "devDependencies": {
     "@types/eslint": "^8.56.10",
-    "@types/node": "^18.19.36",
+    "@types/node": "^18.19.39",
     "@voxpelli/tsconfig": "^12.0.1",
     "compare-eslint-configs": "^2.1.0",
     "eslint": "^9.5.0",
@@ -59,7 +59,7 @@
     "npm-run-all2": "^6.2.0",
     "ts-ignore-import": "^4.0.1",
     "type-coverage": "^2.29.0",
-    "typescript": "~5.4.5",
+    "typescript": "~5.5.2",
     "validate-conventional-commit": "^1.0.3"
   },
   "peerDependencies": {
