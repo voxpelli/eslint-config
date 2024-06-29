@@ -1,5 +1,5 @@
 {
   "extends": [
-    "github>voxpelli/renovate-config:peer-focused"
+    "github>voxpelli/renovate-config"
   ]
 }
