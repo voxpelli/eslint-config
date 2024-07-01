@@ -16,3 +16,7 @@ permissions:
 jobs:
   test:
     uses: voxpelli/ghatemplates/.github/workflows/simple-test.yml@main
+
+  types:
+    needs: [test]
+    uses: ./.github/workflows/external.yml
