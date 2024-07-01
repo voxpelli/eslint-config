@@ -69,7 +69,6 @@
     "eslint-plugin-es-x": "^7.7.0",
     "eslint-plugin-jsdoc": "^48.2.12",
     "eslint-plugin-mocha": "^10.4.3",
-    "eslint-plugin-n": "^17.9.0",
     "eslint-plugin-security": "^3.0.1",
     "eslint-plugin-sort-destructure-keys": "^2.0.0",
     "eslint-plugin-unicorn": "^54.0.0",
