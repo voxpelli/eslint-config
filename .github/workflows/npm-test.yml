@@ -17,6 +17,6 @@ jobs:
   test:
     uses: voxpelli/ghatemplates/.github/workflows/simple-test.yml@main
 
-  types:
+  external:
     needs: [test]
     uses: ./.github/workflows/external.yml
