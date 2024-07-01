@@ -1,5 +1,16 @@
 # Changelog
 
+## [20.0.0-beta.5](https://github.com/voxpelli/eslint-config/compare/v20.0.0-beta.4...v20.0.0-beta.5) (2024-07-01)
+
+
+### 🩹 Fixes
+
+* avoid potential clash with neostandard `n/` ([4e70c1a](https://github.com/voxpelli/eslint-config/commit/4e70c1a924e1d9fa4a5ac96459cbacf090b0374e))
+* **deps:** remove unused `eslint-plugin-n` ([dd364c8](https://github.com/voxpelli/eslint-config/commit/dd364c8007fd7be92d222b4ed1b68db82dbf712e))
+* **deps:** update neostandard ([844ad13](https://github.com/voxpelli/eslint-config/commit/844ad1318386eed1066c32b90b586da16b60049c))
+* revert avoid potential clash with neostandard `n/` ([a07f6cb](https://github.com/voxpelli/eslint-config/commit/a07f6cbce54f0416ae4113c7dca2a918da036c93))
+* update neostandard and use its node plugin ([59e4604](https://github.com/voxpelli/eslint-config/commit/59e4604153f17661f2201932701b825174624ad1))
+
 ## [20.0.0-beta.4](https://github.com/voxpelli/eslint-config/compare/v20.0.0-beta.3...v20.0.0-beta.4) (2024-06-29)
 
 
