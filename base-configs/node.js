@@ -1,5 +1,4 @@
-// @ts-ignore
-import nPlugin from 'eslint-plugin-n';
+import { plugins } from 'neostandard';
 
 /**
  * @param {boolean} cjs
@@ -8,12 +7,12 @@ import nPlugin from 'eslint-plugin-n';
 export function nodeRules (cjs) {
   return [
     {
-      ...nPlugin.configs['flat/recommended-module'],
+      ...plugins.n.configs['flat/recommended-module'],
       // If CommonJS, only target *.mjs, target everything but *.cjs
       ...cjs ? { files: ['**/*.mjs'] } : { ignores: ['**/*.cjs'] },
     },
     {
-      ...nPlugin.configs['flat/recommended-script'],
+      ...plugins.n.configs['flat/recommended-script'],
       // If CommonJS, target everything but *.mjs, else only target *.cjs
       ...cjs ? { ignores: ['**/*.mjs'] } : { files: ['**/*.cjs'] },
     },
