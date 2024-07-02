@@ -60,7 +60,7 @@
     "ts-ignore-import": "^4.0.1",
     "type-coverage": "^2.29.0",
     "typescript": "~5.5.2",
-    "validate-conventional-commit": "^1.0.3"
+    "validate-conventional-commit": "^1.0.4"
   },
   "peerDependencies": {
     "eslint": "^9.5.0"
