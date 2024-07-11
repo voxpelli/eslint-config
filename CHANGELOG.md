@@ -1,5 +1,29 @@
 # Changelog
 
+## [20.0.0-beta.6](https://github.com/voxpelli/eslint-config/compare/v20.0.0-beta.5...v20.0.0-beta.6) (2024-07-11)
+
+
+### 🌟 Features
+
+* add back promise rules ([7c349ea](https://github.com/voxpelli/eslint-config/commit/7c349ea693a8450c4bb8575dd92b73f2e2197c8f))
+
+
+### 📚 Documentation
+
+* update README ([3aa7397](https://github.com/voxpelli/eslint-config/commit/3aa73972a266d46a5bb0d5847e44131914e74789))
+
+
+### 🧹 Chores
+
+* **deps:** lock file maintenance ([#269](https://github.com/voxpelli/eslint-config/issues/269)) ([303d306](https://github.com/voxpelli/eslint-config/commit/303d306ddff9a144046ba243a31f9f584d670e62))
+* **deps:** update dependency eslint-plugin-es-x to v8 ([#342](https://github.com/voxpelli/eslint-config/issues/342)) ([f1a872b](https://github.com/voxpelli/eslint-config/commit/f1a872b6f5b916619ed4d9a1db068df24714a512))
+* **deps:** update dependency knip to ^5.25.2 ([#334](https://github.com/voxpelli/eslint-config/issues/334)) ([5b152d4](https://github.com/voxpelli/eslint-config/commit/5b152d4728e2803cc2680cfaa2ec5fb88de8a47f))
+* **deps:** update dependency list-dependents-cli to ^2.4.0 ([#325](https://github.com/voxpelli/eslint-config/issues/325)) ([4b1a438](https://github.com/voxpelli/eslint-config/commit/4b1a438d8092abb0141bdd5ab0d0b09c86e4e1fa))
+* **deps:** update dependency npm-run-all2 to ^6.2.2 ([#343](https://github.com/voxpelli/eslint-config/issues/343)) ([33c5e11](https://github.com/voxpelli/eslint-config/commit/33c5e1104186f30ab6befc0334c812117d79b7b3))
+* **deps:** update dependency validate-conventional-commit to ^1.0.4 ([#341](https://github.com/voxpelli/eslint-config/issues/341)) ([203694a](https://github.com/voxpelli/eslint-config/commit/203694a68ef1966877b79190a4ecc174c9c61a97))
+* **deps:** update husky ([c4e85da](https://github.com/voxpelli/eslint-config/commit/c4e85da1acfaacadeff9a4cba6ebef1ceeff1da9))
+* **deps:** update type dependencies ([#340](https://github.com/voxpelli/eslint-config/issues/340)) ([8ae4a02](https://github.com/voxpelli/eslint-config/commit/8ae4a02bb6bd42421049ad04fc7993b7a27696ec))
+
 ## [20.0.0-beta.5](https://github.com/voxpelli/eslint-config/compare/v20.0.0-beta.4...v20.0.0-beta.5) (2024-07-01)
 
 
