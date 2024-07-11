@@ -5,59 +5,64 @@
 [![neostandard javascript style](https://img.shields.io/badge/code_style-neostandard-7fffff?style=flat&labelColor=ff80ff)](https://github.com/neostandard/neostandard)
 [![Follow @voxpelli@mastodon.social](https://img.shields.io/mastodon/follow/109247025527949675?domain=https%3A%2F%2Fmastodon.social&style=social)](https://mastodon.social/@voxpelli)
 
-My personal ESLint config which is a supserset of [neostandard](https://github.com/neostandard/neostandard) with a couple of extra checks that I find helpful .
+My personal [ESLint](https://eslint.org/) config – a superset of the [neostandard](https://github.com/neostandard/neostandard) base config that I co-created and co-maintain.
 
-This package follows [semantic versioning](https://semver.org/). Tightening of any checks is a breaking change, therefore that will only happen in major releases. Minor and patch releases will only include relaxation of rules or fixing of minor obvious oversights.
+This config contains a couple of more opinionated checks that I find helpful in my projects.
 
-## Can I use this in my own project?
+## Install
 
-Absolutely, go ahead! I maintain this project as if multiple people are using it. Be sure to give me feedback and if you like it, give me a ping and say so, would make my day 😄
-
-## Usage
-
-### Install
-
-Be sure to install the correct versions of peer dependencies that this module requires, else you will likely get an incorrect rule setup.
-
-To easily install all correct peer dependencies, you can use [`install-peerdeps`](https://www.npmjs.com/package/install-peerdeps):
+To easily install correct peer dependencies, you can use [`install-peerdeps`](https://www.npmjs.com/package/install-peerdeps):
 
 ```bash
 install-peerdeps --dev @voxpelli/eslint-config
 ```
 
-### Configure
+## Usage
 
-Add an `.eslintrc`, or other [ESLint configuration](https://eslint.org/docs/latest/user-guide/configuring/configuration-files), that extends this config:
+Add an `eslint.config.js` (or `eslint.config.mjs` if your project is CJS) that exports this config:
 
-```
-{
-  "extends": "@voxpelli",
-  "root": true
-}
+```js
+export { default } from '@voxpelli/eslint-config';
 ```
 
-### Configure, ESM
+If you need to configure something, instead do:
 
-Instead of simply extending `@voxpelli` you can extend `@voxpelli/eslint-config/esm` and get a version of the rules that enforces ESM best practices as well.
+```js
+import { voxpelli } from '@voxpelli/eslint-config';
+
+export default voxpelli({
+  cjs: true,     // Ensures the config has rules fit for a CJS context rather than an ESM context
+  noMocha: true, // By standard this config expects tests to be of the Mocha kind, but one can opt out
+});
+```
+
+You can also do custom extensions:
+
+```js
+import { voxpelli } from '@voxpelli/eslint-config';
+
+export default [
+  ...voxpelli({
+    // Config options
+  }),
+  [
+    // Custom ESLint config
+  ],
+];
+```
 
 ###
 
-## How does this differ from pure [standard](https://standardjs.com/)?
+## How does this differ from pure [neostandard](https://github.com/neostandard/neostandard)?
 
 * :stop_sign: = changed to `error` level
 * :warning: = changed to `warn` level
 * :mute: = deactivated
 * :wrench: = changed config
-* :grimacing: = will not pass vanilla [standard](https://standardjs.com/) linting
 
-### :wrench: Changed [standard](https://standardjs.com/) rules
+### :wrench: Changed [neostandard](https://github.com/neostandard/neostandard) rules
 
-* :wrench::warning::grimacing: [`comma-dangle`](https://eslint.org/docs/rules/comma-dangle) – *changed* – prefer dangling commas in everything but functions + is it set to `warn` rather than `error` as I gradually move to this setup
-* :mute: [`dot-notation`](https://eslint.org/docs/rules/dot-notation) – *deactivated* – clashes with the [`noPropertyAccessFromIndexSignature`](https://www.typescriptlang.org/tsconfig#noPropertyAccessFromIndexSignature) check in TypeScript, [which I use](https://github.com/voxpelli/tsconfig/blob/e0d0360f280d407ad25806381624c672f66e2653/base.json#L23)
-* :wrench::grimacing: [`no-multi-spaces`](https://eslint.org/docs/rules/no-multi-spaces) – *changed* – sets `ignoreEOLComments` to `true`, can be useful for more readable comments across multiple lines and I see no real downsides to it (Incompatible with standard)
 * :wrench: [`no-unused-vars`](https://eslint.org/docs/rules/no-unused-vars) – *changed* – sets `"args": "all", "argsIgnorePattern": "^_",` because I personally don't feel limited by [Express error handlers](https://github.com/standard/standard/issues/419#issuecomment-718186130) + wants to stay in sync with TypeScript `noUnusedParameters`
-* :wrench::grimacing: [`semi`](https://eslint.org/docs/rules/semi) and [`no-extra-semi`](https://eslint.org/docs/rules/no-extra-semi) – *changed* – adopts the semicolons setup from [semistandard](https://github.com/standard/semistandard)  (Incompatible with plain standard, compatible with semistandard)
-* :wrench::warning: [`n/no-deprecated-api`](https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/no-deprecated-api.md) – *changed* – changed to `warn` instead of `error` as often it's not an urgent thing to fix
 
 ### :heavy_plus_sign: Added ESLint core rules
 
@@ -68,16 +73,15 @@ Instead of simply extending `@voxpelli` you can extend `@voxpelli/eslint-config/
 * :stop_sign: [`no-unsafe-optional-chaining`](https://eslint.org/docs/rules/no-unsafe-optional-chaining) – enforces one to be careful with `.?` and not use it in ways that can inadvertently cause errors or `NaN` results
 * :warning: [`no-warning-comments`](https://eslint.org/docs/rules/no-warning-comments) – warns of the existence of `FIXME` comments, as they should always be fixed before pushing
 * :stop_sign: [`object-shorthand`](https://eslint.org/docs/rules/object-shorthand) – requires the use of object shorthands for properties, more tidy
-* :stop_sign: [`quote-props`](https://eslint.org/docs/rules/quote-props) – requires properties to be quoted when needed but otherwise disallows it
 
-### :package: Added ESLint rule package
+### :package: Added ESLint rule packages
 
-* [`plugin:n/recommended`](https://github.com/eslint-community/eslint-plugin-n#-rules)
-* [`plugin:security/recommended`](https://github.com/eslint-community/eslint-plugin-security#rules)
+* [`plugin:jsdoc/recommended`](https://github.com/gajus/eslint-plugin-jsdoc#rules)
 * [`plugin:mocha/recommended`](https://github.com/lo1tuma/eslint-plugin-mocha#rules)
-* [`plugin:unicorn/recommended`](https://github.com/sindresorhus/eslint-plugin-unicorn#rules)
+* [`plugin:n/recommended`](https://github.com/eslint-community/eslint-plugin-n#-rules)
 * [`plugin:promise/recommended`](https://github.com/eslint-community/eslint-plugin-promise#rules)
-* [`plugin:jsdoc/recommended`](https://github.com/eslint-community/eslint-plugin-promise#rules)
+* [`plugin:security/recommended`](https://github.com/eslint-community/eslint-plugin-security#rules)
+* [`plugin:unicorn/recommended`](https://github.com/sindresorhus/eslint-plugin-unicorn#rules)
 
 #### :wrench: Overrides of added ESLint rule packages
 
@@ -91,7 +95,7 @@ Instead of simply extending `@voxpelli` you can extend `@voxpelli/eslint-config/
 * :wrench: [`jsdoc/tag-lines`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/tag-lines.md) – *changed* – to enforce an empty line between description and tags, but disallow them elsewhere.
 * :mute: [`jsdoc/valid-types`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/valid-types.md) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
 
-* :mute: [`mocha/no-mocha-arrows`](https://github.com/lo1tuma/eslint-plugin-mocha/blob/master/docs/rules/no-mocha-arrows.md) – *deactivated* – while [Mocha discourages arrow functions](https://mochajs.org/#arrow-functions) I find it more readable to use them + I find it safe when type checking ones test files as then the type checking will notify one when one tries to do a `this.setTimeout()` or similar in an arrow function where there is no such local context
+* :mute: [`mocha/no-mocha-arrows`](https://github.com/lo1tuma/eslint-plugin-mocha/blob/master/docs/rules/no-mocha-arrows.md) – *deactivated* – while [Mocha discourages arrow functions](https://mochajs.org/#arrow-functions) I find it more readable to use them + I find it safe when combined with type checking as then the type checking will notify one when one tries to do a `this.setTimeout()` or similar in an arrow function where there is no such local context
 
 * :mute: [`n/no-process-exit`](https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/no-process-exit.md) – *deactivated* – added by `plugin:n/recommended`, but deactivated in favor of [`unicorn/no-process-exit`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-process-exit.md)
 
@@ -113,11 +117,12 @@ Instead of simply extending `@voxpelli` you can extend `@voxpelli/eslint-config/
 
 ### :heavy_plus_sign: Additional standalone ESLint rules
 
+* :stop_sign: [`@stylistic/quote-props`](https://eslint.style/rules/ts/quote-props) – requires properties to be quoted when needed but otherwise disallows it
+
 * :warning: [`es-x/no-exponential-operators`](https://eslint-community.github.io/eslint-plugin-es-x/rules/no-exponential-operators.html) – disallows the use of the `**` operator, as that's in most cases a mistake and one really meant to write `*`
 
-* :warning: [`import/no-deprecated`](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-deprecated.md) – disallows the use of explicitly deprecated code (code marked with `@deprecated`)
-* :stop_sign: [`import/no-order`](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-order.md) – enforces a specific ordering of imports
-
+<!-- * :warning: [`import/no-deprecated`](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-deprecated.md) – disallows the use of explicitly deprecated code (code marked with `@deprecated`)
+* :stop_sign: [`import/no-order`](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-order.md) – enforces a specific ordering of imports -->
 
 * :warning: [`n/prefer-global/console`](https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/prefer-global/console.md)
 * :warning: [`n/prefer-promises/fs`](https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/prefer-promises/fs.md)
@@ -128,15 +133,24 @@ Instead of simply extending `@voxpelli` you can extend `@voxpelli/eslint-config/
 
 * :stop_sign: [`sort-destructure-keys/sort-destructure-keys`](https://github.com/mthadley/eslint-plugin-sort-destructure-keys)
 
-## Extended ESM config
+* :stop_sign: [`unicorn/consistent-destructuring`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/consistent-destructuring.md) – while unicorn dropped it from their recommended config I still like it, see [#283](https://github.com/voxpelli/eslint-config/issues/283)
 
-By extending `@voxpelli/eslint-config/esm` instead of `@voxpelli` you will get these differences:
+## ESM specific rules
+
+Unless one configures `cjs: true` these additional rules will be applied:
 
 #### :wrench: Overrides of rules
 
 * :warning: [`func-style`](https://eslint.org/docs/rules/func-style) – enforces function declarations whenever an arrow function isn't used. Better to do `export function foo () {` than `export const foo = function () {`
 * :stop_sign: [`unicorn/prefer-module`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-module.md) – *changed* – restored to its `plugin:unicorn/recommended` value of `error`
 
+## Can I use this in my own project?
+
+You may want to use [neostandard](https://github.com/neostandard/neostandard) instead, it's the general base config that I help maintain for the community.
+
+I do maintain this project though as if multiple people are using it, so sure, you can use it, but its ultimate purpose is to support my projects.
+
+And I do follow  [semantic versioning](https://semver.org/), so the addition or tightening of any checks will trigger major releases whereas minor and patch releases should only ever have relaxation of rules and bug fixes.
 
 ## Alternatives
 
@@ -146,5 +160,5 @@ By extending `@voxpelli/eslint-config/esm` instead of `@voxpelli` you will get t
 ## See also
 
 * [`voxpelli/ghatemplates`](https://github.com/voxpelli/ghatemplates) – the templates I use with [`ghat`](https://github.com/fregante/ghat) to update GitHub Actions in my projects
-* [`voxpelli/renovate-config-voxpelli`](https://github.com/voxpelli/renovate-config-voxpelli) – the shareable [Renovate setup](https://docs.renovatebot.com/config-presets/) I use in my projects
+* [`voxpelli/renovate-config-voxpelli`](https://github.com/voxpelli/renovate-config-voxpelli) – the shareable [renovate setup](https://docs.renovatebot.com/config-presets/) I use in my projects
 * [`voxpelli/tsconfig`](https://github.com/voxpelli/tsconfig) – the shareable `tsconfig.json` setup I use in my projects
