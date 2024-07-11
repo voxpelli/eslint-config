@@ -1,6 +1,6 @@
 {
   "name": "@voxpelli/eslint-config",
-  "version": "20.0.0-beta.5",
+  "version": "20.0.0-beta.6",
   "license": "MIT",
   "description": "My personal ESLint config. Based on neostandard",
   "author": "Pelle Wessman <pelle@kodfabrik.se> (https://kodfabrik.se/)",
@@ -66,7 +66,7 @@
     "eslint": "^9.5.0"
   },
   "dependencies": {
-    "eslint-plugin-es-x": "^8.0.0",
+    "eslint-plugin-es-x": "^7.7.0",
     "eslint-plugin-jsdoc": "^48.2.12",
     "eslint-plugin-mocha": "^10.4.3",
     "eslint-plugin-security": "^3.0.1",
