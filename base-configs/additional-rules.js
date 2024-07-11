@@ -1,3 +1,4 @@
+import { plugins } from 'neostandard';
 // @ts-ignore
 import esxPlugin from 'eslint-plugin-es-x';
 // import importPlugin from 'eslint-plugin-import-x';
@@ -54,16 +55,13 @@ export const additionalRules = [
   additionalCoreRules,
   ...adaptedUnicornRules,
   securityPlugin.configs.recommended,
-  // TODO: Add promise plugin once https://github.com/eslint-community/eslint-plugin-promise/issues/449 has been fixed
-  // promisePlugin.?
+  plugins.promise.configs['flat/recommended'],
   {
     name: '@voxpelli/additional/misc',
     plugins: {
       'es-x': esxPlugin,
       // TODO: Add back
       // 'import': importPlugin,
-      // TODO: Add back
-      // 'promise': promisePlugin,
       'sort-destructure-keys': sortDestructureKeysPlugin,
     },
     rules: {
@@ -84,7 +82,7 @@ export const additionalRules = [
       //   },
       // ],
 
-      // 'promise/prefer-await-to-then': 'error',
+      'promise/prefer-await-to-then': 'error',
 
       'sort-destructure-keys/sort-destructure-keys': 'error',
     },
