@@ -19,4 +19,3 @@ jobs:
     with:
       lockfile: true
       publish-to-github: true
-      npm-tag: next
