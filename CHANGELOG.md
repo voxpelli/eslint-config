@@ -1,5 +1,16 @@
 # Changelog
 
+## [20.0.0](https://github.com/voxpelli/eslint-config/compare/v20.0.0-beta.6...v20.0.0) (2024-07-12)
+
+To summarize the changes from all the alpha and beta releases of `20.0.0`:
+
+* BREAKING: Requires ESLint 9 now
+* BREAKING: Is an ESLint Flat Config now, which means replacing `.eslintrc` with `eslint.config.js` / `eslint.config.mjs`
+* BREAKING: Now has only a single peer dependency: ESLint. Plugins should no longer be added separately.
+* BREAKING: Based on [neostandard](https://github.com/neostandard/neostandard)
+
+No intentional rule changes has been made, but the `import/*` rules have been deactivated as `eslint-plugin-import` has not yet been possible to add to `neostandard`, due to lack of ESLint 9 support
+
 ## [20.0.0-beta.6](https://github.com/voxpelli/eslint-config/compare/v20.0.0-beta.5...v20.0.0-beta.6) (2024-07-11)
 
 
