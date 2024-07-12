@@ -1,5 +1,13 @@
 # Changelog
 
+## [20.0.1-beta.6](https://github.com/voxpelli/eslint-config/compare/v20.0.0-beta.6...v20.0.1-beta.6) (2024-07-12)
+
+
+### 🧹 Chores
+
+* **deps:** lock file maintenance ([#345](https://github.com/voxpelli/eslint-config/issues/345)) ([01082ee](https://github.com/voxpelli/eslint-config/commit/01082ee655eab80569c22892b6ad7ca9627242af))
+* **deps:** update dependency eslint-plugin-es-x to v8 ([#346](https://github.com/voxpelli/eslint-config/issues/346)) ([58979ef](https://github.com/voxpelli/eslint-config/commit/58979efcd0d076bd9c58881fbcf1bfd9987f174c))
+
 ## [20.0.0-beta.6](https://github.com/voxpelli/eslint-config/compare/v20.0.0-beta.5...v20.0.0-beta.6) (2024-07-11)
 
 
