@@ -150,7 +150,7 @@ You may want to use [neostandard](https://github.com/neostandard/neostandard) in
 
 I do maintain this project though as if multiple people are using it, so sure, you can use it, but its ultimate purpose is to support my projects.
 
-And I do follow  [semantic versioning](https://semver.org/), so the addition or tightening of any checks will trigger major releases whereas minor and patch releases should only ever have relaxation of rules and bug fixes.
+I do follow  [semantic versioning](https://semver.org/), so the addition or tightening of any checks will trigger major releases whereas minor and patch releases should only ever have relaxation of rules and bug fixes.
 
 ## Alternatives
 
