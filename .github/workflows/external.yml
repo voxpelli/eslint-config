@@ -84,6 +84,7 @@ jobs:
       - name: find the config file name
         id: eslint-config-file
         run: echo "file=$(test -f eslint.config.mjs && echo "eslint.config.mjs" || echo "eslint.config.js")" >> $GITHUB_OUTPUT
+        working-directory: ./project
 
       - name: modify project eslint config
         run: sed "s/'@voxpelli\/eslint-config'/'..\/main\/index.js'/" ${{ steps.eslint-config-file.outputs.file }} > tmp.eslint.config.js && rm eslint.config.js && mv tmp.eslint.config.js ${{ steps.eslint-config-file.outputs.file }}
