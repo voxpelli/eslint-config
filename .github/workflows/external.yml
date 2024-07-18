@@ -89,7 +89,7 @@ jobs:
         working-directory: ./project
 
       - name: modify project eslint config
-        run: sed "s/'@voxpelli\/eslint-config'/'..\/main\/index.js'/" ${{ steps.eslint-config-file.outputs.file }} > tmp.eslint.config.js && rm eslint.config.js && mv tmp.eslint.config.js ${{ steps.eslint-config-file.outputs.file }}
+        run: sed "s/'@voxpelli\/eslint-config'/'..\/main\/index.js'/" ${{ steps.eslint-config-file.outputs.file }} > tmp.eslint.config.js && rm ${{ steps.eslint-config-file.outputs.file }} && mv tmp.eslint.config.js ${{ steps.eslint-config-file.outputs.file }}
         working-directory: ./project
 
       - name: run eslint
