@@ -31,6 +31,7 @@ jobs:
       - uses: actions/checkout@v4
       - id: set-matrix
         run: echo "matrix=$(cat workflow-external.json | jq -c '.${{ github.event.inputs.moduleSet || 'compliant' }}')" >> $GITHUB_OUTPUT
+
   test_external:
     needs: read_external_projects
     name: Test ${{ matrix.project }}
@@ -50,6 +51,7 @@ jobs:
         with:
           repository: ${{ matrix.project }}
           path: project
+
       - name: Use Node.js ${{ matrix.node_version }}
         uses: actions/setup-node@v4
         with:
@@ -76,12 +78,20 @@ jobs:
       - name: install project
         run: '[ -f package-lock.json ] && npm ci --ignore-scripts --force || npm install --ignore-scripts --force'
         working-directory: ./project
+
       - name: build project if needed
         run: npm run build-for-test --if-present
         working-directory: ./project
-      - name: modify project eslint config
-        run: sed "s/'@voxpelli\/eslint-config'/'..\/main\/index.js'/" eslint.config.js > tmp.eslint.config.js && rm eslint.config.js && mv tmp.eslint.config.js eslint.config.js
+
+      - name: find the config file name
+        id: eslint-config-file
+        run: echo "file=$(test -f eslint.config.mjs && echo "eslint.config.mjs" || echo "eslint.config.js")" >> $GITHUB_OUTPUT
         working-directory: ./project
+
+      - name: modify project eslint config
+        run: sed "s/'@voxpelli\/eslint-config'/'..\/main\/index.js'/" ${{ steps.eslint-config-file.outputs.file }} > tmp.eslint.config.js && rm ${{ steps.eslint-config-file.outputs.file }} && mv tmp.eslint.config.js ${{ steps.eslint-config-file.outputs.file }}
+        working-directory: ./project
+
       - name: run eslint
         run: ../main/node_modules/.bin/eslint
         working-directory: ./project
