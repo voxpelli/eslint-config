@@ -16,9 +16,6 @@
   "exports": "./index.js",
   "types": "index.d.ts",
   "files": [
-    "eslint.config.js",
-    "eslint.config.d.ts",
-    "eslint.config.d.ts.map",
     "index.js",
     "index.d.ts",
     "index.d.ts.map",
