@@ -31,7 +31,7 @@ export function nodeRules (cjs) {
     },
     {
       name: '@voxpelli/additional/node/dts',
-      files: ['**/*.d.ts'],
+      files: ['**/*.ts'],
       rules: {
         // TODO: Remove when *.js files can be properly resolved from *.d.ts
         'n/no-missing-import': 'off',
