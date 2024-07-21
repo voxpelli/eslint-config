@@ -30,11 +30,12 @@ export function nodeRules (cjs) {
       },
     },
     {
-      name: '@voxpelli/additional/node/ts',
-      files: ['**/*.ts'],
+      name: '@voxpelli/additional/node/dts',
+      files: ['**/*.d.ts'],
       rules: {
         // TODO: Remove when *.js files can be properly resolved from *.d.ts
         'n/no-missing-import': 'off',
+        'n/no-unsupported-features/es-syntax': 'off',
       },
     },
   ];
