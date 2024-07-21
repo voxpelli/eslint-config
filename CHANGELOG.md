@@ -1,5 +1,25 @@
 # Changelog
 
+## [20.0.1](https://github.com/voxpelli/eslint-config/compare/v20.0.0...v20.0.1) (2024-07-21)
+
+
+### 🩹 Fixes
+
+* deactivate `n/no-unsupported-features/es-syntax` in `*.ts` files ([#353](https://github.com/voxpelli/eslint-config/issues/353)) ([0ff9dc1](https://github.com/voxpelli/eslint-config/commit/0ff9dc1ed693a068512e9234709e774478678b04))
+* do not publish `eslint.config.js` ([0570f29](https://github.com/voxpelli/eslint-config/commit/0570f29265b34b7fd76595f61561a5d48a0e23e3))
+
+
+### 📚 Documentation
+
+* readme tweak ([f0e413e](https://github.com/voxpelli/eslint-config/commit/f0e413ec6c05ebdec2a21ee80c9bbefd8c6dc602))
+
+
+### 🧹 Chores
+
+* **deps:** lock file maintenance ([#349](https://github.com/voxpelli/eslint-config/issues/349)) ([6711053](https://github.com/voxpelli/eslint-config/commit/6711053613294fa46ea07840cb16618e80e6c194))
+* **deps:** update linting dependencies ([#348](https://github.com/voxpelli/eslint-config/issues/348)) ([1cab8d3](https://github.com/voxpelli/eslint-config/commit/1cab8d38d9a7124895e783221b8e847648552b57))
+* remove unused files ([8de48f3](https://github.com/voxpelli/eslint-config/commit/8de48f34c98a300bf4e4b1dbbe8c4775afeaa067))
+
 ## [20.0.0](https://github.com/voxpelli/eslint-config/compare/v20.0.0-beta.6...v20.0.0) (2024-07-12)
 
 To summarize the changes from all the alpha and beta releases of `20.0.0`:
