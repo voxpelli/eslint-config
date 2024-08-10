@@ -45,9 +45,9 @@ export default [
   ...voxpelli({
     // Config options
   }),
-  [
+  {
     // Custom ESLint config
-  ],
+  },
 ];
 ```
 
