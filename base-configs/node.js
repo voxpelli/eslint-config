@@ -2,7 +2,7 @@ import { plugins } from 'neostandard';
 
 /**
  * @param {boolean} cjs
- * @returns {import('eslint').Linter.FlatConfig[]}
+ * @returns {import('eslint').Linter.Config[]}
  */
 export function nodeRules (cjs) {
   return [

@@ -1,6 +1,6 @@
 import jsdoc from 'eslint-plugin-jsdoc';
 
-/** @satisfies {import('eslint').Linter.FlatConfig[]} */
+/** @satisfies {import('eslint').Linter.Config[]} */
 export const jsdocRules = [
   jsdoc.configs['flat/recommended-typescript-flavor'],
   {

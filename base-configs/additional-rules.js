@@ -2,8 +2,6 @@ import { plugins } from 'neostandard';
 // @ts-ignore
 import esxPlugin from 'eslint-plugin-es-x';
 // import importPlugin from 'eslint-plugin-import-x';
-// // @ts-ignore
-// import promisePlugin from 'eslint-plugin-promise';
 // @ts-ignore
 import securityPlugin from 'eslint-plugin-security';
 // @ts-ignore
@@ -11,7 +9,7 @@ import sortDestructureKeysPlugin from 'eslint-plugin-sort-destructure-keys';
 // @ts-ignore
 import unicornPlugin from 'eslint-plugin-unicorn';
 
-/** @satisfies {import('eslint').Linter.FlatConfig} */
+/** @satisfies {import('eslint').Linter.Config} */
 const additionalCoreRules = {
   name: '@voxpelli/additional/core',
   rules: {
@@ -26,7 +24,7 @@ const additionalCoreRules = {
   },
 };
 
-/** @satisfies {import('eslint').Linter.FlatConfig[]} */
+/** @satisfies {import('eslint').Linter.Config[]} */
 const adaptedUnicornRules = [
   unicornPlugin.configs['flat/recommended'],
   {
@@ -50,7 +48,7 @@ const adaptedUnicornRules = [
   },
 ];
 
-/** @satisfies {import('eslint').Linter.FlatConfig[]} */
+/** @satisfies {import('eslint').Linter.Config[]} */
 export const additionalRules = [
   additionalCoreRules,
   ...adaptedUnicornRules,

@@ -3,7 +3,7 @@ import mochaPlugin from 'eslint-plugin-mocha';
 
 const ignores = ['**/*', '!test/**/*'];
 
-/** @satisfies {import('eslint').Linter.FlatConfig[]} */
+/** @satisfies {import('eslint').Linter.Config[]} */
 export const mochaRules = [
   {
     ...mochaPlugin.configs.flat.recommended,

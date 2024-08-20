@@ -9,7 +9,7 @@ import { modifiedNeostandardRules } from './base-configs/modified-rules.js';
 
 /**
  * @param {{ cjs?: boolean, noMocha?: boolean } & import('neostandard').NeostandardOptions} [options]
- * @returns {import('eslint').Linter.FlatConfig[]}
+ * @returns {import('eslint').Linter.Config[]}
  */
 export function voxpelli (options) {
   const {

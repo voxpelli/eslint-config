@@ -1,4 +1,4 @@
-/** @satisfies {import('eslint').Linter.FlatConfig[]} */
+/** @satisfies {import('eslint').Linter.Config[]} */
 export const esmRules = [
   {
     name: '@voxpelli/esm',
