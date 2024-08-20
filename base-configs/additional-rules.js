@@ -51,7 +51,7 @@ export const additionalRules = [
   additionalCoreRules,
   ...adaptedUnicornRules,
   securityPlugin.configs.recommended,
-  plugins.promise.configs['flat/recommended'],
+  /** @type {import('eslint').Linter.Config} */ (plugins.promise.configs['flat/recommended']),
   {
     name: '@voxpelli/additional/misc',
     plugins: {
