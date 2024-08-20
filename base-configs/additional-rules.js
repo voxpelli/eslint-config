@@ -5,7 +5,6 @@ import esxPlugin from 'eslint-plugin-es-x';
 import securityPlugin from 'eslint-plugin-security';
 // @ts-ignore
 import sortDestructureKeysPlugin from 'eslint-plugin-sort-destructure-keys';
-// @ts-ignore
 import unicornPlugin from 'eslint-plugin-unicorn';
 
 /** @satisfies {import('eslint').Linter.Config} */
