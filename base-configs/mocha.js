@@ -1,4 +1,3 @@
-// @ts-ignore
 import mochaPlugin from 'eslint-plugin-mocha';
 
 const ignores = ['**/*', '!test/**/*'];

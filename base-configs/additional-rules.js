@@ -2,7 +2,6 @@ import { plugins } from 'neostandard';
 // @ts-ignore
 import esxPlugin from 'eslint-plugin-es-x';
 // import importPlugin from 'eslint-plugin-import-x';
-// @ts-ignore
 import securityPlugin from 'eslint-plugin-security';
 // @ts-ignore
 import sortDestructureKeysPlugin from 'eslint-plugin-sort-destructure-keys';
