@@ -62,6 +62,7 @@ export default [
 
 ### :wrench: Changed [neostandard](https://github.com/neostandard/neostandard) rules
 
+* :wrench: [`@stylistic/comma-dangle`](https://eslint.org/docs/rules/comma-dangle) – *changed* – set to enforce dangling commas in arrays, objects, imports and exports
 * :wrench: [`no-unused-vars`](https://eslint.org/docs/rules/no-unused-vars) – *changed* – sets `"args": "all", "argsIgnorePattern": "^_",` because I personally don't feel limited by [Express error handlers](https://github.com/standard/standard/issues/419#issuecomment-718186130) + wants to stay in sync with TypeScript `noUnusedParameters`
 
 ### :heavy_plus_sign: Added ESLint core rules

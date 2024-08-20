@@ -3,6 +3,13 @@ export const modifiedNeostandardRules = [
   {
     name: '@voxpelli/modified/neostandard',
     rules: {
+      '@stylistic/comma-dangle': ['warn', {
+        arrays: 'always-multiline',
+        objects: 'always-multiline',
+        imports: 'always-multiline',
+        exports: 'always-multiline',
+        functions: 'never',
+      }],
       'no-unused-vars': ['error', {
         'vars': 'all',
         'args': 'all',
