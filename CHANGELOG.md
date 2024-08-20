@@ -1,5 +1,21 @@
 # Changelog
 
+## [21.0.0](https://github.com/voxpelli/eslint-config/compare/v20.1.0...v21.0.0) (2024-08-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* update eslint-plugin-unicorn to v55
+
+### 🌟 Features
+
+* update eslint-plugin-unicorn to v55 ([c6c717c](https://github.com/voxpelli/eslint-config/commit/c6c717c5b97cf7394fb95ee468a8ebec4ecccfab))
+
+
+### 🩹 Fixes
+
+* improved types ([9294195](https://github.com/voxpelli/eslint-config/commit/9294195eead08daca9a410ecb0ab602541953e2f))
+
 ## [20.1.0](https://github.com/voxpelli/eslint-config/compare/v20.0.1...v20.1.0) (2024-08-20)
 
 
