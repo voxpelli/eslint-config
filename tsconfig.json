@@ -6,5 +6,8 @@
   ],
   "include": [
     "base-configs/**/*.js",
-  ]
+  ],
+  "compilerOptions": {
+    "types": ["node"]
+  }
 }
