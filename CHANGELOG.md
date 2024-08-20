@@ -1,5 +1,35 @@
 # Changelog
 
+## [20.1.0](https://github.com/voxpelli/eslint-config/compare/v20.0.1...v20.1.0) (2024-08-20)
+
+
+### 🌟 Features
+
+* **deps:** update dependency eslint-plugin-mocha to ^10.5.0 ([#363](https://github.com/voxpelli/eslint-config/issues/363)) ([9440a7d](https://github.com/voxpelli/eslint-config/commit/9440a7d713e773f72300e76c84d05fa70ab66896))
+
+
+### 🩹 Fixes
+
+* update `neostandard`, but keep comma-dangle ([40a43b9](https://github.com/voxpelli/eslint-config/commit/40a43b9f14e0e3c80217775bbf2ecaa7e949c248))
+* use `@types/eslint@9.x` ([f6ed27d](https://github.com/voxpelli/eslint-config/commit/f6ed27d8c907c4136e10c9e511901843f73f5507))
+
+
+### 📚 Documentation
+
+* fix example ([d3aa8ea](https://github.com/voxpelli/eslint-config/commit/d3aa8eab47a2bf45367f581f0886e9425f3d1879))
+
+
+### 🧹 Chores
+
+* add `"types": ["node"]` to `tsconfig.json` ([85b223a](https://github.com/voxpelli/eslint-config/commit/85b223a33ef8c15391098dfe8569ddc388fb88b4))
+* add some plugin `@types/` ([5989b99](https://github.com/voxpelli/eslint-config/commit/5989b9955bf97905a859a20d2aa10f9cbcc19a89))
+* **deps:** update dependency eslint-plugin-jsdoc to v50 ([#361](https://github.com/voxpelli/eslint-config/issues/361)) ([15f269f](https://github.com/voxpelli/eslint-config/commit/15f269f3e54216f980370bbb7cddb775c242e773))
+* **deps:** update husky and knip ([429da48](https://github.com/voxpelli/eslint-config/commit/429da482a3b216551e7b4a6059daa834aac0386a))
+* **deps:** update type dependencies ([4f92135](https://github.com/voxpelli/eslint-config/commit/4f9213518ac5561f7afed80792a317b5c42fd41a))
+* husky script tweak ([2c8b953](https://github.com/voxpelli/eslint-config/commit/2c8b953920815c696ee8847121bd3a2bcd2b28aa))
+* improve renovate grouping ([e247ece](https://github.com/voxpelli/eslint-config/commit/e247ece9308690ed71d6e0593c306a914c88afa9))
+* improve renovate pattern matching ([6feb945](https://github.com/voxpelli/eslint-config/commit/6feb945c336bfe13fd0a222c0a0d7ccee3d74e50))
+
 ## [20.0.1](https://github.com/voxpelli/eslint-config/compare/v20.0.0...v20.0.1) (2024-07-21)
 
 
