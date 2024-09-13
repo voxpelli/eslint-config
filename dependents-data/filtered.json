@@ -4,6 +4,7 @@
   "voxpelli/buffered-async-iterable",
   "voxpelli/chai-posix-path",
   "voxpelli/compare-eslint-configs",
+  "voxpelli/config-array-find-files",
   "voxpelli/eslint-config-jsdoc-ts",
   "voxpelli/eslint-formatter-summary",
   "voxpelli/fastify-acl-auth",
