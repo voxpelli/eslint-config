@@ -5,6 +5,7 @@ import { esmRules } from './base-configs/esm.js';
 import { jsdocRules } from './base-configs/jsdoc.js';
 import { mochaRules } from './base-configs/mocha.js';
 import { nodeRules } from './base-configs/node.js';
+import { regexpRules } from './base-configs/regexp.js';
 import { modifiedNeostandardRules } from './base-configs/modified-rules.js';
 
 /**
@@ -36,6 +37,7 @@ export function voxpelli (options) {
     ...modifiedNeostandardRules,
     ...additionalRules,
     ...jsdocRules,
+    ...regexpRules,
     ...nodeRules(cjs),
     ...cjs ? [] : esmRules,
     ...noMocha ? [] : mochaRules,
