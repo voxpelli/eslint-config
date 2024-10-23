@@ -49,7 +49,7 @@
     "@types/node": "^18.19.59",
     "@voxpelli/tsconfig": "^15.0.0",
     "compare-eslint-configs": "^2.1.0",
-    "eslint": "^9.9.0",
+    "eslint": "^9.13.0",
     "husky": "^9.1.6",
     "installed-check": "^9.3.0",
     "knip": "^5.33.3",
@@ -61,16 +61,15 @@
     "validate-conventional-commit": "^1.0.4"
   },
   "peerDependencies": {
-    "eslint": "^9.5.0"
+    "eslint": "^9.13.0"
   },
   "dependencies": {
-    "@types/eslint": "^9.6.0",
     "eslint-plugin-es-x": "^8.0.0",
     "eslint-plugin-jsdoc": "^50.0.0",
     "eslint-plugin-mocha": "^10.5.0",
     "eslint-plugin-security": "^3.0.1",
     "eslint-plugin-sort-destructure-keys": "^2.0.0",
     "eslint-plugin-unicorn": "^55.0.0",
-    "neostandard": "^0.11.3"
+    "neostandard": "^0.11.7"
   }
 }
