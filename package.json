@@ -1,6 +1,6 @@
 {
   "name": "@voxpelli/eslint-config",
-  "version": "22.0.0",
+  "version": "22.0.1",
   "license": "MIT",
   "description": "My personal ESLint config. Based on neostandard",
   "author": "Pelle Wessman <pelle@kodfabrik.se> (https://kodfabrik.se/)",
@@ -52,7 +52,7 @@
     "eslint": "^9.13.0",
     "husky": "^9.1.6",
     "installed-check": "^9.3.0",
-    "knip": "^5.34.0",
+    "knip": "^5.33.3",
     "list-dependents-cli": "^2.6.1",
     "npm-run-all2": "^7.0.1",
     "ts-ignore-import": "^4.0.1",
