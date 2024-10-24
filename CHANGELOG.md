@@ -1,5 +1,13 @@
 # Changelog
 
+## [22.0.1](https://github.com/voxpelli/eslint-config/compare/v22.0.0...v22.0.1) (2024-10-24)
+
+
+### 🧹 Chores
+
+* **deps:** update dependency knip to ^5.34.0 ([#356](https://github.com/voxpelli/eslint-config/issues/356)) ([638bbad](https://github.com/voxpelli/eslint-config/commit/638bbad2580bc4246527a6f0d989dc8194547475))
+* **deps:** update dependency npm-run-all2 to v7 ([#370](https://github.com/voxpelli/eslint-config/issues/370)) ([6374ee1](https://github.com/voxpelli/eslint-config/commit/6374ee1fe4be6c9565850a3ef9eb117db7781404))
+
 ## [22.0.0](https://github.com/voxpelli/eslint-config/compare/v21.0.0...v22.0.0) (2024-10-24)
 
 
