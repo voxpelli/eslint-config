@@ -1,5 +1,28 @@
 # Changelog
 
+## [22.0.0](https://github.com/voxpelli/eslint-config/compare/v21.0.0...v22.0.0) (2024-10-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* add `eslint-plugin-regexp` recommended ([#373](https://github.com/voxpelli/eslint-config/issues/373))
+* update dependency eslint-plugin-unicorn to v56 ([#371](https://github.com/voxpelli/eslint-config/issues/371))
+* **deps:** update neostandard and eslint
+
+### 🌟 Features
+
+* add `eslint-plugin-regexp` recommended ([#373](https://github.com/voxpelli/eslint-config/issues/373)) ([523197d](https://github.com/voxpelli/eslint-config/commit/523197d6e3d7dcb1aa051c6758d22ffb47c7f328))
+* **deps:** update dependency eslint-plugin-jsdoc to ^50.4.3 ([#368](https://github.com/voxpelli/eslint-config/issues/368)) ([a66f39c](https://github.com/voxpelli/eslint-config/commit/a66f39c803f1cf7186e5968f9b318675e0b842f0))
+* **deps:** update neostandard and eslint ([b2ce5e2](https://github.com/voxpelli/eslint-config/commit/b2ce5e2f2b53cb1eded0038c76be4c3b980756ba))
+* update dependency eslint-plugin-unicorn to v56 ([#371](https://github.com/voxpelli/eslint-config/issues/371)) ([f009a44](https://github.com/voxpelli/eslint-config/commit/f009a449df872005b5233ce224b99e93d8020318))
+
+
+### 🧹 Chores
+
+* **deps:** lock file maintenance ([#359](https://github.com/voxpelli/eslint-config/issues/359)) ([af501fd](https://github.com/voxpelli/eslint-config/commit/af501fda838d2b3e70715567dd69bd20cb85af15))
+* **deps:** update dev dependencies ([b2dbbd8](https://github.com/voxpelli/eslint-config/commit/b2dbbd88242b510e3ed1fef1e98779027983c413))
+* **deps:** update to latest npm-run-all2 6.x ([80f5910](https://github.com/voxpelli/eslint-config/commit/80f591008fbe9bed203eea111a0eea167472d4a0))
+
 ## [21.0.0](https://github.com/voxpelli/eslint-config/compare/v20.1.0...v21.0.0) (2024-08-20)
 
 
