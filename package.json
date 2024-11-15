@@ -64,7 +64,7 @@
     "eslint": "^9.13.0"
   },
   "dependencies": {
-    "eslint-plugin-es-x": "^8.0.0",
+    "eslint-plugin-es-x": "^8.1.0",
     "eslint-plugin-jsdoc": "^50.4.3",
     "eslint-plugin-mocha": "^10.5.0",
     "eslint-plugin-regexp": "^2.6.0",
