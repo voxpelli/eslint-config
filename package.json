@@ -50,7 +50,7 @@
     "@voxpelli/tsconfig": "^15.0.0",
     "compare-eslint-configs": "^2.1.0",
     "eslint": "^9.13.0",
-    "husky": "^9.1.6",
+    "husky": "^9.1.7",
     "installed-check": "^9.3.0",
     "knip": "^5.34.0",
     "list-dependents-cli": "^2.6.1",
