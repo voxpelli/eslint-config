@@ -1,5 +1,29 @@
 # Changelog
 
+## [22.1.0](https://github.com/voxpelli/eslint-config/compare/v22.0.0...v22.1.0) (2024-11-20)
+
+
+### 🌟 Features
+
+* **deps:** update dependency eslint-plugin-es-x to ^8.1.0 ([#377](https://github.com/voxpelli/eslint-config/issues/377)) ([2ca3fbb](https://github.com/voxpelli/eslint-config/commit/2ca3fbb22ac46be3c489272799105eda838a87d8))
+* **deps:** update dependency eslint-plugin-jsdoc to ^50.5.0 ([#378](https://github.com/voxpelli/eslint-config/issues/378)) ([04f6893](https://github.com/voxpelli/eslint-config/commit/04f6893adba341af51cfa9d22d49cf5a0435e413))
+* **deps:** update dependency eslint-plugin-regexp to ^2.7.0 ([#379](https://github.com/voxpelli/eslint-config/issues/379)) ([d6efb98](https://github.com/voxpelli/eslint-config/commit/d6efb9894f986de8cfa4e9a6f1e3ef07500de1ae))
+
+
+### 🩹 Fixes
+
+* **deps:** update dependency eslint-plugin-unicorn to ^56.0.1 ([#381](https://github.com/voxpelli/eslint-config/issues/381)) ([1011df6](https://github.com/voxpelli/eslint-config/commit/1011df63d680d321938b62096f54cbabc860fd46))
+
+
+### 🧹 Chores
+
+* **deps:** lock file maintenance ([#376](https://github.com/voxpelli/eslint-config/issues/376)) ([019a6e6](https://github.com/voxpelli/eslint-config/commit/019a6e6e897e3634511aaef84d251ebad31492e2))
+* **deps:** update dependency @types/node to ^18.19.64 ([#351](https://github.com/voxpelli/eslint-config/issues/351)) ([767a322](https://github.com/voxpelli/eslint-config/commit/767a32214ef5704ec4ae00752b5991a27b9958e9))
+* **deps:** update dependency husky to ^9.1.7 ([#380](https://github.com/voxpelli/eslint-config/issues/380)) ([6951836](https://github.com/voxpelli/eslint-config/commit/6951836051e8b0ad42934dbd5685df506943dbc6))
+* **deps:** update dependency knip to ^5.34.0 ([#356](https://github.com/voxpelli/eslint-config/issues/356)) ([638bbad](https://github.com/voxpelli/eslint-config/commit/638bbad2580bc4246527a6f0d989dc8194547475))
+* **deps:** update dependency npm-run-all2 to v7 ([#370](https://github.com/voxpelli/eslint-config/issues/370)) ([6374ee1](https://github.com/voxpelli/eslint-config/commit/6374ee1fe4be6c9565850a3ef9eb117db7781404))
+* **deps:** update linting dependencies ([#375](https://github.com/voxpelli/eslint-config/issues/375)) ([3658b8e](https://github.com/voxpelli/eslint-config/commit/3658b8ece6186d4958db97629272e658d17169a8))
+
 ## [22.0.0](https://github.com/voxpelli/eslint-config/compare/v21.0.0...v22.0.0) (2024-10-24)
 
 
