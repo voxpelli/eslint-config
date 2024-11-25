@@ -19,7 +19,8 @@
     "voxpelli/typed-utils",
     "voxpelli/umzeption",
     "voxpelli/validate-conventional-commit",
-    "voxpelli/webring-opml"
+    "voxpelli/webring-opml",
+    "yikesable/rbac"
   ],
 
   "preFlatconfigCompliant": [
