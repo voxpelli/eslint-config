@@ -46,7 +46,7 @@
   "devDependencies": {
     "@types/eslint-plugin-mocha": "~10.4.0",
     "@types/eslint-plugin-security": "~3.0.0",
-    "@types/node": "^18.19.65",
+    "@types/node": "^18.19.67",
     "@voxpelli/tsconfig": "^15.1.0",
     "compare-eslint-configs": "^2.1.0",
     "eslint": "^9.15.0",
