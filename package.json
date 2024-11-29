@@ -52,7 +52,7 @@
     "eslint": "^9.15.0",
     "husky": "^9.1.7",
     "installed-check": "^9.3.0",
-    "knip": "^5.37.2",
+    "knip": "^5.38.2",
     "list-dependents-cli": "^2.6.1",
     "npm-run-all2": "^7.0.1",
     "ts-ignore-import": "^4.0.1",
