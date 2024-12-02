@@ -50,7 +50,7 @@
     "@types/node": "^18.19.67",
     "@voxpelli/tsconfig": "^15.1.0",
     "compare-eslint-configs": "^2.1.0",
-    "eslint": "^9.15.0",
+    "eslint": "^9.16.0",
     "husky": "^9.1.7",
     "installed-check": "^9.3.0",
     "knip": "^5.38.4",
@@ -72,6 +72,6 @@
     "eslint-plugin-security": "^3.0.1",
     "eslint-plugin-sort-destructure-keys": "^2.0.0",
     "eslint-plugin-unicorn": "^56.0.1",
-    "neostandard": "^0.11.7"
+    "neostandard": "^0.11.9"
   }
 }
