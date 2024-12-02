@@ -1,5 +1,27 @@
 # Changelog
 
+## [22.2.0](https://github.com/voxpelli/eslint-config/compare/v22.1.0...v22.2.0) (2024-12-02)
+
+
+### 🌟 Features
+
+* **deps:** update dependency eslint-plugin-jsdoc to ^50.6.0 ([#386](https://github.com/voxpelli/eslint-config/issues/386)) ([cdc54d6](https://github.com/voxpelli/eslint-config/commit/cdc54d6d4abcb3a96721e65c690ff7950e735130))
+
+
+### 🩹 Fixes
+
+* **deps:** update dependency eslint-plugin-es-x to ^8.4.1 ([#385](https://github.com/voxpelli/eslint-config/issues/385)) ([a3959bc](https://github.com/voxpelli/eslint-config/commit/a3959bc983f771d5642c09d15c505ec5c75d919f))
+* **deps:** update neostandard ([56da8cd](https://github.com/voxpelli/eslint-config/commit/56da8cdb69d9ec25013e7ea9029fbe3626389bda))
+
+
+### 🧹 Chores
+
+* **deps:** lock file maintenance ([#387](https://github.com/voxpelli/eslint-config/issues/387)) ([9b5a4d8](https://github.com/voxpelli/eslint-config/commit/9b5a4d8d686343ceb1c7d231fc6fb213bb044ee6))
+* **deps:** update dev dependencies ([b2ea13c](https://github.com/voxpelli/eslint-config/commit/b2ea13c8e406173d9385aa0efdbbcf8972074463))
+* **deps:** update dev dependencies ([619bc6c](https://github.com/voxpelli/eslint-config/commit/619bc6c11a810a4ff69cedaecc47c8e69694f0f9))
+* update dependents data ([7181f8c](https://github.com/voxpelli/eslint-config/commit/7181f8c631b2af2fb87dd3d45665f5a1aecc3cd2))
+* update dependents data ([b706345](https://github.com/voxpelli/eslint-config/commit/b706345aa56b6448c32ce5441d6e9754a60c4358))
+
 ## [22.1.0](https://github.com/voxpelli/eslint-config/compare/v22.0.0...v22.1.0) (2024-11-20)
 
 
