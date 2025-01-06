@@ -1,21 +1,20 @@
-name: release-please
+name: Release Please
 
 on:
   push:
     branches:
       - main
-  workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
   id-token: write
   packages: write
-  pull-requests: write
 
 jobs:
   release-please:
-    uses: voxpelli/ghatemplates/.github/workflows/release-please-4.yml@main
+    uses: voxpelli/ghatemplates/.github/workflows/release-please-bot.yml@main
     secrets: inherit
     with:
+      app-id: '1082006'
       lockfile: true
       publish-to-github: true
