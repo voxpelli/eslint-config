@@ -54,7 +54,7 @@
     "husky": "^9.1.7",
     "installed-check": "^9.3.0",
     "knip": "^5.38.4",
-    "list-dependents-cli": "^2.6.1",
+    "list-dependents-cli": "^2.7.1",
     "npm-run-all2": "^7.0.1",
     "ts-ignore-import": "^4.0.1",
     "type-coverage": "^2.29.7",
