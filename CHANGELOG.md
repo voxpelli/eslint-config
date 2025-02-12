@@ -1,5 +1,27 @@
 # Changelog
 
+## [23.0.0](https://github.com/voxpelli/eslint-config/compare/v22.2.0...v23.0.0) (2025-02-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* mark `neostandard` majors as breaking
+
+### 🩹 Fixes
+
+* **deps:** update dependency eslint-plugin-jsdoc to ^50.6.3 ([#393](https://github.com/voxpelli/eslint-config/issues/393)) ([0d1f1f5](https://github.com/voxpelli/eslint-config/commit/0d1f1f58d57542da12c87917f902ca35f3c37637))
+
+
+### 🧹 Chores
+
+* **deps:** update dependency list-dependents-cli to ^2.7.1 ([#394](https://github.com/voxpelli/eslint-config/issues/394)) ([7900529](https://github.com/voxpelli/eslint-config/commit/7900529bb229a75efd7abeb2cd36ef1e4e67899d))
+* **deps:** update dependency neostandard to ^0.12.0 ([#388](https://github.com/voxpelli/eslint-config/issues/388)) ([484cd17](https://github.com/voxpelli/eslint-config/commit/484cd177b49c9b5f03d6122e770bbbd66c9d10eb))
+* **deps:** update dependency npm-run-all2 to ^7.0.2 ([#391](https://github.com/voxpelli/eslint-config/issues/391)) ([531953a](https://github.com/voxpelli/eslint-config/commit/531953a4ef29d1618c32e510d40b7ed77c26eb11))
+* **deps:** update linting dependencies ([#395](https://github.com/voxpelli/eslint-config/issues/395)) ([7b4eb2b](https://github.com/voxpelli/eslint-config/commit/7b4eb2b2fc3d03345c169a24684ea4bcd8aec64a))
+* **deps:** update type dependencies ([#392](https://github.com/voxpelli/eslint-config/issues/392)) ([8a8584b](https://github.com/voxpelli/eslint-config/commit/8a8584b07232c02c665b8d91b7203191c98fc0b3))
+* mark `neostandard` majors as breaking ([e883f39](https://github.com/voxpelli/eslint-config/commit/e883f399571859a36b1747572ca70d55dee417d6))
+* remove rule comparison for now ([a4619cc](https://github.com/voxpelli/eslint-config/commit/a4619ccd709f0e2c2a40c929cb85c4fa1c85d6c5))
+
 ## [22.2.0](https://github.com/voxpelli/eslint-config/compare/v22.1.0...v22.2.0) (2024-12-02)
 
 
