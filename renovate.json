@@ -6,25 +6,25 @@
   "packageRules": [
     {
       "enabled": true,
-      "matchPackageNames": ["/eslint-plugin/"],
+      "matchPackageNames": ["/eslint-plugin/", "neostandard"],
       "rangeStrategy": "bump"
     },
     {
       "enabled": true,
-      "matchPackageNames": ["/eslint-plugin/"],
+      "matchPackageNames": ["/eslint-plugin/", "neostandard"],
       "matchUpdateTypes": ["major"],
       "semanticCommitScope": "",
       "semanticCommitType": "feat!"
     },
     {
       "enabled": true,
-      "matchPackageNames": ["/eslint-plugin/"],
+      "matchPackageNames": ["/eslint-plugin/", "neostandard"],
       "matchUpdateTypes": ["minor"],
       "semanticCommitType": "feat"
     },
     {
       "enabled": true,
-      "matchPackageNames": ["/eslint-plugin/"],
+      "matchPackageNames": ["/eslint-plugin/", "neostandard"],
       "matchUpdateTypes": ["patch"],
       "semanticCommitType": "fix"
     },
