@@ -1,5 +1,14 @@
 # Changelog
 
+## [23.0.1](https://github.com/voxpelli/eslint-config/compare/v23.0.0...v23.0.1) (2025-05-30)
+
+
+### 🧹 Chores
+
+* **deps:** update linting dependencies ([#398](https://github.com/voxpelli/eslint-config/issues/398)) ([ebaace8](https://github.com/voxpelli/eslint-config/commit/ebaace8a812e8da16a717e45a14a177d4d8cc94c))
+* **deps:** update type dependencies ([#397](https://github.com/voxpelli/eslint-config/issues/397)) ([135f26a](https://github.com/voxpelli/eslint-config/commit/135f26a357851338fce2572d5a3abd5176abd070))
+* **deps:** update type dependencies ([#410](https://github.com/voxpelli/eslint-config/issues/410)) ([3e92f16](https://github.com/voxpelli/eslint-config/commit/3e92f167d879b5da002fa00d6f30620d123dd871))
+
 ## [23.0.0](https://github.com/voxpelli/eslint-config/compare/v22.2.0...v23.0.0) (2025-02-12)
 
 
