@@ -10,7 +10,7 @@
     "url": "git://github.com/voxpelli/eslint-config.git"
   },
   "engines": {
-    "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+    "node": "^20.19.0 || ^22.13.0 || >=24.0.0"
   },
   "type": "module",
   "exports": "./index.js",
