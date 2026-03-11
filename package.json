@@ -10,7 +10,7 @@
     "url": "git://github.com/voxpelli/eslint-config.git"
   },
   "engines": {
-    "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+    "node": "^20.19.0 || ^22.13.0 || >=24.0.0"
   },
   "type": "module",
   "exports": "./index.js",
@@ -71,6 +71,6 @@
     "eslint-plugin-security": "^3.0.1",
     "eslint-plugin-sort-destructure-keys": "^2.0.0",
     "eslint-plugin-unicorn": "^56.0.1",
-    "neostandard": "^0.12.2"
+    "neostandard": "^0.13.0"
   }
 }
