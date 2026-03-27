@@ -1,5 +1,36 @@
 # Changelog
 
+## [24.0.0](https://github.com/voxpelli/eslint-config/compare/v23.0.0...v24.0.0) (2026-03-27)
+
+
+### ⚠ BREAKING CHANGES
+
+* neostandard ^0.13.0 and node.js >=20.x ([#446](https://github.com/voxpelli/eslint-config/issues/446))
+
+### 🌟 Features
+
+* neostandard ^0.13.0 and node.js &gt;=20.x ([#446](https://github.com/voxpelli/eslint-config/issues/446)) ([5097d21](https://github.com/voxpelli/eslint-config/commit/5097d21208e2524539639f6064b96506ec8570ec))
+
+
+### 🩹 Fixes
+
+* **deps:** update dependency neostandard to ^0.12.2 ([#399](https://github.com/voxpelli/eslint-config/issues/399)) ([baad4e0](https://github.com/voxpelli/eslint-config/commit/baad4e0a7e9d6508473fa3b641921e2c7d345d6b))
+
+
+### 🧹 Chores
+
+* **deps:** bump @isaacs/brace-expansion from 5.0.0 to 5.0.1 ([#436](https://github.com/voxpelli/eslint-config/issues/436)) ([0ba9285](https://github.com/voxpelli/eslint-config/commit/0ba928508f4c7d6c4ff224a6155347a08707653f))
+* **deps:** lock file maintenance ([#400](https://github.com/voxpelli/eslint-config/issues/400)) ([9a0558f](https://github.com/voxpelli/eslint-config/commit/9a0558f5e19feee257fa1bf6c0eafe0a38dfc4db))
+* **deps:** lock file maintenance ([#423](https://github.com/voxpelli/eslint-config/issues/423)) ([db8880d](https://github.com/voxpelli/eslint-config/commit/db8880dddcbb823e38fbe59da5a9140fe9b4bb1d))
+* **deps:** lock file maintenance ([#444](https://github.com/voxpelli/eslint-config/issues/444)) ([92c1e15](https://github.com/voxpelli/eslint-config/commit/92c1e15f907562ed75b11309469192e141b43200))
+* **deps:** update actions/checkout action to v6 ([#435](https://github.com/voxpelli/eslint-config/issues/435)) ([808d71f](https://github.com/voxpelli/eslint-config/commit/808d71f1329254b522f8dd30d5755340d5fbf6a9))
+* **deps:** update dependency @voxpelli/tsconfig to v16 ([#428](https://github.com/voxpelli/eslint-config/issues/428)) ([169f16e](https://github.com/voxpelli/eslint-config/commit/169f16ec807ea2d8da7ba530c89081ca85e38be5))
+* **deps:** update linting dependencies ([#398](https://github.com/voxpelli/eslint-config/issues/398)) ([ebaace8](https://github.com/voxpelli/eslint-config/commit/ebaace8a812e8da16a717e45a14a177d4d8cc94c))
+* **deps:** update linting dependencies ([#411](https://github.com/voxpelli/eslint-config/issues/411)) ([3f47d28](https://github.com/voxpelli/eslint-config/commit/3f47d28bf22ca7754ec67404f7dae983c17558ac))
+* **deps:** update linting dependencies ([#420](https://github.com/voxpelli/eslint-config/issues/420)) ([d361aa8](https://github.com/voxpelli/eslint-config/commit/d361aa8cac562d2708f786b8bf6ad719225c72a5))
+* **deps:** update type dependencies ([#397](https://github.com/voxpelli/eslint-config/issues/397)) ([135f26a](https://github.com/voxpelli/eslint-config/commit/135f26a357851338fce2572d5a3abd5176abd070))
+* **deps:** update type dependencies ([#410](https://github.com/voxpelli/eslint-config/issues/410)) ([3e92f16](https://github.com/voxpelli/eslint-config/commit/3e92f167d879b5da002fa00d6f30620d123dd871))
+
 ## [23.0.0](https://github.com/voxpelli/eslint-config/compare/v22.2.0...v23.0.0) (2025-02-12)
 
 
