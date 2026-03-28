@@ -1,7 +1,6 @@
 import { plugins } from 'neostandard';
 // @ts-ignore
 import esxPlugin from 'eslint-plugin-es-x';
-// import importPlugin from 'eslint-plugin-import-x';
 import securityPlugin from 'eslint-plugin-security';
 // @ts-ignore
 import sortDestructureKeysPlugin from 'eslint-plugin-sort-destructure-keys';
@@ -24,7 +23,7 @@ const additionalCoreRules = {
 
 /** @satisfies {import('eslint').Linter.Config[]} */
 const adaptedUnicornRules = [
-  unicornPlugin.configs['flat/recommended'],
+  unicornPlugin.configs.recommended,
   {
     name: '@voxpelli/additional/unicorn',
     rules: {
@@ -42,6 +41,20 @@ const adaptedUnicornRules = [
       'unicorn/prefer-string-replace-all': 'warn',
       'unicorn/prevent-abbreviations': 'off',
       'unicorn/switch-case-braces': ['error', 'avoid'],
+
+      // New rules from v57-v64 — stylistic/opinionated overrides
+      'unicorn/consistent-assert': 'warn',
+      'unicorn/consistent-template-literal-escape': 'warn',
+      'unicorn/isolated-functions': 'warn',
+      'unicorn/no-array-reverse': 'warn',
+      'unicorn/no-array-sort': 'warn',
+      'unicorn/no-immediate-mutation': 'warn',
+      'unicorn/prefer-class-fields': 'warn',
+      'unicorn/prefer-classlist-toggle': 'warn',
+      'unicorn/prefer-import-meta-properties': 'off',
+      'unicorn/prefer-response-static-json': 'warn',
+      'unicorn/prefer-simple-condition-first': 'warn',
+      'unicorn/switch-case-break-position': 'warn',
     },
   },
 ];
@@ -56,8 +69,6 @@ export const additionalRules = [
     name: '@voxpelli/additional/misc',
     plugins: {
       'es-x': esxPlugin,
-      // TODO: Add back
-      // 'import': importPlugin,
       'sort-destructure-keys': sortDestructureKeysPlugin,
     },
     rules: {
@@ -69,14 +80,6 @@ export const additionalRules = [
       // Additional standalone ESLint rules
 
       'es-x/no-exponential-operators': 'warn',
-
-      // 'import/no-deprecated': 1,
-      // 'import/order': [
-      //   'error',
-      //   {
-      //     'groups': ['builtin', 'external', ['internal', 'parent', 'sibling', 'index'], 'type'],
-      //   },
-      // ],
 
       'promise/prefer-await-to-then': 'error',
 

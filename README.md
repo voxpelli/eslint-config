@@ -95,6 +95,11 @@ export default [
 * :mute: [`jsdoc/require-yields`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-yields.md) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
 * :wrench: [`jsdoc/tag-lines`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/tag-lines.md) – *changed* – to enforce an empty line between description and tags, but disallow them elsewhere.
 * :mute: [`jsdoc/valid-types`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/valid-types.md) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
+* :mute: [`jsdoc/reject-any-type`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/reject-any-type.md) – *deactivated* – too strict for [types in js](https://github.com/voxpelli/types-in-js) workflow
+* :mute: [`jsdoc/reject-function-type`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/reject-function-type.md) – *deactivated* – too strict for [types in js](https://github.com/voxpelli/types-in-js) workflow
+* :mute: [`jsdoc/require-next-description`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-next-description.md) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
+* :mute: [`jsdoc/require-throws-description`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-throws-description.md) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
+* :mute: [`jsdoc/require-yields-description`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-yields-description.md) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
 
 * :mute: [`mocha/no-mocha-arrows`](https://github.com/lo1tuma/eslint-plugin-mocha/blob/master/docs/rules/no-mocha-arrows.md) – *deactivated* – while [Mocha discourages arrow functions](https://mochajs.org/#arrow-functions) I find it more readable to use them + I find it safe when combined with type checking as then the type checking will notify one when one tries to do a `this.setTimeout()` or similar in an arrow function where there is no such local context
 
@@ -114,16 +119,26 @@ export default [
 * :warning: [`unicorn/prefer-spread`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-spread.md) – *changed* – set to `warn` instead of `error`
 * :warning: [`unicorn/prefer-string-replace-all`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-string-replace-all.md) – *changed* – set to `warn` instead of `error`
 * :mute: [`unicorn/prevent-abbreviations`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prevent-abbreviations.md) – *deactivated* – same as `unicorn/catch-error-name`, I prefer an abbreviated `err` over a non-abbreviated `error`because the latter is too similar to `Error` for my taste
+* :mute: [`unicorn/prefer-string-raw`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-string-raw.md) – *deactivated*
 * :wrench: [`unicorn/switch-case-braces`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/switch-case-braces.md) – *changed* – I prefer to avoid braces in `case` statements rather than enforcing them
+* :warning: [`unicorn/consistent-assert`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/consistent-assert.md) – *changed* – set to `warn`, opinionated assert style preference
+* :warning: [`unicorn/consistent-template-literal-escape`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/consistent-template-literal-escape.md) – *changed* – set to `warn` instead of `error`
+* :warning: [`unicorn/isolated-functions`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/isolated-functions.md) – *changed* – set to `warn`, contentious scoping preference
+* :warning: [`unicorn/no-array-reverse`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-array-reverse.md) – *changed* – set to `warn`, mutating `.reverse()` is common enough
+* :warning: [`unicorn/no-array-sort`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-array-sort.md) – *changed* – set to `warn`, mutating `.sort()` is widely used
+* :warning: [`unicorn/no-immediate-mutation`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-immediate-mutation.md) – *changed* – set to `warn`, can be noisy
+* :warning: [`unicorn/prefer-class-fields`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-class-fields.md) – *changed* – set to `warn` for gradual adoption
+* :warning: [`unicorn/prefer-classlist-toggle`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-classlist-toggle.md) – *changed* – set to `warn`, DOM-specific
+* :mute: [`unicorn/prefer-import-meta-properties`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-import-meta-properties.md) – *deactivated* – requires Node.js 20.11+, consistent with `prefer-module` being off by default
+* :warning: [`unicorn/prefer-response-static-json`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-response-static-json.md) – *changed* – set to `warn`, API-specific
+* :warning: [`unicorn/prefer-simple-condition-first`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-simple-condition-first.md) – *changed* – set to `warn` instead of `error`
+* :warning: [`unicorn/switch-case-break-position`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/switch-case-break-position.md) – *changed* – set to `warn` instead of `error`
 
 ### :heavy_plus_sign: Additional standalone ESLint rules
 
 * :stop_sign: [`@stylistic/quote-props`](https://eslint.style/rules/ts/quote-props) – requires properties to be quoted when needed but otherwise disallows it
 
 * :warning: [`es-x/no-exponential-operators`](https://eslint-community.github.io/eslint-plugin-es-x/rules/no-exponential-operators.html) – disallows the use of the `**` operator, as that's in most cases a mistake and one really meant to write `*`
-
-<!-- * :warning: [`import/no-deprecated`](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-deprecated.md) – disallows the use of explicitly deprecated code (code marked with `@deprecated`)
-* :stop_sign: [`import/no-order`](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-order.md) – enforces a specific ordering of imports -->
 
 * :warning: [`n/prefer-global/console`](https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/prefer-global/console.md)
 * :warning: [`n/prefer-promises/fs`](https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/prefer-promises/fs.md)
