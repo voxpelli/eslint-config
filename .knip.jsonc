@@ -1,5 +1,6 @@
 {
   "$schema": "https://unpkg.com/knip@2/schema.json",
+  "entry": ["tools/**/*.js"],
   "eslint": {
     "config": ["eslint.config.js", "index.js"]
   },
