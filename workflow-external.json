@@ -28,8 +28,11 @@
   ],
 
   "preFlatconfigCompliant": [
+    "voxpelli/activityspam-filter",
     "voxpelli/chai-posix-path",
     "voxpelli/compare-eslint-configs",
+    "voxpelli/eslint-config-jsdoc-ts",
+    "voxpelli/fastify-acl-auth",
     "voxpelli/meow-with-subcommands",
     "voxpelli/node-connect-pg-simple",
     "voxpelli/node-fulfills",

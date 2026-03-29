@@ -10,12 +10,19 @@ const additionalCoreRules = {
   name: '@voxpelli/additional/core',
   rules: {
     // Added ESLint core rules
+    'arrow-body-style': ['warn', 'as-needed'],
     'func-style': ['warn', 'expression', { 'allowArrowFunctions': true }],
     'no-console': 'warn',
     'no-constant-binary-expression': 'error',
     'no-unsafe-optional-chaining': ['error', { 'disallowArithmeticOperators': true }],
     'no-warning-comments': ['warn', { 'terms': ['fixme'] }],
     'object-shorthand': ['error', 'properties', { 'avoidQuotes': true }],
+    'prefer-arrow-callback': 'warn',
+    'prefer-destructuring': ['warn', {
+      'VariableDeclarator': { 'array': false, 'object': true },
+      'AssignmentExpression': { 'array': false, 'object': false },
+    }],
+    'prefer-object-spread': 'error',
     '@stylistic/quote-props': ['error', 'as-needed', { 'keywords': true, 'numbers': true, 'unnecessary': false }],
   },
 };

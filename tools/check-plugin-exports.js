@@ -1,12 +1,26 @@
 // Sanity checker for bundled ESLint plugin config shapes and types.
-// Run: node tools/check-plugin-exports.js
-// Flags: --types  also check for bundled types vs unnecessary @types/* packages
+// Run: node tools/check-plugin-exports.js --help
 
 import { readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
+import { peowly } from 'peowly';
 
 const require = createRequire(import.meta.url);
-const withTypes = process.argv.includes('--types');
+
+const { flags } = peowly({
+  name: 'check-plugin-exports',
+  description: 'Verify bundled ESLint plugin config export shapes and types',
+  options: {
+    types: {
+      type: 'boolean',
+      'default': false,
+      description: 'Check for bundled types vs unnecessary @types/* packages',
+      'short': 't',
+    },
+  },
+});
+
+const withTypes = flags.types;
 
 // --- Plugin definitions ---
 
