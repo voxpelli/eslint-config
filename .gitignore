@@ -9,9 +9,15 @@
 # Planning docs, upstream tracking, and AI instructions (not published)
 /ROADMAP.md
 /UPSTREAM-*.md
+/RETRO-*.md
 /CLAUDE.md
 /.claude.local.md
 
 # Library specific ones
 /.cache-eslint-remote-tester
 /eslint-remote-tester-results
+
+# Beads / Dolt files (added by bd init)
+.dolt/
+*.db
+.beads-credential-key
