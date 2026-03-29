@@ -2,6 +2,7 @@ import neostandard, { resolveIgnoresFromGitignore } from 'neostandard';
 
 import { additionalRules } from './base-configs/additional-rules.js';
 import { browserFilesConfig } from './base-configs/browser.js';
+import { cliToolsConfig } from './base-configs/cli.js';
 import { esmRules } from './base-configs/esm.js';
 import { jsdocRules } from './base-configs/jsdoc.js';
 import { mochaRules } from './base-configs/mocha.js';
@@ -10,14 +11,36 @@ import { nodeRules } from './base-configs/node.js';
 import { perfectionistRules } from './base-configs/perfectionist.js';
 import { regexpRules } from './base-configs/regexp.js';
 
+/** @type {ReadonlySet<string>} */
+const VALID_OPTIONS = new Set([
+  // voxpelli-specific
+  'browserFiles', 'cliTools', 'cjs', 'noMocha',
+  // neostandard pass-through
+  'env', 'files', 'filesTs', 'globals', 'ignores',
+  'noJsx', 'noStyle', 'semi', 'ts',
+]);
+
 /**
- * @param {{ browserFiles?: string[], cjs?: boolean, noMocha?: boolean } & import('neostandard').NeostandardOptions} [options]
+ * @param {{ browserFiles?: string[], cliTools?: string[], cjs?: boolean, noMocha?: boolean } & import('neostandard').NeostandardOptions} [options]
  * @returns {import('eslint').Linter.Config[]}
  */
 export function voxpelli (options) {
+  if (options) {
+    for (const key of Object.keys(options)) {
+      if (!VALID_OPTIONS.has(key)) {
+        throw new TypeError(
+          `voxpelli() received unknown option: "${key}". ` +
+          'Custom rules/plugins go in a separate config object: ' +
+          '[...voxpelli(), { rules: { ... } }]'
+        );
+      }
+    }
+  }
+
   const {
     browserFiles,
     cjs = false,
+    cliTools,
     ignores: rawIgnores,
     noMocha,
     ...neostandardOptions
@@ -46,6 +69,7 @@ export function voxpelli (options) {
     ...perfectionistRules,
     ...noMocha ? [] : mochaRules,
     ...browserFiles?.length ? browserFilesConfig(browserFiles) : [],
+    ...cliTools?.length ? cliToolsConfig(cliTools) : [],
   ];
 }
 

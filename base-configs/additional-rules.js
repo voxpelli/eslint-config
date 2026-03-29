@@ -1,4 +1,3 @@
-// @ts-ignore
 import esxPlugin from 'eslint-plugin-es-x';
 import securityPlugin from 'eslint-plugin-security';
 // @ts-ignore
@@ -59,12 +58,15 @@ const adaptedUnicornRules = [
   },
 ];
 
+/** @type {import('eslint').Linter.Config} */
+const promiseRecommended = plugins.promise.configs['flat/recommended'];
+
 /** @satisfies {import('eslint').Linter.Config[]} */
 export const additionalRules = [
   additionalCoreRules,
   ...adaptedUnicornRules,
   securityPlugin.configs.recommended,
-  /** @type {import('eslint').Linter.Config} */ (plugins.promise.configs['flat/recommended']),
+  promiseRecommended,
   {
     name: '@voxpelli/additional/misc',
     plugins: {

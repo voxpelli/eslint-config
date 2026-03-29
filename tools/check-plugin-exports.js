@@ -43,6 +43,15 @@ const plugins = [
     }),
   },
   {
+    name: 'eslint-plugin-perfectionist',
+    exportType: 'default',
+    check: (/** @type {any} */ c) => ({
+      'has rules': !!c.rules,
+      'has configs': !!c.configs,
+      'configs.recommended-natural': !!c.configs?.['recommended-natural'],
+    }),
+  },
+  {
     name: 'eslint-plugin-security',
     exportType: 'default',
     check: (/** @type {any} */ c) => ({
