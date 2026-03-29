@@ -407,6 +407,10 @@ async function main () {
         'default': '3',
         description: 'Max concurrent repos',
       },
+      release: {
+        type: 'string',
+        description: 'Filter patterns by release tag (e.g. v25, v26)',
+      },
       json: {
         type: 'boolean',
         'default': false,
@@ -421,8 +425,11 @@ async function main () {
   });
 
   if (flags.patterns) {
+    const displayPatterns = flags.release
+      ? PATTERN_REGISTRY.filter(p => p.release === flags.release)
+      : PATTERN_REGISTRY;
     console.log(bold('Pattern Registry\n'));
-    for (const p of PATTERN_REGISTRY) {
+    for (const p of displayPatterns) {
       const sev = p.severity === 'error' ? red(p.severity) : yellow(p.severity);
       console.log(`  ${p.id} ${dim(`[${p.release}]`)} ${sev}`);
       console.log(`    ${p.description}`);
@@ -460,7 +467,9 @@ async function main () {
   }
 
   // Collect and analyze
-  const activePatterns = PATTERN_REGISTRY;
+  const activePatterns = flags.release
+    ? PATTERN_REGISTRY.filter(p => p.release === flags.release)
+    : PATTERN_REGISTRY;
   const tasks = repos.map(slug => () => collectRepo(slug, activePatterns));
   const rawResults = await parallel(tasks, concurrency);
   const results = rawResults.map(raw => analyzeRepo(raw, { peerEslintMin }));

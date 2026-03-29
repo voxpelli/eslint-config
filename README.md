@@ -9,6 +9,8 @@ My personal [ESLint](https://eslint.org/) config – a superset of the [neostand
 
 This config contains a couple of more opinionated checks that I find helpful in my projects.
 
+This is also the reference ESLint config for the [types-in-JS](https://github.com/voxpelli/types-in-js) workflow — JavaScript with JSDoc type annotations validated by `tsc`. The JSDoc rules are specifically tuned for this approach: type-checking rules are deactivated (handled by `tsc`), while documentation-oriented JSDoc rules remain active.
+
 ## Install
 
 To easily install correct peer dependencies, you can use [`install-peerdeps`](https://www.npmjs.com/package/install-peerdeps):
@@ -198,7 +200,7 @@ Unless one configures `cjs: true` these additional rules will be applied:
 
 ## Can I use this in my own project?
 
-You may want to use [neostandard](https://github.com/neostandard/neostandard) instead, it's the general base config that I help maintain for the community.
+You may want to use [neostandard](https://github.com/neostandard/neostandard) instead, it's the general base config that I help maintain for the community. If you follow the [types-in-JS](https://github.com/voxpelli/types-in-js) approach, this config provides battle-tested JSDoc rule tuning validated against 50+ downstream repositories.
 
 I do maintain this project though as if multiple people are using it, so sure, you can use it, but its ultimate purpose is to support my projects.
 

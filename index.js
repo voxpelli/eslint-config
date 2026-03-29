@@ -76,4 +76,7 @@ export function voxpelli (options) {
 export { plugins } from 'neostandard';
 export { default as globals } from 'globals';
 
+export { browserFilesConfig as browserFiles } from './base-configs/browser.js';
+export { cliToolsConfig as cliFiles } from './base-configs/cli.js';
+
 export default voxpelli();
