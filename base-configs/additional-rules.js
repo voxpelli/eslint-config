@@ -1,10 +1,10 @@
-import { plugins } from 'neostandard';
 // @ts-ignore
 import esxPlugin from 'eslint-plugin-es-x';
 import securityPlugin from 'eslint-plugin-security';
 // @ts-ignore
 import sortDestructureKeysPlugin from 'eslint-plugin-sort-destructure-keys';
 import unicornPlugin from 'eslint-plugin-unicorn';
+import { plugins } from 'neostandard';
 
 /** @satisfies {import('eslint').Linter.Config} */
 const additionalCoreRules = {

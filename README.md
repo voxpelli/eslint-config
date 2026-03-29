@@ -108,6 +108,7 @@ export default defineConfig([
 
 * [`plugin:jsdoc/recommended`](https://github.com/gajus/eslint-plugin-jsdoc#rules)
 * [`plugin:mocha/recommended`](https://github.com/lo1tuma/eslint-plugin-mocha#rules)
+* [`eslint-plugin-perfectionist`](https://github.com/azat-io/eslint-plugin-perfectionist) (3 sorting rules)
 * [`plugin:n/recommended`](https://github.com/eslint-community/eslint-plugin-n#-rules)
 * [`plugin:promise/recommended`](https://github.com/eslint-community/eslint-plugin-promise#rules)
 * [`plugin:security/recommended`](https://github.com/eslint-community/eslint-plugin-security#rules)
@@ -170,6 +171,10 @@ export default defineConfig([
 * :stop_sign: [`@stylistic/quote-props`](https://eslint.style/rules/ts/quote-props) – requires properties to be quoted when needed but otherwise disallows it
 
 * :warning: [`es-x/no-exponential-operators`](https://eslint-community.github.io/eslint-plugin-es-x/rules/no-exponential-operators.html) – disallows the use of the `**` operator, as that's in most cases a mistake and one really meant to write `*`
+
+* :warning: [`perfectionist/sort-imports`](https://perfectionist.dev/rules/sort-imports.html) – natural-order sort of import statements
+* :warning: [`perfectionist/sort-named-imports`](https://perfectionist.dev/rules/sort-named-imports.html) – natural-order sort of named import specifiers
+* :warning: [`perfectionist/sort-named-exports`](https://perfectionist.dev/rules/sort-named-exports.html) – natural-order sort of named export specifiers
 
 * :warning: [`n/prefer-global/console`](https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/prefer-global/console.md)
 * :warning: [`n/prefer-promises/fs`](https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/prefer-promises/fs.md)

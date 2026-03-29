@@ -5,9 +5,10 @@ import { browserFilesConfig } from './base-configs/browser.js';
 import { esmRules } from './base-configs/esm.js';
 import { jsdocRules } from './base-configs/jsdoc.js';
 import { mochaRules } from './base-configs/mocha.js';
-import { nodeRules } from './base-configs/node.js';
-import { regexpRules } from './base-configs/regexp.js';
 import { modifiedNeostandardRules } from './base-configs/modified-rules.js';
+import { nodeRules } from './base-configs/node.js';
+import { perfectionistRules } from './base-configs/perfectionist.js';
+import { regexpRules } from './base-configs/regexp.js';
 
 /**
  * @param {{ browserFiles?: string[], cjs?: boolean, noMocha?: boolean } & import('neostandard').NeostandardOptions} [options]
@@ -42,6 +43,7 @@ export function voxpelli (options) {
     ...regexpRules,
     ...nodeRules(cjs),
     ...cjs ? [] : esmRules,
+    ...perfectionistRules,
     ...noMocha ? [] : mochaRules,
     ...browserFiles?.length ? browserFilesConfig(browserFiles) : [],
   ];
