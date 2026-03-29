@@ -1,6 +1,7 @@
 import neostandard, { resolveIgnoresFromGitignore } from 'neostandard';
 
 import { additionalRules } from './base-configs/additional-rules.js';
+import { browserFilesConfig } from './base-configs/browser.js';
 import { esmRules } from './base-configs/esm.js';
 import { jsdocRules } from './base-configs/jsdoc.js';
 import { mochaRules } from './base-configs/mocha.js';
@@ -9,11 +10,12 @@ import { regexpRules } from './base-configs/regexp.js';
 import { modifiedNeostandardRules } from './base-configs/modified-rules.js';
 
 /**
- * @param {{ cjs?: boolean, noMocha?: boolean } & import('neostandard').NeostandardOptions} [options]
+ * @param {{ browserFiles?: string[], cjs?: boolean, noMocha?: boolean } & import('neostandard').NeostandardOptions} [options]
  * @returns {import('eslint').Linter.Config[]}
  */
 export function voxpelli (options) {
   const {
+    browserFiles,
     cjs = false,
     ignores: rawIgnores,
     noMocha,
@@ -41,7 +43,11 @@ export function voxpelli (options) {
     ...nodeRules(cjs),
     ...cjs ? [] : esmRules,
     ...noMocha ? [] : mochaRules,
+    ...browserFiles?.length ? browserFilesConfig(browserFiles) : [],
   ];
 }
+
+export { plugins } from 'neostandard';
+export { default as globals } from 'globals';
 
 export default voxpelli();

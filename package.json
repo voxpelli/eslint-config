@@ -26,7 +26,7 @@
   "scripts": {
     "build:0": "run-s clean",
     "build:1-declaration": "tsc -p declaration.tsconfig.json",
-    "build:2-add-ignores": "ts-ignore-import '**/*.d.ts' --allow=eslint --allow=neostandard",
+    "build:2-add-ignores": "ts-ignore-import '**/*.d.ts' --allow=eslint --allow=globals --allow=neostandard",
     "build": "run-s build:*",
     "check:installed-check": "installed-check -i list-dependents-cli",
     "check:knip": "knip",
@@ -71,6 +71,7 @@
     "eslint-plugin-security": "^4.0.0",
     "eslint-plugin-sort-destructure-keys": "^3.0.0",
     "eslint-plugin-unicorn": "^64.0.0",
+    "globals": "^17.0.0",
     "neostandard": "^0.13.0"
   }
 }

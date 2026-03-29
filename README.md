@@ -31,8 +31,9 @@ If you need to configure something, instead do:
 import { voxpelli } from '@voxpelli/eslint-config';
 
 export default voxpelli({
-  cjs: true,     // Ensures the config has rules fit for a CJS context rather than an ESM context
-  noMocha: true, // By standard this config expects tests to be of the Mocha kind, but one can opt out
+  cjs: true,            // Ensures the config has rules fit for a CJS context rather than an ESM context
+  noMocha: true,        // By standard this config expects tests to be of the Mocha kind, but one can opt out
+  browserFiles: ['client/**/*.js'], // Scopes browser globals and disables Node rules for matched files
 });
 ```
 
@@ -51,7 +52,35 @@ export default [
 ];
 ```
 
-###
+### Re-exported utilities
+
+For framework consumers (Vue, Svelte, Astro) that need the TypeScript parser, `plugins` (from neostandard) and `globals` (from the [globals](https://github.com/sindresorhus/globals) package) are re-exported for convenience:
+
+```js
+import { voxpelli, plugins, globals } from '@voxpelli/eslint-config';
+
+export default [
+  ...voxpelli({ ts: true }),
+  {
+    files: ['**/*.vue'],
+    languageOptions: {
+      parser: plugins['typescript-eslint'].parser,
+    },
+  },
+];
+```
+
+Note: `voxpelli()` returns a flat config array. With ESLint 9.37+ you can also use `defineConfig()` from `eslint/config` which auto-flattens arrays — no spread needed:
+
+```js
+import { defineConfig } from 'eslint/config';
+import { voxpelli } from '@voxpelli/eslint-config';
+
+export default defineConfig([
+  voxpelli({ /* options */ }),
+  { /* custom rules */ },
+]);
+```
 
 ## How does this differ from pure [neostandard](https://github.com/neostandard/neostandard)?
 
