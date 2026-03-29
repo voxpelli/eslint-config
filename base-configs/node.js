@@ -20,6 +20,7 @@ export function nodeRules (cjs) {
       name: '@voxpelli/additional/node',
       rules: {
         // Overriding
+        'n/no-extraneous-import': 'off',
         'n/no-process-exit': 'off',
 
         // Adding

@@ -86,6 +86,7 @@ export default [
 
 #### :wrench: Overrides of added ESLint rule packages
 
+* :wrench: [`jsdoc/check-tag-names`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/check-tag-names.md) – *changed* – allows `@planned` tag for [knip](https://github.com/webpro-nl/knip) unused-export suppression
 * :mute: [`jsdoc/check-types`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/check-types.md) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
 * :mute: [`jsdoc/no-undefined-types`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/no-undefined-types.md) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
 * :mute: [`jsdoc/require-jsdoc`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-jsdoc.md) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
@@ -103,6 +104,7 @@ export default [
 
 * :mute: [`mocha/no-mocha-arrows`](https://github.com/lo1tuma/eslint-plugin-mocha/blob/master/docs/rules/no-mocha-arrows.md) – *deactivated* – while [Mocha discourages arrow functions](https://mochajs.org/#arrow-functions) I find it more readable to use them + I find it safe when combined with type checking as then the type checking will notify one when one tries to do a `this.setTimeout()` or similar in an arrow function where there is no such local context
 
+* :mute: [`n/no-extraneous-import`](https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/no-extraneous-import.md) – *deactivated* – superseded by [knip](https://github.com/webpro-nl/knip), which validates imports more accurately without false positives in monorepos
 * :mute: [`n/no-process-exit`](https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/no-process-exit.md) – *deactivated* – added by `plugin:n/recommended`, but deactivated in favor of [`unicorn/no-process-exit`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-process-exit.md)
 
 * :mute: [`security/detect-object-injection`](https://github.com/eslint-community/eslint-plugin-security/blob/main/docs/rules/detect-object-injection.md) – *deactivated* – causes too many false errors

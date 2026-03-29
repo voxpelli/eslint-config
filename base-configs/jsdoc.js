@@ -6,6 +6,7 @@ export const jsdocRules = [
   {
     name: '@voxpelli/jsdoc',
     rules: {
+      'jsdoc/check-tag-names': ['warn', { definedTags: ['planned'] }],
       'jsdoc/check-types': 'off',
       'jsdoc/require-jsdoc': 'off',
       'jsdoc/require-param-description': 'off',
