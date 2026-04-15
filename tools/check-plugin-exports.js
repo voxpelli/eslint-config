@@ -135,7 +135,8 @@ function getVersion (name) {
       const candidate = path.join(dir, 'package.json');
       try {
         // eslint-disable-next-line security/detect-non-literal-fs-filename
-        return JSON.parse(readFileSync(candidate, 'utf8')).version;
+        const pkg = JSON.parse(readFileSync(candidate, 'utf8'));
+        if (pkg.name === name) return pkg.version;
       } catch {}
       dir = path.dirname(dir);
     }
