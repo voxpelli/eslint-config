@@ -43,17 +43,18 @@ export default voxpelli({
 
 Passing an unknown option key throws a `TypeError` with a message pointing to the composable pattern — this catches common mistakes like placing custom rules inside the options object.
 
-You can also do custom extensions:
+Custom rules, plugins, and other ESLint config go in separate objects after the spread — not inside the `voxpelli()` options (which only accepts the keys shown above plus [neostandard options](https://github.com/neostandard/neostandard#options)):
 
 ```js
 import { voxpelli } from '@voxpelli/eslint-config';
 
 export default [
-  ...voxpelli({
-    // Config options
-  }),
+  ...voxpelli({ /* config options */ }),
   {
-    // Custom ESLint config
+    rules: {
+      'no-console': 'off',
+      'func-style': ['warn', 'declaration'],
+    },
   },
 ];
 ```
