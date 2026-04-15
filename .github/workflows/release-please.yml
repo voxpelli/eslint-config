@@ -8,13 +8,11 @@ on:
 permissions:
   contents: read
   id-token: write
-  packages: write
 
 jobs:
   release-please:
-    uses: voxpelli/ghatemplates/.github/workflows/release-please-bot.yml@main
+    uses: voxpelli/ghatemplates/.github/workflows/release-please-oidc.yml@main
     secrets: inherit
     with:
       app-id: '1082006'
       lockfile: true
-      publish-to-github: true
