@@ -23,7 +23,6 @@ const additionalCoreRules = {
       'AssignmentExpression': { 'array': false, 'object': false },
     }],
     'prefer-object-spread': 'error',
-    '@stylistic/quote-props': ['error', 'as-needed', { 'keywords': true, 'numbers': true, 'unnecessary': false }],
   },
 };
 
@@ -67,6 +66,16 @@ const adaptedUnicornRules = [
 
 /** @type {import('eslint').Linter.Config} */
 const promiseRecommended = plugins.promise.configs['flat/recommended'];
+
+/** @satisfies {import('eslint').Linter.Config[]} */
+export const additionalStyleRules = [
+  {
+    name: '@voxpelli/additional/core/style',
+    rules: {
+      '@stylistic/quote-props': ['error', 'as-needed', { 'keywords': true, 'numbers': true, 'unnecessary': false }],
+    },
+  },
+];
 
 /** @satisfies {import('eslint').Linter.Config[]} */
 export const additionalRules = [
