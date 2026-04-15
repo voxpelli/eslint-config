@@ -35,6 +35,7 @@ import { voxpelli } from '@voxpelli/eslint-config';
 export default voxpelli({
   cjs: true,            // Ensures the config has rules fit for a CJS context rather than an ESM context
   noMocha: true,        // By standard this config expects tests to be of the Mocha kind, but one can opt out
+  noStyle: true,        // Disables all stylistic rules (@stylistic + perfectionist sorting) — also passed to neostandard
   browserFiles: ['client/**/*.js'], // Scopes browser globals and disables Node rules for matched files
   cliFiles: ['bin/**/*.js', 'scripts/**/*.js'], // Relaxes rules for CLI scripts (process.exit, console, sync I/O, etc.)
 });
@@ -128,7 +129,7 @@ export default [
 
 ### :wrench: Changed [neostandard](https://github.com/neostandard/neostandard) rules
 
-* :wrench: [`@stylistic/comma-dangle`](https://eslint.org/docs/rules/comma-dangle) – *changed* – set to enforce dangling commas in arrays, objects, imports and exports
+* :wrench: [`@stylistic/comma-dangle`](https://eslint.org/docs/rules/comma-dangle) – *changed* – set to enforce dangling commas in arrays, objects, imports and exports *(disabled by `noStyle`)*
 * :wrench: [`no-unused-vars`](https://eslint.org/docs/rules/no-unused-vars) – *changed* – sets `"args": "all", "argsIgnorePattern": "^_",` because I personally don't feel limited by [Express error handlers](https://github.com/standard/standard/issues/419#issuecomment-718186130) + wants to stay in sync with TypeScript `noUnusedParameters`
 
 ### :heavy_plus_sign: Added ESLint core rules
@@ -205,13 +206,13 @@ export default [
 
 ### :heavy_plus_sign: Additional standalone ESLint rules
 
-* :stop_sign: [`@stylistic/quote-props`](https://eslint.style/rules/ts/quote-props) – requires properties to be quoted when needed but otherwise disallows it
+* :stop_sign: [`@stylistic/quote-props`](https://eslint.style/rules/ts/quote-props) – requires properties to be quoted when needed but otherwise disallows it *(disabled by `noStyle`)*
 
 * :warning: [`es-x/no-exponential-operators`](https://eslint-community.github.io/eslint-plugin-es-x/rules/no-exponential-operators.html) – disallows the use of the `**` operator, as that's in most cases a mistake and one really meant to write `*`
 
-* :warning: [`perfectionist/sort-imports`](https://perfectionist.dev/rules/sort-imports.html) – natural-order sort of import statements
-* :warning: [`perfectionist/sort-named-imports`](https://perfectionist.dev/rules/sort-named-imports.html) – natural-order sort of named import specifiers
-* :warning: [`perfectionist/sort-named-exports`](https://perfectionist.dev/rules/sort-named-exports.html) – natural-order sort of named export specifiers
+* :warning: [`perfectionist/sort-imports`](https://perfectionist.dev/rules/sort-imports.html) – natural-order sort of import statements *(disabled by `noStyle`)*
+* :warning: [`perfectionist/sort-named-imports`](https://perfectionist.dev/rules/sort-named-imports.html) – natural-order sort of named import specifiers *(disabled by `noStyle`)*
+* :warning: [`perfectionist/sort-named-exports`](https://perfectionist.dev/rules/sort-named-exports.html) – natural-order sort of named export specifiers *(disabled by `noStyle`)*
 
 * :warning: [`n/prefer-global/console`](https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/prefer-global/console.md)
 * :warning: [`n/prefer-promises/fs`](https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/prefer-promises/fs.md)
