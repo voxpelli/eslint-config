@@ -3,6 +3,7 @@
 
 import { readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
+import path from 'node:path';
 import { peowly } from 'peowly';
 
 const require = createRequire(import.meta.url);
@@ -120,13 +121,27 @@ const dim = (s) => `\u001B[2m${s}\u001B[0m`;
  * @returns {string}
  */
 function getVersion (name) {
+  // Try the direct subpath first; some packages don't expose package.json in exports
   try {
     const pkgPath = require.resolve(`${name}/package.json`);
     // eslint-disable-next-line security/detect-non-literal-fs-filename
     return JSON.parse(readFileSync(pkgPath, 'utf8')).version;
-  } catch {
-    return '?';
-  }
+  } catch {}
+
+  // Fallback: resolve the main entry and walk up to find package.json
+  try {
+    let dir = path.dirname(require.resolve(name));
+    while (dir !== path.dirname(dir)) {
+      const candidate = path.join(dir, 'package.json');
+      try {
+        // eslint-disable-next-line security/detect-non-literal-fs-filename
+        return JSON.parse(readFileSync(candidate, 'utf8')).version;
+      } catch {}
+      dir = path.dirname(dir);
+    }
+  } catch {}
+
+  return '?';
 }
 
 /** @returns {Promise<string>} */
