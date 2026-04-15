@@ -13,6 +13,7 @@ export function cliToolsConfig (files) {
         'n/no-unsupported-features/node-builtins': 'off',
         'no-console': 'off',
         'promise/prefer-await-to-then': 'off',
+        'unicorn/no-process-exit': 'off',
         'unicorn/prefer-top-level-await': 'off',
       },
     },

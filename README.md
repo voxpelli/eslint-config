@@ -36,8 +36,11 @@ export default voxpelli({
   cjs: true,            // Ensures the config has rules fit for a CJS context rather than an ESM context
   noMocha: true,        // By standard this config expects tests to be of the Mocha kind, but one can opt out
   browserFiles: ['client/**/*.js'], // Scopes browser globals and disables Node rules for matched files
+  cliTools: ['bin/**/*.js', 'scripts/**/*.js'], // Relaxes rules for CLI scripts (process.exit, console, sync I/O, etc.)
 });
 ```
+
+Passing an unknown option key throws a `TypeError` with a message pointing to the composable pattern — this catches common mistakes like placing custom rules inside the options object.
 
 You can also do custom extensions:
 
@@ -83,6 +86,24 @@ export default defineConfig([
   { /* custom rules */ },
 ]);
 ```
+
+### Composable sub-configs
+
+`browserFiles` and `cliFiles` are also exported as standalone config factories for cases where you want to apply their rule sets without using `voxpelli()` as the base:
+
+```js
+import { browserFiles, cliFiles } from '@voxpelli/eslint-config';
+
+export default [
+  // your own base config …
+  ...browserFiles(['client/**/*.js']),
+  ...cliFiles(['bin/**/*.js']),
+];
+```
+
+`browserFiles(globs)` — scopes browser globals and disables Node.js rules for matched files.
+
+`cliFiles(globs)` — relaxes rules appropriate for CLI scripts: allows `process.exit()`, `console`, sync I/O, and top-level non-await patterns.
 
 ## How does this differ from pure [neostandard](https://github.com/neostandard/neostandard)?
 
