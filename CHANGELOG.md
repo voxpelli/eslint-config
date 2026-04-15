@@ -1,5 +1,12 @@
 # Changelog
 
+## [24.0.1](https://github.com/voxpelli/eslint-config/compare/v24.0.0...v24.0.1) (2026-04-15)
+
+
+### 🩹 Fixes
+
+* use release-please with OIDC publishing ([362a0b5](https://github.com/voxpelli/eslint-config/commit/362a0b59b539f34401a0be30639dc7ed72c4b342))
+
 ## [24.0.0](https://github.com/voxpelli/eslint-config/compare/v23.0.0...v24.0.0) (2026-04-15)
 
 
