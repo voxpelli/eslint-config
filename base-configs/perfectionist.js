@@ -9,6 +9,10 @@ export const perfectionistRules = [
       'perfectionist/sort-imports': ['warn', { type: 'natural', order: 'asc', newlinesBetween: 'ignore' }],
       'perfectionist/sort-named-imports': ['warn', { type: 'natural', order: 'asc' }],
       'perfectionist/sort-named-exports': ['warn', { type: 'natural', order: 'asc' }],
+      'perfectionist/sort-objects': ['error',
+        { type: 'natural', order: 'asc', useConfigurationIf: { objectType: 'destructured' } },
+        { type: 'unsorted' },
+      ],
     },
   },
 ];

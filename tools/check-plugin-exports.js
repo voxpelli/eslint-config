@@ -89,13 +89,6 @@ const plugins = [
       'has configs': !!c.configs,
     }),
   },
-  {
-    name: 'eslint-plugin-sort-destructure-keys',
-    exportType: 'default',
-    check: (/** @type {any} */ c) => ({
-      'has rules': !!c.rules,
-    }),
-  },
 ];
 
 // --- Helpers ---

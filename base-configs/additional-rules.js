@@ -1,7 +1,5 @@
 import esxPlugin from 'eslint-plugin-es-x';
 import securityPlugin from 'eslint-plugin-security';
-// @ts-ignore
-import sortDestructureKeysPlugin from 'eslint-plugin-sort-destructure-keys';
 import unicornPlugin from 'eslint-plugin-unicorn';
 import { plugins } from 'neostandard';
 
@@ -87,7 +85,6 @@ export const additionalRules = [
     name: '@voxpelli/additional/misc',
     plugins: {
       'es-x': esxPlugin,
-      'sort-destructure-keys': sortDestructureKeysPlugin,
     },
     rules: {
       // Overrides of other extended ESLint rule packages
@@ -100,8 +97,6 @@ export const additionalRules = [
       'es-x/no-exponential-operators': 'warn',
 
       'promise/prefer-await-to-then': 'error',
-
-      'sort-destructure-keys/sort-destructure-keys': 'error',
     },
   },
 ];
