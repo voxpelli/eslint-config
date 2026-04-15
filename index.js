@@ -1,10 +1,10 @@
 import neostandard, { resolveIgnoresFromGitignore } from 'neostandard';
 
-import { additionalRules } from './base-configs/additional-rules.js';
+import { additionalRules, additionalStyleRules } from './base-configs/additional-rules.js';
 import { esmRules } from './base-configs/esm.js';
 import { jsdocRules } from './base-configs/jsdoc.js';
 import { mochaRules } from './base-configs/mocha.js';
-import { modifiedNeostandardRules } from './base-configs/modified-rules.js';
+import { modifiedNeostandardRules, modifiedNeostandardStyleRules } from './base-configs/modified-rules.js';
 import { nodeRules } from './base-configs/node.js';
 import { perfectionistRules } from './base-configs/perfectionist.js';
 import { regexpRules } from './base-configs/regexp.js';
@@ -43,6 +43,7 @@ export function voxpelli (options) {
     cliFiles,
     ignores: rawIgnores,
     noMocha,
+    noStyle,
     ...neostandardOptions
   } = options || {};
 
@@ -58,15 +59,18 @@ export function voxpelli (options) {
     ...neostandard({
       semi: true,
       ts: true,
+      noStyle,
       ...neostandardOptions,
     }),
     ...modifiedNeostandardRules,
+    ...noStyle ? [] : modifiedNeostandardStyleRules,
     ...additionalRules,
+    ...noStyle ? [] : additionalStyleRules,
     ...jsdocRules,
     ...regexpRules,
     ...nodeRules(cjs),
     ...cjs ? [] : esmRules,
-    ...perfectionistRules,
+    ...noStyle ? [] : perfectionistRules,
     ...noMocha ? [] : mochaRules,
     ...browserFiles?.length ? browserFilesConfig(browserFiles) : [],
     ...cliFiles?.length ? cliFilesConfig(cliFiles) : [],
