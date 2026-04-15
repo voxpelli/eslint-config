@@ -12,6 +12,7 @@ on:
 
 permissions:
   contents: read
+  pull-requests: write
 
 jobs:
   test:
@@ -20,3 +21,6 @@ jobs:
   external:
     needs: [test]
     uses: ./.github/workflows/external.yml
+    permissions:
+      contents: read
+      pull-requests: write
