@@ -87,6 +87,20 @@ export default defineConfig([
 ]);
 ```
 
+`defineConfig()` also supports an `extends` key inside config objects, which is useful when you need to scope the inherited config to specific files:
+
+```js
+import { defineConfig } from 'eslint/config';
+import { voxpelli } from '@voxpelli/eslint-config';
+
+export default defineConfig([
+  {
+    files: ['src/**/*.js'],
+    extends: [voxpelli()],
+  },
+]);
+```
+
 ### Composable sub-configs
 
 `browserFiles` and `cliFiles` are also exported as standalone config factories for cases where you want to apply their rule sets without using `voxpelli()` as the base:
