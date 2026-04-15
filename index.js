@@ -1,8 +1,6 @@
 import neostandard, { resolveIgnoresFromGitignore } from 'neostandard';
 
 import { additionalRules } from './base-configs/additional-rules.js';
-import { browserFilesConfig } from './base-configs/browser.js';
-import { cliToolsConfig } from './base-configs/cli.js';
 import { esmRules } from './base-configs/esm.js';
 import { jsdocRules } from './base-configs/jsdoc.js';
 import { mochaRules } from './base-configs/mocha.js';
@@ -10,18 +8,20 @@ import { modifiedNeostandardRules } from './base-configs/modified-rules.js';
 import { nodeRules } from './base-configs/node.js';
 import { perfectionistRules } from './base-configs/perfectionist.js';
 import { regexpRules } from './base-configs/regexp.js';
+import { browserFilesConfig } from './profiles/browser.js';
+import { cliFilesConfig } from './profiles/cli.js';
 
 /** @type {ReadonlySet<string>} */
 const VALID_OPTIONS = new Set([
   // voxpelli-specific
-  'browserFiles', 'cliTools', 'cjs', 'noMocha',
+  'browserFiles', 'cliFiles', 'cjs', 'noMocha',
   // neostandard pass-through
   'env', 'files', 'filesTs', 'globals', 'ignores',
   'noJsx', 'noStyle', 'semi', 'ts',
 ]);
 
 /**
- * @param {{ browserFiles?: string[], cliTools?: string[], cjs?: boolean, noMocha?: boolean } & import('neostandard').NeostandardOptions} [options]
+ * @param {{ browserFiles?: string[], cliFiles?: string[], cjs?: boolean, noMocha?: boolean } & import('neostandard').NeostandardOptions} [options]
  * @returns {import('eslint').Linter.Config[]}
  */
 export function voxpelli (options) {
@@ -40,7 +40,7 @@ export function voxpelli (options) {
   const {
     browserFiles,
     cjs = false,
-    cliTools,
+    cliFiles,
     ignores: rawIgnores,
     noMocha,
     ...neostandardOptions
@@ -69,14 +69,14 @@ export function voxpelli (options) {
     ...perfectionistRules,
     ...noMocha ? [] : mochaRules,
     ...browserFiles?.length ? browserFilesConfig(browserFiles) : [],
-    ...cliTools?.length ? cliToolsConfig(cliTools) : [],
+    ...cliFiles?.length ? cliFilesConfig(cliFiles) : [],
   ];
 }
 
 export { plugins } from 'neostandard';
 export { default as globals } from 'globals';
 
-export { browserFilesConfig as browserFiles } from './base-configs/browser.js';
-export { cliToolsConfig as cliFiles } from './base-configs/cli.js';
+export { browserFilesConfig as browserFiles } from './profiles/browser.js';
+export { cliFilesConfig as cliFiles } from './profiles/cli.js';
 
 export default voxpelli();

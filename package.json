@@ -21,7 +21,10 @@
     "index.d.ts.map",
     "base-configs/**/*.js",
     "base-configs/**/*.d.ts",
-    "base-configs/**/*.d.ts.map"
+    "base-configs/**/*.d.ts.map",
+    "profiles/**/*.js",
+    "profiles/**/*.d.ts",
+    "profiles/**/*.d.ts.map"
   ],
   "scripts": {
     "build:0": "run-s clean",

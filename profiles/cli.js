@@ -2,10 +2,10 @@
  * @param {string[]} files
  * @returns {import('eslint').Linter.Config[]}
  */
-export function cliToolsConfig (files) {
+export function cliFilesConfig (files) {
   return /** @satisfies {import('eslint').Linter.Config[]} */ ([
     {
-      name: '@voxpelli/cli-tools',
+      name: '@voxpelli/cli-files',
       files,
       rules: {
         'n/no-process-env': 'off',

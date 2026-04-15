@@ -36,7 +36,7 @@ export default voxpelli({
   cjs: true,            // Ensures the config has rules fit for a CJS context rather than an ESM context
   noMocha: true,        // By standard this config expects tests to be of the Mocha kind, but one can opt out
   browserFiles: ['client/**/*.js'], // Scopes browser globals and disables Node rules for matched files
-  cliTools: ['bin/**/*.js', 'scripts/**/*.js'], // Relaxes rules for CLI scripts (process.exit, console, sync I/O, etc.)
+  cliFiles: ['bin/**/*.js', 'scripts/**/*.js'], // Relaxes rules for CLI scripts (process.exit, console, sync I/O, etc.)
 });
 ```
 
