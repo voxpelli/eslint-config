@@ -1,7 +1,0 @@
-{
-  "database": "dolt",
-  "backend": "dolt",
-  "dolt_mode": "server",
-  "dolt_database": "eslint_config_voxpelli",
-  "project_id": "803b6e3a-d560-4fd1-a4e7-d1d294b5f708"
-}
