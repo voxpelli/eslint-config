@@ -20,11 +20,31 @@ const projectRoot = import.meta.dirname + '/..';
 
 // --- ANSI helpers ---
 
-const green = /** @param {string} s */ s => `\u001B[32m${s}\u001B[0m`;
-const red = /** @param {string} s */ s => `\u001B[31m${s}\u001B[0m`;
-const yellow = /** @param {string} s */ s => `\u001B[33m${s}\u001B[0m`;
-const dim = /** @param {string} s */ s => `\u001B[2m${s}\u001B[0m`;
-const bold = /** @param {string} s */ s => `\u001B[1m${s}\u001B[0m`;
+/**
+ * @param {string} s
+ * @returns {string}
+ */
+const green = s => `\u001B[32m${s}\u001B[0m`;
+/**
+ * @param {string} s
+ * @returns {string}
+ */
+const red = s => `\u001B[31m${s}\u001B[0m`;
+/**
+ * @param {string} s
+ * @returns {string}
+ */
+const yellow = s => `\u001B[33m${s}\u001B[0m`;
+/**
+ * @param {string} s
+ * @returns {string}
+ */
+const dim = s => `\u001B[2m${s}\u001B[0m`;
+/**
+ * @param {string} s
+ * @returns {string}
+ */
+const bold = s => `\u001B[1m${s}\u001B[0m`;
 
 // --- Pattern registry ---
 
@@ -278,7 +298,11 @@ function analyzeRepo (raw, localConfig) {
 
 /** @param {RepoResult[]} results */
 function renderTerminal (results) {
-  const statusIcon = /** @param {string} s */ s => {
+  /**
+   * @param {string} s
+   * @returns {string}
+   */
+  const statusIcon = s => {
     if (s === 'ready') return green('✓');
     if (s === 'needs-eslint-bump') return yellow('△');
     if (s === 'risky') return red('✗');
@@ -318,6 +342,7 @@ function renderTerminal (results) {
 
 /** @param {RepoResult[]} results */
 function renderJson (results) {
+  // eslint-disable-next-line security/detect-non-literal-fs-filename
   const localPkg = /** @type {PackageJson} */ (JSON.parse(readFileSync(`${projectRoot}/package.json`, 'utf8')));
   console.log(JSON.stringify({
     generatedAt: new Date().toISOString(),
@@ -453,12 +478,14 @@ async function main () {
   const jsonOutput = flags.json;
 
   // Load local config
+  // eslint-disable-next-line security/detect-non-literal-fs-filename
   const localPkg = /** @type {PackageJson} */ (JSON.parse(readFileSync(`${projectRoot}/package.json`, 'utf8')));
   const peerRange = localPkg.peerDependencies?.['eslint'] ?? '^9.0.0';
   const peerMatch = peerRange.match(/(\d+)\.(\d+)\.(\d+)/);
   const peerEslintMin = peerMatch ? [Number(peerMatch[1]), Number(peerMatch[2]), Number(peerMatch[3])] : [9, 0, 0];
 
   // Load repo list
+  // eslint-disable-next-line security/detect-non-literal-fs-filename
   const tiers = /** @type {Record<string, string[]>} */ (JSON.parse(readFileSync(`${projectRoot}/workflow-external.json`, 'utf8')));
   const repos = selectRepos(tiers, tierName, sampleN);
 

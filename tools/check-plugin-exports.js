@@ -99,14 +99,30 @@ const plugins = [
 
 // --- Helpers ---
 
-const green = /** @param {string} s */ (s) => `\u001B[32m${s}\u001B[0m`;
-const red = /** @param {string} s */ (s) => `\u001B[31m${s}\u001B[0m`;
-const dim = /** @param {string} s */ (s) => `\u001B[2m${s}\u001B[0m`;
+/**
+ * @param {string} s
+ * @returns {string}
+ */
+const green = (s) => `\u001B[32m${s}\u001B[0m`;
+/**
+ * @param {string} s
+ * @returns {string}
+ */
+const red = (s) => `\u001B[31m${s}\u001B[0m`;
+/**
+ * @param {string} s
+ * @returns {string}
+ */
+const dim = (s) => `\u001B[2m${s}\u001B[0m`;
 
-/** @param {string} name */
+/**
+ * @param {string} name
+ * @returns {string}
+ */
 function getVersion (name) {
   try {
     const pkgPath = require.resolve(`${name}/package.json`);
+    // eslint-disable-next-line security/detect-non-literal-fs-filename
     return JSON.parse(readFileSync(pkgPath, 'utf8')).version;
   } catch {
     return '?';
