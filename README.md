@@ -213,7 +213,7 @@ export default [
 * :warning: [`perfectionist/sort-imports`](https://perfectionist.dev/rules/sort-imports.html) – natural-order sort of import statements *(disabled by `noStyle`)*
 * :warning: [`perfectionist/sort-named-imports`](https://perfectionist.dev/rules/sort-named-imports.html) – natural-order sort of named import specifiers *(disabled by `noStyle`)*
 * :warning: [`perfectionist/sort-named-exports`](https://perfectionist.dev/rules/sort-named-exports.html) – natural-order sort of named export specifiers *(disabled by `noStyle`)*
-* :stop_sign: [`perfectionist/sort-objects`](https://perfectionist.dev/rules/sort-objects.html) – natural-order sort of destructured object keys (replaces `eslint-plugin-sort-destructure-keys`) *(disabled by `noStyle`)*
+* :warning: [`perfectionist/sort-objects`](https://perfectionist.dev/rules/sort-objects.html) – natural-order sort of destructured object keys (replaces `eslint-plugin-sort-destructure-keys`) *(disabled by `noStyle`)*
 
 * :warning: [`n/prefer-global/console`](https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/prefer-global/console.md)
 * :warning: [`n/prefer-promises/fs`](https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/prefer-promises/fs.md)
