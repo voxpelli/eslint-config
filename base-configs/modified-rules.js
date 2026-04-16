@@ -10,6 +10,12 @@ export const modifiedNeostandardStyleRules = [
         exports: 'always-multiline',
         functions: 'never',
       }],
+      '@stylistic/object-curly-newline': ['error', {
+        ObjectExpression: { multiline: true, consistent: true },
+        ObjectPattern: { multiline: true, consistent: true },
+        ImportDeclaration: { minProperties: 4, multiline: true, consistent: true },
+        ExportDeclaration: { minProperties: 4, multiline: true, consistent: true },
+      }],
     },
   },
 ];
