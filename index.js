@@ -11,17 +11,34 @@ import { regexpRules } from './base-configs/regexp.js';
 import { browserFilesConfig } from './profiles/browser.js';
 import { cliFilesConfig } from './profiles/cli.js';
 
-/** @type {ReadonlySet<string>} */
-const VALID_OPTIONS = new Set([
+/**
+ * @typedef {{ browserFiles?: string[], cliFiles?: string[], cjs?: boolean, noMocha?: boolean } & import('neostandard').NeostandardOptions} VoxpelliOptions
+ */
+
+/** @satisfies {Record<keyof VoxpelliOptions, true>} */
+const VALID_OPTIONS_MAP = {
   // voxpelli-specific
-  'browserFiles', 'cliFiles', 'cjs', 'noMocha',
+  browserFiles: true,
+  cliFiles: true,
+  cjs: true,
+  noMocha: true,
   // neostandard pass-through
-  'env', 'files', 'filesTs', 'globals', 'ignores',
-  'noJsx', 'noStyle', 'semi', 'ts',
-]);
+  env: true,
+  files: true,
+  filesTs: true,
+  globals: true,
+  ignores: true,
+  noJsx: true,
+  noStyle: true,
+  semi: true,
+  ts: true,
+};
+
+/** @type {ReadonlySet<string>} */
+const VALID_OPTIONS = new Set(Object.keys(VALID_OPTIONS_MAP));
 
 /**
- * @param {{ browserFiles?: string[], cliFiles?: string[], cjs?: boolean, noMocha?: boolean } & import('neostandard').NeostandardOptions} [options]
+ * @param {VoxpelliOptions} [options]
  * @returns {import('eslint').Linter.Config[]}
  */
 export function voxpelli (options) {
@@ -30,6 +47,7 @@ export function voxpelli (options) {
       if (!VALID_OPTIONS.has(key)) {
         throw new TypeError(
           `voxpelli() received unknown option: "${key}". ` +
+          `Valid options: ${[...VALID_OPTIONS].join(', ')}. ` +
           'Custom rules/plugins go in a separate config object: ' +
           '[...voxpelli(), { rules: { ... } }]'
         );
