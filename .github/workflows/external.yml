@@ -28,8 +28,17 @@ jobs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
       - uses: actions/checkout@v6
+      - id: validate-module-set
+        env:
+          INPUT: ${{ github.event.inputs.moduleSet }}
+        run: |
+          case "$INPUT" in
+            compliant|preFlatconfigCompliant|nonCompliant|"") ;;
+            *) echo "::error::Invalid moduleSet: $INPUT"; exit 1 ;;
+          esac
+          echo "value=${INPUT:-compliant}" >> "$GITHUB_OUTPUT"
       - id: set-matrix
-        run: echo "matrix=$(cat workflow-external.json | jq -c '.${{ github.event.inputs.moduleSet || 'compliant' }}')" >> $GITHUB_OUTPUT
+        run: echo "matrix=$(cat workflow-external.json | jq -c ".${{ steps.validate-module-set.outputs.value }}")" >> "$GITHUB_OUTPUT"
 
   test_external:
     needs: read_external_projects
@@ -104,6 +113,7 @@ jobs:
           node -e "
             const fs = require('fs');
             const project = process.env.PROJECT;
+            const projectPrefix = process.cwd() + '/project/';
             let totals = { errorCount: 0, warningCount: 0, fixableErrorCount: 0, fixableWarningCount: 0 };
             const rules = {};
             try {
@@ -115,12 +125,16 @@ jobs:
                 totals.fixableWarningCount += file.fixableWarningCount;
                 for (const msg of file.messages) {
                   if (!msg.ruleId) continue;
-                  const key = msg.ruleId;
+                  const isValidRuleId = typeof msg.ruleId === 'string' && /^[@a-z0-9/_-]+$/i.test(msg.ruleId);
+                  const key = isValidRuleId ? msg.ruleId : '(invalid rule id)';
                   if (!rules[key]) rules[key] = { errors: 0, warnings: 0, fixable: 0, files: [] };
                   if (msg.severity === 2) rules[key].errors++;
                   else rules[key].warnings++;
                   if (msg.fix) rules[key].fixable++;
-                  rules[key].files.push(file.filePath.replace(process.cwd() + '/project/', '') + ':' + msg.line);
+                  const cleanPath = typeof file.filePath === 'string' && file.filePath.startsWith(projectPrefix)
+                    ? file.filePath.slice(projectPrefix.length)
+                    : '<unexpected path>';
+                  rules[key].files.push(cleanPath + ':' + msg.line);
                 }
               }
             } catch {}
@@ -157,25 +171,39 @@ jobs:
             const fs = require('fs');
             const path = require('path');
 
+            const BIDI_ZW_CTRL = /[\u200B-\u200F\u202A-\u202E\u2060-\u2069\uFEFF]/g;
+            const stripCtrl = (s) => String(s).replace(BIDI_ZW_CTRL, '');
+            const escapeHtml = (s) => stripCtrl(s)
+              .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+              .replace(/\"/g, '&quot;').replace(/'/g, '&#39;');
+            const FILE_CAP = 50;
+            const SIZE_CAP = 60000;
+
             const dir = 'results';
             const results = [];
             if (fs.existsSync(dir)) {
               for (const sub of fs.readdirSync(dir)) {
                 const file = path.join(dir, sub, 'eslint-result.json');
-                if (fs.existsSync(file)) results.push(JSON.parse(fs.readFileSync(file, 'utf8')));
+                if (!fs.existsSync(file)) continue;
+                if (fs.statSync(file).size > 5 * 1024 * 1024) continue;
+                let parsed;
+                try { parsed = JSON.parse(fs.readFileSync(file, 'utf8')); } catch { continue; }
+                if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) continue;
+                if (parsed.rules && (typeof parsed.rules !== 'object' || Array.isArray(parsed.rules))) continue;
+                results.push(parsed);
               }
             }
-            results.sort((a, b) => a.project.localeCompare(b.project));
+            results.sort((a, b) => String(a.project).localeCompare(String(b.project)));
 
             if (results.length === 0) {
               fs.writeFileSync('comment.md', '');
               process.exit(0);
             }
 
-            const totalErrors = results.reduce((s, r) => s + r.errorCount, 0);
-            const totalWarnings = results.reduce((s, r) => s + r.warningCount, 0);
-            const totalFixableE = results.reduce((s, r) => s + r.fixableErrorCount, 0);
-            const totalFixableW = results.reduce((s, r) => s + r.fixableWarningCount, 0);
+            const totalErrors = results.reduce((s, r) => s + (r.errorCount|0), 0);
+            const totalWarnings = results.reduce((s, r) => s + (r.warningCount|0), 0);
+            const totalFixableE = results.reduce((s, r) => s + (r.fixableErrorCount|0), 0);
+            const totalFixableW = results.reduce((s, r) => s + (r.fixableWarningCount|0), 0);
 
             let md = '## External project test results\n\n';
             md += '**' + results.length + ' project(s) failed**';
@@ -184,10 +212,13 @@ jobs:
             md += '\n\n';
 
             for (const r of results) {
-              const link = '[' + r.project + '](https://github.com/' + r.project + ')';
-              const fixable = r.fixableErrorCount + r.fixableWarningCount;
+              const isValidSlug = typeof r.project === 'string' && /^[\w.-]+\/[\w.-]+$/.test(r.project);
+              const label = isValidSlug
+                ? '[' + escapeHtml(r.project) + '](https://github.com/' + r.project + ')'
+                : escapeHtml(r.project);
+              const fixable = (r.fixableErrorCount|0) + (r.fixableWarningCount|0);
               const fixStr = fixable > 0 ? ' (' + fixable + ' fixable :wrench:)' : '';
-              md += '<details>\n<summary>' + link + ' &mdash; ' + r.errorCount + ' errors, ' + r.warningCount + ' warnings' + fixStr + '</summary>\n\n';
+              md += '<details>\n<summary>' + label + ' &mdash; ' + (r.errorCount|0) + ' errors, ' + (r.warningCount|0) + ' warnings' + fixStr + '</summary>\n\n';
               md += '| Errors | Warnings | Fixable | Rule |\n';
               md += '|-------:|---------:|--------:|------|\n';
 
@@ -196,12 +227,21 @@ jobs:
                 .sort((a, b) => b.errors - a.errors || b.warnings - a.warnings || a.id.localeCompare(b.id));
 
               for (const rule of ruleEntries) {
-                const fileList = '<ul><li>' + rule.files.join('</li><li>') + '</li></ul>';
+                const shownFiles = (rule.files || []).slice(0, FILE_CAP);
+                const overflow = (rule.files || []).length - shownFiles.length;
+                const fileBlock = '<pre><code>' +
+                  shownFiles.map(escapeHtml).join('\n') +
+                  (overflow > 0 ? '\n... and ' + overflow + ' more' : '') +
+                  '</code></pre>';
                 const fixCol = rule.fixable > 0 ? rule.fixable + ' :wrench:' : '-';
-                md += '| ' + rule.errors + ' | ' + rule.warnings + ' | ' + fixCol + ' | <details><summary>' + rule.id + '</summary>' + fileList + '</details> |\n';
+                md += '| ' + rule.errors + ' | ' + rule.warnings + ' | ' + fixCol + ' | <details><summary><code>' + escapeHtml(rule.id) + '</code></summary>' + fileBlock + '</details> |\n';
               }
 
               md += '\n</details>\n\n';
+            }
+
+            if (Buffer.byteLength(md, 'utf8') > SIZE_CAP) {
+              md = md.slice(0, SIZE_CAP - 5000) + '\n\n_(comment truncated — too many failures to render)_\n';
             }
 
             fs.writeFileSync('comment.md', md);
