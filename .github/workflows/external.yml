@@ -173,18 +173,15 @@ jobs:
   post_comment:
     name: Post sticky PR comment
     needs: [summary]
-    if: ${{ !cancelled() && github.event.pull_request.number && needs.summary.result == 'success' }}
+    # Skip on fork PRs: GITHUB_TOKEN is read-only regardless of requested
+    # permissions, so the sticky-comment post would 403. Reviewers still
+    # get the step summary via the Actions run link.
+    if: ${{ !cancelled() && github.event.pull_request.number && github.event.pull_request.head.repo.full_name == github.repository && needs.summary.result == 'success' }}
     runs-on: ubuntu-latest
-    environment: pr-bot
     permissions:
       contents: read
+      pull-requests: write
     steps:
-      - name: mint app token
-        id: app-token
-        uses: actions/create-github-app-token@v2
-        with:
-          app-id: '1082006'
-          private-key: ${{ secrets.APP_PEM }}
       - name: download comment
         uses: actions/download-artifact@v4
         with:
@@ -194,4 +191,3 @@ jobs:
         with:
           header: external-test-results
           path: comment.md
-          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}

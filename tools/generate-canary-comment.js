@@ -60,10 +60,18 @@ if (results.length === 0) {
   process.exit(0);
 }
 
-const hasSyntheticFootnote = results.some(r => {
-  const sk = r['syntheticKeys'];
-  return Array.isArray(sk) && sk.some(k => k === '(parser error)' || k === '(no rule id)');
-});
+const SYNTHETIC_FOOTNOTE_KEYS = new Set([
+  '(parser error)',
+  '(no rule id)',
+  '(unused disable)',
+  '(missing rule)',
+]);
+
+const presentSyntheticKeys = new Set(
+  results.flatMap(r => Array.isArray(r['syntheticKeys']) ? r['syntheticKeys'] : [])
+    .filter(k => SYNTHETIC_FOOTNOTE_KEYS.has(String(k)))
+);
+const hasSyntheticFootnote = presentSyntheticKeys.size > 0;
 
 const totalErrors = results.reduce((s, r) => s + Math.trunc(Number(r['errorCount'])), 0);
 const totalWarnings = results.reduce((s, r) => s + Math.trunc(Number(r['warningCount'])), 0);
@@ -77,8 +85,15 @@ if (totalWarnings > 0) md += ', ' + totalWarnings + ' warnings (' + totalFixable
 md += '\n\n';
 
 if (hasSyntheticFootnote) {
-  md += '<sub><em><code>(parser error)</code> — ESLint reported a fatal parse/syntax error without a rule id.<br>';
-  md += '<code>(no rule id)</code> — ESLint reported a non-fatal issue without attributing it to a named rule.</em></sub>\n\n';
+  /** @type {Record<string, string>} */
+  const FOOTNOTE_TEXT = {
+    '(parser error)':  'ESLint reported a fatal parse/syntax error without a rule id.',
+    '(no rule id)':    'ESLint reported a non-fatal issue without attributing it to a named rule.',
+    '(unused disable)': 'An <code>eslint-disable</code> directive reported no matching problems — the named rule is shown next to each file.',
+    '(missing rule)':  'An <code>eslint-disable</code> / config references a rule ESLint could not load (plugin uninstalled or rule removed) — the name is shown next to each file.',
+  };
+  const lines = [...presentSyntheticKeys].sort().map(k => '<code>' + escapeHtml(k) + '</code> — ' + FOOTNOTE_TEXT[String(k)]);
+  md += '<sub><em>' + lines.join('<br>') + '</em></sub>\n\n';
 }
 
 for (const r of results) {
@@ -110,12 +125,15 @@ for (const r of results) {
     const overflow = (rule.files || []).length - shownFiles.length;
 
     const fileSpans = shownFiles.map(f => {
-      const m = /^(.+):(\d+)$/.exec(f);
+      const [pathAndLine, detail] = f.split('\t', 2);
+      const m = /^(.+):(\d+)$/.exec(pathAndLine ?? '');
+      const detailSuffix = detail ? ' <sub>' + escapeHtml(detail) + '</sub>' : '';
       if (m && isValidSlug) {
         const [, filePath, line] = m;
-        return '<a href="https://github.com/' + slug + '/blob/HEAD/' + encodeURI(filePath ?? '') + '#L' + line + '"><code>' + escapeHtml(f) + '</code></a>';
+        const encodedPath = (filePath ?? '').split('/').map(seg => encodeURIComponent(seg)).join('/');
+        return '<a href="https://github.com/' + slug + '/blob/HEAD/' + encodedPath + '#L' + line + '"><code>' + escapeHtml(pathAndLine ?? '') + '</code></a>' + detailSuffix;
       }
-      return '<code>' + escapeHtml(f) + '</code>';
+      return '<code>' + escapeHtml(pathAndLine ?? '') + '</code>' + detailSuffix;
     });
 
     const fileBlock = fileSpans.join('<br>') + (overflow > 0 ? '<br><em>... and ' + overflow + ' more</em>' : '');
@@ -126,6 +144,11 @@ for (const r of results) {
 }
 
 if (Buffer.byteLength(md, 'utf8') > SIZE_CAP) {
-  md = md.slice(0, SIZE_CAP - 5000) + '\n\n_(comment truncated — too many failures to render)_\n';
+  // Truncate at the last `</details>\n\n` boundary before the cap so we
+  // never leave an unclosed <details> tag mid-render.
+  const slice = md.slice(0, SIZE_CAP - 5000);
+  const lastClose = slice.lastIndexOf('</details>\n\n');
+  const safeEnd = lastClose !== -1 ? lastClose + '</details>\n\n'.length : slice.length;
+  md = slice.slice(0, safeEnd) + '\n\n_(comment truncated — too many failures to render)_\n';
 }
 fs.writeFileSync('comment.md', md);
