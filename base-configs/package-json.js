@@ -6,6 +6,7 @@ export const packageJsonRules = [
   {
     name: '@voxpelli/package-json',
     files: ['**/package.json'],
+    ignores: ['**/test/**/package.json', '**/tests/**/package.json'],
     rules: {
       'package-json/no-empty-fields': ['error', { ignoreProperties: ['files', 'keywords'] }],
       'package-json/sort-collections': 'warn',

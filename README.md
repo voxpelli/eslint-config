@@ -155,7 +155,7 @@ Markers can combine when a rule has both a severity change and a separate config
 
 * [`plugin:jsdoc/recommended`](https://github.com/gajus/eslint-plugin-jsdoc#rules)
 * [`plugin:mocha/recommended`](https://github.com/lo1tuma/eslint-plugin-mocha#rules)
-* [`eslint-plugin-package-json`](https://github.com/michaelfaith/eslint-plugin-package-json) (applied to all `**/package.json` files)
+* [`eslint-plugin-package-json`](https://github.com/michaelfaith/eslint-plugin-package-json) (applied to `**/package.json`, excluding `**/test/**/package.json` and `**/tests/**/package.json` fixtures)
 * [`eslint-plugin-perfectionist`](https://github.com/azat-io/eslint-plugin-perfectionist) (4 sorting rules, replaces `eslint-plugin-sort-destructure-keys`)
 * [`plugin:n/recommended`](https://github.com/eslint-community/eslint-plugin-n#-rules)
 * [`plugin:promise/recommended`](https://github.com/eslint-community/eslint-plugin-promise#rules)
