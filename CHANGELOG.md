@@ -1,5 +1,21 @@
 # Changelog
 
+## [25.0.0](https://github.com/voxpelli/eslint-config/compare/v24.0.1...v25.0.0) (2026-04-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* perfectionist, package-json, noStyle support, profiles, dependency updates ([#454](https://github.com/voxpelli/eslint-config/issues/454))
+
+### 🌟 Features
+
+* perfectionist, package-json, noStyle support, profiles, dependency updates ([#454](https://github.com/voxpelli/eslint-config/issues/454)) ([afa1776](https://github.com/voxpelli/eslint-config/commit/afa177671e965818020583d3e55e81d8022e40ba))
+
+
+### 🧹 Chores
+
+* **deps-dev:** bump js-yaml from 4.1.0 to 4.1.1 ([#432](https://github.com/voxpelli/eslint-config/issues/432)) ([dbd18be](https://github.com/voxpelli/eslint-config/commit/dbd18be49684ce0caff40fbdbaa5a968b7e2dd33))
+
 ## [24.0.1](https://github.com/voxpelli/eslint-config/compare/v24.0.0...v24.0.1) (2026-04-15)
 
 
