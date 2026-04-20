@@ -87,10 +87,10 @@ md += '\n\n';
 if (hasSyntheticFootnote) {
   /** @type {Record<string, string>} */
   const FOOTNOTE_TEXT = {
-    '(parser error)':  'ESLint reported a fatal parse/syntax error without a rule id.',
-    '(no rule id)':    'ESLint reported a non-fatal issue without attributing it to a named rule.',
+    '(parser error)': 'ESLint reported a fatal parse/syntax error without a rule id.',
+    '(no rule id)': 'ESLint reported a non-fatal issue without attributing it to a named rule.',
     '(unused disable)': 'An <code>eslint-disable</code> directive reported no matching problems — the named rule is shown next to each file.',
-    '(missing rule)':  'An <code>eslint-disable</code> / config references a rule ESLint could not load (plugin uninstalled or rule removed) — the name is shown next to each file.',
+    '(missing rule)': 'An <code>eslint-disable</code> / config references a rule ESLint could not load (plugin uninstalled or rule removed) — the name is shown next to each file.',
   };
   const lines = [...presentSyntheticKeys].sort().map(k => '<code>' + escapeHtml(k) + '</code> — ' + FOOTNOTE_TEXT[String(k)]);
   md += '<sub><em>' + lines.join('<br>') + '</em></sub>\n\n';
