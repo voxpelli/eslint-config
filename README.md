@@ -206,7 +206,7 @@ Markers can combine when a rule has both a severity change and a separate config
 * :mute: [`unicorn/prevent-abbreviations`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prevent-abbreviations.md) – *deactivated* – same as `unicorn/catch-error-name`, I prefer an abbreviated `err` over a non-abbreviated `error`because the latter is too similar to `Error` for my taste
 * :mute: [`unicorn/prefer-string-raw`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-string-raw.md) – *deactivated*
 * :wrench: [`unicorn/switch-case-braces`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/switch-case-braces.md) – *changed* – I prefer to avoid braces in `case` statements rather than enforcing them
-* :warning: [`unicorn/consistent-assert`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/consistent-assert.md) – *changed* – set to `warn`, opinionated assert style preference
+* :mute: [`unicorn/consistent-assert`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/consistent-assert.md) – *deactivated* – opinionated assert style preference that doesn't fit these projects
 * :warning: [`unicorn/consistent-template-literal-escape`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/consistent-template-literal-escape.md) – *changed* – set to `warn` instead of `error`
 * :warning: [`unicorn/isolated-functions`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/isolated-functions.md) – *changed* – set to `warn`, contentious scoping preference
 * :warning: [`unicorn/no-array-reverse`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-array-reverse.md) – *changed* – set to `warn`, mutating `.reverse()` is common enough
@@ -225,7 +225,7 @@ Markers can combine when a rule has both a severity change and a separate config
 
 * :warning: [`es-x/no-exponential-operators`](https://eslint-community.github.io/eslint-plugin-es-x/rules/no-exponential-operators.html) – disallows the use of the `**` operator, as that's in most cases a mistake and one really meant to write `*`
 
-* :warning: [`perfectionist/sort-imports`](https://perfectionist.dev/rules/sort-imports.html) – natural-order sort of import statements *(disabled by `noStyle`)*
+* :warning: [`perfectionist/sort-imports`](https://perfectionist.dev/rules/sort-imports.html) – natural-order sort of import statements, with custom `groups` ordering: type imports first, then value imports grouped by builtin → external → parent/sibling/index, splitting singleline from multiline within each tier *(disabled by `noStyle`)*
 * :warning: [`perfectionist/sort-named-imports`](https://perfectionist.dev/rules/sort-named-imports.html) – natural-order sort of named import specifiers *(disabled by `noStyle`)*
 * :warning: [`perfectionist/sort-named-exports`](https://perfectionist.dev/rules/sort-named-exports.html) – natural-order sort of named export specifiers *(disabled by `noStyle`)*
 * :warning: [`perfectionist/sort-objects`](https://perfectionist.dev/rules/sort-objects.html) – natural-order sort of destructured object keys (replaces `eslint-plugin-sort-destructure-keys`) *(disabled by `noStyle`)*

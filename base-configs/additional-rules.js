@@ -46,7 +46,7 @@ const adaptedUnicornRules = [
       'unicorn/switch-case-braces': ['error', 'avoid'],
 
       // New rules from v57-v64 — stylistic/opinionated overrides
-      'unicorn/consistent-assert': 'warn',
+      'unicorn/consistent-assert': 'off',
       'unicorn/consistent-template-literal-escape': 'warn',
       'unicorn/isolated-functions': 'warn',
       'unicorn/no-array-reverse': 'warn',
