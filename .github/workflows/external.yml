@@ -107,6 +107,12 @@ jobs:
         run: ../main/node_modules/.bin/eslint --format json --output-file eslint-results.json
         working-directory: ./project
 
+      - name: show errors in log
+        if: ${{ failure() && steps.eslint.outcome == 'failure' }}
+        run: ../main/node_modules/.bin/eslint --format stylish
+        working-directory: ./project
+        continue-on-error: true
+
       - name: prepare result
         if: ${{ failure() && steps.eslint.outcome == 'failure' }}
         run: |
@@ -154,7 +160,7 @@ jobs:
   summary:
     name: Post test summary
     needs: [test_external]
-    if: ${{ !cancelled() && github.event.pull_request.number }}
+    if: ${{ !cancelled() && needs.test_external.result != 'skipped' }}
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
@@ -256,15 +262,19 @@ jobs:
             echo "has_results=false" >> $GITHUB_OUTPUT
           fi
 
-      - name: post comment
+      - name: write step summary
         if: steps.check.outputs.has_results == 'true'
+        run: cat comment.md >> $GITHUB_STEP_SUMMARY
+
+      - name: post comment
+        if: ${{ steps.check.outputs.has_results == 'true' && github.event.pull_request.number }}
         uses: marocchino/sticky-pull-request-comment@0ea0beb66eb9baf113663a64ec522f60e49231c0
         with:
           header: external-test-results
           path: comment.md
 
       - name: delete stale comment
-        if: steps.check.outputs.has_results != 'true'
+        if: ${{ steps.check.outputs.has_results != 'true' && github.event.pull_request.number }}
         uses: marocchino/sticky-pull-request-comment@0ea0beb66eb9baf113663a64ec522f60e49231c0
         with:
           header: external-test-results
