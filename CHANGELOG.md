@@ -1,5 +1,12 @@
 # Changelog
 
+## [25.0.2](https://github.com/voxpelli/eslint-config/compare/v25.0.1...v25.0.2) (2026-04-20)
+
+
+### 🩹 Fixes
+
+* restructure perfectionist/sort-imports groups into parallel clusters ([#465](https://github.com/voxpelli/eslint-config/issues/465)) ([7714756](https://github.com/voxpelli/eslint-config/commit/7714756152ee8eb2252571b626b1e3d509ea867f))
+
 ## [25.0.1](https://github.com/voxpelli/eslint-config/compare/v25.0.0...v25.0.1) (2026-04-20)
 
 
