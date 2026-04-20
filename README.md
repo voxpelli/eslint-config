@@ -227,7 +227,7 @@ Markers can combine when a rule has both a severity change and a separate config
 
 * :warning: [`es-x/no-exponential-operators`](https://eslint-community.github.io/eslint-plugin-es-x/rules/no-exponential-operators.html) – disallows the use of the `**` operator, as that's in most cases a mistake and one really meant to write `*`
 
-* :warning: [`perfectionist/sort-imports`](https://perfectionist.dev/rules/sort-imports.html) – natural-order sort of import statements, with custom `groups` ordering: four parallel clusters — type-singleline, type-multiline, value-singleline, value-multiline — each ordering builtin → external → [parent/sibling/index]; `newlinesBetween: 'ignore'` so downstream formatting isn't disturbed *(disabled by `noStyle`)*
+* :warning: [`perfectionist/sort-imports`](https://perfectionist.dev/rules/sort-imports.html) – natural-order sort of import statements, with custom `groups` ordering: type imports first, then value imports; within each, singleline and multiline are paired tier by tier — builtin → external → [parent/sibling/index]; `newlinesBetween: 'ignore'` so downstream formatting isn't disturbed *(disabled by `noStyle`)*
 * :warning: [`perfectionist/sort-named-imports`](https://perfectionist.dev/rules/sort-named-imports.html) – natural-order sort of named import specifiers *(disabled by `noStyle`)*
 * :warning: [`perfectionist/sort-named-exports`](https://perfectionist.dev/rules/sort-named-exports.html) – natural-order sort of named export specifiers *(disabled by `noStyle`)*
 * :warning: [`perfectionist/sort-objects`](https://perfectionist.dev/rules/sort-objects.html) – natural-order sort of destructured object keys (replaces `eslint-plugin-sort-destructure-keys`) *(disabled by `noStyle`)*
