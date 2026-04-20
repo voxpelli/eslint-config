@@ -1,5 +1,5 @@
 {
-  "extends": "@voxpelli/tsconfig/node16.json",
+  "extends": "@voxpelli/tsconfig/node20.json",
   "files": [
     "eslint.config.js",
     "index.js",
@@ -10,7 +10,6 @@
     "tools/**/*.js",
   ],
   "compilerOptions": {
-    "lib": ["es2023"],
     "types": ["node"]
   }
 }
