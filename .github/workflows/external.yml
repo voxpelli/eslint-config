@@ -107,14 +107,14 @@ jobs:
         run: ../main/node_modules/.bin/eslint --format json --output-file eslint-results.json
         working-directory: ./project
 
-      - name: show errors in log
-        if: ${{ failure() && steps.eslint.outcome == 'failure' }}
+      - name: show lint output in log
+        if: ${{ !cancelled() && steps.eslint.conclusion != 'skipped' }}
         run: ../main/node_modules/.bin/eslint --format stylish
         working-directory: ./project
         continue-on-error: true
 
       - name: prepare result
-        if: ${{ failure() && steps.eslint.outcome == 'failure' }}
+        if: ${{ !cancelled() && steps.eslint.conclusion != 'skipped' }}
         run: |
           node -e "
             const fs = require('fs');
@@ -144,13 +144,14 @@ jobs:
                 }
               }
             } catch {}
+            if (totals.errorCount === 0 && totals.warningCount === 0) process.exit(0);
             fs.writeFileSync('eslint-result.json', JSON.stringify({ project, ...totals, rules }));
           "
         env:
           PROJECT: ${{ matrix.project }}
 
       - name: upload result
-        if: ${{ failure() && steps.eslint.outcome == 'failure' }}
+        if: ${{ !cancelled() && hashFiles('eslint-result.json') != '' }}
         uses: actions/upload-artifact@v4
         with:
           name: eslint-result-${{ strategy.job-index }}-${{ github.run_attempt }}
@@ -212,7 +213,7 @@ jobs:
             const totalFixableW = results.reduce((s, r) => s + (r.fixableWarningCount|0), 0);
 
             let md = '## External project test results\n\n';
-            md += '**' + results.length + ' project(s) failed**';
+            md += '**' + results.length + ' project(s) reported issues**';
             if (totalErrors > 0) md += ' &mdash; ' + totalErrors + ' errors (' + totalFixableE + ' fixable)';
             if (totalWarnings > 0) md += ', ' + totalWarnings + ' warnings (' + totalFixableW + ' fixable)';
             md += '\n\n';
@@ -235,10 +236,9 @@ jobs:
               for (const rule of ruleEntries) {
                 const shownFiles = (rule.files || []).slice(0, FILE_CAP);
                 const overflow = (rule.files || []).length - shownFiles.length;
-                const fileBlock = '<pre><code>' +
-                  shownFiles.map(escapeHtml).join('\n') +
-                  (overflow > 0 ? '\n... and ' + overflow + ' more' : '') +
-                  '</code></pre>';
+                const fileBlock =
+                  shownFiles.map(f => '<code>' + escapeHtml(f) + '</code>').join('<br>') +
+                  (overflow > 0 ? '<br><em>... and ' + overflow + ' more</em>' : '');
                 const fixCol = rule.fixable > 0 ? rule.fixable + ' :wrench:' : '-';
                 md += '| ' + rule.errors + ' | ' + rule.warnings + ' | ' + fixCol + ' | <details><summary><code>' + escapeHtml(rule.id) + '</code></summary>' + fileBlock + '</details> |\n';
               }
