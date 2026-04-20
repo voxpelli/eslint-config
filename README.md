@@ -138,7 +138,7 @@ Markers can combine when a rule has both a severity change and a separate config
 ### :wrench: Changed [neostandard](https://github.com/neostandard/neostandard) rules
 
 * :wrench: [`@stylistic/comma-dangle`](https://eslint.org/docs/rules/comma-dangle) – *changed* – set to enforce dangling commas in arrays, objects, imports and exports *(disabled by `noStyle`)*
-* :wrench: [`@stylistic/object-curly-newline`](https://eslint.style/rules/js/object-curly-newline) – *changed* – enforces multiline imports and exports when 4+ specifiers are present *(disabled by `noStyle`)*
+* :warning: [`@stylistic/object-curly-newline`](https://eslint.style/rules/js/object-curly-newline) – :wrench: *changed* – softened to `warn`; enforces multiline imports and exports when 4+ specifiers are present *(disabled by `noStyle`)*
 * :wrench: [`no-unused-vars`](https://eslint.org/docs/rules/no-unused-vars) – *changed* – sets `"args": "all", "argsIgnorePattern": "^_",` because I personally don't feel limited by [Express error handlers](https://github.com/standard/standard/issues/419#issuecomment-718186130) + wants to stay in sync with TypeScript `noUnusedParameters`
 
 ### :heavy_plus_sign: Added ESLint core rules
@@ -236,7 +236,7 @@ Markers can combine when a rule has both a severity change and a separate config
 * :warning: [`n/no-process-env`](https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/no-process-env.md)
 * :stop_sign: [`n/no-sync`](https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/no-sync.md)
 
-* :stop_sign: [`package-json/scripts-name-casing`](https://github.com/michaelfaith/eslint-plugin-package-json/blob/main/docs/rules/scripts-name-casing.md) – *added* (not in `recommended`) – enforces kebab-case `scripts` names; catches the `clean:hashed` → `clean-hashed` rename pattern
+* :warning: [`package-json/scripts-name-casing`](https://github.com/michaelfaith/eslint-plugin-package-json/blob/main/docs/rules/scripts-name-casing.md) – *added* (not in `recommended`), softened to `warn` – not auto-fixable (`hasSuggestions` only); enforces kebab-case `scripts` names; catches the `clean:hashed` → `clean-hashed` rename pattern
 
 * :stop_sign: [`promise/prefer-await-to-then`](https://github.com/eslint-community/eslint-plugin-promise/blob/main/docs/rules/prefer-await-to-then.md)
 
