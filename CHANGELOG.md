@@ -1,5 +1,12 @@
 # Changelog
 
+## [25.0.1](https://github.com/voxpelli/eslint-config/compare/v25.0.0...v25.0.1) (2026-04-20)
+
+
+### 🩹 Fixes
+
+* deactivate package-json/no-redundant-files and require-exports ([#463](https://github.com/voxpelli/eslint-config/issues/463)) ([0375055](https://github.com/voxpelli/eslint-config/commit/0375055a1b6ab7487cf95255598186331129d151))
+
 ## [25.0.0](https://github.com/voxpelli/eslint-config/compare/v24.0.1...v25.0.0) (2026-04-20)
 
 
