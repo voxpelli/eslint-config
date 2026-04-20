@@ -10,6 +10,7 @@
     "tools/**/*.js",
   ],
   "compilerOptions": {
+    "lib": ["es2023"],
     "types": ["node"]
   }
 }

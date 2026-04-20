@@ -90,7 +90,7 @@ if (hasSyntheticFootnote) {
     '(unused disable)': 'An <code>eslint-disable</code> directive reported no matching problems — the named rule is shown next to each file.',
     '(missing rule)': 'An <code>eslint-disable</code> / config references a rule ESLint could not load (plugin uninstalled or rule removed) — the name is shown next to each file.',
   };
-  const lines = [...presentSyntheticKeys].sort().map(k => '<code>' + escapeHtml(k) + '</code> — ' + FOOTNOTE_TEXT[String(k)]);
+  const lines = [...presentSyntheticKeys].toSorted().map(k => '<code>' + escapeHtml(k) + '</code> — ' + FOOTNOTE_TEXT[String(k)]);
   md += '<sub><em>' + lines.join('<br>') + '</em></sub>\n\n';
 }
 
@@ -116,7 +116,7 @@ for (const r of results) {
 
   const ruleEntries = Object.entries(rulesObj)
     .map(([id, d]) => ({ id, ...d }))
-    .sort((a, b) => b.errors - a.errors || b.warnings - a.warnings || a.id.localeCompare(b.id));
+    .toSorted((a, b) => b.errors - a.errors || b.warnings - a.warnings || a.id.localeCompare(b.id));
 
   for (const rule of ruleEntries) {
     const shownFiles = (rule.files || []).slice(0, FILE_CAP);
