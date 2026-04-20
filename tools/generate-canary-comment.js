@@ -1,5 +1,4 @@
 // @ts-check
-/* eslint-disable n/no-sync, unicorn/no-process-exit */
 
 // Assemble the external-canary sticky comment markdown from per-project
 // result artifacts. Reads results/*/eslint-result.json; writes comment.md.
@@ -28,7 +27,6 @@ const escapeHtml = (s) => stripCtrl(s)
 const FILE_CAP = 50;
 const SIZE_CAP = 60_000;
 
-// eslint-disable-next-line n/no-process-env
 const externalCount = Number(process.env['EXTERNAL_PROJECT_COUNT'] ?? 0);
 
 const dir = 'results';
