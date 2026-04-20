@@ -148,6 +148,7 @@ export default [
 
 * [`plugin:jsdoc/recommended`](https://github.com/gajus/eslint-plugin-jsdoc#rules)
 * [`plugin:mocha/recommended`](https://github.com/lo1tuma/eslint-plugin-mocha#rules)
+* [`eslint-plugin-package-json`](https://github.com/michaelfaith/eslint-plugin-package-json) (applied to all `**/package.json` files)
 * [`eslint-plugin-perfectionist`](https://github.com/azat-io/eslint-plugin-perfectionist) (4 sorting rules, replaces `eslint-plugin-sort-destructure-keys`)
 * [`plugin:n/recommended`](https://github.com/eslint-community/eslint-plugin-n#-rules)
 * [`plugin:promise/recommended`](https://github.com/eslint-community/eslint-plugin-promise#rules)
@@ -176,6 +177,12 @@ export default [
 
 * :mute: [`n/no-extraneous-import`](https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/no-extraneous-import.md) – *deactivated* – superseded by [knip](https://github.com/webpro-nl/knip), which validates imports more accurately without false positives in monorepos
 * :mute: [`n/no-process-exit`](https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/no-process-exit.md) – *deactivated* – added by `plugin:n/recommended`, but deactivated in favor of [`unicorn/no-process-exit`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-process-exit.md)
+
+* :stop_sign: [`package-json/scripts-name-casing`](https://github.com/michaelfaith/eslint-plugin-package-json/blob/main/docs/rules/scripts-name-casing.md) – *added* (not in `recommended`) – enforces kebab-case `scripts` names; catches the `clean:hashed` → `clean-hashed` rename pattern
+* :warning: [`package-json/sort-collections`](https://github.com/michaelfaith/eslint-plugin-package-json/blob/main/docs/rules/sort-collections.md) – :wrench: *changed* – softened to `warn` in this major as a grace window; will promote to `error` in a future major
+* :warning: [`package-json/require-exports`](https://github.com/michaelfaith/eslint-plugin-package-json/blob/main/docs/rules/require-exports.md) – *changed* – softened to `warn`; bin-only CLI packages legitimately ship without `exports`
+* :mute: [`package-json/require-sideEffects`](https://github.com/michaelfaith/eslint-plugin-package-json/blob/main/docs/rules/require-sideEffects.md) – *deactivated* – bundler-only signal; declaring it wrong is worse than declaring nothing. Browser/bundler-consumable packages can opt in locally.
+* :warning: [`package-json/specify-peers-locally`](https://github.com/michaelfaith/eslint-plugin-package-json/blob/main/docs/rules/specify-peers-locally.md) – *changed* – softened to `warn`; optional peer-dep patterns are a legitimate exception
 
 * :mute: [`security/detect-object-injection`](https://github.com/eslint-community/eslint-plugin-security/blob/main/docs/rules/detect-object-injection.md) – *deactivated* – causes too many false errors
 * :mute: [`security/detect-unsafe-regex`](https://github.com/eslint-community/eslint-plugin-security/blob/main/docs/rules/detect-unsafe-regex.md) – *deactivated* – at least early on wasn't very stable

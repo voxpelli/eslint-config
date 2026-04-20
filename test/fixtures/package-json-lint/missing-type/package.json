@@ -1,0 +1,13 @@
+{
+  "name": "missing-type",
+  "version": "1.0.0",
+  "description": "Has no type field — triggers require-type",
+  "license": "MIT",
+  "author": "fixture",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/voxpelli/fixture.git"
+  },
+  "exports": "./index.js",
+  "files": ["index.js"]
+}

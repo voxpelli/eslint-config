@@ -75,6 +75,15 @@ const plugins = [
     }),
   },
   {
+    name: 'eslint-plugin-package-json',
+    exportType: 'default',
+    check: (/** @type {any} */ c) => ({
+      'configs.recommended': !!c.configs?.recommended,
+      'recommended is flat object': !Array.isArray(c.configs?.recommended) && typeof c.configs?.recommended === 'object',
+      'recommended has rules': !!c.configs?.recommended?.rules && Object.keys(c.configs.recommended.rules).length > 0,
+    }),
+  },
+  {
     name: 'eslint-plugin-regexp',
     exportType: 'named:configs',
     check: (/** @type {any} */ c) => ({

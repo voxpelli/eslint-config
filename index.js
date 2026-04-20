@@ -6,6 +6,7 @@ import { jsdocRules } from './base-configs/jsdoc.js';
 import { mochaRules } from './base-configs/mocha.js';
 import { modifiedNeostandardRules, modifiedNeostandardStyleRules } from './base-configs/modified-rules.js';
 import { nodeRules } from './base-configs/node.js';
+import { packageJsonRules } from './base-configs/package-json.js';
 import { perfectionistRules } from './base-configs/perfectionist.js';
 import { regexpRules } from './base-configs/regexp.js';
 import { browserFilesConfig } from './profiles/browser.js';
@@ -88,6 +89,7 @@ export function voxpelli (options) {
     ...regexpRules,
     ...nodeRules(cjs),
     ...cjs ? [] : esmRules,
+    ...packageJsonRules,
     ...noStyle ? [] : perfectionistRules,
     ...noMocha ? [] : mochaRules,
     ...browserFiles?.length ? browserFilesConfig(browserFiles) : [],
