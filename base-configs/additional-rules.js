@@ -62,8 +62,8 @@ const adaptedUnicornRules = [
   },
 ];
 
-/** @type {import('eslint').Linter.Config} */
-const promiseRecommended = plugins.promise.configs['flat/recommended'];
+const { promise: promisePlugin } = /** @type {{ promise: { configs: { 'flat/recommended': import('eslint').Linter.Config } } }} */ (plugins);
+const promiseRecommended = promisePlugin.configs['flat/recommended'];
 
 /** @satisfies {import('eslint').Linter.Config[]} */
 export const additionalStyleRules = [
