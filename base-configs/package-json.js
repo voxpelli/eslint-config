@@ -25,8 +25,13 @@ export const packageJsonRules = defineConfig({
     'package-json/no-empty-fields': ['error', { ignoreProperties: ['files', 'keywords'] }],
     'package-json/sort-collections': 'warn',
     'package-json/scripts-name-casing': 'warn',
-    'package-json/require-exports': 'warn',
+    'package-json/require-exports': 'off',
     'package-json/require-sideEffects': 'off',
     'package-json/specify-peers-locally': 'warn',
+    // Conflicts with `n/no-unpublished-bin`: npm auto-includes files listed
+    // in `bin`/`main`/`man` regardless of the `files` field, but
+    // eslint-plugin-n does not model that and reports a false positive when
+    // those entries are removed from `files`, so fixing one triggers the other.
+    'package-json/no-redundant-files': 'off',
   },
 });
