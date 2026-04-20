@@ -19,6 +19,7 @@ export const perfectionistRules = [
           ['value-multiline-parent', 'value-multiline-sibling', 'value-multiline-index'],
           'unknown',
         ],
+        newlinesBetween: 'ignore',
       }],
       'perfectionist/sort-named-imports': ['warn', { type: 'natural', order: 'asc' }],
       'perfectionist/sort-named-exports': ['warn', { type: 'natural', order: 'asc' }],
