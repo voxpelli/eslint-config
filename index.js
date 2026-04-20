@@ -99,6 +99,8 @@ export function voxpelli (options) {
 
 export { plugins } from 'neostandard';
 export { default as globals } from 'globals';
+export { default as packageJsonPlugin } from 'eslint-plugin-package-json';
+export { default as jsoncParser } from 'jsonc-eslint-parser';
 
 export { browserFilesConfig as browserFiles } from './profiles/browser.js';
 export { cliFilesConfig as cliFiles } from './profiles/cli.js';

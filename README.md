@@ -61,7 +61,12 @@ export default [
 
 ### Re-exported utilities
 
-For framework consumers (Vue, Svelte, Astro) that need the TypeScript parser, `plugins` (from neostandard) and `globals` (from the [globals](https://github.com/sindresorhus/globals) package) are re-exported for convenience:
+Bundled plugins and parsers are re-exported so consumers can reference them in custom overrides without installing them as separate dependencies:
+
+* `plugins` — from [neostandard](https://github.com/neostandard/neostandard); gives access to its bundled plugin defaults (e.g., the TypeScript parser for Vue/Svelte/Astro setups).
+* `globals` — from the [`globals`](https://github.com/sindresorhus/globals) package.
+* `packageJsonPlugin` — from [`eslint-plugin-package-json`](https://github.com/michaelfaith/eslint-plugin-package-json).
+* `jsoncParser` — from [`jsonc-eslint-parser`](https://github.com/ota-meshi/jsonc-eslint-parser).
 
 ```js
 import { voxpelli, plugins, globals } from '@voxpelli/eslint-config';
@@ -128,6 +133,8 @@ export default [
 * :mute: = deactivated
 * :wrench: = changed config
 
+Markers can combine when a rule has both a severity change and a separate config change — e.g. a bullet may lead with :warning: (severity) and carry an inline :wrench: (other config tweak).
+
 ### :wrench: Changed [neostandard](https://github.com/neostandard/neostandard) rules
 
 * :wrench: [`@stylistic/comma-dangle`](https://eslint.org/docs/rules/comma-dangle) – *changed* – set to enforce dangling commas in arrays, objects, imports and exports *(disabled by `noStyle`)*
@@ -178,7 +185,6 @@ export default [
 * :mute: [`n/no-extraneous-import`](https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/no-extraneous-import.md) – *deactivated* – superseded by [knip](https://github.com/webpro-nl/knip), which validates imports more accurately without false positives in monorepos
 * :mute: [`n/no-process-exit`](https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/no-process-exit.md) – *deactivated* – added by `plugin:n/recommended`, but deactivated in favor of [`unicorn/no-process-exit`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-process-exit.md)
 
-* :stop_sign: [`package-json/scripts-name-casing`](https://github.com/michaelfaith/eslint-plugin-package-json/blob/main/docs/rules/scripts-name-casing.md) – *added* (not in `recommended`) – enforces kebab-case `scripts` names; catches the `clean:hashed` → `clean-hashed` rename pattern
 * :warning: [`package-json/sort-collections`](https://github.com/michaelfaith/eslint-plugin-package-json/blob/main/docs/rules/sort-collections.md) – :wrench: *changed* – softened to `warn` in this major as a grace window; will promote to `error` in a future major
 * :warning: [`package-json/require-exports`](https://github.com/michaelfaith/eslint-plugin-package-json/blob/main/docs/rules/require-exports.md) – *changed* – softened to `warn`; bin-only CLI packages legitimately ship without `exports`
 * :mute: [`package-json/require-sideEffects`](https://github.com/michaelfaith/eslint-plugin-package-json/blob/main/docs/rules/require-sideEffects.md) – *deactivated* – bundler-only signal; declaring it wrong is worse than declaring nothing. Browser/bundler-consumable packages can opt in locally.
@@ -228,6 +234,8 @@ export default [
 * :warning: [`n/prefer-promises/fs`](https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/prefer-promises/fs.md)
 * :warning: [`n/no-process-env`](https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/no-process-env.md)
 * :stop_sign: [`n/no-sync`](https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/no-sync.md)
+
+* :stop_sign: [`package-json/scripts-name-casing`](https://github.com/michaelfaith/eslint-plugin-package-json/blob/main/docs/rules/scripts-name-casing.md) – *added* (not in `recommended`) – enforces kebab-case `scripts` names; catches the `clean:hashed` → `clean-hashed` rename pattern
 
 * :stop_sign: [`promise/prefer-await-to-then`](https://github.com/eslint-community/eslint-plugin-promise/blob/main/docs/rules/prefer-await-to-then.md)
 
