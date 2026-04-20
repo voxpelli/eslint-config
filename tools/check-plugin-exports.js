@@ -4,6 +4,7 @@
 import { readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import path from 'node:path';
+
 import { peowly } from 'peowly';
 
 const require = createRequire(import.meta.url);
