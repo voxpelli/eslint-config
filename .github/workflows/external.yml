@@ -18,24 +18,34 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
   cancel-in-progress: true
 
-permissions:
-  contents: read
-
 jobs:
   read_external_projects:
     name: Read list of ${{ github.event.inputs.moduleSet || 'compliant' }} external projects
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
       - uses: actions/checkout@v6
+      - id: validate-module-set
+        env:
+          INPUT: ${{ github.event.inputs.moduleSet }}
+        run: |
+          case "$INPUT" in
+            compliant|preFlatconfigCompliant|nonCompliant|"") ;;
+            *) echo "::error::Invalid moduleSet: $INPUT"; exit 1 ;;
+          esac
+          echo "value=${INPUT:-compliant}" >> "$GITHUB_OUTPUT"
       - id: set-matrix
-        run: echo "matrix=$(cat workflow-external.json | jq -c '.${{ github.event.inputs.moduleSet || 'compliant' }}')" >> $GITHUB_OUTPUT
+        run: echo "matrix=$(cat workflow-external.json | jq -c ".${{ steps.validate-module-set.outputs.value }}")" >> "$GITHUB_OUTPUT"
 
   test_external:
     needs: read_external_projects
     name: Test ${{ matrix.project }}
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     strategy:
       fail-fast: false
       matrix:
@@ -93,5 +103,169 @@ jobs:
         working-directory: ./project
 
       - name: run eslint
-        run: ../main/node_modules/.bin/eslint
+        id: eslint
+        run: ../main/node_modules/.bin/eslint --format json --output-file eslint-results.json
         working-directory: ./project
+
+      - name: prepare result
+        if: ${{ failure() && steps.eslint.outcome == 'failure' }}
+        run: |
+          node -e "
+            const fs = require('fs');
+            const project = process.env.PROJECT;
+            const projectPrefix = process.cwd() + '/project/';
+            let totals = { errorCount: 0, warningCount: 0, fixableErrorCount: 0, fixableWarningCount: 0 };
+            const rules = {};
+            try {
+              const data = JSON.parse(fs.readFileSync('project/eslint-results.json', 'utf8'));
+              for (const file of data) {
+                totals.errorCount += file.errorCount;
+                totals.warningCount += file.warningCount;
+                totals.fixableErrorCount += file.fixableErrorCount;
+                totals.fixableWarningCount += file.fixableWarningCount;
+                for (const msg of file.messages) {
+                  if (!msg.ruleId) continue;
+                  const isValidRuleId = typeof msg.ruleId === 'string' && /^[@a-z0-9/_-]+$/i.test(msg.ruleId);
+                  const key = isValidRuleId ? msg.ruleId : '(invalid rule id)';
+                  if (!rules[key]) rules[key] = { errors: 0, warnings: 0, fixable: 0, files: [] };
+                  if (msg.severity === 2) rules[key].errors++;
+                  else rules[key].warnings++;
+                  if (msg.fix) rules[key].fixable++;
+                  const cleanPath = typeof file.filePath === 'string' && file.filePath.startsWith(projectPrefix)
+                    ? file.filePath.slice(projectPrefix.length)
+                    : '<unexpected path>';
+                  rules[key].files.push(cleanPath + ':' + msg.line);
+                }
+              }
+            } catch {}
+            fs.writeFileSync('eslint-result.json', JSON.stringify({ project, ...totals, rules }));
+          "
+        env:
+          PROJECT: ${{ matrix.project }}
+
+      - name: upload result
+        if: ${{ failure() && steps.eslint.outcome == 'failure' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: eslint-result-${{ strategy.job-index }}-${{ github.run_attempt }}
+          path: eslint-result.json
+          retention-days: 1
+
+  summary:
+    name: Post test summary
+    needs: [test_external]
+    if: ${{ !cancelled() && github.event.pull_request.number }}
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: download all results
+        uses: actions/download-artifact@v4
+        with:
+          pattern: eslint-result-*-${{ github.run_attempt }}
+          path: results
+
+      - name: generate comment
+        run: |
+          node -e "
+            const fs = require('fs');
+            const path = require('path');
+
+            const BIDI_ZW_CTRL = /[\u200B-\u200F\u202A-\u202E\u2060-\u2069\uFEFF]/g;
+            const stripCtrl = (s) => String(s).replace(BIDI_ZW_CTRL, '');
+            const escapeHtml = (s) => stripCtrl(s)
+              .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+              .replace(/\"/g, '&quot;').replace(/'/g, '&#39;');
+            const FILE_CAP = 50;
+            const SIZE_CAP = 60000;
+
+            const dir = 'results';
+            const results = [];
+            if (fs.existsSync(dir)) {
+              for (const sub of fs.readdirSync(dir)) {
+                const file = path.join(dir, sub, 'eslint-result.json');
+                if (!fs.existsSync(file)) continue;
+                if (fs.statSync(file).size > 5 * 1024 * 1024) continue;
+                let parsed;
+                try { parsed = JSON.parse(fs.readFileSync(file, 'utf8')); } catch { continue; }
+                if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) continue;
+                if (parsed.rules && (typeof parsed.rules !== 'object' || Array.isArray(parsed.rules))) continue;
+                results.push(parsed);
+              }
+            }
+            results.sort((a, b) => String(a.project).localeCompare(String(b.project)));
+
+            if (results.length === 0) {
+              fs.writeFileSync('comment.md', '');
+              process.exit(0);
+            }
+
+            const totalErrors = results.reduce((s, r) => s + (r.errorCount|0), 0);
+            const totalWarnings = results.reduce((s, r) => s + (r.warningCount|0), 0);
+            const totalFixableE = results.reduce((s, r) => s + (r.fixableErrorCount|0), 0);
+            const totalFixableW = results.reduce((s, r) => s + (r.fixableWarningCount|0), 0);
+
+            let md = '## External project test results\n\n';
+            md += '**' + results.length + ' project(s) failed**';
+            if (totalErrors > 0) md += ' &mdash; ' + totalErrors + ' errors (' + totalFixableE + ' fixable)';
+            if (totalWarnings > 0) md += ', ' + totalWarnings + ' warnings (' + totalFixableW + ' fixable)';
+            md += '\n\n';
+
+            for (const r of results) {
+              const isValidSlug = typeof r.project === 'string' && /^[\w.-]+\/[\w.-]+$/.test(r.project);
+              const label = isValidSlug
+                ? '[' + escapeHtml(r.project) + '](https://github.com/' + r.project + ')'
+                : escapeHtml(r.project);
+              const fixable = (r.fixableErrorCount|0) + (r.fixableWarningCount|0);
+              const fixStr = fixable > 0 ? ' (' + fixable + ' fixable :wrench:)' : '';
+              md += '<details>\n<summary>' + label + ' &mdash; ' + (r.errorCount|0) + ' errors, ' + (r.warningCount|0) + ' warnings' + fixStr + '</summary>\n\n';
+              md += '| Errors | Warnings | Fixable | Rule |\n';
+              md += '|-------:|---------:|--------:|------|\n';
+
+              const ruleEntries = Object.entries(r.rules || {})
+                .map(([id, d]) => ({ id, ...d }))
+                .sort((a, b) => b.errors - a.errors || b.warnings - a.warnings || a.id.localeCompare(b.id));
+
+              for (const rule of ruleEntries) {
+                const shownFiles = (rule.files || []).slice(0, FILE_CAP);
+                const overflow = (rule.files || []).length - shownFiles.length;
+                const fileBlock = '<pre><code>' +
+                  shownFiles.map(escapeHtml).join('\n') +
+                  (overflow > 0 ? '\n... and ' + overflow + ' more' : '') +
+                  '</code></pre>';
+                const fixCol = rule.fixable > 0 ? rule.fixable + ' :wrench:' : '-';
+                md += '| ' + rule.errors + ' | ' + rule.warnings + ' | ' + fixCol + ' | <details><summary><code>' + escapeHtml(rule.id) + '</code></summary>' + fileBlock + '</details> |\n';
+              }
+
+              md += '\n</details>\n\n';
+            }
+
+            if (Buffer.byteLength(md, 'utf8') > SIZE_CAP) {
+              md = md.slice(0, SIZE_CAP - 5000) + '\n\n_(comment truncated — too many failures to render)_\n';
+            }
+
+            fs.writeFileSync('comment.md', md);
+          "
+
+      - name: check for results
+        id: check
+        run: |
+          if [ -s comment.md ]; then
+            echo "has_results=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_results=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: post comment
+        if: steps.check.outputs.has_results == 'true'
+        uses: marocchino/sticky-pull-request-comment@0ea0beb66eb9baf113663a64ec522f60e49231c0
+        with:
+          header: external-test-results
+          path: comment.md
+
+      - name: delete stale comment
+        if: steps.check.outputs.has_results != 'true'
+        uses: marocchino/sticky-pull-request-comment@0ea0beb66eb9baf113663a64ec522f60e49231c0
+        with:
+          header: external-test-results
+          delete: true
