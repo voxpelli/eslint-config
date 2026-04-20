@@ -1,11 +1,13 @@
 {
-  "extends": "@voxpelli/tsconfig/node16.json",
+  "extends": "@voxpelli/tsconfig/node20.json",
   "files": [
     "eslint.config.js",
     "index.js",
   ],
   "include": [
     "base-configs/**/*.js",
+    "profiles/**/*.js",
+    "tools/**/*.js",
   ],
   "compilerOptions": {
     "types": ["node"]

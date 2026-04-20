@@ -1,30 +1,32 @@
-import { plugins } from 'neostandard';
-// @ts-ignore
 import esxPlugin from 'eslint-plugin-es-x';
-// import importPlugin from 'eslint-plugin-import-x';
 import securityPlugin from 'eslint-plugin-security';
-// @ts-ignore
-import sortDestructureKeysPlugin from 'eslint-plugin-sort-destructure-keys';
 import unicornPlugin from 'eslint-plugin-unicorn';
+import { plugins } from 'neostandard';
 
 /** @satisfies {import('eslint').Linter.Config} */
 const additionalCoreRules = {
   name: '@voxpelli/additional/core',
   rules: {
     // Added ESLint core rules
+    'arrow-body-style': ['warn', 'as-needed'],
     'func-style': ['warn', 'expression', { 'allowArrowFunctions': true }],
     'no-console': 'warn',
     'no-constant-binary-expression': 'error',
     'no-unsafe-optional-chaining': ['error', { 'disallowArithmeticOperators': true }],
     'no-warning-comments': ['warn', { 'terms': ['fixme'] }],
     'object-shorthand': ['error', 'properties', { 'avoidQuotes': true }],
-    '@stylistic/quote-props': ['error', 'as-needed', { 'keywords': true, 'numbers': true, 'unnecessary': false }],
+    'prefer-arrow-callback': 'warn',
+    'prefer-destructuring': ['warn', {
+      'VariableDeclarator': { 'array': false, 'object': true },
+      'AssignmentExpression': { 'array': false, 'object': false },
+    }],
+    'prefer-object-spread': 'error',
   },
 };
 
 /** @satisfies {import('eslint').Linter.Config[]} */
 const adaptedUnicornRules = [
-  unicornPlugin.configs['flat/recommended'],
+  unicornPlugin.configs.recommended,
   {
     name: '@voxpelli/additional/unicorn',
     rules: {
@@ -42,6 +44,33 @@ const adaptedUnicornRules = [
       'unicorn/prefer-string-replace-all': 'warn',
       'unicorn/prevent-abbreviations': 'off',
       'unicorn/switch-case-braces': ['error', 'avoid'],
+
+      // New rules from v57-v64 — stylistic/opinionated overrides
+      'unicorn/consistent-assert': 'off',
+      'unicorn/consistent-template-literal-escape': 'warn',
+      'unicorn/isolated-functions': 'warn',
+      'unicorn/no-array-reverse': 'warn',
+      'unicorn/no-array-sort': 'warn',
+      'unicorn/no-immediate-mutation': 'warn',
+      'unicorn/prefer-class-fields': 'warn',
+      'unicorn/prefer-classlist-toggle': 'warn',
+      'unicorn/prefer-import-meta-properties': 'off',
+      'unicorn/prefer-response-static-json': 'warn',
+      'unicorn/prefer-simple-condition-first': 'warn',
+      'unicorn/switch-case-break-position': 'warn',
+    },
+  },
+];
+
+const { promise: promisePlugin } = /** @type {{ promise: { configs: { 'flat/recommended': import('eslint').Linter.Config } } }} */ (plugins);
+const promiseRecommended = promisePlugin.configs['flat/recommended'];
+
+/** @satisfies {import('eslint').Linter.Config[]} */
+export const additionalStyleRules = [
+  {
+    name: '@voxpelli/additional/core/style',
+    rules: {
+      '@stylistic/quote-props': ['error', 'as-needed', { 'keywords': true, 'numbers': true, 'unnecessary': false }],
     },
   },
 ];
@@ -51,14 +80,11 @@ export const additionalRules = [
   additionalCoreRules,
   ...adaptedUnicornRules,
   securityPlugin.configs.recommended,
-  /** @type {import('eslint').Linter.Config} */ (plugins.promise.configs['flat/recommended']),
+  promiseRecommended,
   {
     name: '@voxpelli/additional/misc',
     plugins: {
       'es-x': esxPlugin,
-      // TODO: Add back
-      // 'import': importPlugin,
-      'sort-destructure-keys': sortDestructureKeysPlugin,
     },
     rules: {
       // Overrides of other extended ESLint rule packages
@@ -70,17 +96,7 @@ export const additionalRules = [
 
       'es-x/no-exponential-operators': 'warn',
 
-      // 'import/no-deprecated': 1,
-      // 'import/order': [
-      //   'error',
-      //   {
-      //     'groups': ['builtin', 'external', ['internal', 'parent', 'sibling', 'index'], 'type'],
-      //   },
-      // ],
-
       'promise/prefer-await-to-then': 'error',
-
-      'sort-destructure-keys/sort-destructure-keys': 'error',
     },
   },
 ];

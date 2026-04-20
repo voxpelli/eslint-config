@@ -1,5 +1,4 @@
 // @ts-check
-/* eslint-disable n/no-sync, unicorn/no-process-exit */
 
 // Aggregate one project's ESLint JSON output into a compact summary.
 // Reads project/eslint-results.json; writes eslint-result.json when there
@@ -11,7 +10,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const projectPrefix = path.resolve('project') + '/';
-// eslint-disable-next-line n/no-process-env
+
 const project = process.env['PROJECT'] ?? '';
 
 /** @type {unknown} */

@@ -1,7 +1,7 @@
 /** @satisfies {import('eslint').Linter.Config[]} */
-export const modifiedNeostandardRules = [
+export const modifiedNeostandardStyleRules = [
   {
-    name: '@voxpelli/modified/neostandard',
+    name: '@voxpelli/modified/neostandard/style',
     rules: {
       '@stylistic/comma-dangle': ['warn', {
         arrays: 'always-multiline',
@@ -10,6 +10,21 @@ export const modifiedNeostandardRules = [
         exports: 'always-multiline',
         functions: 'never',
       }],
+      '@stylistic/object-curly-newline': ['warn', {
+        ObjectExpression: { multiline: true, consistent: true },
+        ObjectPattern: { multiline: true, consistent: true },
+        ImportDeclaration: { minProperties: 4, multiline: true, consistent: true },
+        ExportDeclaration: { minProperties: 4, multiline: true, consistent: true },
+      }],
+    },
+  },
+];
+
+/** @satisfies {import('eslint').Linter.Config[]} */
+export const modifiedNeostandardRules = [
+  {
+    name: '@voxpelli/modified/neostandard',
+    rules: {
       'no-unused-vars': ['error', {
         'vars': 'all',
         'args': 'all',

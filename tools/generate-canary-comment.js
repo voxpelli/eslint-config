@@ -1,5 +1,4 @@
 // @ts-check
-/* eslint-disable n/no-sync, unicorn/no-process-exit */
 
 // Assemble the external-canary sticky comment markdown from per-project
 // result artifacts. Reads results/*/eslint-result.json; writes comment.md.
@@ -28,7 +27,6 @@ const escapeHtml = (s) => stripCtrl(s)
 const FILE_CAP = 50;
 const SIZE_CAP = 60_000;
 
-// eslint-disable-next-line n/no-process-env
 const externalCount = Number(process.env['EXTERNAL_PROJECT_COUNT'] ?? 0);
 
 const dir = 'results';
@@ -92,7 +90,7 @@ if (hasSyntheticFootnote) {
     '(unused disable)': 'An <code>eslint-disable</code> directive reported no matching problems — the named rule is shown next to each file.',
     '(missing rule)': 'An <code>eslint-disable</code> / config references a rule ESLint could not load (plugin uninstalled or rule removed) — the name is shown next to each file.',
   };
-  const lines = [...presentSyntheticKeys].sort().map(k => '<code>' + escapeHtml(k) + '</code> — ' + FOOTNOTE_TEXT[String(k)]);
+  const lines = [...presentSyntheticKeys].toSorted().map(k => '<code>' + escapeHtml(k) + '</code> — ' + FOOTNOTE_TEXT[String(k)]);
   md += '<sub><em>' + lines.join('<br>') + '</em></sub>\n\n';
 }
 
@@ -118,7 +116,7 @@ for (const r of results) {
 
   const ruleEntries = Object.entries(rulesObj)
     .map(([id, d]) => ({ id, ...d }))
-    .sort((a, b) => b.errors - a.errors || b.warnings - a.warnings || a.id.localeCompare(b.id));
+    .toSorted((a, b) => b.errors - a.errors || b.warnings - a.warnings || a.id.localeCompare(b.id));
 
   for (const rule of ruleEntries) {
     const shownFiles = (rule.files || []).slice(0, FILE_CAP);
@@ -143,12 +141,54 @@ for (const r of results) {
   md += '\n</details>\n\n';
 }
 
+// Mirror the full uncapped report into the workflow's step summary so the
+// Actions run page always has the complete picture even when the PR comment
+// is truncated below. Soft-fail — a misconfigured runner path shouldn't
+// abort the comment-generation step.
+const stepSummary = process.env['GITHUB_STEP_SUMMARY'];
+if (stepSummary) {
+  try {
+    // eslint-disable-next-line security/detect-non-literal-fs-filename
+    fs.appendFileSync(stepSummary, md);
+  } catch (err) {
+    process.stderr.write('Warning: could not write GITHUB_STEP_SUMMARY: ' + (err instanceof Error ? err.message : String(err)) + '\n');
+  }
+}
+
 if (Buffer.byteLength(md, 'utf8') > SIZE_CAP) {
-  // Truncate at the last `</details>\n\n` boundary before the cap so we
-  // never leave an unclosed <details> tag mid-render.
-  const slice = md.slice(0, SIZE_CAP - 5000);
-  const lastClose = slice.lastIndexOf('</details>\n\n');
-  const safeEnd = lastClose !== -1 ? lastClose + '</details>\n\n'.length : slice.length;
-  md = slice.slice(0, safeEnd) + '\n\n_(comment truncated — too many failures to render)_\n';
+  // Truncate at the last `\n</details>\n\n` boundary before the cap so we
+  // never leave an unclosed <details> tag mid-render. Each project ends
+  // with `\n</details>\n\n` (line ~141 above); inline rule-row details are
+  // single-line so they don't match this anchor. Headroom accounts for the
+  // worst-case tail-summary table (~50 rows × ~200 bytes) + trailer.
+  const slice = md.slice(0, SIZE_CAP - 15_000);
+  const closeAnchor = '\n</details>\n\n';
+  const lastClose = slice.lastIndexOf(closeAnchor);
+  const safeEnd = lastClose !== -1 ? lastClose + closeAnchor.length : slice.length;
+  const keptMd = slice.slice(0, safeEnd);
+  const keptCount = (keptMd.match(/\n<\/details>\n\n/g) ?? []).length;
+  const tail = results.slice(keptCount);
+
+  let tailMd = '';
+  if (tail.length > 0) {
+    tailMd += '<details><summary>Tail projects (' + tail.length + ' truncated — detail omitted)</summary>\n\n';
+    tailMd += '| Project | Errors | Warnings | Fixable |\n';
+    tailMd += '|---------|-------:|---------:|--------:|\n';
+    for (const r of tail) {
+      const slug = String(r['project']);
+      const isValidSlug = /^[\w.-]+\/[\w.-]+$/.test(slug);
+      const label = isValidSlug
+        ? '<a href="https://github.com/' + slug + '"><code>' + escapeHtml(slug) + '</code></a>'
+        : escapeHtml(slug);
+      const errorCount = Math.trunc(Number(r['errorCount']));
+      const warningCount = Math.trunc(Number(r['warningCount']));
+      const fixable = Math.trunc(Number(r['fixableErrorCount'])) + Math.trunc(Number(r['fixableWarningCount']));
+      const fixStr = fixable > 0 ? fixable + ' :wrench:' : '-';
+      tailMd += '| ' + label + ' | ' + errorCount + ' | ' + warningCount + ' | ' + fixStr + ' |\n';
+    }
+    tailMd += '\n</details>\n\n';
+  }
+
+  md = keptMd + tailMd + '_(file:line detail truncated for tail projects — full report in the workflow step summary)_\n';
 }
 fs.writeFileSync('comment.md', md);

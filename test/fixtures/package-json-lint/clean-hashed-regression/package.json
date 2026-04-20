@@ -1,0 +1,19 @@
+{
+  "name": "clean-hashed-regression",
+  "version": "1.0.0",
+  "description": "Reproduces the clean:hashed → clean-hashed sort regression",
+  "license": "MIT",
+  "type": "module",
+  "author": "fixture",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/voxpelli/fixture.git"
+  },
+  "exports": "./index.js",
+  "files": ["index.js"],
+  "scripts": {
+    "clean-hashed": "rm -rf hashed",
+    "build": "echo build",
+    "clean": "rm -rf dist"
+  }
+}

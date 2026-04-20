@@ -1,0 +1,18 @@
+{
+  "name": "valid-baseline",
+  "version": "1.0.0",
+  "description": "Well-formed package.json — should produce zero lint output. Regression canary for the config itself.",
+  "license": "MIT",
+  "type": "module",
+  "author": "fixture",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/voxpelli/fixture.git"
+  },
+  "exports": "./index.js",
+  "files": ["index.js"],
+  "scripts": {
+    "build": "echo build",
+    "test": "echo test"
+  }
+}

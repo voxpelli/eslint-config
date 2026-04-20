@@ -9,6 +9,8 @@ My personal [ESLint](https://eslint.org/) config – a superset of the [neostand
 
 This config contains a couple of more opinionated checks that I find helpful in my projects.
 
+This is also the reference ESLint config for the [types-in-JS](https://github.com/voxpelli/types-in-js) workflow — JavaScript with JSDoc type annotations validated by `tsc`. The JSDoc rules are specifically tuned for this approach: type-checking rules are deactivated (handled by `tsc`), while documentation-oriented JSDoc rules remain active.
+
 ## Install
 
 To easily install correct peer dependencies, you can use [`install-peerdeps`](https://www.npmjs.com/package/install-peerdeps):
@@ -31,27 +33,98 @@ If you need to configure something, instead do:
 import { voxpelli } from '@voxpelli/eslint-config';
 
 export default voxpelli({
-  cjs: true,     // Ensures the config has rules fit for a CJS context rather than an ESM context
-  noMocha: true, // By standard this config expects tests to be of the Mocha kind, but one can opt out
+  cjs: true,            // Ensures the config has rules fit for a CJS context rather than an ESM context
+  noMocha: true,        // By standard this config expects tests to be of the Mocha kind, but one can opt out
+  noStyle: true,        // Disables all stylistic rules (@stylistic + perfectionist sorting) — also passed to neostandard
+  browserFiles: ['client/**/*.js'], // Scopes browser globals and disables Node rules for matched files
+  cliFiles: ['bin/**/*.js', 'scripts/**/*.js'], // Relaxes rules for CLI scripts (process.exit, console, sync I/O, etc.)
 });
 ```
 
-You can also do custom extensions:
+Passing an unknown option key throws a `TypeError` with a message pointing to the composable pattern — this catches common mistakes like placing custom rules inside the options object.
+
+Custom rules, plugins, and other ESLint config go in separate objects after the spread — not inside the `voxpelli()` options (which only accepts the keys shown above plus [neostandard options](https://github.com/neostandard/neostandard#options)):
 
 ```js
 import { voxpelli } from '@voxpelli/eslint-config';
 
 export default [
-  ...voxpelli({
-    // Config options
-  }),
+  ...voxpelli({ /* config options */ }),
   {
-    // Custom ESLint config
+    rules: {
+      'no-console': 'off',
+      'func-style': ['warn', 'declaration'],
+    },
   },
 ];
 ```
 
-###
+### Re-exported utilities
+
+Bundled plugins and parsers are re-exported so consumers can reference them in custom overrides without installing them as separate dependencies:
+
+* `plugins` — from [neostandard](https://github.com/neostandard/neostandard); gives access to its bundled plugin defaults (e.g., the TypeScript parser for Vue/Svelte/Astro setups).
+* `globals` — from the [`globals`](https://github.com/sindresorhus/globals) package.
+* `packageJsonPlugin` — from [`eslint-plugin-package-json`](https://github.com/michaelfaith/eslint-plugin-package-json).
+* `jsoncParser` — from [`jsonc-eslint-parser`](https://github.com/ota-meshi/jsonc-eslint-parser).
+
+```js
+import { voxpelli, plugins, globals } from '@voxpelli/eslint-config';
+
+export default [
+  ...voxpelli({ ts: true }),
+  {
+    files: ['**/*.vue'],
+    languageOptions: {
+      parser: plugins['typescript-eslint'].parser,
+    },
+  },
+];
+```
+
+Note: `voxpelli()` returns a flat config array. With ESLint 9.37+ you can also use `defineConfig()` from `eslint/config` which auto-flattens arrays — no spread needed:
+
+```js
+import { defineConfig } from 'eslint/config';
+import { voxpelli } from '@voxpelli/eslint-config';
+
+export default defineConfig([
+  voxpelli({ /* options */ }),
+  { /* custom rules */ },
+]);
+```
+
+`defineConfig()` also supports an `extends` key inside config objects, which is useful when you need to scope the inherited config to specific files:
+
+```js
+import { defineConfig } from 'eslint/config';
+import { voxpelli } from '@voxpelli/eslint-config';
+
+export default defineConfig([
+  {
+    files: ['src/**/*.js'],
+    extends: [voxpelli()],
+  },
+]);
+```
+
+### Composable sub-configs
+
+`browserFiles` and `cliFiles` are also exported as standalone config factories for cases where you want to apply their rule sets without using `voxpelli()` as the base:
+
+```js
+import { browserFiles, cliFiles } from '@voxpelli/eslint-config';
+
+export default [
+  // your own base config …
+  ...browserFiles(['client/**/*.js']),
+  ...cliFiles(['bin/**/*.js']),
+];
+```
+
+`browserFiles(globs)` — scopes browser globals and disables Node.js rules for matched files.
+
+`cliFiles(globs)` — relaxes rules appropriate for CLI scripts: allows `process.exit()`, `console`, sync I/O, and top-level non-await patterns.
 
 ## How does this differ from pure [neostandard](https://github.com/neostandard/neostandard)?
 
@@ -60,9 +133,12 @@ export default [
 * :mute: = deactivated
 * :wrench: = changed config
 
+Markers can combine when a rule has both a severity change and a separate config change — e.g. a bullet may lead with :warning: (severity) and carry an inline :wrench: (other config tweak).
+
 ### :wrench: Changed [neostandard](https://github.com/neostandard/neostandard) rules
 
-* :wrench: [`@stylistic/comma-dangle`](https://eslint.org/docs/rules/comma-dangle) – *changed* – set to enforce dangling commas in arrays, objects, imports and exports
+* :wrench: [`@stylistic/comma-dangle`](https://eslint.org/docs/rules/comma-dangle) – *changed* – set to enforce dangling commas in arrays, objects, imports and exports *(disabled by `noStyle`)*
+* :warning: [`@stylistic/object-curly-newline`](https://eslint.style/rules/js/object-curly-newline) – :wrench: *changed* – softened to `warn`; enforces multiline imports and exports when 4+ specifiers are present *(disabled by `noStyle`)*
 * :wrench: [`no-unused-vars`](https://eslint.org/docs/rules/no-unused-vars) – *changed* – sets `"args": "all", "argsIgnorePattern": "^_",` because I personally don't feel limited by [Express error handlers](https://github.com/standard/standard/issues/419#issuecomment-718186130) + wants to stay in sync with TypeScript `noUnusedParameters`
 
 ### :heavy_plus_sign: Added ESLint core rules
@@ -79,6 +155,8 @@ export default [
 
 * [`plugin:jsdoc/recommended`](https://github.com/gajus/eslint-plugin-jsdoc#rules)
 * [`plugin:mocha/recommended`](https://github.com/lo1tuma/eslint-plugin-mocha#rules)
+* [`eslint-plugin-package-json`](https://github.com/michaelfaith/eslint-plugin-package-json) (applied to `**/package.json`, with fixture paths ignored by default: `**/test/**`, `**/tests/**`, `**/__tests__/**`, `**/test-*/**`, `**/fixtures/**`, `**/__fixtures__/**`)
+* [`eslint-plugin-perfectionist`](https://github.com/azat-io/eslint-plugin-perfectionist) (4 sorting rules, replaces `eslint-plugin-sort-destructure-keys`)
 * [`plugin:n/recommended`](https://github.com/eslint-community/eslint-plugin-n#-rules)
 * [`plugin:promise/recommended`](https://github.com/eslint-community/eslint-plugin-promise#rules)
 * [`plugin:security/recommended`](https://github.com/eslint-community/eslint-plugin-security#rules)
@@ -86,6 +164,7 @@ export default [
 
 #### :wrench: Overrides of added ESLint rule packages
 
+* :wrench: [`jsdoc/check-tag-names`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/check-tag-names.md) – *changed* – allows `@planned` tag for [knip](https://github.com/webpro-nl/knip) unused-export suppression
 * :mute: [`jsdoc/check-types`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/check-types.md) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
 * :mute: [`jsdoc/no-undefined-types`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/no-undefined-types.md) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
 * :mute: [`jsdoc/require-jsdoc`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-jsdoc.md) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
@@ -95,10 +174,22 @@ export default [
 * :mute: [`jsdoc/require-yields`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-yields.md) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
 * :wrench: [`jsdoc/tag-lines`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/tag-lines.md) – *changed* – to enforce an empty line between description and tags, but disallow them elsewhere.
 * :mute: [`jsdoc/valid-types`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/valid-types.md) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
+* :mute: [`jsdoc/reject-any-type`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/reject-any-type.md) – *deactivated* – too strict for [types in js](https://github.com/voxpelli/types-in-js) workflow
+* :mute: [`jsdoc/reject-function-type`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/reject-function-type.md) – *deactivated* – too strict for [types in js](https://github.com/voxpelli/types-in-js) workflow
+* :mute: [`jsdoc/require-next-description`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-next-description.md) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
+* :mute: [`jsdoc/require-throws-description`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-throws-description.md) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
+* :mute: [`jsdoc/require-yields-description`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-yields-description.md) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
 
 * :mute: [`mocha/no-mocha-arrows`](https://github.com/lo1tuma/eslint-plugin-mocha/blob/master/docs/rules/no-mocha-arrows.md) – *deactivated* – while [Mocha discourages arrow functions](https://mochajs.org/#arrow-functions) I find it more readable to use them + I find it safe when combined with type checking as then the type checking will notify one when one tries to do a `this.setTimeout()` or similar in an arrow function where there is no such local context
 
+* :mute: [`n/no-extraneous-import`](https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/no-extraneous-import.md) – *deactivated* – superseded by [knip](https://github.com/webpro-nl/knip), which validates imports more accurately without false positives in monorepos
 * :mute: [`n/no-process-exit`](https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/no-process-exit.md) – *deactivated* – added by `plugin:n/recommended`, but deactivated in favor of [`unicorn/no-process-exit`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-process-exit.md)
+
+* :wrench: [`package-json/no-empty-fields`](https://github.com/michaelfaith/eslint-plugin-package-json/blob/main/docs/rules/no-empty-fields.md) – *changed* – adds `keywords` to `ignoreProperties` (alongside the default `files`); empty `keywords` arrays are common in WIP or internal packages
+* :warning: [`package-json/sort-collections`](https://github.com/michaelfaith/eslint-plugin-package-json/blob/main/docs/rules/sort-collections.md) – :wrench: *changed* – softened to `warn` in this major as a grace window; will promote to `error` in a future major
+* :warning: [`package-json/require-exports`](https://github.com/michaelfaith/eslint-plugin-package-json/blob/main/docs/rules/require-exports.md) – *changed* – softened to `warn`; bin-only CLI packages legitimately ship without `exports`
+* :mute: [`package-json/require-sideEffects`](https://github.com/michaelfaith/eslint-plugin-package-json/blob/main/docs/rules/require-sideEffects.md) – *deactivated* – bundler-only signal; declaring it wrong is worse than declaring nothing. Browser/bundler-consumable packages can opt in locally.
+* :warning: [`package-json/specify-peers-locally`](https://github.com/michaelfaith/eslint-plugin-package-json/blob/main/docs/rules/specify-peers-locally.md) – *changed* – softened to `warn`; optional peer-dep patterns are a legitimate exception
 
 * :mute: [`security/detect-object-injection`](https://github.com/eslint-community/eslint-plugin-security/blob/main/docs/rules/detect-object-injection.md) – *deactivated* – causes too many false errors
 * :mute: [`security/detect-unsafe-regex`](https://github.com/eslint-community/eslint-plugin-security/blob/main/docs/rules/detect-unsafe-regex.md) – *deactivated* – at least early on wasn't very stable
@@ -114,25 +205,40 @@ export default [
 * :warning: [`unicorn/prefer-spread`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-spread.md) – *changed* – set to `warn` instead of `error`
 * :warning: [`unicorn/prefer-string-replace-all`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prefer-string-replace-all.md) – *changed* – set to `warn` instead of `error`
 * :mute: [`unicorn/prevent-abbreviations`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/prevent-abbreviations.md) – *deactivated* – same as `unicorn/catch-error-name`, I prefer an abbreviated `err` over a non-abbreviated `error`because the latter is too similar to `Error` for my taste
+* :mute: [`unicorn/prefer-string-raw`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-string-raw.md) – *deactivated*
 * :wrench: [`unicorn/switch-case-braces`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/switch-case-braces.md) – *changed* – I prefer to avoid braces in `case` statements rather than enforcing them
+* :mute: [`unicorn/consistent-assert`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/consistent-assert.md) – *deactivated* – opinionated assert style preference that doesn't fit these projects
+* :warning: [`unicorn/consistent-template-literal-escape`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/consistent-template-literal-escape.md) – *changed* – set to `warn` instead of `error`
+* :warning: [`unicorn/isolated-functions`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/isolated-functions.md) – *changed* – set to `warn`, contentious scoping preference
+* :warning: [`unicorn/no-array-reverse`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-array-reverse.md) – *changed* – set to `warn`, mutating `.reverse()` is common enough
+* :warning: [`unicorn/no-array-sort`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-array-sort.md) – *changed* – set to `warn`, mutating `.sort()` is widely used
+* :warning: [`unicorn/no-immediate-mutation`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-immediate-mutation.md) – *changed* – set to `warn`, can be noisy
+* :warning: [`unicorn/prefer-class-fields`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-class-fields.md) – *changed* – set to `warn` for gradual adoption
+* :warning: [`unicorn/prefer-classlist-toggle`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-classlist-toggle.md) – *changed* – set to `warn`, DOM-specific
+* :mute: [`unicorn/prefer-import-meta-properties`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-import-meta-properties.md) – *deactivated* – requires Node.js 20.11+, consistent with `prefer-module` being off by default
+* :warning: [`unicorn/prefer-response-static-json`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-response-static-json.md) – *changed* – set to `warn`, API-specific
+* :warning: [`unicorn/prefer-simple-condition-first`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-simple-condition-first.md) – *changed* – set to `warn` instead of `error`
+* :warning: [`unicorn/switch-case-break-position`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/switch-case-break-position.md) – *changed* – set to `warn` instead of `error`
 
 ### :heavy_plus_sign: Additional standalone ESLint rules
 
-* :stop_sign: [`@stylistic/quote-props`](https://eslint.style/rules/ts/quote-props) – requires properties to be quoted when needed but otherwise disallows it
+* :stop_sign: [`@stylistic/quote-props`](https://eslint.style/rules/ts/quote-props) – requires properties to be quoted when needed but otherwise disallows it *(disabled by `noStyle`)*
 
 * :warning: [`es-x/no-exponential-operators`](https://eslint-community.github.io/eslint-plugin-es-x/rules/no-exponential-operators.html) – disallows the use of the `**` operator, as that's in most cases a mistake and one really meant to write `*`
 
-<!-- * :warning: [`import/no-deprecated`](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-deprecated.md) – disallows the use of explicitly deprecated code (code marked with `@deprecated`)
-* :stop_sign: [`import/no-order`](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-order.md) – enforces a specific ordering of imports -->
+* :warning: [`perfectionist/sort-imports`](https://perfectionist.dev/rules/sort-imports.html) – natural-order sort of import statements, with custom `groups` ordering: type imports first, then value imports grouped by builtin → external → parent/sibling/index, splitting singleline from multiline within each tier; `newlinesBetween: 'ignore'` so downstream formatting isn't disturbed *(disabled by `noStyle`)*
+* :warning: [`perfectionist/sort-named-imports`](https://perfectionist.dev/rules/sort-named-imports.html) – natural-order sort of named import specifiers *(disabled by `noStyle`)*
+* :warning: [`perfectionist/sort-named-exports`](https://perfectionist.dev/rules/sort-named-exports.html) – natural-order sort of named export specifiers *(disabled by `noStyle`)*
+* :warning: [`perfectionist/sort-objects`](https://perfectionist.dev/rules/sort-objects.html) – natural-order sort of destructured object keys (replaces `eslint-plugin-sort-destructure-keys`) *(disabled by `noStyle`)*
 
 * :warning: [`n/prefer-global/console`](https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/prefer-global/console.md)
 * :warning: [`n/prefer-promises/fs`](https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/prefer-promises/fs.md)
 * :warning: [`n/no-process-env`](https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/no-process-env.md)
 * :stop_sign: [`n/no-sync`](https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/no-sync.md)
 
-* :stop_sign: [`promise/prefer-await-to-then`](https://github.com/eslint-community/eslint-plugin-promise/blob/main/docs/rules/prefer-await-to-then.md)
+* :warning: [`package-json/scripts-name-casing`](https://github.com/michaelfaith/eslint-plugin-package-json/blob/main/docs/rules/scripts-name-casing.md) – *added* (not in `recommended`), softened to `warn` – not auto-fixable (`hasSuggestions` only); enforces kebab-case `scripts` names; catches the `clean:hashed` → `clean-hashed` rename pattern
 
-* :stop_sign: [`sort-destructure-keys/sort-destructure-keys`](https://github.com/mthadley/eslint-plugin-sort-destructure-keys)
+* :stop_sign: [`promise/prefer-await-to-then`](https://github.com/eslint-community/eslint-plugin-promise/blob/main/docs/rules/prefer-await-to-then.md)
 
 * :stop_sign: [`unicorn/consistent-destructuring`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/consistent-destructuring.md) – while unicorn dropped it from their recommended config I still like it, see [#283](https://github.com/voxpelli/eslint-config/issues/283)
 
@@ -147,7 +253,7 @@ Unless one configures `cjs: true` these additional rules will be applied:
 
 ## Can I use this in my own project?
 
-You may want to use [neostandard](https://github.com/neostandard/neostandard) instead, it's the general base config that I help maintain for the community.
+You may want to use [neostandard](https://github.com/neostandard/neostandard) instead, it's the general base config that I help maintain for the community. If you follow the [types-in-JS](https://github.com/voxpelli/types-in-js) approach, this config provides battle-tested JSDoc rule tuning validated against 50+ downstream repositories.
 
 I do maintain this project though as if multiple people are using it, so sure, you can use it, but its ultimate purpose is to support my projects.
 

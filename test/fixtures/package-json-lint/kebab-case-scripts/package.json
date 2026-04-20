@@ -1,0 +1,18 @@
+{
+  "name": "kebab-case-scripts",
+  "version": "1.0.0",
+  "description": "Scripts with non-kebab-case names — triggers scripts-name-casing (our explicit addition, not in recommended)",
+  "license": "MIT",
+  "type": "module",
+  "author": "fixture",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/voxpelli/fixture.git"
+  },
+  "exports": "./index.js",
+  "files": ["index.js"],
+  "scripts": {
+    "buildStuff": "echo build",
+    "run_tests": "echo test"
+  }
+}

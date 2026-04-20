@@ -161,8 +161,6 @@ jobs:
           else
             echo "has_results=false" >> $GITHUB_OUTPUT
           fi
-      - name: write step summary
-        run: cat comment.md >> $GITHUB_STEP_SUMMARY
       - name: upload comment
         uses: actions/upload-artifact@v4
         with:

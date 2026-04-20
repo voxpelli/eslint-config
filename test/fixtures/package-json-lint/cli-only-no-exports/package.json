@@ -1,0 +1,16 @@
+{
+  "name": "cli-only-no-exports",
+  "version": "1.0.0",
+  "description": "Bin-only CLI package without exports — triggers require-exports (warn)",
+  "license": "MIT",
+  "type": "module",
+  "author": "fixture",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/voxpelli/fixture.git"
+  },
+  "bin": {
+    "my-cli": "./cli.js"
+  },
+  "files": ["lib/"]
+}
