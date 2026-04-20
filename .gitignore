@@ -9,6 +9,7 @@
 # Planning docs, upstream tracking, and AI instructions (not published)
 /ROADMAP.md
 /UPSTREAM-*.md
+/SYNERGY-*.md
 /RETRO-*.md
 /CLAUDE.md
 /.claude.local.md
