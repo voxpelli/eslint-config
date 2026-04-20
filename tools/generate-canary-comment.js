@@ -1,4 +1,5 @@
 // @ts-check
+/* eslint-disable n/no-sync, unicorn/no-process-exit */
 
 // Assemble the external-canary sticky comment markdown from per-project
 // result artifacts. Reads results/*/eslint-result.json; writes comment.md.
@@ -11,16 +12,23 @@ import path from 'node:path';
 /** @typedef {{ errors: number, warnings: number, fixable: number, files: string[] }} RuleBucket */
 
 const BIDI_ZW_CTRL = /[\u200B-\u200F\u202A-\u202E\u2060-\u2069\uFEFF]/g;
-/** @param {unknown} s */
-const stripCtrl = (s) => String(s).replace(BIDI_ZW_CTRL, '');
-/** @param {unknown} s */
+/**
+ * @param {unknown} s
+ * @returns {string}
+ */
+const stripCtrl = (s) => String(s).replaceAll(BIDI_ZW_CTRL, '');
+/**
+ * @param {unknown} s
+ * @returns {string}
+ */
 const escapeHtml = (s) => stripCtrl(s)
-  .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-  .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  .replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;')
+  .replaceAll('"', '&quot;').replaceAll('\'', '&#39;');
 
 const FILE_CAP = 50;
 const SIZE_CAP = 60_000;
 
+// eslint-disable-next-line n/no-process-env
 const externalCount = Number(process.env['EXTERNAL_PROJECT_COUNT'] ?? 0);
 
 const dir = 'results';
@@ -29,10 +37,13 @@ const results = [];
 if (fs.existsSync(dir)) {
   for (const sub of fs.readdirSync(dir)) {
     const file = path.join(dir, sub, 'eslint-result.json');
+    // eslint-disable-next-line security/detect-non-literal-fs-filename
     if (!fs.existsSync(file)) continue;
+    // eslint-disable-next-line security/detect-non-literal-fs-filename
     if (fs.statSync(file).size > 5 * 1024 * 1024) continue;
     /** @type {unknown} */
     let parsed;
+    // eslint-disable-next-line security/detect-non-literal-fs-filename
     try { parsed = JSON.parse(fs.readFileSync(file, 'utf8')); } catch { continue; }
     if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) continue;
     const p = /** @type {Record<string, unknown>} */ (parsed);
@@ -54,14 +65,14 @@ const hasSyntheticFootnote = results.some(r => {
   return Array.isArray(sk) && sk.some(k => k === '(parser error)' || k === '(no rule id)');
 });
 
-const totalErrors    = results.reduce((s, r) => s + ((Number(r['errorCount'])          | 0)), 0);
-const totalWarnings  = results.reduce((s, r) => s + ((Number(r['warningCount'])        | 0)), 0);
-const totalFixableE  = results.reduce((s, r) => s + ((Number(r['fixableErrorCount'])   | 0)), 0);
-const totalFixableW  = results.reduce((s, r) => s + ((Number(r['fixableWarningCount']) | 0)), 0);
+const totalErrors = results.reduce((s, r) => s + Math.trunc(Number(r['errorCount'])), 0);
+const totalWarnings = results.reduce((s, r) => s + Math.trunc(Number(r['warningCount'])), 0);
+const totalFixableE = results.reduce((s, r) => s + Math.trunc(Number(r['fixableErrorCount'])), 0);
+const totalFixableW = results.reduce((s, r) => s + Math.trunc(Number(r['fixableWarningCount'])), 0);
 
 let md = '## External project test results\n\n';
 md += '**' + results.length + ' project(s) reported issues**';
-if (totalErrors > 0)   md += ' &mdash; ' + totalErrors + ' errors (' + totalFixableE + ' fixable)';
+if (totalErrors > 0) md += ' &mdash; ' + totalErrors + ' errors (' + totalFixableE + ' fixable)';
 if (totalWarnings > 0) md += ', ' + totalWarnings + ' warnings (' + totalFixableW + ' fixable)';
 md += '\n\n';
 
@@ -77,9 +88,9 @@ for (const r of results) {
     ? '<a href="https://github.com/' + slug + '"><code>' + escapeHtml(slug) + '</code></a>'
     : escapeHtml(slug);
 
-  const errorCount   = Number(r['errorCount'])   | 0;
-  const warningCount = Number(r['warningCount']) | 0;
-  const fixable      = (Number(r['fixableErrorCount']) | 0) + (Number(r['fixableWarningCount']) | 0);
+  const errorCount = Math.trunc(Number(r['errorCount']));
+  const warningCount = Math.trunc(Number(r['warningCount']));
+  const fixable = Math.trunc(Number(r['fixableErrorCount'])) + Math.trunc(Number(r['fixableWarningCount']));
   const fixStr = fixable > 0 ? ' (' + fixable + ' fixable :wrench:)' : '';
 
   md += '<details>\n<summary>' + label + ' &mdash; ' + errorCount + ' errors, ' + warningCount + ' warnings' + fixStr + '</summary>\n\n';

@@ -1,4 +1,5 @@
 // @ts-check
+/* eslint-disable n/no-sync, unicorn/no-process-exit */
 
 // Aggregate one project's ESLint JSON output into a compact summary.
 // Reads project/eslint-results.json; writes eslint-result.json when there
@@ -10,6 +11,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const projectPrefix = path.resolve('project') + '/';
+// eslint-disable-next-line n/no-process-env
 const project = process.env['PROJECT'] ?? '';
 
 /** @type {unknown} */
@@ -31,10 +33,10 @@ const syntheticKeys = [];
 
 for (const file of raw) {
   if (!file || typeof file !== 'object' || Array.isArray(file)) continue;
-  totals.errorCount          += (file.errorCount          | 0);
-  totals.warningCount        += (file.warningCount        | 0);
-  totals.fixableErrorCount   += (file.fixableErrorCount   | 0);
-  totals.fixableWarningCount += (file.fixableWarningCount | 0);
+  totals.errorCount += Math.trunc(file.errorCount);
+  totals.warningCount += Math.trunc(file.warningCount);
+  totals.fixableErrorCount += Math.trunc(file.fixableErrorCount);
+  totals.fixableWarningCount += Math.trunc(file.fixableWarningCount);
   if (!Array.isArray(file.messages)) continue;
 
   for (const msg of file.messages) {
@@ -46,7 +48,7 @@ for (const file of raw) {
       key = '(parser error)';
     } else if (!msg.ruleId) {
       key = '(no rule id)';
-    } else if (typeof msg.ruleId === 'string' && /^[@a-z0-9/_-]+$/i.test(msg.ruleId)) {
+    } else if (typeof msg.ruleId === 'string' && /^[@\w/-]+$/.test(msg.ruleId)) {
       key = msg.ruleId;
     } else {
       key = '(invalid rule id)';
