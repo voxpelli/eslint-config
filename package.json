@@ -48,9 +48,9 @@
     "test": "run-s check"
   },
   "devDependencies": {
-    "@types/eslint-plugin-security": "~3.0.0",
-    "@types/node": "^20.19.0",
-    "@voxpelli/tsconfig": "^16.1.0",
+    "@types/eslint-plugin-security": "~3.0.1",
+    "@types/node": "^20.19.39",
+    "@voxpelli/tsconfig": "^16.2.1",
     "eslint": "^9.39.4",
     "husky": "^9.1.7",
     "installed-check": "^9.3.0",
@@ -60,7 +60,7 @@
     "peowly": "^1.3.3",
     "ts-ignore-import": "^4.0.1",
     "type-coverage": "^2.29.7",
-    "typescript": "~5.8.3",
+    "typescript": "~5.9.3",
     "validate-conventional-commit": "^1.0.4"
   },
   "peerDependencies": {
