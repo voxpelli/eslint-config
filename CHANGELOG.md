@@ -1,5 +1,12 @@
 # Changelog
 
+## [25.0.3](https://github.com/voxpelli/eslint-config/compare/v25.0.2...v25.0.3) (2026-04-21)
+
+
+### 🩹 Fixes
+
+* pair singleline and multiline imports tier-by-tier in sort-imports ([#467](https://github.com/voxpelli/eslint-config/issues/467)) ([46bffd7](https://github.com/voxpelli/eslint-config/commit/46bffd75b7a9f12426f77071c93bfbcbab304dcb))
+
 ## [25.0.2](https://github.com/voxpelli/eslint-config/compare/v25.0.1...v25.0.2) (2026-04-20)
 
 
