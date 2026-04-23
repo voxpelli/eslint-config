@@ -8,15 +8,6 @@ export const perfectionistRules = [
     rules: {
       'perfectionist/sort-imports': ['warn', {
         groups: [
-          'type-singleline-builtin',
-          'type-multiline-builtin',
-
-          'type-singleline-external',
-          'type-multiline-external',
-
-          ['type-singleline-parent', 'type-singleline-sibling', 'type-singleline-index'],
-          ['type-multiline-parent', 'type-multiline-sibling', 'type-multiline-index'],
-
           'value-singleline-builtin',
           'value-multiline-builtin',
 
@@ -25,6 +16,15 @@ export const perfectionistRules = [
 
           ['value-singleline-parent', 'value-singleline-sibling', 'value-singleline-index'],
           ['value-multiline-parent', 'value-multiline-sibling', 'value-multiline-index'],
+
+          'type-singleline-builtin',
+          'type-multiline-builtin',
+
+          'type-singleline-external',
+          'type-multiline-external',
+
+          ['type-singleline-parent', 'type-singleline-sibling', 'type-singleline-index'],
+          ['type-multiline-parent', 'type-multiline-sibling', 'type-multiline-index'],
 
           'unknown',
         ],
