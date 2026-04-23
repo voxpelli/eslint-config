@@ -125,7 +125,7 @@ jobs:
 
       - name: upload result
         if: ${{ !cancelled() && hashFiles('eslint-result.json') != '' }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: eslint-result-${{ strategy.job-index }}-${{ github.run_attempt }}
           path: eslint-result.json
@@ -145,7 +145,7 @@ jobs:
         with:
           path: main
       - name: download all results
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           pattern: eslint-result-*-${{ github.run_attempt }}
           path: results
@@ -162,7 +162,7 @@ jobs:
             echo "has_results=false" >> $GITHUB_OUTPUT
           fi
       - name: upload comment
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: canary-comment-${{ github.run_attempt }}
           path: comment.md
@@ -181,7 +181,7 @@ jobs:
       pull-requests: write
     steps:
       - name: download comment
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: canary-comment-${{ github.run_attempt }}
       - name: post sticky comment
