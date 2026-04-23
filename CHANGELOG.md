@@ -1,5 +1,34 @@
 # Changelog
 
+## [25.1.0](https://github.com/voxpelli/eslint-config/compare/v25.0.3...v25.1.0) (2026-04-23)
+
+
+### 🌟 Features
+
+* **deps:** update dependency eslint-plugin-perfectionist to ^5.9.0 ([#458](https://github.com/voxpelli/eslint-config/issues/458)) ([c860088](https://github.com/voxpelli/eslint-config/commit/c86008851b9a3581d4f28cca40e4f7c7d1073353))
+
+
+### 🩹 Fixes
+
+* **deps:** update dependency eslint-plugin-es-x to ^9.6.0 ([#421](https://github.com/voxpelli/eslint-config/issues/421)) ([d37d780](https://github.com/voxpelli/eslint-config/commit/d37d780ebec822ff30762f86fb3ff3e20556ae50))
+* **deps:** update dependency eslint-plugin-jsdoc to ^62.9.0 ([#438](https://github.com/voxpelli/eslint-config/issues/438)) ([48ae107](https://github.com/voxpelli/eslint-config/commit/48ae1074871541f923ada7a9dfae9db32c632d30))
+* **deps:** update dependency eslint-plugin-mocha to ^11.2.0 ([#407](https://github.com/voxpelli/eslint-config/issues/407)) ([93b521b](https://github.com/voxpelli/eslint-config/commit/93b521bf82c7ac5798f85a828434feb6bcef2a46))
+* **deps:** update dependency eslint-plugin-regexp to ^3.1.0 ([#439](https://github.com/voxpelli/eslint-config/issues/439)) ([088e667](https://github.com/voxpelli/eslint-config/commit/088e66752edb3ca6a78037148931a05482ac0c4a))
+* **deps:** update type dependencies ([#416](https://github.com/voxpelli/eslint-config/issues/416)) ([f06405d](https://github.com/voxpelli/eslint-config/commit/f06405ddf8a0e691a85364b789892c986c71a045))
+* types should come _after_ ordinary imports ([#470](https://github.com/voxpelli/eslint-config/issues/470)) ([9f7d247](https://github.com/voxpelli/eslint-config/commit/9f7d2474c91a9e145ede39e93290f51e1965e78a))
+
+
+### 🧹 Chores
+
+* **deps:** lock file maintenance ([#462](https://github.com/voxpelli/eslint-config/issues/462)) ([8a295c5](https://github.com/voxpelli/eslint-config/commit/8a295c59022fb9c5386ec950995a37cc1d0846e8))
+* **deps:** update actions/cache action to v5 ([#434](https://github.com/voxpelli/eslint-config/issues/434)) ([d98f661](https://github.com/voxpelli/eslint-config/commit/d98f66100190ac0948a1f7bf971078d3f848ca8e))
+* **deps:** update actions/setup-node action to v6 ([#427](https://github.com/voxpelli/eslint-config/issues/427)) ([4f506ed](https://github.com/voxpelli/eslint-config/commit/4f506ed4d97f8eec185fe64078b143aabb8e3dab))
+* **deps:** update artifact / pages actions ([#459](https://github.com/voxpelli/eslint-config/issues/459)) ([04b2370](https://github.com/voxpelli/eslint-config/commit/04b237018decf86661e18127220ae249ac73b730))
+* **deps:** update dependency npm-run-all2 to v8 ([#412](https://github.com/voxpelli/eslint-config/issues/412)) ([4015db1](https://github.com/voxpelli/eslint-config/commit/4015db18a62668d96483a9df5da8ccd7e326e318))
+* **deps:** update dependency typescript to v6 ([#461](https://github.com/voxpelli/eslint-config/issues/461)) ([f07c3b9](https://github.com/voxpelli/eslint-config/commit/f07c3b998afe9a0131c1b9e616096dbfdebd17ee))
+* **deps:** update knip + installed-check ([#471](https://github.com/voxpelli/eslint-config/issues/471)) ([6d4d8b4](https://github.com/voxpelli/eslint-config/commit/6d4d8b416a5818e86fe90fd11c69dd46981c65a9))
+* **deps:** update linting dependencies ([#425](https://github.com/voxpelli/eslint-config/issues/425)) ([f373700](https://github.com/voxpelli/eslint-config/commit/f373700db4300f1d1f402c2a045dd5edb3ae958d))
+
 ## [25.0.3](https://github.com/voxpelli/eslint-config/compare/v25.0.2...v25.0.3) (2026-04-21)
 
 
