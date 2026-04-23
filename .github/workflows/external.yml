@@ -70,6 +70,7 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node_version }}
+          package-manager-cache: false
 
       - name: Determine npm cache directory windows
         id: npm-cache-dir-windows
