@@ -76,7 +76,7 @@
     "eslint-plugin-security": "^4.0.0",
     "eslint-plugin-unicorn": "^64.0.0",
     "globals": "^17.0.0",
-    "jsonc-eslint-parser": "^2.4.2",
+    "jsonc-eslint-parser": "^3.0.0",
     "neostandard": "^0.13.0"
   }
 }
