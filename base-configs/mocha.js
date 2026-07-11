@@ -1,11 +1,9 @@
-import nodeTestPlugin from 'eslint-node-test';
 import mochaPlugin from 'eslint-plugin-mocha';
 
 const ignores = ['**/*', '!test/**/*'];
 
 /** @satisfies {import('eslint').Linter.Config[]} */
 export const mochaRules = [
-  nodeTestPlugin.configs.recommended,
   {
     ...mochaPlugin.configs.recommended,
     ignores,

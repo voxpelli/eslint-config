@@ -7,26 +7,8 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import nodeTestPlugin from 'eslint-node-test';
 
 /** @typedef {{ errors: number, warnings: number, fixable: number, files: string[] }} RuleBucket */
-/** @typedef {{ id: string, isRecommended: boolean, isUnopinionated: boolean, errors: number, warnings: number, fixable: number, projects: number }} NodeTestRuleSummary */
-
-/**
- * @param {unknown} ruleConfig
- * @returns {boolean}
- */
-const isErrorRuleConfig = (ruleConfig) => ruleConfig === 'error' ||
-  ruleConfig === 2 ||
-  (Array.isArray(ruleConfig) &&
-    (ruleConfig[0] === 'error' || ruleConfig[0] === 2));
-/**
- * @param {'all' | 'recommended' | 'unopinionated'} configName
- * @returns {string[]}
- */
-const getNodeTestEnabledRules = (configName) => Object.entries(nodeTestPlugin.configs?.[configName]?.rules ?? {})
-  .filter(([id, value]) => id.startsWith('node-test/') && isErrorRuleConfig(value))
-  .map(([id]) => id);
 
 const BIDI_ZW_CTRL = /[\u200B-\u200F\u202A-\u202E\u2060-\u2069\uFEFF]/g;
 /**
@@ -85,47 +67,6 @@ const totalErrors = results.reduce((s, r) => s + Math.trunc(Number(r['errorCount
 const totalWarnings = results.reduce((s, r) => s + Math.trunc(Number(r['warningCount'])), 0);
 const totalFixableE = results.reduce((s, r) => s + Math.trunc(Number(r['fixableErrorCount'])), 0);
 const totalFixableW = results.reduce((s, r) => s + Math.trunc(Number(r['fixableWarningCount'])), 0);
-const nodeTestAllRules = getNodeTestEnabledRules('all');
-const nodeTestRecommended = new Set(getNodeTestEnabledRules('recommended'));
-const nodeTestUnopinionated = new Set(getNodeTestEnabledRules('unopinionated'));
-
-/** @type {NodeTestRuleSummary[]} */
-const nodeTestSummary = [];
-const sortedNodeTestAllRules = nodeTestAllRules.toSorted();
-if (nodeTestAllRules.length > 0) {
-  /** @type {Map<string, { errors: number, warnings: number, fixable: number, projects: Set<string> }>} */
-  const ruleTotals = new Map();
-  for (const r of results) {
-    const project = String(r['project']);
-    const rulesObj = r['rules'] && typeof r['rules'] === 'object' && !Array.isArray(r['rules'])
-      ? /** @type {Record<string, RuleBucket>} */ (r['rules'])
-      : {};
-
-    for (const [id, bucket] of Object.entries(rulesObj)) {
-      if (!id.startsWith('node-test/')) continue;
-      const existing = ruleTotals.get(id) ?? { errors: 0, warnings: 0, fixable: 0, projects: new Set() };
-      existing.errors += bucket.errors;
-      existing.warnings += bucket.warnings;
-      existing.fixable += bucket.fixable;
-      existing.projects.add(project);
-      ruleTotals.set(id, existing);
-    }
-  }
-
-  for (const id of sortedNodeTestAllRules) {
-    const total = ruleTotals.get(id) ?? { errors: 0, warnings: 0, fixable: 0, projects: new Set() };
-    nodeTestSummary.push({
-      id,
-      isRecommended: nodeTestRecommended.has(id),
-      isUnopinionated: nodeTestUnopinionated.has(id),
-      errors: total.errors,
-      warnings: total.warnings,
-      fixable: total.fixable,
-      projects: total.projects.size,
-    });
-  }
-}
-
 let md = '## External project test results\n\n';
 if (results.length === 0) {
   const n = externalCount > 0 ? String(externalCount) : '?';
@@ -147,29 +88,6 @@ if (results.length > 0 && hasSyntheticFootnote) {
   };
   const lines = [...presentSyntheticKeys].toSorted().map(k => '<code>' + escapeHtml(k) + '</code> — ' + FOOTNOTE_TEXT[String(k)]);
   md += '<sub><em>' + lines.join('<br>') + '</em></sub>\n\n';
-}
-
-if (nodeTestSummary.length > 0) {
-  const flaggedNodeTestRules = nodeTestSummary.reduce(
-    (count, { errors, warnings }) => count + (errors > 0 || warnings > 0 ? 1 : 0),
-    0
-  );
-  md += '<details>\n<summary><strong>eslint-node-test canary evaluation</strong> (' + flaggedNodeTestRules + '/' + nodeTestSummary.length + ' rules with findings)</summary>\n';
-  md += '\n';
-  md += '| Rule | Recommended | Unopinionated | Errors | Warnings | Fixable | Projects |\n';
-  md += '|------|:-----------:|:-------------:|-------:|---------:|--------:|---------:|\n';
-
-  for (const rule of nodeTestSummary) {
-    md += '| <code>' + escapeHtml(rule.id) + '</code> | ' +
-      (rule.isRecommended ? '✅' : '') + ' | ' +
-      (rule.isUnopinionated ? '☑️' : '') + ' | ' +
-      rule.errors + ' | ' +
-      rule.warnings + ' | ' +
-      rule.fixable + ' | ' +
-      rule.projects + ' |\n';
-  }
-
-  md += '\n</details>\n\n';
 }
 
 for (const r of results) {
