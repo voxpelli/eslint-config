@@ -12,6 +12,22 @@ import nodeTestPlugin from 'eslint-node-test';
 /** @typedef {{ errors: number, warnings: number, fixable: number, files: string[] }} RuleBucket */
 /** @typedef {{ id: string, isRecommended: boolean, isUnopinionated: boolean, errors: number, warnings: number, fixable: number, projects: number }} NodeTestRuleSummary */
 
+/**
+ * @param {unknown} ruleConfig
+ * @returns {boolean}
+ */
+const isErrorRuleConfig = (ruleConfig) => ruleConfig === 'error' ||
+  ruleConfig === 2 ||
+  (Array.isArray(ruleConfig) &&
+    (ruleConfig[0] === 'error' || ruleConfig[0] === 2));
+/**
+ * @param {'all' | 'recommended' | 'unopinionated'} configName
+ * @returns {string[]}
+ */
+const getNodeTestEnabledRules = (configName) => Object.entries(nodeTestPlugin.configs?.[configName]?.rules ?? {})
+  .filter(([id, value]) => id.startsWith('node-test/') && isErrorRuleConfig(value))
+  .map(([id]) => id);
+
 const BIDI_ZW_CTRL = /[\u200B-\u200F\u202A-\u202E\u2060-\u2069\uFEFF]/g;
 /**
  * @param {unknown} s
@@ -59,7 +75,6 @@ const SYNTHETIC_FOOTNOTE_KEYS = new Set([
   '(unused disable)',
   '(missing rule)',
 ]);
-
 const presentSyntheticKeys = new Set(
   results.flatMap(r => Array.isArray(r['syntheticKeys']) ? r['syntheticKeys'] : [])
     .filter(k => SYNTHETIC_FOOTNOTE_KEYS.has(String(k)))
@@ -70,22 +85,13 @@ const totalErrors = results.reduce((s, r) => s + Math.trunc(Number(r['errorCount
 const totalWarnings = results.reduce((s, r) => s + Math.trunc(Number(r['warningCount'])), 0);
 const totalFixableE = results.reduce((s, r) => s + Math.trunc(Number(r['fixableErrorCount'])), 0);
 const totalFixableW = results.reduce((s, r) => s + Math.trunc(Number(r['fixableWarningCount'])), 0);
-const nodeTestAllRules = Object.entries(nodeTestPlugin.configs?.['all']?.rules ?? {})
-  .filter(([id, value]) => id.startsWith('node-test/') && value === 'error')
-  .map(([id]) => id);
-const nodeTestRecommended = new Set(
-  Object.entries(nodeTestPlugin.configs?.['recommended']?.rules ?? {})
-    .filter(([id, value]) => id.startsWith('node-test/') && value === 'error')
-    .map(([id]) => id)
-);
-const nodeTestUnopinionated = new Set(
-  Object.entries(nodeTestPlugin.configs?.['unopinionated']?.rules ?? {})
-    .filter(([id, value]) => id.startsWith('node-test/') && value === 'error')
-    .map(([id]) => id)
-);
+const nodeTestAllRules = getNodeTestEnabledRules('all');
+const nodeTestRecommended = new Set(getNodeTestEnabledRules('recommended'));
+const nodeTestUnopinionated = new Set(getNodeTestEnabledRules('unopinionated'));
 
 /** @type {NodeTestRuleSummary[]} */
 const nodeTestSummary = [];
+const sortedNodeTestAllRules = nodeTestAllRules.toSorted();
 if (nodeTestAllRules.length > 0) {
   /** @type {Map<string, { errors: number, warnings: number, fixable: number, projects: Set<string> }>} */
   const ruleTotals = new Map();
@@ -106,7 +112,7 @@ if (nodeTestAllRules.length > 0) {
     }
   }
 
-  for (const id of nodeTestAllRules.toSorted()) {
+  for (const id of sortedNodeTestAllRules) {
     const total = ruleTotals.get(id) ?? { errors: 0, warnings: 0, fixable: 0, projects: new Set() };
     nodeTestSummary.push({
       id,
@@ -144,13 +150,23 @@ if (results.length > 0 && hasSyntheticFootnote) {
 }
 
 if (nodeTestSummary.length > 0) {
-  const flaggedNodeTestRules = nodeTestSummary.filter(({ errors, warnings }) => errors > 0 || warnings > 0).length;
-  md += '<details>\n<summary><strong>eslint-node-test canary evaluation</strong> (' + flaggedNodeTestRules + '/' + nodeTestSummary.length + ' rules with findings)</summary>\n\n';
+  const flaggedNodeTestRules = nodeTestSummary.reduce(
+    (count, { errors, warnings }) => count + (errors > 0 || warnings > 0 ? 1 : 0),
+    0
+  );
+  md += '<details>\n<summary><strong>eslint-node-test canary evaluation</strong> (' + flaggedNodeTestRules + '/' + nodeTestSummary.length + ' rules with findings)</summary>\n';
+  md += '\n';
   md += '| Rule | Recommended | Unopinionated | Errors | Warnings | Fixable | Projects |\n';
   md += '|------|:-----------:|:-------------:|-------:|---------:|--------:|---------:|\n';
 
   for (const rule of nodeTestSummary) {
-    md += '| <code>' + escapeHtml(rule.id) + '</code> | ' + (rule.isRecommended ? '✅' : '') + ' | ' + (rule.isUnopinionated ? '☑️' : '') + ' | ' + rule.errors + ' | ' + rule.warnings + ' | ' + rule.fixable + ' | ' + rule.projects + ' |\n';
+    md += '| <code>' + escapeHtml(rule.id) + '</code> | ' +
+      (rule.isRecommended ? '✅' : '') + ' | ' +
+      (rule.isUnopinionated ? '☑️' : '') + ' | ' +
+      rule.errors + ' | ' +
+      rule.warnings + ' | ' +
+      rule.fixable + ' | ' +
+      rule.projects + ' |\n';
   }
 
   md += '\n</details>\n\n';
