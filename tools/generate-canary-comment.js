@@ -7,8 +7,10 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
+import nodeTestPlugin from 'eslint-node-test';
 
 /** @typedef {{ errors: number, warnings: number, fixable: number, files: string[] }} RuleBucket */
+/** @typedef {{ id: string, isRecommended: boolean, isUnopinionated: boolean, errors: number, warnings: number, fixable: number, projects: number }} NodeTestRuleSummary */
 
 const BIDI_ZW_CTRL = /[\u200B-\u200F\u202A-\u202E\u2060-\u2069\uFEFF]/g;
 /**
@@ -51,13 +53,6 @@ if (fs.existsSync(dir)) {
 }
 results.sort((a, b) => String(a['project']).localeCompare(String(b['project'])));
 
-if (results.length === 0) {
-  const n = externalCount > 0 ? String(externalCount) : '?';
-  fs.writeFileSync('comment.md',
-    `## External project test results\n\n:white_check_mark: All ${n} external projects pass\n`);
-  process.exit(0);
-}
-
 const SYNTHETIC_FOOTNOTE_KEYS = new Set([
   '(parser error)',
   '(no rule id)',
@@ -75,14 +70,68 @@ const totalErrors = results.reduce((s, r) => s + Math.trunc(Number(r['errorCount
 const totalWarnings = results.reduce((s, r) => s + Math.trunc(Number(r['warningCount'])), 0);
 const totalFixableE = results.reduce((s, r) => s + Math.trunc(Number(r['fixableErrorCount'])), 0);
 const totalFixableW = results.reduce((s, r) => s + Math.trunc(Number(r['fixableWarningCount'])), 0);
+const nodeTestAllRules = Object.entries(nodeTestPlugin.configs?.['all']?.rules ?? {})
+  .filter(([id, value]) => id.startsWith('node-test/') && value === 'error')
+  .map(([id]) => id);
+const nodeTestRecommended = new Set(
+  Object.entries(nodeTestPlugin.configs?.['recommended']?.rules ?? {})
+    .filter(([id, value]) => id.startsWith('node-test/') && value === 'error')
+    .map(([id]) => id)
+);
+const nodeTestUnopinionated = new Set(
+  Object.entries(nodeTestPlugin.configs?.['unopinionated']?.rules ?? {})
+    .filter(([id, value]) => id.startsWith('node-test/') && value === 'error')
+    .map(([id]) => id)
+);
+
+/** @type {NodeTestRuleSummary[]} */
+const nodeTestSummary = [];
+if (nodeTestAllRules.length > 0) {
+  /** @type {Map<string, { errors: number, warnings: number, fixable: number, projects: Set<string> }>} */
+  const ruleTotals = new Map();
+  for (const r of results) {
+    const project = String(r['project']);
+    const rulesObj = r['rules'] && typeof r['rules'] === 'object' && !Array.isArray(r['rules'])
+      ? /** @type {Record<string, RuleBucket>} */ (r['rules'])
+      : {};
+
+    for (const [id, bucket] of Object.entries(rulesObj)) {
+      if (!id.startsWith('node-test/')) continue;
+      const existing = ruleTotals.get(id) ?? { errors: 0, warnings: 0, fixable: 0, projects: new Set() };
+      existing.errors += bucket.errors;
+      existing.warnings += bucket.warnings;
+      existing.fixable += bucket.fixable;
+      existing.projects.add(project);
+      ruleTotals.set(id, existing);
+    }
+  }
+
+  for (const id of nodeTestAllRules.toSorted()) {
+    const total = ruleTotals.get(id) ?? { errors: 0, warnings: 0, fixable: 0, projects: new Set() };
+    nodeTestSummary.push({
+      id,
+      isRecommended: nodeTestRecommended.has(id),
+      isUnopinionated: nodeTestUnopinionated.has(id),
+      errors: total.errors,
+      warnings: total.warnings,
+      fixable: total.fixable,
+      projects: total.projects.size,
+    });
+  }
+}
 
 let md = '## External project test results\n\n';
-md += '**' + results.length + ' project(s) reported issues**';
-if (totalErrors > 0) md += ' &mdash; ' + totalErrors + ' errors (' + totalFixableE + ' fixable)';
-if (totalWarnings > 0) md += ', ' + totalWarnings + ' warnings (' + totalFixableW + ' fixable)';
-md += '\n\n';
+if (results.length === 0) {
+  const n = externalCount > 0 ? String(externalCount) : '?';
+  md += ':white_check_mark: All ' + n + ' external projects pass\n\n';
+} else {
+  md += '**' + results.length + ' project(s) reported issues**';
+  if (totalErrors > 0) md += ' &mdash; ' + totalErrors + ' errors (' + totalFixableE + ' fixable)';
+  if (totalWarnings > 0) md += ', ' + totalWarnings + ' warnings (' + totalFixableW + ' fixable)';
+  md += '\n\n';
+}
 
-if (hasSyntheticFootnote) {
+if (results.length > 0 && hasSyntheticFootnote) {
   /** @type {Record<string, string>} */
   const FOOTNOTE_TEXT = {
     '(parser error)': 'ESLint reported a fatal parse/syntax error without a rule id.',
@@ -92,6 +141,19 @@ if (hasSyntheticFootnote) {
   };
   const lines = [...presentSyntheticKeys].toSorted().map(k => '<code>' + escapeHtml(k) + '</code> — ' + FOOTNOTE_TEXT[String(k)]);
   md += '<sub><em>' + lines.join('<br>') + '</em></sub>\n\n';
+}
+
+if (nodeTestSummary.length > 0) {
+  const flaggedNodeTestRules = nodeTestSummary.filter(({ errors, warnings }) => errors > 0 || warnings > 0).length;
+  md += '<details>\n<summary><strong>eslint-node-test canary evaluation</strong> (' + flaggedNodeTestRules + '/' + nodeTestSummary.length + ' rules with findings)</summary>\n\n';
+  md += '| Rule | Recommended | Unopinionated | Errors | Warnings | Fixable | Projects |\n';
+  md += '|------|:-----------:|:-------------:|-------:|---------:|--------:|---------:|\n';
+
+  for (const rule of nodeTestSummary) {
+    md += '| <code>' + escapeHtml(rule.id) + '</code> | ' + (rule.isRecommended ? '✅' : '') + ' | ' + (rule.isUnopinionated ? '☑️' : '') + ' | ' + rule.errors + ' | ' + rule.warnings + ' | ' + rule.fixable + ' | ' + rule.projects + ' |\n';
+  }
+
+  md += '\n</details>\n\n';
 }
 
 for (const r of results) {

@@ -73,6 +73,15 @@ const plugins = [
     }),
   },
   {
+    name: 'eslint-node-test',
+    exportType: 'default',
+    check: (c) => ({
+      'configs.recommended': !!c.configs?.['recommended'],
+      'configs.unopinionated': !!c.configs?.['unopinionated'],
+      'configs.all': !!c.configs?.['all'],
+    }),
+  },
+  {
     name: 'eslint-plugin-perfectionist',
     exportType: 'default',
     check: (c) => ({
