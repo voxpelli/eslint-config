@@ -32,7 +32,7 @@
     "build:1-declaration": "tsc -p declaration.tsconfig.json",
     "build:2-add-ignores": "ts-ignore-import '**/*.d.ts' --allow=eslint --allow=globals --allow=neostandard",
     "check": "run-s clean && run-p check:*",
-    "check:installed-check": "installed-check -i list-dependents-cli",
+    "check:installed-check": "installed-check -i list-dependents-cli -i eslint-node-test",
     "check:knip": "knip",
     "check:lint": "eslint --report-unused-disable-directives .",
     "check:tsc": "tsc",
