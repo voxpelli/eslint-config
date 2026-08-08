@@ -20,30 +20,44 @@ export const modifiedNeostandardStyleRules = [
   },
 ];
 
-/** @satisfies {import('eslint').Linter.Config[]} */
-export const modifiedNeostandardRules = [
-  {
-    name: '@voxpelli/modified/neostandard',
-    rules: {
-      'no-unused-vars': ['error', {
-        'vars': 'all',
-        'args': 'all',
-        'argsIgnorePattern': '^_',
-        'ignoreRestSiblings': true,
-      }],
+/**
+ * @param {ReturnType<typeof import('neostandard')['resolveFilePatterns']>} filePatterns
+ * @returns {import('eslint').Linter.Config[]}
+ */
+export function modifiedNeostandardRules (filePatterns) {
+  const {
+    ignores,
+    jsTsFiles,
+    tsFiles,
+  } = filePatterns;
+
+  return [
+    {
+      name: '@voxpelli/modified/neostandard',
+      files: jsTsFiles,
+      ignores,
+      rules: {
+        'no-unused-vars': ['error', {
+          'vars': 'all',
+          'args': 'all',
+          'argsIgnorePattern': '^_',
+          'ignoreRestSiblings': true,
+        }],
+      },
     },
-  },
-  {
-    name: '@voxpelli/modified/neostandard/ts',
-    files: ['**/*.ts'],
-    rules: {
-      'no-unused-vars': 'off',
-      '@typescript-eslint/no-unused-vars': ['error', {
-        'vars': 'all',
-        'args': 'all',
-        'argsIgnorePattern': '^_',
-        'ignoreRestSiblings': true,
-      }],
+    {
+      name: '@voxpelli/modified/neostandard/ts',
+      files: tsFiles,
+      ignores,
+      rules: {
+        'no-unused-vars': 'off',
+        '@typescript-eslint/no-unused-vars': ['error', {
+          'vars': 'all',
+          'args': 'all',
+          'argsIgnorePattern': '^_',
+          'ignoreRestSiblings': true,
+        }],
+      },
     },
-  },
-];
+  ];
+}

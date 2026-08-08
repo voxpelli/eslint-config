@@ -2,13 +2,15 @@ import globals from 'globals';
 
 /**
  * @param {string[]} files
+ * @param {string[]} ignores
  * @returns {import('eslint').Linter.Config[]}
  */
-export function browserFilesConfig (files) {
+export function browserFilesConfig (files, ignores) {
   return /** @satisfies {import('eslint').Linter.Config[]} */ ([
     {
       name: '@voxpelli/browser-files',
       files,
+      ignores,
       languageOptions: { globals: globals.browser },
       rules: {
         // Bundlers (esbuild, Vite, etc.) resolve imports, not Node.js

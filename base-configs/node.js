@@ -1,23 +1,34 @@
 import { plugins } from 'neostandard';
 
 /**
- * @param {boolean} cjs
+ * @param {ReturnType<typeof import('neostandard')['resolveFilePatterns']>} filePatterns
  * @returns {import('eslint').Linter.Config[]}
  */
-export function nodeRules (cjs) {
+export function nodeRules (filePatterns) {
+  const {
+    ignores,
+    jsTsFiles,
+    tsFiles,
+  } = filePatterns;
+
   return [
     {
       ...plugins.n.configs['flat/recommended-module'],
-      // If CommonJS, only target *.mjs, target everything but *.cjs
-      ...cjs ? { files: ['**/*.mjs'] } : { ignores: ['**/*.cjs'] },
+      files: jsTsFiles,
+      ignores: [
+        ...ignores,
+        '**/*.cjs',
+      ],
     },
     {
       ...plugins.n.configs['flat/recommended-script'],
-      // If CommonJS, target everything but *.mjs, else only target *.cjs
-      ...cjs ? { ignores: ['**/*.mjs'] } : { files: ['**/*.cjs'] },
+      files: ['**/*.cjs'],
+      ignores,
     },
     {
       name: '@voxpelli/additional/node',
+      files: jsTsFiles,
+      ignores,
       rules: {
         // Overriding
         'n/no-extraneous-import': 'off',
@@ -32,7 +43,8 @@ export function nodeRules (cjs) {
     },
     {
       name: '@voxpelli/additional/node/dts',
-      files: ['**/*.ts'],
+      files: tsFiles,
+      ignores,
       rules: {
         // TODO: Remove when *.js files can be properly resolved from *.d.ts
         'n/no-missing-import': 'off',
