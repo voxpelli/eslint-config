@@ -24,11 +24,12 @@ import { cliFilesConfig } from './profiles/cli.js';
 
 /** @typedef {AdditionalOptions & NeostandardOptions} VoxpelliOptions */
 
-/** @satisfies {Record<keyof VoxpelliOptions, true>} */
+/** @satisfies {Record<keyof VoxpelliOptions | 'noMocha', true>} */
 const VALID_OPTIONS_MAP = {
   // voxpelli-specific
   browserFiles: true,
   cliFiles: true,
+  noMocha: true,
   // neostandard pass-through
   env: true,
   files: true,
