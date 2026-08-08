@@ -51,9 +51,9 @@
     "@types/eslint-plugin-security": "~3.0.1",
     "@types/node": "^20.19.39",
     "@voxpelli/tsconfig": "^16.2.1",
-    "eslint": "^9.39.4",
+    "eslint": "^10.8.1",
     "husky": "^9.1.7",
-    "installed-check": "^10.0.1",
+    "installed-check": "^11.0.0",
     "knip": "^6.6.2",
     "list-dependents-cli": "^2.7.1",
     "npm-run-all2": "^8.0.4",
@@ -61,7 +61,7 @@
     "ts-ignore-import": "^4.0.1",
     "type-coverage": "^2.29.7",
     "typescript": "~6.0.3",
-    "validate-conventional-commit": "^1.0.4"
+    "validate-conventional-commit": "^2.0.0"
   },
   "peerDependencies": {
     "eslint": "^9.38.0"
