@@ -1,9 +1,8 @@
-import neostandard, { resolveIgnoresFromGitignore } from 'neostandard';
+import neostandard, { resolveFilePatterns, resolveIgnoresFromGitignore } from 'neostandard';
 
 import { additionalRules, additionalStyleRules } from './base-configs/additional-rules.js';
 import { esmRules } from './base-configs/esm.js';
 import { jsdocRules } from './base-configs/jsdoc.js';
-import { mochaRules } from './base-configs/mocha.js';
 import { modifiedNeostandardRules, modifiedNeostandardStyleRules } from './base-configs/modified-rules.js';
 import { nodeRules } from './base-configs/node.js';
 import { packageJsonRules } from './base-configs/package-json.js';
@@ -13,16 +12,23 @@ import { browserFilesConfig } from './profiles/browser.js';
 import { cliFilesConfig } from './profiles/cli.js';
 
 /**
- * @typedef {{ browserFiles?: string[], cliFiles?: string[], cjs?: boolean, noMocha?: boolean } & import('neostandard').NeostandardOptions} VoxpelliOptions
+ * @import { Linter } from 'eslint'
+ * @import { NeostandardOptions } from 'neostandard'
  */
+
+/**
+ * @typedef AdditionalOptions
+ * @property {string[]} [browserFiles]
+ * @property {string[]} [cliFiles]
+ */
+
+/** @typedef {AdditionalOptions & NeostandardOptions} VoxpelliOptions */
 
 /** @satisfies {Record<keyof VoxpelliOptions, true>} */
 const VALID_OPTIONS_MAP = {
   // voxpelli-specific
   browserFiles: true,
   cliFiles: true,
-  cjs: true,
-  noMocha: true,
   // neostandard pass-through
   env: true,
   files: true,
@@ -40,7 +46,7 @@ const VALID_OPTIONS = new Set(Object.keys(VALID_OPTIONS_MAP));
 
 /**
  * @param {VoxpelliOptions} [options]
- * @returns {import('eslint').Linter.Config[]}
+ * @returns {Linter.Config[]}
  */
 export function voxpelli (options) {
   if (options) {
@@ -58,11 +64,14 @@ export function voxpelli (options) {
 
   const {
     browserFiles,
-    cjs = false,
     cliFiles,
+    files = [],
+    filesTs = [],
     ignores: rawIgnores,
-    noMocha,
+    noJsx = true,
     noStyle,
+    semi = true,
+    ts = true,
     ...neostandardOptions
   } = options || {};
 
@@ -72,28 +81,61 @@ export function voxpelli (options) {
     ...rawIgnores || [],
   ];
 
-  return [
-    // If ignores is the lone key, then that amounts to being global ignores: https://eslint.org/docs/latest/use/configure/configuration-files#globally-ignoring-files-with-ignores
-    { ignores },
-    ...neostandard({
-      semi: true,
-      ts: true,
-      noStyle,
-      ...neostandardOptions,
-    }),
-    ...modifiedNeostandardRules,
+  /** @type {Required<Omit<NeostandardOptions, keyof typeof neostandardOptions>> & typeof neostandardOptions} */
+  const resolvedNeostandardOptions = {
+    ...neostandardOptions,
+    files,
+    filesTs,
+    ignores,
+    noJsx,
+    noStyle,
+    semi,
+    ts,
+  };
+
+  const filePatterns = resolveFilePatterns({
+    files,
+    filesTs,
+    ignores,
+    noJsx,
+    ts,
+  });
+
+  const {
+    ignores: jsTsIgnores,
+    jsTsFiles,
+  } = filePatterns;
+
+  const configWithFilePatterns = [
     ...noStyle ? [] : modifiedNeostandardStyleRules,
     ...additionalRules,
     ...noStyle ? [] : additionalStyleRules,
     ...jsdocRules,
     ...regexpRules,
-    ...nodeRules(cjs),
-    ...cjs ? [] : esmRules,
-    ...packageJsonRules,
+    ...esmRules,
     ...noStyle ? [] : perfectionistRules,
-    ...noMocha ? [] : mochaRules,
-    ...browserFiles?.length ? browserFilesConfig(browserFiles) : [],
-    ...cliFiles?.length ? cliFilesConfig(cliFiles) : [],
+  ].map(config => ({
+    ...config,
+    files: jsTsFiles,
+    ignores: jsTsIgnores,
+  }));
+
+  return [
+    { name: '@voxpelli/ignores', ignores },
+    ...neostandard(resolvedNeostandardOptions),
+
+    ...modifiedNeostandardRules(filePatterns),
+    ...nodeRules(filePatterns),
+
+    ...configWithFilePatterns,
+
+    // package-json rules need their own `files: ['**/package.json']` and the
+    // jsonc-eslint-parser from `extends`, so they must stay out of the
+    // `configWithFilePatterns` map that overwrites `files`/`ignores`.
+    ...packageJsonRules,
+
+    ...browserFiles?.length ? browserFilesConfig(browserFiles, jsTsIgnores) : [],
+    ...cliFiles?.length ? cliFilesConfig(cliFiles, jsTsIgnores) : [],
   ];
 }
 

@@ -12,12 +12,13 @@
 
 import { execFile } from 'node:child_process';
 import { readFileSync } from 'node:fs';
+import path from 'node:path';
 import { promisify } from 'node:util';
 
 import { peowly } from 'peowly';
 
 const execFileAsync = promisify(execFile);
-const projectRoot = import.meta.dirname + '/..';
+const projectRoot = path.resolve(import.meta.dirname, '..');
 
 // --- ANSI helpers ---
 

@@ -33,8 +33,6 @@ If you need to configure something, instead do:
 import { voxpelli } from '@voxpelli/eslint-config';
 
 export default voxpelli({
-  cjs: true,            // Ensures the config has rules fit for a CJS context rather than an ESM context
-  noMocha: true,        // By standard this config expects tests to be of the Mocha kind, but one can opt out
   noStyle: true,        // Disables all stylistic rules (@stylistic + perfectionist sorting) — also passed to neostandard
   browserFiles: ['client/**/*.js'], // Scopes browser globals and disables Node rules for matched files
   cliFiles: ['bin/**/*.js', 'scripts/**/*.js'], // Relaxes rules for CLI scripts (process.exit, console, sync I/O, etc.)
@@ -117,14 +115,14 @@ import { browserFiles, cliFiles } from '@voxpelli/eslint-config';
 
 export default [
   // your own base config …
-  ...browserFiles(['client/**/*.js']),
-  ...cliFiles(['bin/**/*.js']),
+  ...browserFiles(['client/**/*.js'], []),
+  ...cliFiles(['bin/**/*.js'], []),
 ];
 ```
 
-`browserFiles(globs)` — scopes browser globals and disables Node.js rules for matched files.
+`browserFiles(globs, ignores)` — scopes browser globals and disables Node.js rules for matched files. Pass the same ignore patterns as your base config.
 
-`cliFiles(globs)` — relaxes rules appropriate for CLI scripts: allows `process.exit()`, `console`, sync I/O, and top-level non-await patterns.
+`cliFiles(globs, ignores)` — relaxes rules appropriate for CLI scripts: allows `process.exit()`, `console`, sync I/O, and top-level non-await patterns. Pass the same ignore patterns as your base config.
 
 ## How does this differ from pure [neostandard](https://github.com/neostandard/neostandard)?
 
@@ -154,7 +152,6 @@ Markers can combine when a rule has both a severity change and a separate config
 ### :package: Added ESLint rule packages
 
 * [`plugin:jsdoc/recommended`](https://github.com/gajus/eslint-plugin-jsdoc#rules)
-* [`plugin:mocha/recommended`](https://github.com/lo1tuma/eslint-plugin-mocha#rules)
 * [`eslint-plugin-package-json`](https://github.com/michaelfaith/eslint-plugin-package-json) (applied to `**/package.json`, with fixture paths ignored by default: `**/test/**`, `**/tests/**`, `**/__tests__/**`, `**/test-*/**`, `**/fixtures/**`, `**/__fixtures__/**`)
 * [`eslint-plugin-perfectionist`](https://github.com/azat-io/eslint-plugin-perfectionist) (4 sorting rules, replaces `eslint-plugin-sort-destructure-keys`)
 * [`plugin:n/recommended`](https://github.com/eslint-community/eslint-plugin-n#-rules)
@@ -179,8 +176,6 @@ Markers can combine when a rule has both a severity change and a separate config
 * :mute: [`jsdoc/require-next-description`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-next-description.md) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
 * :mute: [`jsdoc/require-throws-description`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-throws-description.md) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
 * :mute: [`jsdoc/require-yields-description`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-yields-description.md) – *deactivated* – to improve use with [types in js](https://github.com/voxpelli/types-in-js).
-
-* :mute: [`mocha/no-mocha-arrows`](https://github.com/lo1tuma/eslint-plugin-mocha/blob/master/docs/rules/no-mocha-arrows.md) – *deactivated* – while [Mocha discourages arrow functions](https://mochajs.org/#arrow-functions) I find it more readable to use them + I find it safe when combined with type checking as then the type checking will notify one when one tries to do a `this.setTimeout()` or similar in an arrow function where there is no such local context
 
 * :mute: [`n/no-extraneous-import`](https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/no-extraneous-import.md) – *deactivated* – superseded by [knip](https://github.com/webpro-nl/knip), which validates imports more accurately without false positives in monorepos
 * :mute: [`n/no-process-exit`](https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/no-process-exit.md) – *deactivated* – added by `plugin:n/recommended`, but deactivated in favor of [`unicorn/no-process-exit`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/master/docs/rules/no-process-exit.md)
@@ -245,7 +240,7 @@ Markers can combine when a rule has both a severity change and a separate config
 
 ## ESM specific rules
 
-Unless one configures `cjs: true` these additional rules will be applied:
+These additional rules are applied:
 
 #### :wrench: Overrides of rules
 
