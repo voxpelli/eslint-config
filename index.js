@@ -3,6 +3,7 @@ import neostandard, { resolveFilePatterns, resolveIgnoresFromGitignore } from 'n
 import { additionalRules, additionalStyleRules } from './base-configs/additional-rules.js';
 import { esmRules } from './base-configs/esm.js';
 import { jsdocRules } from './base-configs/jsdoc.js';
+import { mochaRules } from './base-configs/mocha.js';
 import { modifiedNeostandardRules, modifiedNeostandardStyleRules } from './base-configs/modified-rules.js';
 import { nodeRules } from './base-configs/node.js';
 import { packageJsonRules } from './base-configs/package-json.js';
@@ -20,6 +21,7 @@ import { cliFilesConfig } from './profiles/cli.js';
  * @typedef AdditionalOptions
  * @property {string[]} [browserFiles]
  * @property {string[]} [cliFiles]
+ * @property {boolean} [noMocha]
  */
 
 /** @typedef {AdditionalOptions & NeostandardOptions} VoxpelliOptions */
@@ -70,6 +72,7 @@ export function voxpelli (options) {
     filesTs = [],
     ignores: rawIgnores,
     noJsx = true,
+    noMocha,
     noStyle,
     semi = true,
     ts = true,
@@ -134,6 +137,8 @@ export function voxpelli (options) {
     // jsonc-eslint-parser from `extends`, so they must stay out of the
     // `configWithFilePatterns` map that overwrites `files`/`ignores`.
     ...packageJsonRules,
+
+    ...noMocha ? [] : mochaRules,
 
     ...browserFiles?.length ? browserFilesConfig(browserFiles, jsTsIgnores) : [],
     ...cliFiles?.length ? cliFilesConfig(cliFiles, jsTsIgnores) : [],

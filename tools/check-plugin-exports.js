@@ -188,7 +188,7 @@ async function typesyncDry () {
   const { promisify } = await import('node:util');
   const exec = promisify(execFile);
   try {
-    const { stdout } = await exec('npx', ['typesync', '--dry'], { cwd: path.resolve(import.meta.dirname, '/..') });
+    const { stdout } = await exec('npx', ['typesync', '--dry'], { cwd: path.resolve(import.meta.dirname, '..') });
     return stdout;
   } catch {
     return '';
