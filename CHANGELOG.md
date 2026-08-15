@@ -1,5 +1,29 @@
 # Changelog
 
+## [26.0.0](https://github.com/voxpelli/eslint-config/compare/v25.1.0...v26.0.0) (2026-08-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* Drops support for Node.js 20.x. Consumers must use Node.js `^22.13.0 || >=24.0.0`.
+
+### 🌟 Features
+
+* update to neostandard 0.14.0-next and drop Node 20 support ([#480](https://github.com/voxpelli/eslint-config/issues/480)) ([2a69662](https://github.com/voxpelli/eslint-config/commit/2a69662817f640ecb3be465ee1982d3bdfdba281))
+
+
+### 🩹 Fixes
+
+* **deps:** update dependency eslint-plugin-package-json to ^0.91.2 ([#484](https://github.com/voxpelli/eslint-config/issues/484)) ([e65ff38](https://github.com/voxpelli/eslint-config/commit/e65ff38f8eee235bfa73e11bc01e4f1e19af3b35))
+* **deps:** update dependency eslint-plugin-regexp to ^3.1.1 ([#486](https://github.com/voxpelli/eslint-config/issues/486)) ([c3dd1a6](https://github.com/voxpelli/eslint-config/commit/c3dd1a65964b3140de9ea21e5063795c8fcb5ecb))
+* **deps:** update dependency neostandard to ^0.14.0-next.1 ([#503](https://github.com/voxpelli/eslint-config/issues/503)) ([487d24f](https://github.com/voxpelli/eslint-config/commit/487d24f175997124c38be84837266709b59cee80))
+
+
+### 🧹 Chores
+
+* **deps:** update linting dependencies ([#482](https://github.com/voxpelli/eslint-config/issues/482)) ([c053db3](https://github.com/voxpelli/eslint-config/commit/c053db3eb3502e23b92580b253344c28dc95dec5))
+* **deps:** update type dependencies ([#483](https://github.com/voxpelli/eslint-config/issues/483)) ([7c697f7](https://github.com/voxpelli/eslint-config/commit/7c697f778fdb2380de5d3d1debf2db3ae915f158))
+
 ## [25.1.0](https://github.com/voxpelli/eslint-config/compare/v25.0.3...v25.1.0) (2026-04-23)
 
 
