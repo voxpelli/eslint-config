@@ -28,7 +28,7 @@ jobs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
       count:  ${{ steps.set-matrix.outputs.count }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - id: validate-module-set
         env:
           INPUT: ${{ github.event.inputs.moduleSet }}
@@ -57,11 +57,11 @@ jobs:
         project: ${{ fromJson(needs.read_external_projects.outputs.matrix) }}
     steps:
       - name: Checkout main project
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           path: main
       - name: Checkout ${{ matrix.project }}
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           repository: ${{ matrix.project }}
           path: project
@@ -142,7 +142,7 @@ jobs:
     outputs:
       has_results: ${{ steps.check.outputs.has_results }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           path: main
       - name: download all results
